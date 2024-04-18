@@ -30,7 +30,7 @@ public class Tracciato {
 		 int giocatori=quantiGiocatori();
 		tabellone =new ArrayList<Giocatore>(giocatori);
 		Scanner sc=new Scanner(System.in);
-		System.out.println("ATTENZIONE!\n"+"il primo giocatore creato sar√† il primo ad iniziare");
+		System.out.println("ATTENZIONE!\n"+"il primo giocatore creato sar‡ il primo ad iniziare");
 		for(int i=0;i<giocatori;i++) {
 			
 			System.out.println("Creazione giocatore "+(i+=1)+"\n");
@@ -88,4 +88,3 @@ public class Tracciato {
 	}
 	
 }
-

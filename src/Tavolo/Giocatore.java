@@ -2,6 +2,7 @@ package Tavolo;
 
 import java.util.ArrayList;
 
+import Carta.CObb;
 import Carta.Carta;
 import Enumerazione.Colore;
 import Enumerazione.Simbolo;
@@ -22,6 +23,7 @@ public Giocatore(String soprannome,Colore colore,boolean primo) {
 	this.soprannome=soprannome;
 	this.colore=colore;
 	this.primo=primo;
+//aggiungere inizializzazione attributi rimanenti
 }
 
 public Colore getColore() {
