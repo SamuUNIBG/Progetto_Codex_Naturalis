@@ -40,12 +40,12 @@ public boolean giocaC() {
 	
 	return true;
 }
-public Carta pescaC() {
+/*public Carta pescaC() {
 	 
 	Carta c=new Carta();
 	 return c;
 }
-
+*/
 
 
 }
