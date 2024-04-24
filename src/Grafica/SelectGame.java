@@ -54,9 +54,15 @@ public class SelectGame extends JFrame implements ActionListener{
 		int f=0;
 		int g=0;
 		for(int i=0; i<4; i++) {
-			infoTextArea.add(new JTextArea("Username"));
-			nameTextArea.add(new JTextArea("-----"));
-			infoTextArea.add(new JTextArea("Colore"));
+			JTextArea user=new JTextArea("Username");
+			JTextArea spazio=new JTextArea("-----");
+			JTextArea colore=new JTextArea("Colore");
+			user.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 15));
+			spazio.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 15));
+			colore.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 15));
+			infoTextArea.add(user);
+			nameTextArea.add(spazio);
+			infoTextArea.add(colore);
 			colorComboBox.add(new JComboBox<String>(colori));
 			gbc.gridx=0;
 			gbc.gridy=g;

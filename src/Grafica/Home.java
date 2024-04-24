@@ -1,13 +1,18 @@
 package Grafica;
 
 import javax.swing.*;
+
+import javax.swing.border.EmptyBorder;
+
 import java.awt.*;
 import java.awt.event.*;
+
 
 public class Home extends JFrame implements ActionListener{
 	
 	//declaration of buttons to add to the window
 	JButton nuovoGioco, regole, impostazioni,  ringraziamenti;
+	private Graphics gr;
 	//this window
 	private JFrame frame = new JFrame();
 	
@@ -56,6 +61,17 @@ public class Home extends JFrame implements ActionListener{
 		regole.addActionListener(this);
 		impostazioni.addActionListener(this);
 		ringraziamenti.addActionListener(this);
+		//Font bottoni
+		nuovoGioco.setFont(new Font("Serif",Font.BOLD| Font.ITALIC,20));
+		regole.setFont(new Font("Serif",Font.BOLD| Font.ITALIC,20));
+		impostazioni.setFont(new Font("Serif",Font.BOLD| Font.ITALIC,20));
+		ringraziamenti.setFont(new Font("Serif",Font.BOLD| Font.ITALIC,18));
+		//aggiunta cursore su pulsanti
+		nuovoGioco.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		regole.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		impostazioni.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		ringraziamenti.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		
 		//adds buttons to the window
 		buttonPanel.add(nuovoGioco);
 		buttonPanel.add(regole);
