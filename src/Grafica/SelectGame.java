@@ -9,8 +9,9 @@ import javax.swing.*;
 
 public class SelectGame extends JFrame implements ActionListener{
 	
+	JButton homeButton;
 	ArrayList<JTextArea> nameTextArea;
-	ArrayList<JTextArea> infoTextArea;
+	ArrayList<JLabel> infoTextArea;
 	ArrayList<JComboBox<String>> colorComboBox;
 	private String[] colori = {"Azzurro", "Giallo", "Rosso", "Verde"};
 	//this window
@@ -23,7 +24,7 @@ public class SelectGame extends JFrame implements ActionListener{
 		
 		//sets title, dimension of the JFrame
 		frame.setIconImage(logo.getImage());
-		frame.setTitle("Codex Naturalis - Home");
+		frame.setTitle("Codex Naturalis - Seleziona giocatori");
 		//frame.setMinimumSize(new Dimension(sfondo.getIconWidth()+16, sfondo.getIconHeight()+39));
 		//sets the window not resizable by the users
 		frame.setResizable(false);
@@ -40,13 +41,17 @@ public class SelectGame extends JFrame implements ActionListener{
 		titleLabel.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 30));
 		titleLabel.setForeground(Color.BLACK);
 		
+		homeButton = new JButton("Home");
+		homeButton.setFocusPainted(false);
+		homeButton.addActionListener(this);
+		
 		//panel with info components
 		JPanel infoPanel = new JPanel();
 		infoPanel.setPreferredSize(new Dimension(500, 500));
 		infoPanel.setLayout(new GridBagLayout());
 				
 		//components to add to the rulePane
-		infoTextArea = new ArrayList<JTextArea>();
+		infoTextArea = new ArrayList<JLabel>();
 		nameTextArea = new 	ArrayList<JTextArea>();
 		colorComboBox = new ArrayList<JComboBox<String>>();
 		//add components to infoPanel
@@ -54,9 +59,9 @@ public class SelectGame extends JFrame implements ActionListener{
 		int f=0;
 		int g=0;
 		for(int i=0; i<4; i++) {
-			JTextArea user=new JTextArea("Username");
+			JLabel user=new JLabel("Username");
 			JTextArea spazio=new JTextArea("-----");
-			JTextArea colore=new JTextArea("Colore");
+			JLabel colore=new JLabel("Colore");
 			user.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 15));
 			spazio.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 15));
 			colore.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 15));
@@ -76,14 +81,18 @@ public class SelectGame extends JFrame implements ActionListener{
 			gbc.gridx=1;
 			gbc.gridy=g+1;
 			infoPanel.add(colorComboBox.get(i), gbc);
+			gbc.gridx=0;
+			gbc.gridy=g+2;
+			infoPanel.add(homeButton,gbc);
 			f+=2;
 			g+=2;
 		}
-		infoPanel.setVisible(true);		
+		
+		
 		
 		//panel with titleLabel and selectGamePanel
 		JPanel selectGamePanel = new JPanel();
-		selectGamePanel.setPreferredSize(new Dimension(500, 500));
+		selectGamePanel.setPreferredSize(new Dimension(600, 600));
 		selectGamePanel.setLayout(new GridBagLayout());
 		selectGamePanel.setVisible(true);
 		
@@ -109,8 +118,11 @@ public class SelectGame extends JFrame implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		
+		 if(e.getSource()==homeButton) {
+			frame.dispose();
+			Home home = new Home();
+		}
 	}
 	
 }
+

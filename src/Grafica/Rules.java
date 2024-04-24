@@ -26,7 +26,7 @@ public class Rules extends JFrame implements ActionListener{
 			ImageIcon sfondo = new ImageIcon("codex_sfondo.png");
 			
 			//create the frame's icon "logo"
-			ImageIcon logo = new ImageIcon("codex_logo.png");
+			ImageIcon logo = new ImageIcon("images/codex_logo.png");
 			
 			//sets title, dimension of the JFrame
 			frame.setIconImage(logo.getImage());
