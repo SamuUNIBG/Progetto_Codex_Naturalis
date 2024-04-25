@@ -89,6 +89,7 @@ public class Home extends JFrame implements ActionListener{
 		gapPanel.setPreferredSize(new Dimension(50, 50));
 		gapPanel.setOpaque(false);
 		
+		
 		//add components to rowPanel
 		GridBagConstraints gbc = new GridBagConstraints();		
 		gbc.gridx=0;
