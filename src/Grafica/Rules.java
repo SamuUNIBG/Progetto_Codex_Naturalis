@@ -23,7 +23,6 @@ public class Rules extends JFrame implements ActionListener{
 		private JFrame frame = new JFrame();
 		
 		public Rules() {
-			ImageIcon sfondo = new ImageIcon("codex_sfondo.png");
 			
 			//create the frame's icon "logo"
 			ImageIcon logo = new ImageIcon("images/codex_logo.png");
@@ -134,7 +133,7 @@ public class Rules extends JFrame implements ActionListener{
 					ruleLabel.setIcon(ruleBook[rulePage]);
 			}else if(e.getSource()==homeButton) {
 				frame.dispose();
-				Home home = new Home();
+				new Home();
 			}
 			
 		}

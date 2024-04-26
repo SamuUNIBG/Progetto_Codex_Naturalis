@@ -2,8 +2,6 @@ package Grafica;
 
 import javax.swing.*;
 
-import javax.swing.border.EmptyBorder;
-
 import java.awt.*;
 import java.awt.event.*;
 
@@ -12,7 +10,6 @@ public class Home extends JFrame implements ActionListener{
 	
 	//declaration of buttons to add to the window
 	JButton nuovoGioco, regole, impostazioni,  ringraziamenti;
-	private Graphics gr;
 	//this window
 	private JFrame frame = new JFrame();
 	
@@ -44,8 +41,9 @@ public class Home extends JFrame implements ActionListener{
 		
 		//panel with button
 		JPanel buttonPanel = new JPanel();
-		buttonPanel.setPreferredSize(new Dimension(150, 150));
-		buttonPanel.setLayout(new GridLayout(4,1));
+		buttonPanel.setPreferredSize(new Dimension(150, 180));
+		buttonPanel.setLayout(new GridBagLayout());
+		buttonPanel.setOpaque(false);
 		//buttons to add to the window
 		nuovoGioco = new JButton("NuovoGioco");
 		regole = new JButton("Regole");
@@ -61,22 +59,57 @@ public class Home extends JFrame implements ActionListener{
 		regole.addActionListener(this);
 		impostazioni.addActionListener(this);
 		ringraziamenti.addActionListener(this);
-		//Font bottoni
+		//set button font
 		nuovoGioco.setFont(new Font("Serif",Font.BOLD| Font.ITALIC,20));
 		regole.setFont(new Font("Serif",Font.BOLD| Font.ITALIC,20));
 		impostazioni.setFont(new Font("Serif",Font.BOLD| Font.ITALIC,20));
 		ringraziamenti.setFont(new Font("Serif",Font.BOLD| Font.ITALIC,18));
-		//aggiunta cursore su pulsanti
+		//modify button cursor
 		nuovoGioco.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		regole.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		impostazioni.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		ringraziamenti.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		//set button's dimension
+		nuovoGioco.setPreferredSize(new Dimension(150, 35));
+		regole.setPreferredSize(new Dimension(150, 35));
+		impostazioni.setPreferredSize(new Dimension(150, 35));
+		ringraziamenti.setPreferredSize(new Dimension(150, 35));
 		
+		
+		//needed to set a gap between button
+		JPanel gapPanel1 = new JPanel();
+		gapPanel1.setMinimumSize(new Dimension(5, 5));
+		gapPanel1.setOpaque(false);
+		JPanel gapPanel2 = new JPanel();
+		gapPanel2.setMaximumSize(new Dimension(5, 5));
+		gapPanel2.setOpaque(false);
+		JPanel gapPanel3 = new JPanel();
+		gapPanel3.setMaximumSize(new Dimension(5, 5));
+		gapPanel3.setOpaque(false);
+
 		//adds buttons to the window
-		buttonPanel.add(nuovoGioco);
-		buttonPanel.add(regole);
-		buttonPanel.add(impostazioni);
-		buttonPanel.add(ringraziamenti);
+		GridBagConstraints gbc = new GridBagConstraints();		
+		gbc.gridx=0;
+		gbc.gridy=0;
+		buttonPanel.add(nuovoGioco, gbc);
+		gbc.gridx=0;
+		gbc.gridy=1;
+		buttonPanel.add(gapPanel1, gbc);
+		gbc.gridx=0;
+		gbc.gridy=2;
+		buttonPanel.add(regole, gbc);
+		gbc.gridx=0;
+		gbc.gridy=3;
+		buttonPanel.add(gapPanel2, gbc);
+		gbc.gridx=0;
+		gbc.gridy=4;
+		buttonPanel.add(impostazioni, gbc);
+		gbc.gridx=0;
+		gbc.gridy=5;
+		buttonPanel.add(gapPanel3, gbc);
+		gbc.gridx=0;
+		gbc.gridy=6;
+		buttonPanel.add(ringraziamenti, gbc);
 		buttonPanel.setVisible(true);
 		
 		//contains titleLabel and buttonPanel 
@@ -85,19 +118,18 @@ public class Home extends JFrame implements ActionListener{
 		rowPanel.setOpaque(false);
 		
 		//needed to set a gap between titleLabel and buttonPanel
-		JPanel gapPanel = new JPanel();
-		gapPanel.setPreferredSize(new Dimension(50, 50));
-		gapPanel.setOpaque(false);
+		JPanel gapPanel4 = new JPanel();
+		gapPanel4.setPreferredSize(new Dimension(50, 50));
+		gapPanel4.setOpaque(false);
 		
 		
-		//add components to rowPanel
-		GridBagConstraints gbc = new GridBagConstraints();		
+		//add components to rowPanel	
 		gbc.gridx=0;
 		gbc.gridy=0;
 		rowPanel.add(titleLabel, gbc);
 		gbc.gridx=0;
 		gbc.gridy=1;
-		rowPanel.add(gapPanel, gbc);
+		rowPanel.add(gapPanel4, gbc);
 		gbc.gridx=0;
 		gbc.gridy=2;
 		rowPanel.add(buttonPanel, gbc);
@@ -125,16 +157,16 @@ public class Home extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==nuovoGioco) {
 			frame.dispose();
-			SelectGame SelectGameFrame = new SelectGame();
+			new SelectGame();
 		}else if(e.getSource()==regole) {
 			frame.dispose();
-			Rules rulesFrame = new Rules();
+			new Rules();
 		}else if(e.getSource()==impostazioni) {
 			frame.dispose();
 			Settings settingsFrame = new Settings();
 		}else if(e.getSource()==ringraziamenti) {
 			frame.dispose();
-			Thanks thanksFrame = new Thanks();
+			new Thanks();
 		}
 		
 	}

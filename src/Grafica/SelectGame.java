@@ -4,16 +4,21 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import javax.swing.*;
 
 public class SelectGame extends JFrame implements ActionListener{
 	
-	JButton homeButton;
+	JButton homeButton, gameButton;
 	ArrayList<JTextArea> nameTextArea;
-	ArrayList<JLabel> infoTextArea;
+	ArrayList<String> username;
+	ArrayList<String> userColor;
 	ArrayList<JComboBox<String>> colorComboBox;
-	private String[] colori = {"Azzurro", "Giallo", "Rosso", "Verde"};
+	
+	HashSet<String> lol = new HashSet<String>();
+	
+	private String[] colori = {"Seleziona un colore", "Azzurro", "Giallo", "Rosso", "Verde"};
 	//this window
 	private JFrame frame = new JFrame();
 	
@@ -43,9 +48,13 @@ public class SelectGame extends JFrame implements ActionListener{
 		titleLabel.setForeground(Color.BLACK);
 		titleLabel.setOpaque(false);
 		
+		//buttons to add to the infoPanel
 		homeButton = new JButton("Home");
 		homeButton.setFocusPainted(false);
 		homeButton.addActionListener(this);
+		gameButton = new JButton("Start game");
+		gameButton.setFocusPainted(false);
+		gameButton.addActionListener(this);
 		
 		//panel with info components
 		JPanel infoPanel = new JPanel();
@@ -53,75 +62,78 @@ public class SelectGame extends JFrame implements ActionListener{
 		infoPanel.setLayout(new GridBagLayout());
 		infoPanel.setOpaque(false);
 				
-		//components to add to the rulePane
-		infoTextArea = new ArrayList<JLabel>();
+		//components to add to the infoPanel
+		//infoTextArea = new ArrayList<JLabel>();
 		nameTextArea = new 	ArrayList<JTextArea>();
 		colorComboBox = new ArrayList<JComboBox<String>>();
 		//needed to set a gap between ifnoPanel and homeButton
 		JPanel gapPanel = new JPanel();
 		gapPanel.setPreferredSize(new Dimension(200, 200));
 		gapPanel.setOpaque(false);
+		
+		username = new ArrayList<String>();
+		userColor = new ArrayList<String>();
+		
 		//add components to infoPanel
 		GridBagConstraints gbc = new GridBagConstraints();
-		int f=0;
-		int g=0;
+		int y=0;
 		gbc.gridx=0;
 		gbc.gridy=0;
 		infoPanel.add(titleLabel,gbc);
 		for(int i=0; i<4; i++) {
-			JLabel user=new JLabel("Username");
-			JTextArea spazio=new JTextArea("-----");
-			JLabel colore=new JLabel("Colore");
+			JLabel user = new JLabel("Username");
+			JTextArea insertName = new JTextArea("-----");
+			JLabel colore = new JLabel("Colore");
+			colorComboBox.add(new JComboBox<String>(colori));		
+			
 			user.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 15));
 			user.setForeground(Color.BLACK);
-			spazio.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 15));
-			spazio.setForeground(Color.BLACK);
-			spazio.setOpaque(false);
+			insertName.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 15));
+			insertName.setForeground(Color.BLACK);
+			insertName.setOpaque(false);
 			colore.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 15));
 			colore.setForeground(Color.BLACK);
-			infoTextArea.add(user);
-			nameTextArea.add(spazio);
-			infoTextArea.add(colore);
-			colorComboBox.add(new JComboBox<String>(colori));
+			
+			nameTextArea.add(insertName);
+			
 			gbc.gridx=0;
-			gbc.gridy=g+2;
-			infoPanel.add(infoTextArea.get(f), gbc);
+			gbc.gridy=y+1;
+			infoPanel.add(user, gbc);
 			gbc.gridx=1;
-			gbc.gridy=g+2;
+			gbc.gridy=y+1;
 			infoPanel.add(nameTextArea.get(i), gbc);
 			gbc.gridx=0;
-			gbc.gridy=g+3;
-			infoPanel.add(infoTextArea.get(f+1), gbc);
+			gbc.gridy=y+2;
+			infoPanel.add(colore, gbc);
 			gbc.gridx=1;
-			gbc.gridy=g+3;
+			gbc.gridy=y+2;
 			infoPanel.add(colorComboBox.get(i), gbc);
 			gbc.gridx=0;
-			gbc.gridy=g+4;
-			infoPanel.add(gapPanel,gbc);
-			gbc.gridx=1;
-			gbc.gridy=g+5;
-			infoPanel.add(homeButton,gbc);
-			f+=2;
-			g+=2;
+			gbc.gridy=y+3;
+			infoPanel.add(gapPanel, gbc);
+			
+			y+=2;
 		}
+		
+		gbc.gridx=0;
+		gbc.gridy=y+1;
+		infoPanel.add(homeButton, gbc);
+		gbc.gridx=1;
+		gbc.gridy=y+1;
+		infoPanel.add(gameButton, gbc);
 		
 		JLabel sfondoLabel = new JLabel();
 		sfondoLabel.setIcon(sfondo);
-		
 		
 		//panel with titleLabel and selectGamePanel
 		JPanel selectGamePanel = new JPanel();
 		selectGamePanel.setLayout(new GridBagLayout());
 		
-		
 		//add components to rowPanel
-		//GridBagConstraints gbc = new GridBagConstraints();		
 		gbc.gridx=0;
 		gbc.gridy=0;
 		selectGamePanel.add(infoPanel, gbc); 
 		selectGamePanel.add(sfondoLabel, gbc);
-		
-		
 		
 		//add homePanel to window
 		frame.add(selectGamePanel);
@@ -136,8 +148,26 @@ public class SelectGame extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		 if(e.getSource()==homeButton) {
 			frame.dispose();
-			Home home = new Home();
+			new Home();
 		}
+		 if(e.getSource()==gameButton) {
+			 for(int i=0; i<4;i++) {
+				if(lol.add(nameTextArea.get(i).getText()))
+					username.add(nameTextArea.get(i).getText());
+			 }
+			 
+			 
+			 System.out.println(lol);
+			 
+			 userColor.add(colori[colorComboBox.get(0).getSelectedIndex()]);
+			 userColor.add(colori[colorComboBox.get(1).getSelectedIndex()]);
+			 userColor.add(colori[colorComboBox.get(2).getSelectedIndex()]);
+			 userColor.add(colori[colorComboBox.get(3).getSelectedIndex()]);
+			 
+			 frame.dispose();
+			 new Game(username, userColor);
+			 
+		 }
 	}
 	
 }
