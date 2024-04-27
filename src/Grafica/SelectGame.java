@@ -11,7 +11,7 @@ import javax.swing.*;
 public class SelectGame extends JFrame implements ActionListener{
 	
 	JButton homeButton, gameButton;
-	ArrayList<JTextArea> nameTextArea;
+	ArrayList<JTextField> nameTextArea;
 	ArrayList<String> username;
 	ArrayList<String> userColor;
 	ArrayList<JComboBox<String>> colorComboBox;
@@ -45,7 +45,7 @@ public class SelectGame extends JFrame implements ActionListener{
 		JLabel titleLabel = new JLabel();
 		titleLabel.setText("Seleziona giocatori");
 		titleLabel.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 30));
-		titleLabel.setForeground(Color.BLACK);
+		titleLabel.setForeground(Color.WHITE);
 		titleLabel.setOpaque(false);
 		
 		//buttons to add to the infoPanel
@@ -64,7 +64,7 @@ public class SelectGame extends JFrame implements ActionListener{
 				
 		//components to add to the infoPanel
 		//infoTextArea = new ArrayList<JLabel>();
-		nameTextArea = new 	ArrayList<JTextArea>();
+		nameTextArea = new 	ArrayList<JTextField>();
 		colorComboBox = new ArrayList<JComboBox<String>>();
 		//needed to set a gap between ifnoPanel and homeButton
 		JPanel gapPanel = new JPanel();
@@ -82,17 +82,18 @@ public class SelectGame extends JFrame implements ActionListener{
 		infoPanel.add(titleLabel,gbc);
 		for(int i=0; i<4; i++) {
 			JLabel user = new JLabel("Username");
-			JTextArea insertName = new JTextArea("-----");
+			JTextField insertName = new JTextField();
+			insertName.setPreferredSize(new Dimension(150,40));
 			JLabel colore = new JLabel("Colore");
 			colorComboBox.add(new JComboBox<String>(colori));		
 			
 			user.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 15));
-			user.setForeground(Color.BLACK);
+			user.setForeground(Color.WHITE);
 			insertName.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 15));
-			insertName.setForeground(Color.BLACK);
+			insertName.setForeground(Color.WHITE);
 			insertName.setOpaque(false);
 			colore.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 15));
-			colore.setForeground(Color.BLACK);
+			colore.setForeground(Color.WHITE);
 			
 			nameTextArea.add(insertName);
 			
@@ -102,19 +103,20 @@ public class SelectGame extends JFrame implements ActionListener{
 			gbc.gridx=1;
 			gbc.gridy=y+1;
 			infoPanel.add(nameTextArea.get(i), gbc);
+			
 			gbc.gridx=0;
 			gbc.gridy=y+2;
 			infoPanel.add(colore, gbc);
 			gbc.gridx=1;
 			gbc.gridy=y+2;
 			infoPanel.add(colorComboBox.get(i), gbc);
+		
 			gbc.gridx=0;
 			gbc.gridy=y+3;
 			infoPanel.add(gapPanel, gbc);
 			
 			y+=2;
 		}
-		
 		gbc.gridx=0;
 		gbc.gridy=y+1;
 		infoPanel.add(homeButton, gbc);
@@ -150,25 +152,36 @@ public class SelectGame extends JFrame implements ActionListener{
 			frame.dispose();
 			new Home();
 		}
-		 if(e.getSource()==gameButton) {
-			 for(int i=0; i<4;i++) {
-				if(lol.add(nameTextArea.get(i).getText()))
+		if(e.getSource()==gameButton) { 
+			for(int i=0; i<4;i++) {
+				//if(lol.add(nameTextArea.get(i).getText()))
 					username.add(nameTextArea.get(i).getText());
 			 }
-			 
-			 
-			 System.out.println(lol);
-			 
-			 userColor.add(colori[colorComboBox.get(0).getSelectedIndex()]);
-			 userColor.add(colori[colorComboBox.get(1).getSelectedIndex()]);
-			 userColor.add(colori[colorComboBox.get(2).getSelectedIndex()]);
-			 userColor.add(colori[colorComboBox.get(3).getSelectedIndex()]);
-			 
-			 frame.dispose();
-			 new Game(username, userColor);
-			 
-		 }
+			System.out.println(colorComboBox.get(0).getSelectedItem());
+			System.out.println(colorComboBox.get(1).getSelectedItem());
+		
+			if (colorComboBox.get(0).getSelectedItem().toString().equals(colorComboBox.get(1).getSelectedItem().toString()) ||
+					colorComboBox.get(2).getSelectedItem().toString().equals(colorComboBox.get(0).getSelectedItem().toString()) ||
+					colorComboBox.get(2).getSelectedItem().toString().equals(colorComboBox.get(1).getSelectedItem().toString()) ||
+					colorComboBox.get(3).getSelectedItem().toString().equals(colorComboBox.get(0).getSelectedItem().toString()) ||
+					colorComboBox.get(3).getSelectedItem().toString().equals(colorComboBox.get(1).getSelectedItem().toString()) ||
+					colorComboBox.get(3).getSelectedItem().toString().equals(colorComboBox.get(2).getSelectedItem().toString()) ) {
+				JOptionPane.showMessageDialog(null, "il colore iserito e gia stato scelto,"
+						+ "seleziona un nuovo colore",
+						"ERRORE", JOptionPane.ERROR_MESSAGE);
+			}
+			else {
+				userColor.add(colori[colorComboBox.get(0).getSelectedIndex()]);
+				userColor.add(colori[colorComboBox.get(1).getSelectedIndex()]);
+				userColor.add(colori[colorComboBox.get(2).getSelectedIndex()]);
+				userColor.add(colori[colorComboBox.get(3).getSelectedIndex()]);
+				frame.dispose();
+				new Game(username, userColor);
+			}
+			System.out.println(username);
+		}
 	}
+	
 	
 }
 
