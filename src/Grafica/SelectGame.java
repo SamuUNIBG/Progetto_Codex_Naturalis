@@ -19,6 +19,7 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 	ArrayList<String> userColor;
 	ArrayList<JComboBox<String>> colorComboBox;
 	JTextField insertName;
+	String giocatori;
 	
 	HashSet<String> lol = new HashSet<String>();
 	
@@ -44,6 +45,17 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 		frame.setLocation((screenSize.width/2)-(frame.getWidth()/2), (screenSize.height/2)-(frame.getHeight()/2));
 		//exit out of application
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		do {
+			giocatori=JOptionPane.showInputDialog("In quanti giocatori volete giocare?");
+			
+			if(Integer.parseInt(giocatori)>5 ||Integer.parseInt(giocatori)<2) {
+				JOptionPane.showMessageDialog(null,"I giocatori devono essere minimo 2, massimo 4","Attenzione!",JOptionPane.ERROR_MESSAGE);
+			}
+		}while(Integer.parseInt(giocatori)>5 ||Integer.parseInt(giocatori)<2);
+		
+		
+		
 		
 		//"select game" title label
 		JLabel titleLabel = new JLabel();
@@ -119,8 +131,15 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 			gbc.gridx=0;
 			gbc.gridy=y+3;
 			infoPanel.add(gapPanel, gbc);
-			
 			y+=2;
+			if(Integer.parseInt(giocatori)<=i) {
+				user.setEnabled(false);
+				colorComboBox.get(i).setEnabled(false);
+				insertName.setEnabled(false);
+				colore.setEnabled(false);
+				
+			}
+			
 		}
 		gbc.gridx=0;
 		gbc.gridy=y+1;
