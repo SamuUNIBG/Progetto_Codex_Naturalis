@@ -146,6 +146,8 @@ public class SelectGame extends JFrame implements ActionListener{
 		
 	}
 	
+	boolean firstTime = true;
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		 if(e.getSource()==homeButton) {
@@ -153,32 +155,35 @@ public class SelectGame extends JFrame implements ActionListener{
 			new Home();
 		}
 		if(e.getSource()==gameButton) { 
+			if(firstTime)
 			for(int i=0; i<4;i++) {
-				//if(lol.add(nameTextArea.get(i).getText()))
 					username.add(nameTextArea.get(i).getText());
-			 }
-			System.out.println(colorComboBox.get(0).getSelectedItem());
-			System.out.println(colorComboBox.get(1).getSelectedItem());
+					userColor.add(colori[colorComboBox.get(i).getSelectedIndex()]);
+					firstTime=false;
+			}
+			if(!firstTime)
+			for(int i=0; i<4;i++) {
+				username.set(i, nameTextArea.get(i).getText());
+				userColor.set(i, colori[colorComboBox.get(i).getSelectedIndex()]);
+			}
 		
-			if (colorComboBox.get(0).getSelectedItem().toString().equals(colorComboBox.get(1).getSelectedItem().toString()) ||
-					colorComboBox.get(2).getSelectedItem().toString().equals(colorComboBox.get(0).getSelectedItem().toString()) ||
-					colorComboBox.get(2).getSelectedItem().toString().equals(colorComboBox.get(1).getSelectedItem().toString()) ||
-					colorComboBox.get(3).getSelectedItem().toString().equals(colorComboBox.get(0).getSelectedItem().toString()) ||
-					colorComboBox.get(3).getSelectedItem().toString().equals(colorComboBox.get(1).getSelectedItem().toString()) ||
-					colorComboBox.get(3).getSelectedItem().toString().equals(colorComboBox.get(2).getSelectedItem().toString()) ) {
+			if (colorComboBox.get(0).getSelectedItem().equals(colorComboBox.get(1).getSelectedItem()) ||
+					colorComboBox.get(2).getSelectedItem().equals(colorComboBox.get(0).getSelectedItem()) ||
+					colorComboBox.get(2).getSelectedItem().equals(colorComboBox.get(1).getSelectedItem()) ||
+					colorComboBox.get(3).getSelectedItem().equals(colorComboBox.get(0).getSelectedItem()) ||
+					colorComboBox.get(3).getSelectedItem().equals(colorComboBox.get(1).getSelectedItem()) ||
+					colorComboBox.get(3).getSelectedItem().equals(colorComboBox.get(2).getSelectedItem()) ) {
 				JOptionPane.showMessageDialog(null, "il colore iserito e gia stato scelto,"
 						+ "seleziona un nuovo colore",
 						"ERRORE", JOptionPane.ERROR_MESSAGE);
 			}
+			
 			else {
-				userColor.add(colori[colorComboBox.get(0).getSelectedIndex()]);
-				userColor.add(colori[colorComboBox.get(1).getSelectedIndex()]);
-				userColor.add(colori[colorComboBox.get(2).getSelectedIndex()]);
-				userColor.add(colori[colorComboBox.get(3).getSelectedIndex()]);
 				frame.dispose();
 				new Game(username, userColor);
 			}
 			System.out.println(username);
+			System.out.println(userColor);
 		}
 	}
 	
