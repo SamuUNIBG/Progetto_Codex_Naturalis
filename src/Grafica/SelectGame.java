@@ -49,10 +49,10 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 		do {
 			giocatori=JOptionPane.showInputDialog("In quanti giocatori volete giocare?");
 			
-			if(Integer.parseInt(giocatori)>5 ||Integer.parseInt(giocatori)<2) {
+			if(Integer.parseInt(giocatori)>4 ||Integer.parseInt(giocatori)<2) {
 				JOptionPane.showMessageDialog(null,"I giocatori devono essere minimo 2, massimo 4","Attenzione!",JOptionPane.ERROR_MESSAGE);
 			}
-		}while(Integer.parseInt(giocatori)>5 ||Integer.parseInt(giocatori)<2);
+		}while(Integer.parseInt(giocatori)>4 ||Integer.parseInt(giocatori)<2);
 		
 		
 		
