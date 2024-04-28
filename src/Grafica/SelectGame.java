@@ -1,20 +1,24 @@
 package Grafica;
 
 import java.awt.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.HashSet;
 
 import javax.swing.*;
 
-public class SelectGame extends JFrame implements ActionListener{
+public class SelectGame extends JFrame implements ActionListener,MouseListener{
 	
 	JButton homeButton, gameButton;
 	ArrayList<JTextField> nameTextArea;
 	ArrayList<String> username;
 	ArrayList<String> userColor;
 	ArrayList<JComboBox<String>> colorComboBox;
+	JTextField insertName;
 	
 	HashSet<String> lol = new HashSet<String>();
 	
@@ -82,8 +86,9 @@ public class SelectGame extends JFrame implements ActionListener{
 		infoPanel.add(titleLabel,gbc);
 		for(int i=0; i<4; i++) {
 			JLabel user = new JLabel("Username");
-			JTextField insertName = new JTextField();
+			insertName = new JTextField();
 			insertName.setPreferredSize(new Dimension(150,40));
+			insertName.addMouseListener(this);
 			JLabel colore = new JLabel("Colore");
 			colorComboBox.add(new JComboBox<String>(colori));		
 			
@@ -185,6 +190,42 @@ public class SelectGame extends JFrame implements ActionListener{
 			System.out.println(username);
 			System.out.println(userColor);
 		}
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		
+		if( firstTime==true) {
+			firstTime=false;
+			if(insertName.getText().equals("")) {
+				JOptionPane.showMessageDialog(null, "Il primo giocatore creato,sarà il primo ad iniziare","ATTENZIONE!",JOptionPane.INFORMATION_MESSAGE);
+				
+			}
+		}
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

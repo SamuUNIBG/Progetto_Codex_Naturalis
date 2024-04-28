@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class PlayingField extends JPanel {
 	
-	JLabel label1
+	JLabel label1;
 
 	public PlayingField(){
 		
