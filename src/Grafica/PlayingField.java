@@ -1,79 +1,107 @@
 package Grafica;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.*;
 
-public class PlayingField extends JPanel {
+public class PlayingField extends JLayeredPane {
+	int z=0;
 	
-	JLabel label1;
-
+	ArrayList<JLabel> placedCardLabel;	
+	HashMap<Integer, String> coordinate = new HashMap<Integer, String>();
+	HashMap<String, Integer> coordinate2 = new HashMap<String, Integer>();
+	ImageIcon icon = new ImageIcon("blue_gold_card_front_1.jpg");
+	
 	public PlayingField(){
 		
-		this.setPreferredSize(new Dimension(1000, 1000));
 		this.setLayout(null);
 		
-		JLabel label1 = new JLabel();
-		label1.setOpaque(true);
-		label1.setBackground(Color.RED);
-		label1.setBounds(50, 50, 200, 200);
+		placedCardLabel = new ArrayList<JLabel>();
+		placedCardLabel.add(new JLabel());
+		coordinate.put(0, "41,41");
+		coordinate2.put("41,41", 0);
 		
-		JLabel label2 = new JLabel();
-		label2.setOpaque(true);
-		label2.setBackground(Color.GREEN);
-		label2.setBounds(60, 60, 200, 200);
+		placedCardLabel.get(0).setBackground(new Color(170, 170, 170, 80));
+		placedCardLabel.get(0).setIcon(icon);
+		placedCardLabel.get(0).setOpaque(true);
+		placedCardLabel.get(0).setBounds(200, 200, 204, 142);
+		this.setAutoscrolls(true);
 		
-		JLabel label3 = new JLabel();
-		label3.setOpaque(true);
-		label3.setBackground(Color.BLUE);
-		label3.setBounds(70, 70, 200, 200);
+		ImageIcon icon = new ImageIcon("blue_gold_card_front_1.jpg");
 		
-		JLabel label4 = new JLabel();
-		label4.setOpaque(true);
-		label4.setBackground(Color.YELLOW);
-		label4.setBounds(80, 80, 200, 200);
+		System.out.println(icon.getIconWidth() + " " + icon.getIconHeight());
+		//add homePanel to window
+		this.add(placedCardLabel.get(0), Integer.valueOf(0));
 		
-		JLabel label5 = new JLabel();
-		label5.setOpaque(true);
-		label5.setBackground(Color.CYAN);
-		label5.setBounds(90, 90, 200, 200);
+		this.setOpaque(true);
+		this.setPreferredSize(new Dimension(12500, 5000));
+			
+		//makes frame visible
+		this.setVisible(true);
 		
-		JLabel label6 = new JLabel();
-		label6.setOpaque(true);
-		label6.setBackground(Color.DARK_GRAY);
-		label6.setBounds(100, 100, 200, 200);
-		
-		JLabel label7 = new JLabel();
-		label7.setOpaque(true);
-		label7.setBackground(Color.LIGHT_GRAY);
-		label7.setBounds(110, 110, 200, 200);
-		
-		JLabel label8 = new JLabel();
-		label8.setOpaque(true);
-		label8.setBackground(Color.MAGENTA);
-		label8.setBounds(120, 120, 200, 200);
-		
-		JLayeredPane layeredPane = new JLayeredPane();
-		layeredPane.setBounds(0, 0, 500, 500);
-		
-		layeredPane.add(label1, Integer.valueOf(0));	//JLayeredPane.DEFAULT_LAYER
-		layeredPane.add(label2, Integer.valueOf(1));
-		layeredPane.add(label3, Integer.valueOf(2));
-		layeredPane.add(label4, Integer.valueOf(3));
-		layeredPane.add(label5, Integer.valueOf(4));
-		layeredPane.add(label6, Integer.valueOf(5));
-		layeredPane.add(label7, Integer.valueOf(6));
-		layeredPane.add(label8, Integer.valueOf(7));
-		
-		JFrame frame = new JFrame();
-		frame.setSize(500, 500);	//set the x-dimension, and y-dimension of frame
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	//exit out of application
-		frame.setLayout(null);
-		
-		frame.add(layeredPane);
-		
-		frame.setVisible(true);
+	}
 	
+	//il metodo che si occuperà di aggiungere la carta nella matrice richiamerà questo metodo passandogli un vettore
+	//di stringhe contenente nella prima cella le coordinate ("x,y") dell'ultima carta aggiunta e le coordinate delle altre celle occupabili
+	//il metodo poi si occuperà di visualizzare a schermo i nuovi jlabel opachi dove potranno essere piazzate le carte
+	public void addLabel(String[] pos) {
+		//needed to set third dimension of JLayeredPane
+		z++;
+		
+		//get index into matrix of last card added
+		String[] splittedString = pos[0].split(",");
+		int oldX = Integer.parseInt(splittedString[0]);
+		int oldY = Integer.parseInt(splittedString[1]);
+		
+		//get index into ArrayList of last card added 
+		int indexLastCard = coordinate2.get(pos[0]);
+		//get graphic coordinates of the last card added
+		int x = (int)placedCardLabel.get(indexLastCard).getLocation().getX();
+		int y = (int)placedCardLabel.get(indexLastCard).getLocation().getY();
+		
+		for(int i=1; i<pos.length; i++) {
+			JLabel newLabel = new JLabel();
+			newLabel.setBackground(new Color(170, 170, 170, 80));
+			newLabel.setOpaque(true);
+			
+			//get index into matrix of the new location where you can place cards
+			splittedString = pos[i].split(",");
+			int newX = Integer.parseInt(splittedString[0]);
+			int newY = Integer.parseInt(splittedString[1]);
+			
+			//set location and size of new JLabel
+			if(newX<oldX && newY<oldY) {
+				newLabel.setBackground(Color.RED);
+				newLabel.setIcon(icon);
+				newLabel.setBounds(x-150,y-80,204,142);
+			}else if(newX<oldX && newY>oldY) {
+				newLabel.setBackground(Color.GREEN);
+				newLabel.setIcon(icon);
+				newLabel.setBounds(x-150,y+80,204,142);
+			}else if(newX>oldX && newY<oldY) {
+				newLabel.setBackground(Color.BLUE);
+				newLabel.setIcon(icon);
+				newLabel.setBounds(x+150,y-80,204,142);
+			}else if(newX>oldX && newY>oldY) {
+				newLabel.setBackground(Color.YELLOW);
+				newLabel.setIcon(icon);
+				newLabel.setBounds(x+150,y+80,204,142);
+			}
+			
+			//add new JLabel to JLabel ArrayList
+			placedCardLabel.add(newLabel);
+			//add new JLabel to the panel
+			this.add(newLabel, Integer.valueOf(z));
+			//add new JLabel with matrix coordinates to HashMap
+			coordinate.put(placedCardLabel.size()-1, pos[i]);
+			coordinate2.put(pos[i], placedCardLabel.size()-1);
+			System.out.println(coordinate);
+			System.out.println(coordinate2);
+		}
+		
+		
 	}
 	
 }
