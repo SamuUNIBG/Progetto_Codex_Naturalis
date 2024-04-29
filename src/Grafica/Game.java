@@ -14,11 +14,11 @@ import javax.swing.JScrollPane;
 
 public class Game extends JFrame implements ActionListener{
 	
-	HashMap<Integer, String> cardImage = new HashMap<Integer, String>();
+	//HashMap<Integer, String> cardImage = new HashMap<Integer, String>();
 
 	public Game(ArrayList<String> username, ArrayList<String> userColor) {
 		
-		createHashMap();
+		/*createHashMap();
 		
 		System.out.println(username.get(0));
 		System.out.println(username.get(1));
@@ -172,7 +172,7 @@ public class Game extends JFrame implements ActionListener{
 		cardImage.put(114, "images/cards_back/start_card_back_5.jpg");
 		cardImage.put(115, "images/cards_back/start_card_back_6.jpg");
 		//add objective card to HashMap
-		cardImage.put(116, "images/cards_back/objective_card_back.jpg");
+		cardImage.put(116, "images/cards_back/objective_card_back.jpg");*/
 				
 	}
 

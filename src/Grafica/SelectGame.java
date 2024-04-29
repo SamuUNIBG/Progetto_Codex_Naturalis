@@ -20,13 +20,13 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 	ArrayList<JComboBox<String>> colorComboBox;
 	JTextField insertName;
 	String giocatori;
-	
+	JComboBox<String> colors;
 	HashSet<String> lol = new HashSet<String>();
 	
 	private String[] colori = {"Seleziona un colore", "Azzurro", "Giallo", "Rosso", "Verde"};
 	//this window
 	private JFrame frame = new JFrame();
-	
+	private String tmp;
 	public SelectGame() {
 		
 		//create the frame's icon "logo"
@@ -100,14 +100,16 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 		gbc.gridx=0;
 		gbc.gridy=0;
 		infoPanel.add(titleLabel,gbc);
-		for(int i=0; i<4; i++) {
+		
+		for(int i=0; i<Integer.parseInt(giocatori); i++) {
+			colors= new JComboBox<String>(colori);
 			JLabel user = new JLabel("Username");
 			insertName = new JTextField();
 			insertName.setPreferredSize(new Dimension(150,40));
 			insertName.addMouseListener(this);
+			colors.addMouseListener(this);
 			JLabel colore = new JLabel("Colore");
-			colorComboBox.add(new JComboBox<String>(colori));		
-			
+			colorComboBox.add(colors);		
 			user.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 15));
 			user.setForeground(Color.WHITE);
 			insertName.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 15));
@@ -130,8 +132,9 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 			infoPanel.add(colore, gbc);
 			gbc.gridx=1;
 			gbc.gridy=y+2;
+				 
 			infoPanel.add(colorComboBox.get(i), gbc);
-		
+			
 			gbc.gridx=0;
 			gbc.gridy=y+3;
 			infoPanel.add(gapPanel, gbc);
@@ -145,6 +148,7 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 			}
 			
 		}
+		
 		gbc.gridx=0;
 		gbc.gridy=y+1;
 		infoPanel.add(homeButton, gbc);
@@ -184,6 +188,7 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 			new Home();
 		}
 		if(e.getSource()==gameButton) { 
+<<<<<<< HEAD
 			if(firstTime) {
 				for(int i=0; i<4;i++) {
 					username.add(nameTextArea.get(i).getText());
@@ -226,24 +231,46 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 				}else {
 					JOptionPane.showMessageDialog(null, "Bisonga per forza inserire un nome utente!","ATTENZIONE!",JOptionPane.WARNING_MESSAGE);
 				}
+=======
+	
+			for(int i=0; i<Integer.parseInt(giocatori);i++) {
+				username.set(i, nameTextArea.get(i).getText());
+>>>>>>> ecd79866ad1928ddc4315377b6407d83fbbe70b7
 				
 			}
 			System.out.println(username);
 			System.out.println(userColor);
+			frame.dispose();
+			new Game(username, userColor);
 		}
 	}
 
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+<<<<<<< HEAD
 		if(firstTime==true) {
+=======
+			
+		for(int i=0; i<Integer.parseInt(giocatori);i++) {
+			if(!colorComboBox.get(i).getSelectedItem().equals("Seleziona un colore")) {
+				userColor.add(colorComboBox.get(i).getSelectedItem().toString());
+
+				colors.removeItem((colorComboBox.get(i).getSelectedItem()));;
+			}
+		}
+		
+		if( firstTime==true) {
+>>>>>>> ecd79866ad1928ddc4315377b6407d83fbbe70b7
 			firstTime=false;
 			JOptionPane.showMessageDialog(null, "Il primo giocatore creato,sarà il primo ad iniziare","ATTENZIONE!",JOptionPane.INFORMATION_MESSAGE);
 		}
 		
+<<<<<<< HEAD
 		
+=======
+>>>>>>> ecd79866ad1928ddc4315377b6407d83fbbe70b7
 	}
-
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
