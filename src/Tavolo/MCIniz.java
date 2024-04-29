@@ -20,15 +20,19 @@ public class MCIniz extends Mazzo {
 	/**
 	 * Instantiate all the starter cards and shuffles them
 	 */
-	public MCIniz() {	//4 corners, 4 corners, 3 resource
+	public MCIniz() {	//4 front corners, 3 resource, 4 back corners,
 		cMazzo = new ArrayList<CIniz>(6);
 		
-		cMazzo.add(CIniz0 = new CIniz(Simbolo.FOGLIA, Simbolo.FARFALLA, Simbolo.FUNGO, Simbolo.LUPO, Simbolo.LUPO, Simbolo.FARFALLA, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.VUOTO));
-		cMazzo.add(CIniz1 = new CIniz(Simbolo.FUNGO, Simbolo.LUPO, Simbolo.FARFALLA, Simbolo.FOGLIA, Simbolo.FOGLIA, Simbolo.LUPO, Simbolo.FUNGO, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.ASSENTE));
-		cMazzo.add(CIniz2 = new CIniz(Simbolo.FARFALLA, Simbolo.FUNGO, Simbolo.LUPO, Simbolo.FOGLIA, Simbolo.LUPO, Simbolo.FARFALLA, Simbolo.FOGLIA, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.ASSENTE));
-		cMazzo.add(CIniz3 = new CIniz(Simbolo.FOGLIA, Simbolo.LUPO, Simbolo.FARFALLA, Simbolo.FUNGO, Simbolo.FUNGO, Simbolo.ASSENTE, Simbolo.ASSENTE, Simbolo.LUPO, Simbolo.VUOTO, Simbolo.FUNGO, Simbolo.VUOTO));
-		cMazzo.add(CIniz4 = new CIniz(Simbolo.FUNGO, Simbolo.FOGLIA, Simbolo.LUPO, Simbolo.FARFALLA, Simbolo.FARFALLA, Simbolo.ASSENTE, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.FOGLIA, Simbolo.VUOTO, Simbolo.FARFALLA));
-		cMazzo.add(CIniz5 = new CIniz(Simbolo.FARFALLA, Simbolo.LUPO, Simbolo.FOGLIA, Simbolo.FUNGO, Simbolo.FOGLIA, Simbolo.FUNGO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.VUOTO));
+		cMazzo.add(CIniz0 = new CIniz(Simbolo.VUOTO, Simbolo.FOGLIA, Simbolo.VUOTO, Simbolo.FARFALLA, Simbolo.FARFALLA, Simbolo.ASSENTE, Simbolo.ASSENTE, Simbolo.FUNGO, Simbolo.FOGLIA, Simbolo.LUPO, Simbolo.FARFALLA));
+		cMazzo.add(CIniz1 = new CIniz(Simbolo.LUPO, Simbolo.VUOTO, Simbolo.FUNGO, Simbolo.VUOTO, Simbolo.FUNGO, Simbolo.ASSENTE, Simbolo.ASSENTE, Simbolo.FOGLIA, Simbolo.LUPO, Simbolo.FARFALLA, Simbolo.FUNGO));
+		cMazzo.add(CIniz2 = new CIniz(Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.FOGLIA, Simbolo.FUNGO, Simbolo.ASSENTE, Simbolo.FARFALLA, Simbolo.LUPO, Simbolo.FOGLIA, Simbolo.FUNGO));
+		cMazzo.add(CIniz3 = new CIniz(Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.LUPO, Simbolo.FARFALLA, Simbolo.ASSENTE, Simbolo.FOGLIA, Simbolo.FARFALLA, Simbolo.FUNGO, Simbolo.LUPO));
+		cMazzo.add(CIniz4 = new CIniz(Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.ASSENTE, Simbolo.LUPO, Simbolo.FARFALLA, Simbolo.FOGLIA, Simbolo.FARFALLA, Simbolo.FUNGO, Simbolo.LUPO, Simbolo.FOGLIA));
+		cMazzo.add(CIniz5 = new CIniz(Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.ASSENTE, Simbolo.FOGLIA, Simbolo.LUPO, Simbolo.FUNGO, Simbolo.FUNGO, Simbolo.LUPO, Simbolo.FARFALLA, Simbolo.FOGLIA));
+		
+		
+		
+		
 		
 		Collections.shuffle(cMazzo);
 	}

@@ -27,49 +27,49 @@ public class MCRis extends Mazzo {
 	public MCRis() {
 		cMazzo=new ArrayList<CRis>(40);
 		//red
-		cMazzo.add(CRis0 = new CRis(0, Simbolo.FUNGO, Colore.ROSSO, Simbolo.ASSENTE, Simbolo.FUNGO, Simbolo.FUNGO, Simbolo.VUOTO));
-		cMazzo.add(CRis1 = new CRis(0, Simbolo.FUNGO, Colore.ROSSO, Simbolo.FUNGO, Simbolo.FARFALLA, Simbolo.ASSENTE, Simbolo.PERGAMENA));
-		cMazzo.add(CRis2 = new CRis(0, Simbolo.FUNGO, Colore.ROSSO, Simbolo.INCHIOSTRO, Simbolo.FUNGO, Simbolo.LUPO, Simbolo.ASSENTE));
-		cMazzo.add(CRis3 = new CRis(0, Simbolo.FUNGO, Colore.ROSSO, Simbolo.FUNGO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.FUNGO));
-		cMazzo.add(CRis4 = new CRis(1, Simbolo.FUNGO, Colore.ROSSO, Simbolo.FUNGO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO));
-		cMazzo.add(CRis5 = new CRis(1, Simbolo.FUNGO, Colore.ROSSO, Simbolo.VUOTO, Simbolo.FUNGO, Simbolo.ASSENTE, Simbolo.VUOTO));
-		cMazzo.add(CRis6 = new CRis(0, Simbolo.FUNGO, Colore.ROSSO, Simbolo.FUNGO, Simbolo.FUNGO, Simbolo.VUOTO, Simbolo.ASSENTE));
-		cMazzo.add(CRis7 = new CRis(0, Simbolo.FUNGO, Colore.ROSSO, Simbolo.ASSENTE, Simbolo.PIUMA, Simbolo.FUNGO, Simbolo.FOGLIA));
-		cMazzo.add(CRis8 = new CRis(0, Simbolo.FUNGO, Colore.ROSSO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.FUNGO, Simbolo.FUNGO));
+		cMazzo.add(CRis0 = new CRis(0, Simbolo.FUNGO, Colore.ROSSO, Simbolo.FUNGO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.FUNGO));
+		cMazzo.add(CRis1 = new CRis(0, Simbolo.FUNGO, Colore.ROSSO, Simbolo.FUNGO, Simbolo.FUNGO, Simbolo.VUOTO, Simbolo.ASSENTE));
+		cMazzo.add(CRis2 = new CRis(0, Simbolo.FUNGO, Colore.ROSSO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.FUNGO, Simbolo.FUNGO));
+		cMazzo.add(CRis3 = new CRis(0, Simbolo.FUNGO, Colore.ROSSO, Simbolo.ASSENTE, Simbolo.FUNGO, Simbolo.FUNGO, Simbolo.VUOTO));
+		cMazzo.add(CRis4 = new CRis(0, Simbolo.FUNGO, Colore.ROSSO, Simbolo.ASSENTE, Simbolo.PIUMA, Simbolo.FUNGO, Simbolo.FOGLIA));
+		cMazzo.add(CRis5 = new CRis(0, Simbolo.FUNGO, Colore.ROSSO, Simbolo.INCHIOSTRO, Simbolo.FUNGO, Simbolo.LUPO, Simbolo.ASSENTE));
+		cMazzo.add(CRis6 = new CRis(0, Simbolo.FUNGO, Colore.ROSSO, Simbolo.FUNGO, Simbolo.FARFALLA, Simbolo.VUOTO, Simbolo.PERGAMENA));
+		cMazzo.add(CRis7 = new CRis(1, Simbolo.FUNGO, Colore.ROSSO, Simbolo.VUOTO, Simbolo.FUNGO, Simbolo.ASSENTE, Simbolo.VUOTO));
+		cMazzo.add(CRis8 = new CRis(1, Simbolo.FUNGO, Colore.ROSSO, Simbolo.FUNGO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO));
 		cMazzo.add(CRis9 = new CRis(1, Simbolo.FUNGO, Colore.ROSSO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.FUNGO));
 		//sky blue
-		cMazzo.add(CRis10 = new CRis(1, Simbolo.LUPO, Colore.AZZURRO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.LUPO));
-		cMazzo.add(CRis11 = new CRis(0, Simbolo.LUPO, Colore.AZZURRO, Simbolo.FOGLIA, Simbolo.LUPO, Simbolo.PERGAMENA, Simbolo.ASSENTE));
+		cMazzo.add(CRis10 = new CRis(0, Simbolo.LUPO, Colore.AZZURRO, Simbolo.LUPO, Simbolo.LUPO, Simbolo.ASSENTE, Simbolo.VUOTO));
+		cMazzo.add(CRis11 = new CRis(0, Simbolo.LUPO, Colore.AZZURRO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.LUPO, Simbolo.LUPO));
 		cMazzo.add(CRis12 = new CRis(0, Simbolo.LUPO, Colore.AZZURRO, Simbolo.LUPO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.LUPO));
-		cMazzo.add(CRis13 = new CRis(0, Simbolo.LUPO, Colore.AZZURRO, Simbolo.ASSENTE, Simbolo.FARFALLA, Simbolo.LUPO, Simbolo.INCHIOSTRO));
-		cMazzo.add(CRis14 = new CRis(1, Simbolo.LUPO, Colore.AZZURRO, Simbolo.VUOTO, Simbolo.LUPO, Simbolo.ASSENTE, Simbolo.VUOTO));
-		cMazzo.add(CRis15 = new CRis(0, Simbolo.LUPO, Colore.AZZURRO, Simbolo.VUOTO, Simbolo.LUPO, Simbolo.LUPO, Simbolo.ASSENTE));
+		cMazzo.add(CRis13 = new CRis(0, Simbolo.LUPO, Colore.AZZURRO, Simbolo.VUOTO, Simbolo.LUPO, Simbolo.LUPO, Simbolo.ASSENTE));
+		cMazzo.add(CRis14 = new CRis(0, Simbolo.LUPO, Colore.AZZURRO, Simbolo.ASSENTE, Simbolo.FARFALLA, Simbolo.LUPO, Simbolo.INCHIOSTRO));
+		cMazzo.add(CRis15 = new CRis(0, Simbolo.LUPO, Colore.AZZURRO, Simbolo.FOGLIA, Simbolo.LUPO, Simbolo.PERGAMENA, Simbolo.ASSENTE));
 		cMazzo.add(CRis16 = new CRis(0, Simbolo.LUPO, Colore.AZZURRO, Simbolo.PIUMA, Simbolo.ASSENTE, Simbolo.FUNGO, Simbolo.LUPO));
-		cMazzo.add(CRis17 = new CRis(0, Simbolo.LUPO, Colore.AZZURRO, Simbolo.LUPO, Simbolo.LUPO, Simbolo.ASSENTE, Simbolo.VUOTO));
-		cMazzo.add(CRis18 = new CRis(0, Simbolo.LUPO, Colore.AZZURRO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.LUPO, Simbolo.LUPO));
-		cMazzo.add(CRis19 = new CRis(1, Simbolo.LUPO, Colore.AZZURRO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.LUPO, Simbolo.VUOTO));
+		cMazzo.add(CRis17 = new CRis(1, Simbolo.LUPO, Colore.AZZURRO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.LUPO));
+		cMazzo.add(CRis18 = new CRis(1, Simbolo.LUPO, Colore.AZZURRO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.LUPO, Simbolo.VUOTO));
+		cMazzo.add(CRis19 = new CRis(1, Simbolo.LUPO, Colore.AZZURRO, Simbolo.VUOTO, Simbolo.LUPO, Simbolo.ASSENTE, Simbolo.VUOTO));
 		//green
-		cMazzo.add(CRis20 = new CRis(1, Simbolo.FOGLIA, Colore.VERDE, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.FOGLIA));
-		cMazzo.add(CRis21 = new CRis(1, Simbolo.FOGLIA, Colore.VERDE, Simbolo.ASSENTE, Simbolo.FOGLIA, Simbolo.VUOTO, Simbolo.VUOTO));
-		cMazzo.add(CRis22 = new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.FOGLIA, Simbolo.FOGLIA, Simbolo.VUOTO, Simbolo.ASSENTE));
-		cMazzo.add(CRis23 = new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.FOGLIA, Simbolo.FOGLIA));
+		cMazzo.add(CRis20 = new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.FOGLIA, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.FOGLIA));
+		cMazzo.add(CRis21 = new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.FOGLIA, Simbolo.FOGLIA, Simbolo.VUOTO, Simbolo.ASSENTE));
+		cMazzo.add(CRis22 = new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.FOGLIA, Simbolo.FOGLIA));
+		cMazzo.add(CRis23 = new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.ASSENTE, Simbolo.FOGLIA, Simbolo.FOGLIA, Simbolo.VUOTO));
 		cMazzo.add(CRis24 = new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.ASSENTE, Simbolo.FARFALLA, Simbolo.FOGLIA, Simbolo.PIUMA));
-		cMazzo.add(CRis25 = new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.ASSENTE, Simbolo.FOGLIA, Simbolo.FOGLIA, Simbolo.VUOTO));
+		cMazzo.add(CRis25 = new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.FUNGO, Simbolo.FOGLIA, Simbolo.INCHIOSTRO, Simbolo.ASSENTE));
 		cMazzo.add(CRis26 = new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.PERGAMENA, Simbolo.ASSENTE, Simbolo.LUPO, Simbolo.FOGLIA));
-		cMazzo.add(CRis27 = new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.FOGLIA, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.FOGLIA));
+		cMazzo.add(CRis27 = new CRis(1, Simbolo.FOGLIA, Colore.VERDE, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.FOGLIA));
 		cMazzo.add(CRis28 = new CRis(1, Simbolo.FOGLIA, Colore.VERDE, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.FOGLIA, Simbolo.ASSENTE));
-		cMazzo.add(CRis29 = new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.FUNGO, Simbolo.FOGLIA, Simbolo.INCHIOSTRO, Simbolo.ASSENTE));
+		cMazzo.add(CRis29 = new CRis(1, Simbolo.FOGLIA, Colore.VERDE, Simbolo.ASSENTE, Simbolo.FOGLIA, Simbolo.VUOTO, Simbolo.VUOTO));
 		//purple
-		cMazzo.add(CRis30 = new CRis(1, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.FARFALLA, Simbolo.ASSENTE));
-		cMazzo.add(CRis31 = new CRis(1, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.ASSENTE, Simbolo.FARFALLA, Simbolo.VUOTO, Simbolo.VUOTO));
+		cMazzo.add(CRis30 = new CRis(0, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.FARFALLA, Simbolo.FARFALLA, Simbolo.ASSENTE, Simbolo.VUOTO));
+		cMazzo.add(CRis31 = new CRis(0, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.FARFALLA, Simbolo.FARFALLA));
 		cMazzo.add(CRis32 = new CRis(0, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.FARFALLA, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.FARFALLA));
-		cMazzo.add(CRis33 = new CRis(1, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.FARFALLA, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO));
-		cMazzo.add(CRis34 = new CRis(0, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.FARFALLA, Simbolo.FARFALLA, Simbolo.ASSENTE, Simbolo.VUOTO));
-		cMazzo.add(CRis35 = new CRis(0, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.FARFALLA, Simbolo.FARFALLA));
-		cMazzo.add(CRis36 = new CRis(0, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.PERGAMENA, Simbolo.FARFALLA, Simbolo.FUNGO, Simbolo.ASSENTE));
-		cMazzo.add(CRis37 = new CRis(0, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.VUOTO, Simbolo.FARFALLA, Simbolo.FARFALLA, Simbolo.ASSENTE));
-		cMazzo.add(CRis38 = new CRis(0, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.FARFALLA, Simbolo.FOGLIA, Simbolo.ASSENTE, Simbolo.INCHIOSTRO));
-		cMazzo.add(CRis39 = new CRis(0, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.ASSENTE, Simbolo.PIUMA, Simbolo.FARFALLA, Simbolo.LUPO));
+		cMazzo.add(CRis33 = new CRis(0, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.VUOTO, Simbolo.FARFALLA, Simbolo.FARFALLA, Simbolo.ASSENTE));
+		cMazzo.add(CRis34 = new CRis(0, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.ASSENTE, Simbolo.PIUMA, Simbolo.FARFALLA, Simbolo.LUPO));
+		cMazzo.add(CRis35 = new CRis(0, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.PERGAMENA, Simbolo.FARFALLA, Simbolo.FUNGO, Simbolo.ASSENTE));
+		cMazzo.add(CRis36 = new CRis(0, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.FARFALLA, Simbolo.FOGLIA, Simbolo.ASSENTE, Simbolo.INCHIOSTRO));
+		cMazzo.add(CRis37 = new CRis(1, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.FARFALLA, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO));
+		cMazzo.add(CRis38 = new CRis(1, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.FARFALLA, Simbolo.ASSENTE));
+		cMazzo.add(CRis39 = new CRis(1, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.ASSENTE, Simbolo.FARFALLA, Simbolo.VUOTO, Simbolo.VUOTO));
 		
 		Collections.shuffle(cMazzo);
 	}

@@ -3,10 +3,11 @@ package Grafica;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.awt.event.*;
 
 import javax.swing.*;
 
-public class PlayingField extends JLayeredPane {
+public class PlayingField extends JLayeredPane implements MouseListener {
 	int z=0;
 	
 	ArrayList<JLabel> placedCardLabel;	
@@ -27,7 +28,7 @@ public class PlayingField extends JLayeredPane {
 		placedCardLabel.get(0).setIcon(icon);
 		placedCardLabel.get(0).setOpaque(true);
 		placedCardLabel.get(0).setBounds(200, 200, 204, 142);
-		this.setAutoscrolls(true);
+		placedCardLabel.get(0).addMouseListener(this);
 		
 		ImageIcon icon = new ImageIcon("blue_gold_card_front_1.jpg");
 		
@@ -45,7 +46,7 @@ public class PlayingField extends JLayeredPane {
 	
 	//il metodo che si occuperà di aggiungere la carta nella matrice richiamerà questo metodo passandogli un vettore
 	//di stringhe contenente nella prima cella le coordinate ("x,y") dell'ultima carta aggiunta e le coordinate delle altre celle occupabili
-	//il metodo poi si occuperà di visualizzare a schermo i nuovi jlabel opachi dove potranno essere piazzate le carte
+	//adds opaque JLabels, where cards can be placed, to the playing field
 	public void addLabel(String[] pos) {
 		//needed to set third dimension of JLayeredPane
 		z++;
@@ -65,6 +66,7 @@ public class PlayingField extends JLayeredPane {
 			JLabel newLabel = new JLabel();
 			newLabel.setBackground(new Color(170, 170, 170, 80));
 			newLabel.setOpaque(true);
+			newLabel.addMouseListener(this);
 			
 			//get index into matrix of the new location where you can place cards
 			splittedString = pos[i].split(",");
@@ -101,6 +103,45 @@ public class PlayingField extends JLayeredPane {
 			System.out.println(coordinate2);
 		}
 		
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		for(int i=0; i<placedCardLabel.size(); i++) {
+			
+			if(e.getSource()==placedCardLabel.get(i)) {
+				System.out.println("ciao");
+				placedCardLabel.get(i).removeMouseListener(this);
+				
+			}
+			
+		}
+		
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 	
