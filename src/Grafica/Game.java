@@ -14,11 +14,11 @@ import javax.swing.JScrollPane;
 
 public class Game extends JFrame implements ActionListener{
 	
-	//HashMap<Integer, String> cardImage = new HashMap<Integer, String>();
+	HashMap<Integer, String> cardImage = new HashMap<Integer, String>();
 
 	public Game(ArrayList<String> username, ArrayList<String> userColor) {
 		
-		/*createHashMap();
+		createHashMap();
 		
 		System.out.println(username.get(0));
 		System.out.println(username.get(1));
@@ -37,10 +37,29 @@ public class Game extends JFrame implements ActionListener{
 		scrollPlayingField.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		
 		this.getContentPane().add(scrollPlayingField);  
+		this.pack();
         this.setVisible(true);
 		
-		scrollPlayingField.getHorizontalScrollBar().setValue((12500-204)/2);
-		scrollPlayingField.getVerticalScrollBar().setValue((5000-142)/2);
+        scrollPlayingField.getHorizontalScrollBar().setValue(((12500-204)/2)-(700));
+        scrollPlayingField.getVerticalScrollBar().setValue((5000-142)/2-(250));
+        
+        //test
+        /*ArrayList<String> str = new ArrayList<String>(5);
+        str.add("40,40");
+        str.add("39,39");
+        str.add("39,41");
+        str.add("41,41");
+        str.add("41,39");
+        ArrayList<String> str2 = new ArrayList<String>(2);
+        str2.add("41,41");
+        str2.add("42,42");
+        ArrayList<String> str3 = new ArrayList<String>(2);
+        str3.add("42,42");
+        str3.add("41,43");
+        str3.add("43,41");
+        playingField.addLabel(str);
+        playingField.addLabel(str2);
+        playingField.addLabel(str3);*/
 		
 	}
 	
@@ -172,7 +191,7 @@ public class Game extends JFrame implements ActionListener{
 		cardImage.put(114, "images/cards_back/start_card_back_5.jpg");
 		cardImage.put(115, "images/cards_back/start_card_back_6.jpg");
 		//add objective card to HashMap
-		cardImage.put(116, "images/cards_back/objective_card_back.jpg");*/
+		cardImage.put(116, "images/cards_back/objective_card_back.jpg");
 				
 	}
 

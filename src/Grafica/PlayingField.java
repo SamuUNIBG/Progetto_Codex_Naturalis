@@ -27,7 +27,7 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 		placedCardLabel.get(0).setBackground(new Color(170, 170, 170, 80));
 		placedCardLabel.get(0).setIcon(icon);
 		placedCardLabel.get(0).setOpaque(true);
-		placedCardLabel.get(0).setBounds(200, 200, 204, 142);
+		placedCardLabel.get(0).setBounds(6148, 2429, 204, 142);
 		placedCardLabel.get(0).addMouseListener(this);
 		
 		ImageIcon icon = new ImageIcon("blue_gold_card_front_1.jpg");
