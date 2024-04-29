@@ -9,4 +9,10 @@ public class CObb extends Carta{
 		super(puntiAssegnati);
 		// TODO Auto-generated constructor stub
 	}
+
+	@Override
+	public Angolo[] getAngoli() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

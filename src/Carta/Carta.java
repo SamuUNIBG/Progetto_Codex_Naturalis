@@ -17,5 +17,7 @@ public abstract class Carta {
 	public int getPunti() {  
 		return this.puntiAssegnati;
 	}
+	
+	public abstract Angolo[] getAngoli();
 
 }

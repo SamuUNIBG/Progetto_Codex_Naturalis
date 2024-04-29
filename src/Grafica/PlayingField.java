@@ -21,8 +21,8 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 		
 		placedCardLabel = new ArrayList<JLabel>();
 		placedCardLabel.add(new JLabel());
-		coordinate.put(0, "41,41");
-		coordinate2.put("41,41", 0);
+		coordinate.put(0, "40,40");
+		coordinate2.put("40,40", 0);
 		
 		placedCardLabel.get(0).setBackground(new Color(170, 170, 170, 80));
 		placedCardLabel.get(0).setIcon(icon);
@@ -47,31 +47,31 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 	//il metodo che si occuperà di aggiungere la carta nella matrice richiamerà questo metodo passandogli un vettore
 	//di stringhe contenente nella prima cella le coordinate ("x,y") dell'ultima carta aggiunta e le coordinate delle altre celle occupabili
 	//adds opaque JLabels, where cards can be placed, to the playing field
-	public void addLabel(String[] pos) {
+	public void addLabel(ArrayList<String> pos) {
 		//needed to set third dimension of JLayeredPane
 		z++;
 		
 		//get index into matrix of last card added
-		String[] splittedString = pos[0].split(",");
+		String[] splittedString = pos.get(0).split(",");
 		int oldX = Integer.parseInt(splittedString[0]);
 		int oldY = Integer.parseInt(splittedString[1]);
 		
 		//get index into ArrayList of last card added 
-		int indexLastCard = coordinate2.get(pos[0]);
+		int indexLastCard = coordinate2.get(pos.get(0));
 		//get graphic coordinates of the last card added
 		int x = (int)placedCardLabel.get(indexLastCard).getLocation().getX();
 		int y = (int)placedCardLabel.get(indexLastCard).getLocation().getY();
 		
-		for(int i=1; i<pos.length; i++) {
+		for(int i=1; i<pos.size(); i++) {
 			JLabel newLabel = new JLabel();
 			newLabel.setBackground(new Color(170, 170, 170, 80));
 			newLabel.setOpaque(true);
 			newLabel.addMouseListener(this);
 			
 			//get index into matrix of the new location where you can place cards
-			splittedString = pos[i].split(",");
-			int newX = Integer.parseInt(splittedString[0]);
-			int newY = Integer.parseInt(splittedString[1]);
+			splittedString = pos.get(i).split(",");
+			int newY = Integer.parseInt(splittedString[0]);
+			int newX = Integer.parseInt(splittedString[1]);
 			
 			//set location and size of new JLabel
 			if(newX<oldX && newY<oldY) {
@@ -97,8 +97,8 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 			//add new JLabel to the panel
 			this.add(newLabel, Integer.valueOf(z));
 			//add new JLabel with matrix coordinates to HashMap
-			coordinate.put(placedCardLabel.size()-1, pos[i]);
-			coordinate2.put(pos[i], placedCardLabel.size()-1);
+			coordinate.put(placedCardLabel.size()-1, pos.get(i));
+			coordinate2.put(pos.get(i), placedCardLabel.size()-1);
 			System.out.println(coordinate);
 			System.out.println(coordinate2);
 		}
@@ -111,7 +111,7 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 		for(int i=0; i<placedCardLabel.size(); i++) {
 			
 			if(e.getSource()==placedCardLabel.get(i)) {
-				System.out.println("ciao");
+				placedCardLabel.get(i).setIcon(new ImageIcon());
 				placedCardLabel.get(i).removeMouseListener(this);
 				
 			}

@@ -18,7 +18,7 @@ public class Game extends JFrame implements ActionListener{
 
 	public Game(ArrayList<String> username, ArrayList<String> userColor) {
 		
-		createHshMap();
+		createHashMap();
 		
 		System.out.println(username.get(0));
 		System.out.println(username.get(1));
@@ -29,8 +29,10 @@ public class Game extends JFrame implements ActionListener{
 		System.out.println(userColor.get(2));
 		System.out.println(userColor.get(3));
 		
-		JScrollPane scrollPlayingField = new JScrollPane(new PlayingField());
+		PlayingField playingField = new PlayingField();
+		JScrollPane scrollPlayingField = new JScrollPane(playingField);
 		scrollPlayingField.getViewport().setPreferredSize(new Dimension(1600, 700));
+		playingField.setVisible(true);
 		scrollPlayingField.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);  
 		scrollPlayingField.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		
@@ -42,7 +44,7 @@ public class Game extends JFrame implements ActionListener{
 		
 	}
 	
-	private void createHshMap() {
+	private void createHashMap() {
 		//front
 		//add resource card to HashMap
 		cardImage.put(0, "images/cards_front/blue_resource_card_front_1.jpg");
