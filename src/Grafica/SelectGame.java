@@ -190,10 +190,10 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 		}
 		if(e.getSource()==gameButton) { 
 			if(firstTime2) {
-				for(int i=0; i<4;i++) {
+				for(int i=0; i<Integer.parseInt(giocatori);i++) {
 					username.add(nameTextArea.get(i).getText());
 					userColor.add(colori[colorComboBox.get(i).getSelectedIndex()]);
-					firstTime=false;
+					firstTime2=false;
 				}
 			}
 			
@@ -205,7 +205,7 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 			
 			
 			if(!firstTime2) {
-				for(int i=0; i<4;i++) {
+				for(int i=0; i<Integer.parseInt(giocatori);i++) {
 					username.set(i, nameTextArea.get(i).getText());
 					userColor.set(i, colori[colorComboBox.get(i).getSelectedIndex()]);
 				}
