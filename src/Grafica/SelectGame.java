@@ -179,6 +179,7 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 	}
 	
 	boolean firstTime = true;
+	boolean firstTime2 = true;
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -188,8 +189,7 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 			new Home();
 		}
 		if(e.getSource()==gameButton) { 
-<<<<<<< HEAD
-			if(firstTime) {
+			if(firstTime2) {
 				for(int i=0; i<4;i++) {
 					username.add(nameTextArea.get(i).getText());
 					userColor.add(colori[colorComboBox.get(i).getSelectedIndex()]);
@@ -204,7 +204,7 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 			}
 			
 			
-			if(!firstTime) {
+			if(!firstTime2) {
 				for(int i=0; i<4;i++) {
 					username.set(i, nameTextArea.get(i).getText());
 					userColor.set(i, colori[colorComboBox.get(i).getSelectedIndex()]);
@@ -231,45 +231,38 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 				}else {
 					JOptionPane.showMessageDialog(null, "Bisonga per forza inserire un nome utente!","ATTENZIONE!",JOptionPane.WARNING_MESSAGE);
 				}
-=======
+			}
+
 	
 			for(int i=0; i<Integer.parseInt(giocatori);i++) {
 				username.set(i, nameTextArea.get(i).getText());
->>>>>>> ecd79866ad1928ddc4315377b6407d83fbbe70b7
+
 				
 			}
 			System.out.println(username);
 			System.out.println(userColor);
-			frame.dispose();
-			new Game(username, userColor);
+			
 		}
 	}
 
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-<<<<<<< HEAD
 		if(firstTime==true) {
-=======
 			
 		for(int i=0; i<Integer.parseInt(giocatori);i++) {
 			if(!colorComboBox.get(i).getSelectedItem().equals("Seleziona un colore")) {
 				userColor.add(colorComboBox.get(i).getSelectedItem().toString());
 
 				colors.removeItem((colorComboBox.get(i).getSelectedItem()));;
+				}
 			}
 		}
 		
 		if( firstTime==true) {
->>>>>>> ecd79866ad1928ddc4315377b6407d83fbbe70b7
 			firstTime=false;
 			JOptionPane.showMessageDialog(null, "Il primo giocatore creato,sarà il primo ad iniziare","ATTENZIONE!",JOptionPane.INFORMATION_MESSAGE);
 		}
-		
-<<<<<<< HEAD
-		
-=======
->>>>>>> ecd79866ad1928ddc4315377b6407d83fbbe70b7
 	}
 	@Override
 	public void mousePressed(MouseEvent e) {
