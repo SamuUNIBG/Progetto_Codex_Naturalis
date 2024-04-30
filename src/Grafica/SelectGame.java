@@ -184,6 +184,7 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		boolean uguale=false;
+		boolean seleziona=false;
 		int z=0;
 		 if(e.getSource()==homeButton) {
 			frame.dispose();
@@ -192,7 +193,14 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 		if(e.getSource()==gameButton) { 
 			if(firstTime2) {
 				for(int i=0; i<Integer.parseInt(giocatori);i++) {
-					username.add(nameTextArea.get(i).getText());
+					String s=new String(); //temporanea per salvare i nomi con spazi e cancellare spazi
+					for(int j=0; j<nameTextArea.size(); j++) {
+						s =nameTextArea.get(i).getText().replace(" ", "");
+						System.out.println(s);
+						
+					}
+					username.add(s);
+					//username.add(nameTextArea.get(i).getText());
 					userColor.add(colori[colorComboBox.get(i).getSelectedIndex()]);
 					firstTime2=false;
 				}
@@ -207,7 +215,13 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 			
 			if(!firstTime2) {
 				for(int i=0; i<Integer.parseInt(giocatori);i++) {
-					username.set(i, nameTextArea.get(i).getText());
+					String s = new String();
+					for(int j=0; j<nameTextArea.size(); j++) {
+						s =nameTextArea.get(i).getText().replace(" ", "");
+						System.out.println(s);
+						
+					}
+					username.set(i,s);
 					userColor.set(i, colori[colorComboBox.get(i).getSelectedIndex()]);
 				}
 			}
@@ -218,18 +232,31 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 						uguale=true;
 					}
 				}
+				if ((userColor.get(i).equals("Seleziona un colore"))){
+					seleziona=true; //controllo che l utente abbia scelto un colore
+				}
 			}
-			
-			if(uguale==true) {
-				JOptionPane.showMessageDialog(null, "il colore iserito e gia stato scelto,"
-						+ "seleziona un nuovo colore",
+			if ((userColor.get(Integer.parseInt(giocatori)-1).equals("Seleziona un colore"))){
+				seleziona=true; //controllo che l utente abbia scelto un colore
+			}
+			if(uguale==true || seleziona == true) {
+				if(uguale==true) {  
+					JOptionPane.showMessageDialog(null, "i colori dei giocatori"
+						+ "devono essere e diversi tra loro" ,
 						"ERRORE", JOptionPane.ERROR_MESSAGE);
+				}
+				if(seleziona==true) { //se rimangono le voci "Seleziona un colore"
+					JOptionPane.showMessageDialog(null, "non sono stati"
+							+ "selezionati tutti i colori" ,
+						"ERRORE", JOptionPane.ERROR_MESSAGE);
+				}	
 			}
-			
 			else {
 				
 				if(z!=1) {
 					frame.dispose();
+					System.out.println(username);
+					System.out.println(userColor);
 					new Game(username, userColor);
 				}else {
 					JOptionPane.showMessageDialog(null, "Bisonga per forza inserire un nome utente!","ATTENZIONE!",JOptionPane.WARNING_MESSAGE);
@@ -239,12 +266,7 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 	
 			for(int i=0; i<Integer.parseInt(giocatori);i++) {
 				username.set(i, nameTextArea.get(i).getText());
-
-				
 			}
-			System.out.println(username);
-			System.out.println(userColor);
-			
 		}
 	}
 
