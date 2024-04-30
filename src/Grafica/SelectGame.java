@@ -186,6 +186,7 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 		boolean uguale=false;
 		boolean seleziona=false;
 		int z=0;
+		int k=0;
 		 if(e.getSource()==homeButton) {
 			frame.dispose();
 			new Home();
@@ -207,7 +208,7 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 			}
 			
 			for(int i=0;i<nameTextArea.size();i++){
-				if(nameTextArea.get(i).getText().isEmpty()) {
+				if(nameTextArea.get(i).getText().trim().isEmpty()) {
 					z=1;
 				}
 			}
@@ -225,6 +226,17 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 					userColor.set(i, colori[colorComboBox.get(i).getSelectedIndex()]);
 				}
 			}
+			for(int i=0;i<Integer.parseInt(giocatori)-1;i++) {
+				for(int j=i+1;j<Integer.parseInt(giocatori);j++) {
+					if(username.get(i).equals(username.get(j))) {
+						k=1;
+					}
+					
+				}
+			}
+			
+				
+			
 			
 			for(int i=0; i<Integer.parseInt(giocatori)-1;i++) {
 				for(int y=i+1; y<Integer.parseInt(giocatori);y++) {
@@ -253,13 +265,16 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 			}
 			else {
 				
-				if(z!=1) {
+				if(z!=1 && k!=1) {
 					frame.dispose();
 					System.out.println(username);
 					System.out.println(userColor);
 					new Game(username, userColor);
-				}else {
+				}else if(z==1) {
 					JOptionPane.showMessageDialog(null, "Bisonga per forza inserire un nome utente!","ATTENZIONE!",JOptionPane.WARNING_MESSAGE);
+				}else if(k==1) {
+					JOptionPane.showMessageDialog(null, "Gli username non possono essere uguali, rinserirli!" ,
+							"ATTENZIONE", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 
