@@ -183,6 +183,7 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		boolean uguale=false;
 		int z=0;
 		 if(e.getSource()==homeButton) {
 			frame.dispose();
@@ -211,13 +212,15 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 				}
 			}
 			
+			for(int i=0; i<Integer.parseInt(giocatori)-1;i++) {
+				for(int y=i+1; y<Integer.parseInt(giocatori);y++) {
+					if ((userColor.get(i).equals(userColor.get(y)))){
+						uguale=true;
+					}
+				}
+			}
 			
-			if (colorComboBox.get(0).getSelectedItem().equals(colorComboBox.get(1).getSelectedItem()) ||
-					colorComboBox.get(2).getSelectedItem().equals(colorComboBox.get(0).getSelectedItem()) ||
-					colorComboBox.get(2).getSelectedItem().equals(colorComboBox.get(1).getSelectedItem()) ||
-					colorComboBox.get(3).getSelectedItem().equals(colorComboBox.get(0).getSelectedItem()) ||
-					colorComboBox.get(3).getSelectedItem().equals(colorComboBox.get(1).getSelectedItem()) ||
-					colorComboBox.get(3).getSelectedItem().equals(colorComboBox.get(2).getSelectedItem()) ) {
+			if(uguale==true) {
 				JOptionPane.showMessageDialog(null, "il colore iserito e gia stato scelto,"
 						+ "seleziona un nuovo colore",
 						"ERRORE", JOptionPane.ERROR_MESSAGE);

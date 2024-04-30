@@ -3,8 +3,10 @@ package Grafica;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -20,14 +22,14 @@ public class Game extends JFrame implements ActionListener{
 		
 		createHashMap();
 		
-		System.out.println(username.get(0));
+		/*System.out.println(username.get(0));
 		System.out.println(username.get(1));
 		System.out.println(username.get(2));
 		System.out.println(username.get(3));
 		System.out.println(userColor.get(0));
 		System.out.println(userColor.get(1));
 		System.out.println(userColor.get(2));
-		System.out.println(userColor.get(3));
+		System.out.println(userColor.get(3));*/
 		
 		PlayingField playingField = new PlayingField();
 		JScrollPane scrollPlayingField = new JScrollPane(playingField);
@@ -64,6 +66,25 @@ public class Game extends JFrame implements ActionListener{
 	}
 	
 	private void createHashMap() {
+		
+		/*for(int i=0; i<117; i++) {
+			
+		}
+		
+		try {
+			//Scanner sc = new Scanner(new FileInputStream(new File("cards_URL.csv")));
+	        
+
+	        while (sc.hasNextLine()) {
+	            int i = sc.nextInt();
+	            System.out.println(i);
+	        }
+	        sc.close();
+	    } 
+	    catch (FileNotFoundException e) {
+	        e.printStackTrace();
+	    }*/
+		
 		//front
 		//add resource card to HashMap
 		cardImage.put(0, "images/cards_front/blue_resource_card_front_1.jpg");
