@@ -18,9 +18,6 @@ public class CampoGioco {
 	static final int dimensioneY = 81;
 	
 	private Carta[][] campo;
-	private JScrollPane scrollPlayingField;
-	
-	private PlayingField playingField;
 	
 	public CampoGioco(){
 		
@@ -32,18 +29,6 @@ public class CampoGioco {
 			}
 		}
 		
-		playingField = new PlayingField();
-		JScrollPane scrollPlayingField = new JScrollPane(playingField);
-		scrollPlayingField.getViewport().setPreferredSize(new Dimension(1600, 700));
-		playingField.setVisible(true);
-		scrollPlayingField.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);  
-		scrollPlayingField.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		
-		//this.getContentPane().add(scrollPlayingField);
-		//this.setVisible(true);
-		
-		scrollPlayingField.getHorizontalScrollBar().setValue(((12500-204)/2)-(700));
-		scrollPlayingField.getVerticalScrollBar().setValue((5000-142)/2-(250));
 	}
 	
 	public void aggiungiC(String posizione, Carta carta) {
@@ -86,7 +71,7 @@ public class CampoGioco {
 		
 	}
 	
-	private void controllaNuovePosizioni(String posizione, Carta carta) {
+	private ArrayList<String> controllaNuovePosizioni(String posizione, Carta carta) {
 		
 		ArrayList<String> posReturn = new ArrayList<String>();
 		posReturn.add(posizione);
@@ -108,7 +93,7 @@ public class CampoGioco {
 			posReturn.add((posY+1) + "," + (posX+1));
 		}
 		
-		playingField.addLabel(posReturn);
+		return posReturn;
 		
 	}
 	

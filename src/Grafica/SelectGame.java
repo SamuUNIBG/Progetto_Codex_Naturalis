@@ -288,7 +288,7 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if(firstTime==true) {
+		/*if(firstTime==true) {
 			
 		for(int i=0; i<Integer.parseInt(giocatori);i++) {
 			if(!colorComboBox.get(i).getSelectedItem().equals("Seleziona un colore")) {
@@ -297,7 +297,7 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 				colors.removeItem((colorComboBox.get(i).getSelectedItem()));;
 				}
 			}
-		}
+		}*/
 		
 		if( firstTime==true) {
 			firstTime=false;
