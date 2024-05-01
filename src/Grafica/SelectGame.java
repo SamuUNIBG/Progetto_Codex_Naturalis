@@ -46,10 +46,7 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 		//exit out of application
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-			
-				
-				
-		
+		//asks how many players will play
 		do {
 			giocatori=JOptionPane.showInputDialog("In quanti giocatori volete giocare?");
 			
@@ -57,8 +54,6 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 				JOptionPane.showMessageDialog(null,"I giocatori devono essere minimo 2, massimo 4","Attenzione!",JOptionPane.ERROR_MESSAGE);
 			}
 		}while(Integer.parseInt(giocatori)>4 ||Integer.parseInt(giocatori)<2);
-		
-		
 		
 		
 		//"select game" title label
@@ -107,7 +102,6 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 			insertName = new JTextField();
 			insertName.setPreferredSize(new Dimension(150,40));
 			insertName.addMouseListener(this);
-			colors.addMouseListener(this);
 			JLabel colore = new JLabel("Colore");
 			colorComboBox.add(colors);		
 			user.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 15));
@@ -178,48 +172,47 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 		
 	}
 	
-	boolean firstTime = true;
-	boolean firstTime2 = true;
+	boolean MessaggioMostrato = true;
+	boolean arrayVuoto = true;
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		boolean uguale=false;
 		boolean seleziona=false;
-		int z=0;
-		int k=0;
+		int utenteNonInserito=0;
+		int utentiUguali=0;
 		 if(e.getSource()==homeButton) {
 			frame.dispose();
 			new Home();
 		}
 		if(e.getSource()==gameButton) { 
-			if(firstTime2) {
+			if(arrayVuoto) {
 				for(int i=0; i<Integer.parseInt(giocatori);i++) {
 					String s=new String(); //temporanea per salvare i nomi con spazi e cancellare spazi
 					for(int j=0; j<nameTextArea.size(); j++) {
 						s =nameTextArea.get(i).getText().replace(" ", "");
-						System.out.println(s);
+						//System.out.println(s);
 						
 					}
 					username.add(s);
-					//username.add(nameTextArea.get(i).getText());
 					userColor.add(colori[colorComboBox.get(i).getSelectedIndex()]);
-					firstTime2=false;
+					arrayVuoto=false;
 				}
 			}
 			
 			for(int i=0;i<nameTextArea.size();i++){
 				if(nameTextArea.get(i).getText().trim().isEmpty()) {
-					z=1;
+					utenteNonInserito=1;
 				}
 			}
 			
 			
-			if(!firstTime2) {
+			if(!arrayVuoto) {
 				for(int i=0; i<Integer.parseInt(giocatori);i++) {
 					String s = new String();
 					for(int j=0; j<nameTextArea.size(); j++) {
 						s =nameTextArea.get(i).getText().replace(" ", "");
-						System.out.println(s);
+						//System.out.println(s);
 						
 					}
 					username.set(i,s);
@@ -229,15 +222,13 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 			for(int i=0;i<Integer.parseInt(giocatori)-1;i++) {
 				for(int j=i+1;j<Integer.parseInt(giocatori);j++) {
 					if(username.get(i).equals(username.get(j))) {
-						k=1;
+						utentiUguali=1;
 					}
 					
 				}
 			}
 			
-				
-			
-			
+			//control about different colors and names
 			for(int i=0; i<Integer.parseInt(giocatori)-1;i++) {
 				for(int y=i+1; y<Integer.parseInt(giocatori);y++) {
 					if ((userColor.get(i).equals(userColor.get(y)))){
@@ -251,36 +242,25 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 			if ((userColor.get(Integer.parseInt(giocatori)-1).equals("Seleziona un colore"))){
 				seleziona=true; //controllo che l utente abbia scelto un colore
 			}
-			if(uguale==true || seleziona == true) {
-				if(uguale==true) {  
+			
+			if(seleziona==true) { //se rimangono le voci "Seleziona un colore"
+				JOptionPane.showMessageDialog(null, "non sono stati"
+						+ "selezionati tutti i colori" ,
+					"ERRORE", JOptionPane.ERROR_MESSAGE);
+			}else if(uguale==true) {  
 					JOptionPane.showMessageDialog(null, "i colori dei giocatori"
 						+ "devono essere e diversi tra loro" ,
 						"ERRORE", JOptionPane.ERROR_MESSAGE);
-				}
-				if(seleziona==true) { //se rimangono le voci "Seleziona un colore"
-					JOptionPane.showMessageDialog(null, "non sono stati"
-							+ "selezionati tutti i colori" ,
-						"ERRORE", JOptionPane.ERROR_MESSAGE);
-				}	
-			}
-			else {
-				
-				if(z!=1 && k!=1) {
+			}else if(utenteNonInserito!=1 && utentiUguali!=1) {
 					frame.dispose();
-					System.out.println(username);
-					System.out.println(userColor);
+					//System.out.println(username);
+					//System.out.println(userColor);
 					new Game(username, userColor);
-				}else if(z==1) {
+			}else if(utenteNonInserito==1) {
 					JOptionPane.showMessageDialog(null, "Bisonga per forza inserire un nome utente!","ATTENZIONE!",JOptionPane.WARNING_MESSAGE);
-				}else if(k==1) {
+			}else if(utentiUguali==1) {
 					JOptionPane.showMessageDialog(null, "Gli username non possono essere uguali, rinserirli!" ,
 							"ATTENZIONE", JOptionPane.WARNING_MESSAGE);
-				}
-			}
-
-	
-			for(int i=0; i<Integer.parseInt(giocatori);i++) {
-				username.set(i, nameTextArea.get(i).getText());
 			}
 		}
 	}
@@ -288,19 +268,8 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		/*if(firstTime==true) {
-			
-		for(int i=0; i<Integer.parseInt(giocatori);i++) {
-			if(!colorComboBox.get(i).getSelectedItem().equals("Seleziona un colore")) {
-				userColor.add(colorComboBox.get(i).getSelectedItem().toString());
-
-				colors.removeItem((colorComboBox.get(i).getSelectedItem()));;
-				}
-			}
-		}*/
-		
-		if( firstTime==true) {
-			firstTime=false;
+		if(MessaggioMostrato) {
+			MessaggioMostrato=false;
 			JOptionPane.showMessageDialog(null, "Il primo giocatore creato,sarà il primo ad iniziare","ATTENZIONE!",JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
