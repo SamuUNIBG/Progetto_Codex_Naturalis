@@ -6,6 +6,7 @@ import Enumerazione.Colore;
 
 public class Tracciato {
 	private ArrayList<Giocatore> tabellone;
+	
 	private int quantiGiocatori() {
 		int nGiocatori=0;
 		Scanner sc=new Scanner(System.in);
@@ -21,7 +22,6 @@ public class Tracciato {
 		sc.close();
 		return nGiocatori;
 	}
-		
 	
 	public Tracciato() {
 	
@@ -104,7 +104,18 @@ public class Tracciato {
 			System.out.println(tabellone.get(i).getSoprannome()+":"+tabellone.get(i).getPunteggio()+"\n");
 			
 		}
+		
+	}
 	
+	public int getNumGiocatori() {
+		
+		return tabellone.size();
+		
+	}
+	
+	public Giocatore getGiocatore(int i) {
+		
+		return tabellone.get(i);
 		
 	}
 	

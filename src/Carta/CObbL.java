@@ -29,4 +29,9 @@ public class CObbL extends CObb{
 	public int getDirezione() {
 		return direzione;
 	}
+	@Override
+	public int calcolaObb() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

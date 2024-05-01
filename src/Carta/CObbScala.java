@@ -35,4 +35,10 @@ public class CObbScala extends CObb{
 	public boolean getDirezione() {
 		return direzione;
 	}
+
+	@Override
+	public int calcolaObb() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

@@ -13,7 +13,7 @@ private final Colore colore;
 private int punteggio;
 private final boolean primo;
 private ArrayList<Carta> cMano;
-private CObb CObbPer;
+private CObb cObbPer;
 private CampoGioco campo;
 private int[] risPossedute;
 private int[] oggPosseduti;
@@ -27,7 +27,7 @@ public Giocatore(String soprannome,Colore colore,boolean primo) {
 	
 	cMano = new ArrayList<Carta>();
 	
-	CObbPer = null;
+	cObbPer = null;
 	
 	risPossedute = new int[4];
 	oggPosseduti = new int[3];
@@ -50,6 +50,9 @@ public Colore getColore() {
 public int getPunteggio() {
 	return punteggio;
 }
+public void addPunteggio(int punti) {
+	punteggio+=punti;
+}
 public String getSoprannome() {
 	return soprannome;
 }
@@ -57,12 +60,17 @@ public boolean giocaC() {
 	
 	return true;
 }
-/*public Carta pescaC() {
-	 
-	Carta c=new Carta();
-	 return c;
+public CObb getCObbPer() {
+	return cObbPer;
 }
-*/
+public Carta pescaC() {
+	 
+	//Carta c=new Carta();
+	// return c;
+	return null;
+	
+}
+
 
 
 }

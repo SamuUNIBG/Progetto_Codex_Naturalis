@@ -25,4 +25,9 @@ public class CObbOgg extends CObb{
 	public ArrayList<Simbolo> getOggetti() {
 		return oggetti;
 	}
+	@Override
+	public int calcolaObb() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

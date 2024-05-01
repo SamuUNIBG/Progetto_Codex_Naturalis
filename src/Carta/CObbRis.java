@@ -17,4 +17,9 @@ public class CObbRis extends CObb{
 	public Simbolo getSimbolo() {
 		return simbolo;
 	}
+	@Override
+	public int calcolaObb() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
