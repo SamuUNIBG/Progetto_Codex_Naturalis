@@ -1,5 +1,6 @@
 package Carta;
 import Enumerazione.Colore;
+import Tavolo.Giocatore;
 /**
  * sono quel tipo di CARTE OBIETTIVO che presentano uno schema 
  * da avere nell area di gioco al momento della conta finale dei punti per 
@@ -30,7 +31,7 @@ public class CObbL extends CObb{
 		return direzione;
 	}
 	@Override
-	public int calcolaObb() {
+	public int calcolaObb(Giocatore giocatore) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

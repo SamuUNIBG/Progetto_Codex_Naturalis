@@ -89,11 +89,11 @@ public class LogicaGioco {
 		
 		ArrayList<CObb> cObb = cartaTavolo.getcObbScp();
 		
-		for(int i=0; i<numGiocatori; i++) {
-			tracciato.getGiocatore(i).addPunteggio(cObb.get(0).calcolaObb());
-			tracciato.getGiocatore(i).addPunteggio(cObb.get(1).calcolaObb());
+		for(int i=0; i<numGiocatori; i++) {			
+			cObb.get(0).calcolaObb(tracciato.getGiocatore(i));
+			cObb.get(1).calcolaObb(tracciato.getGiocatore(i));
 			CObb cObbPers = tracciato.getGiocatore(i).getCObbPer();
-			tracciato.getGiocatore(i).addPunteggio(cObbPers.calcolaObb());
+			cObbPers.calcolaObb(tracciato.getGiocatore(i));
 		}
 		
 		Vincitore();

@@ -1,6 +1,7 @@
 package Carta;
 import java.util.*;
 import Enumerazione.Simbolo;
+import Tavolo.Giocatore;
 /**
  * sono quel tipo di CARTE OBIETTIVO che presentano set di oggetti diversi
  * o coppie di oggetti identici,
@@ -26,7 +27,7 @@ public class CObbOgg extends CObb{
 		return oggetti;
 	}
 	@Override
-	public int calcolaObb() {
+	public int calcolaObb(Giocatore giocatore) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

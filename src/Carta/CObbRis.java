@@ -1,5 +1,6 @@
 package Carta;
 import Enumerazione.Simbolo;
+import Tavolo.Giocatore;
 /**
  * sono quel tipo di CARTE OBIETTIVO che presentano le risorse (generalmente 3)
  * da avere nell area di gioco al momento della conta finale dei punti per 
@@ -18,7 +19,7 @@ public class CObbRis extends CObb{
 		return simbolo;
 	}
 	@Override
-	public int calcolaObb() {
+	public int calcolaObb(Giocatore giocatore) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
