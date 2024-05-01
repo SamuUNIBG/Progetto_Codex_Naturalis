@@ -11,6 +11,8 @@ import java.util.HashSet;
 
 import javax.swing.*;
 
+import Logica.LogicaGioco;
+
 public class SelectGame extends JFrame implements ActionListener,MouseListener{
 	
 	JButton homeButton, gameButton;
@@ -26,7 +28,7 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 	private String[] colori = {"Seleziona un colore", "Azzurro", "Giallo", "Rosso", "Verde"};
 	//this window
 	private JFrame frame = new JFrame();
-	private String tmp;
+	
 	public SelectGame() {
 		
 		//create the frame's icon "logo"
@@ -186,18 +188,16 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 			new Home();
 		}
 		if(e.getSource()==gameButton) { 
-			if(arrayVuoto) {
-				for(int i=0; i<Integer.parseInt(giocatori);i++) {
-					String s=new String(); //temporanea per salvare i nomi con spazi e cancellare spazi
-					for(int j=0; j<nameTextArea.size(); j++) {
-						s =nameTextArea.get(i).getText().replace(" ", "");
-						//System.out.println(s);
-						
-					}
-					username.add(s);
-					userColor.add(colori[colorComboBox.get(i).getSelectedIndex()]);
-					arrayVuoto=false;
+			username.clear();
+			userColor.clear();
+			for(int i=0; i<Integer.parseInt(giocatori);i++) {
+				String s=new String(); //temporanea per salvare i nomi con spazi e cancellare spazi
+				for(int j=0; j<nameTextArea.size(); j++) {
+					s =nameTextArea.get(i).getText().replace(" ", "");
+					//System.out.println(s);
 				}
+				username.add(s);
+				userColor.add(colori[colorComboBox.get(i).getSelectedIndex()]);
 			}
 			
 			for(int i=0;i<nameTextArea.size();i++){
@@ -206,19 +206,6 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 				}
 			}
 			
-			
-			if(!arrayVuoto) {
-				for(int i=0; i<Integer.parseInt(giocatori);i++) {
-					String s = new String();
-					for(int j=0; j<nameTextArea.size(); j++) {
-						s =nameTextArea.get(i).getText().replace(" ", "");
-						//System.out.println(s);
-						
-					}
-					username.set(i,s);
-					userColor.set(i, colori[colorComboBox.get(i).getSelectedIndex()]);
-				}
-			}
 			for(int i=0;i<Integer.parseInt(giocatori)-1;i++) {
 				for(int j=i+1;j<Integer.parseInt(giocatori);j++) {
 					if(username.get(i).equals(username.get(j))) {
@@ -256,6 +243,7 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 					//System.out.println(username);
 					//System.out.println(userColor);
 					new Game(username, userColor);
+					new LogicaGioco(username, userColor);
 			}else if(utenteNonInserito==1) {
 					JOptionPane.showMessageDialog(null, "Bisonga per forza inserire un nome utente!","ATTENZIONE!",JOptionPane.WARNING_MESSAGE);
 			}else if(utentiUguali==1) {

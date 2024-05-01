@@ -1,16 +1,9 @@
 package Tavolo;
 
-import java.awt.Dimension;
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-
-import Carta.CRis;
-import Carta.COro;
 import Carta.Carta;
 import Enumerazione.Simbolo;
-import Grafica.PlayingField;
 
 public class CampoGioco {
 
@@ -19,7 +12,11 @@ public class CampoGioco {
 	
 	private Carta[][] campo;
 	
+	ArrayList<String> posReturn;
+	
 	public CampoGioco(){
+		
+		posReturn = new ArrayList<String>();
 		
 		campo = new Carta[dimensioneY][dimensioneX];
 		
@@ -37,16 +34,9 @@ public class CampoGioco {
 		int posY = Integer.parseInt(splittedString[0]);
 		int posX = Integer.parseInt(splittedString[1]);
 		
-		if(carta instanceof CRis || carta instanceof COro) {
-			campo[posY][posX]=carta;
-			
-			copriAngoli(posizione);
-			controllaNuovePosizioni(posizione, carta);
-		}else {
-			
-			JOptionPane.showMessageDialog(null, "Errore nella selezione della carta", "ERRORE", JOptionPane.ERROR_MESSAGE);
-			
-		}
+		campo[posY][posX]=carta;
+		copriAngoli(posizione);
+		controllaNuovePosizioni(posizione, carta);
 				
 	}
 	
@@ -71,9 +61,8 @@ public class CampoGioco {
 		
 	}
 	
-	private ArrayList<String> controllaNuovePosizioni(String posizione, Carta carta) {
-		
-		ArrayList<String> posReturn = new ArrayList<String>();
+	private void controllaNuovePosizioni(String posizione, Carta carta) {
+		posReturn.clear();
 		posReturn.add(posizione);
 		
 		String[] splittedString = posizione.split(",");
@@ -92,8 +81,6 @@ public class CampoGioco {
 		if(campo[posY+1][posX+1]==null && carta.getAngoli()[2].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY+1) + "," + (posX+1));
 		}
-		
-		return posReturn;
 		
 	}
 	

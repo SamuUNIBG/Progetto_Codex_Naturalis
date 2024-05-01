@@ -1,6 +1,5 @@
 package Carta;
-import java.util.*;
-import Enumerazione.*;
+
 public abstract class Carta {
 	
 	private final int puntiAssegnati; //le carte hanno punti

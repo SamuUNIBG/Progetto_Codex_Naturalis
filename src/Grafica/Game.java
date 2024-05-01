@@ -1,18 +1,16 @@
 package Grafica;
 
+import javax.swing.*;
+
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+
+import java.util.*;
+
 import java.io.File;
 import java.io.FileInputStream;
-
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
+import java.io.FileNotFoundException;
 
 //utilizzare JTabbedPane. Guardare https://www.edatlas.it/scarica/informatica/info_java/Inserto3/5ScrollPaneTabbedPane.pdf
 
