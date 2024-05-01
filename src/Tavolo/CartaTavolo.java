@@ -135,5 +135,24 @@ public class CartaTavolo {
 		return null;
 	}
 	
+	/**
+	 * Takes the first card of deck
+	 * @param tipo the type of card
+	 */
+	public Carta pesca(TipoCarta tipo) {
+		if(tipo==TipoCarta.COro) {
+			COro carta = mOro.pesca();
+			return carta;
+		}else if(tipo==TipoCarta.CRis){
+			CRis carta = mRis.pesca();
+			return carta;
+		}else if(tipo==TipoCarta.CObb){
+			CObb carta = mObb.pesca();
+			return carta;
+		}
+		
+		return null;
+	}
+	
 }
 	

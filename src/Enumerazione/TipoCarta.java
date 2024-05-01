@@ -6,6 +6,6 @@ package Enumerazione;
  */
 public enum TipoCarta {
 	
-	COro, CRis;	//the name of cards classes useful to the method pesca in the CartaTavolo class
+	COro, CRis, CObb;	//the name of cards classes useful to the method pesca in the CartaTavolo class
 	
 }
