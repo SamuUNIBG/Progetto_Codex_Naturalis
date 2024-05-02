@@ -1,5 +1,6 @@
 package Carta;
 import Enumerazione.Colore;
+import Enumerazione.Simbolo;
 import Tavolo.Giocatore;
 import Tavolo.CampoGioco;
 /**
@@ -75,5 +76,11 @@ public class CObbScala extends CObb{
 	public boolean VerificaPrerequistio() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public Simbolo getSimbolo() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

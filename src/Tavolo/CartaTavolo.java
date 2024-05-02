@@ -2,6 +2,7 @@ package Tavolo;
 
 import java.util.ArrayList;
 
+import Carta.CIniz;
 import Carta.CObb;
 import Carta.COro;
 import Carta.CRis;
@@ -148,6 +149,9 @@ public class CartaTavolo {
 			return carta;
 		}else if(tipo==TipoCarta.CObb){
 			CObb carta = mObb.pesca();
+			return carta;
+		}else if(tipo==TipoCarta.CIniz){
+			CIniz carta = mIniz.pesca();
 			return carta;
 		}
 		

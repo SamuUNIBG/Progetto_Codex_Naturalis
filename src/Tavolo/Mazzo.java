@@ -1,5 +1,6 @@
 package Tavolo;
 
+import Carta.CRis;
 import Carta.Carta;
 
 /**

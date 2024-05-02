@@ -1,10 +1,12 @@
 package Tavolo;
 
+import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
 import Carta.CRis;
-
+import Carta.CRis;
 import Enumerazione.Colore;
 import Enumerazione.Simbolo;
 
@@ -84,6 +86,10 @@ public class MCRis extends Mazzo {
 	@Override
 	public int getCRimaste() {
 		return cMazzo.size();
+	}
+	
+	public ArrayList<CRis> getCMazzo() {
+		return cMazzo;
 	}
 	
 }
