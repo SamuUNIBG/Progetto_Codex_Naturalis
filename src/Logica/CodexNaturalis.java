@@ -12,7 +12,7 @@ public class CodexNaturalis {
 		
 		Scanner sc = new Scanner(System.in);
 		do {
-			System.out.println("Desideri continuare con l'interfaccia testuale? [0(si) - 1(no)]");
+			System.out.print("Desideri continuare con l'interfaccia testuale? [0(si) - 1(no)]: ");
 			scelta=sc.nextInt();
 		}while(scelta!=0 && scelta!=1);
 		

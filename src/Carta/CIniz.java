@@ -71,4 +71,16 @@ public class CIniz extends Carta {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public Simbolo getSimbolo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Colore getColore() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

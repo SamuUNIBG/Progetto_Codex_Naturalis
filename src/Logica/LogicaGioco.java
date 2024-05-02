@@ -1,8 +1,11 @@
 package Logica;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import Carta.CObb;
+import Carta.COro;
+import Carta.CRis;
 import Enumerazione.TipoCarta;
 import Tavolo.CartaTavolo;
 import Tavolo.Giocatore;
@@ -41,6 +44,7 @@ public class LogicaGioco {
 			//Bisogna far scegliere all'utente quale carta obbiettivo tenere
 			tracciato.getGiocatore(i).pescaC(cObb.get(0));
 			tracciato.getGiocatore(i).pescaC(cartaTavolo.pesca(TipoCarta.COro));
+			tracciato.getGiocatore(i).pescaC(cartaTavolo.pesca(TipoCarta.CIniz));
 		}
 		
 		Turni();
@@ -53,6 +57,13 @@ public class LogicaGioco {
 		boolean punti20 = false;
 		boolean ultimoGiro = false;
 		
+		for(int i=0; i<numGiocatori; i++) {
+			
+			giocatoreAttuale = tracciato.getGiocatore(i);				
+			giocatoreAttuale.giocaCIniz();
+			
+		}
+		
 		do {
 			
 			if(punti20)
@@ -60,8 +71,7 @@ public class LogicaGioco {
 			
 			for(int i=0; i<numGiocatori; i++) {
 				
-				giocatoreAttuale = tracciato.getGiocatore(i);
-				
+				giocatoreAttuale = tracciato.getGiocatore(i);				
 				giocatoreAttuale.giocaC();
 				
 				pescaCarta(giocatoreAttuale);

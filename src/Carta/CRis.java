@@ -37,6 +37,18 @@ public class CRis extends Carta{
 		this.fronte=true;
 	}
 	
+	public CRis(Simbolo simbolo, Colore colore, int IDCARTA) {
+		super(0);
+		this.angoli[0]=new Angolo(Simbolo.VUOTO);
+		this.angoli[1]=new Angolo(Simbolo.VUOTO);
+		this.angoli[2]=new Angolo(Simbolo.VUOTO);
+		this.angoli[3]=new Angolo(Simbolo.VUOTO);
+		this.colore=colore;
+		this.IDCARTA=IDCARTA;
+		this.simbolo=simbolo;
+		this.fronte=false;
+	}
+	
 	@Override
 	public int getIDCARTA() {
 		return this.IDCARTA;

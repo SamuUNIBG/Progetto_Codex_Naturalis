@@ -1,5 +1,6 @@
 package Carta;
 import Enumerazione.Colore;
+import Enumerazione.Simbolo;
 import Tavolo.Giocatore;
 /**
  * sono quel tipo di CARTE OBIETTIVO che presentano uno schema 
@@ -44,5 +45,15 @@ public class CObbL extends CObb{
 	public boolean VerificaPrerequistio() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	@Override
+	public Simbolo getSimbolo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Colore getColore() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

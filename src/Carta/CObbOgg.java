@@ -1,5 +1,7 @@
 package Carta;
 import java.util.*;
+
+import Enumerazione.Colore;
 import Enumerazione.Simbolo;
 import Tavolo.Giocatore;
 /**
@@ -40,5 +42,15 @@ public class CObbOgg extends CObb{
 	public boolean VerificaPrerequistio() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	@Override
+	public Simbolo getSimbolo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Colore getColore() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

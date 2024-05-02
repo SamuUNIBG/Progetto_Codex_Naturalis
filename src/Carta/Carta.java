@@ -1,5 +1,7 @@
 package Carta;
 
+import Enumerazione.Colore;
+import Enumerazione.Simbolo;
 import Tavolo.Giocatore;
 
 public abstract class Carta {
@@ -22,5 +24,8 @@ public abstract class Carta {
 	public abstract Angolo[] getAngoli();
 	public abstract int getIDCARTA();
 	public abstract boolean VerificaPrerequistio();
+	public abstract Simbolo getSimbolo();
+
+	public abstract Colore getColore();
 
 }

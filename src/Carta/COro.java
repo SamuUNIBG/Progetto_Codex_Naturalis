@@ -55,6 +55,20 @@ public class COro extends Carta{
 		this.risNecessarie[3]=risnecessaria4;
 		// TODO Auto-generated constructor stub
 	}
+	
+	public COro(Simbolo simbolo, Colore colore, int IDCARTA) {
+		super(0);
+		this.angoli[0]=new Angolo(Simbolo.VUOTO);
+		this.angoli[1]=new Angolo(Simbolo.VUOTO);
+		this.angoli[2]=new Angolo(Simbolo.VUOTO);
+		this.angoli[3]=new Angolo(Simbolo.VUOTO);
+		this.colore=colore;
+		this.IDCARTA=IDCARTA;
+		this.simbolo=simbolo;
+		this.fronte=false;
+		this.obbiettivo=Simbolo.ASSENTE;
+	}
+	
 	/**
 	 * verfica che sia soddisfatto il requisito di piazzamento della carta
 	 * quindi se sul rispettivo campo di gioco ci sono le risorse richieste
