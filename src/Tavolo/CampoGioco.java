@@ -135,5 +135,22 @@ public class CampoGioco {
 			}
 		}
 	}
+
+	public static int getDimensionex() {
+		return dimensioneX;
+	}
+	
+
+	public static int getDimensioney() {
+		return dimensioneY;
+	}
+
+	public Carta[][] getCampo() {
+		return this.campo;
+	}
+
+	public void setCampo(Carta[][] campo) {
+		this.campo = campo;
+	}
 	
 }

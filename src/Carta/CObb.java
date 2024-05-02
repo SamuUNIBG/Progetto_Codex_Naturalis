@@ -12,8 +12,13 @@ public abstract class CObb extends Carta{
 		super(puntiAssegnati);
 		// TODO Auto-generated constructor stub
 	}
-	
-	public abstract int calcolaObb(Giocatore giocatore);
+	/**
+	 * metodo per verificare se un obiettivo e stato raggiunto e quante volte 
+	 * e stato raggiunto, torna il numero di punti ottenuti
+	 * @param giocatore
+	 * @return
+	 */
+	public abstract int calcolaObb(Giocatore giocatore); 
 
 	@Override
 	public Angolo[] getAngoli() {

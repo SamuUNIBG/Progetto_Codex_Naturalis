@@ -87,7 +87,7 @@ public class Giocatore {
 				numCarta = sc.nextInt();
 			}while(numCarta<1 || numCarta>3);
 			
-			//controllo giocabilità carta oro
+			//controllo giocabilitï¿½ carta oro
 			if(cMano.get(numCarta) instanceof COro)
 				if(cMano.get(numCarta).VerificaPrerequistio())
 					preRequisito = true;
@@ -165,6 +165,15 @@ public class Giocatore {
 	}
 	public CObb getCObbPer() {
 		return cObbPer;
+	}
+	public int[] getRisPossedute() {
+		return this.risPossedute;
+	}
+	public int[] getOggPosseduti() {
+		return this.oggPosseduti;
+	}
+	public CampoGioco getCampoG() {
+		return this.campo;
 	}
 	public void pescaC(Carta carta) {
 		 

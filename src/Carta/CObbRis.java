@@ -21,7 +21,19 @@ public class CObbRis extends CObb{
 	@Override
 	public int calcolaObb(Giocatore giocatore) {
 		// TODO Auto-generated method stub
-		return 0;
+		/*torna un int quindi fa in automatico l approssimazione*/
+		switch (this.simbolo) {
+		case FOGLIA:
+			return (this.getPunti())*(giocatore.getRisPossedute()[0]/3);
+		case LUPO:
+			return (this.getPunti())*(giocatore.getRisPossedute()[1]/3);
+		case FUNGO:
+			return (this.getPunti())*(giocatore.getRisPossedute()[2]/3);	
+		case FARFALLA:
+			return (this.getPunti())*(giocatore.getRisPossedute()[3]/3);	
+		default:
+			return 0;
+		}
 	}
 	@Override
 	public int getIDCARTA() {

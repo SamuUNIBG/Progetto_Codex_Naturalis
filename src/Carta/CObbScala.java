@@ -1,6 +1,7 @@
 package Carta;
 import Enumerazione.Colore;
 import Tavolo.Giocatore;
+import Tavolo.CampoGioco;
 /**
  * sono quel tipo di CARTE OBIETTIVO che presentano uno schema 
  * da avere nell area di gioco al momento della conta finale dei punti per 
@@ -40,6 +41,27 @@ public class CObbScala extends CObb{
 	@Override
 	public int calcolaObb(Giocatore giocatore) {
 		// TODO Auto-generated method stub
+		if(this.direzione==true) {  //e una scala crescente
+			for(int i=0; i<CampoGioco.getDimensionex()-1; i++) {
+				for(int j=0; j<CampoGioco.getDimensioney()-1; j++) {
+					if(giocatore.getCampoG().getCampo()[i][j]!=null) {
+						if(giocatore.getCampoG().getCampo()[i][j].
+								equals(giocatore.getCampoG().getCampo()[i-1][j+1])
+		&& giocatore.getCampoG().getCampo()[i][j].getAngoli()[3].getCoperto()==true 
+		&& giocatore.getCampoG().getCampo()[i][j].getAngoli()[1].getCoperto()==true 
+		&& giocatore.getCampoG().getCampo()[i][j].equals(giocatore.getCampoG().getCampo()[i+1][j-1])
+		
+								){
+							
+						}
+					}
+				}
+			}
+		}
+		else {
+			
+		}
+		
 		return 0;
 	}
 
