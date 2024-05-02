@@ -80,8 +80,13 @@ public class LogicaGioco {
 
 	private void pescaCarta(Giocatore giocatoreAttuale) {
 		//Bisogna far scegliere all'utente quale carta pescare
+		
+		//mostrare carte disponibili
+		//far scegliere la carta da pescare
+		//usare metodo pesca per prelevare la carta
 		cartaTavolo.pesca(null);
-		giocatoreAttuale.pescaC(null);
+		//passare la carta in input al metodo pescaC
+		giocatoreAttuale.pescaC(cartaTavolo.pesca(null));
 		
 	}
 

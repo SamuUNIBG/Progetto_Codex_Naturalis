@@ -1,6 +1,7 @@
 package Tavolo;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import Carta.CObb;
 import Carta.COro;
@@ -60,6 +61,55 @@ public class Giocatore {
 		return soprannome;
 	}
 	public boolean giocaC() {
+		
+		Scanner sc = new Scanner(System.in);
+		int numCarta, posY, posX;
+		String posCarta;
+		boolean posCartaOk=false;
+		
+		//stampare legenda
+		
+		System.out.println("Il tuo campo di gioco:");
+		campo.print();
+		
+		System.out.println("Le carte in tuo possesso:");
+		for(int i=0; i<3; i++) {
+			System.out.println((i+1) + ") " + cMano.get(i).toString());
+		}
+		
+		do {
+			System.out.print("Inserire il numero relativo alla carta da giocare: ");
+			numCarta = sc.nextInt();
+		}while(numCarta<1 || numCarta>3);
+		
+		//inserire controllo giocabilità carta se oro
+		
+		System.out.println("Posizioni (y,x) dove e' possibile posizionare la carta");
+		for(int i=0; i<campo.getPosizioniDisponibili().size(); i++) {
+			System.out.println(campo.getPosizioniDisponibili());
+		}
+		
+		do {
+			do {
+				System.out.println("Inserire le coordinate y di dove si vuole giocare la carta");
+				posY = sc.nextInt();
+			}while(posY<0 || posY>CampoGioco.dimensioneY);
+			do {
+				System.out.println("Inserire le coordinate x di dove si vuole giocare la carta");
+				posX = sc.nextInt();
+			}while(posX<0 || posX>CampoGioco.dimensioneX);
+			posCarta = posY + "," + posX;
+			for(int i=0; i<campo.getPosizioniDisponibili().size(); i++) {
+				if(posCarta.equals(campo.getPosizioniDisponibili().get(i)))
+					posCartaOk = true;
+			}
+		}while(!posCartaOk);
+		
+		campo.aggiungiC(posCarta, cMano.get(numCarta));
+		campo.print(posCarta, cMano.get(numCarta));
+		
+		//fare in modo di modificare array risorse possedute
+		//cMano.get(numCarta).get
 		
 		return true;
 	}

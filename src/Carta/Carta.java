@@ -18,5 +18,6 @@ public abstract class Carta {
 	}
 	
 	public abstract Angolo[] getAngoli();
+	public abstract int getIDCARTA();
 
 }

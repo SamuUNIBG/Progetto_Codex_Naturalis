@@ -19,6 +19,7 @@ public class CRis extends Carta{
 	private final Angolo[] angoli = new Angolo[4];
 	private final Simbolo simbolo;
 	private final Colore colore;
+	private boolean fronte;
 
 	public CRis(int puntiAssegnati, Simbolo simbolo,Colore colore,
 			Simbolo angolo0, Simbolo angolo1,
@@ -32,9 +33,10 @@ public class CRis extends Carta{
 		this.IDCARTA=CRis.lastId;
 		CRis.lastId++;
 		this.simbolo=simbolo;
-		// TODO Auto-generated constructor stub
+		this.fronte=true;
 	}
-
+	
+	@Override
 	public int getIDCARTA() {
 		return this.IDCARTA;
 	}
@@ -49,6 +51,13 @@ public class CRis extends Carta{
 
 	public Colore getColore() {
 		return this.colore;
+	}
+	
+	public void retro() {
+		this.fronte=false;
+	}
+	public boolean getFronte() {
+		return this.fronte;
 	}
 	
 }

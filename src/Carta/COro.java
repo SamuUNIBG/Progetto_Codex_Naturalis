@@ -27,6 +27,7 @@ public class COro extends Carta{
 	private final Simbolo simbolo;
 	private final Colore colore;
 	private final Simbolo obbiettivo;
+	private boolean fronte;
 	private final int[] risNecessarie = new int[4]; /*sono i requisiti (quindi 
 	le risorse da avere sul proprio campo) per poter piazzare la carta oro
 	sul fronte*/
@@ -46,6 +47,7 @@ public class COro extends Carta{
 		COro.lastId++;
 		this.simbolo=simbolo;
 		this.colore=colore;
+		this.fronte=true;
 		this.risNecessarie[0]=risnecessaria1;
 		this.risNecessarie[1]=risnecessaria2;
 		this.risNecessarie[2]=risnecessaria3;
@@ -61,9 +63,7 @@ public class COro extends Carta{
 		/* da implementare ...*/
 		return true;
 	}
-	public int getIDCARTA() {
-		return IDCARTA;
-	}
+	
 	public Angolo[] getAngoli() {
 		return angoli;
 	}
@@ -75,5 +75,15 @@ public class COro extends Carta{
 	}
 	public int[] getRisNecessarie() {
 		return risNecessarie;
+	}
+	public void retro() {
+		this.fronte=false;
+	}
+	public boolean getFronte() {
+		return this.fronte;
+	}
+	@Override
+	public int getIDCARTA() {
+		return IDCARTA;
 	}
 }

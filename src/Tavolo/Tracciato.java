@@ -32,7 +32,7 @@ public class Tracciato {
 		boolean primo=true;
 		for(int i=0;i<giocatori;i++) {
 			
-			System.out.println("Creazione giocatore "+(i+=1)+"\n");
+			System.out.println("Creazione giocatore "+(i+1)+"\n");
 			System.out.println("scrivi il tuo soprannome: \n");
 			
 			String soprannome=sc.nextLine();
@@ -44,7 +44,7 @@ public class Tracciato {
 				if(colore<1 || colore >4) {
 					System.out.println("Numero inserito non valido. Si possono mettere numeri da 1 a 4!");
 				}
-			}while(colore<1 || colore>6);
+			}while(colore<1 || colore>4);
 			
 			switch(colore){
 			case 1:

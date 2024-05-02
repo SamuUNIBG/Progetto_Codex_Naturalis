@@ -42,4 +42,10 @@ public class CObbScala extends CObb{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public int getIDCARTA() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

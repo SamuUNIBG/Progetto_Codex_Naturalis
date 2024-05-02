@@ -13,6 +13,9 @@ public class CIniz extends Carta {
 	
 	private final Angolo[] angoli = new Angolo[4];  // gli angoli del fronte delle singole carte
 	private final Angolo[] angoliR = new Angolo[4];  // gli angoli del retro delle singole carte
+	private final int IDCARTA; //identificativo univoco di ogni carta risors
+	// va da 80 a 85 tot 6 carte iniziali
+	private static int lastId=80;
 	private boolean fronte; //true se il fronte visibile della carta e visibile
 	private final ArrayList<Simbolo> risorseCentrali= null; /*le carte iniziali hanno
 												fino a 4 risorse centrali*/
@@ -34,14 +37,16 @@ public class CIniz extends Carta {
 		if (riscentrale3!=Simbolo.ASSENTE) {
 			this.risorseCentrali.add(riscentrale3);
 		}
+		this.IDCARTA=CIniz.lastId;
+		CIniz.lastId++;
 		this.angoliR[0]=new Angolo(angolo4);
 		this.angoliR[1]=new Angolo(angolo5);
 		this.angoliR[2]=new Angolo(angolo6);
 		this.angoliR[3]=new Angolo(angolo7);
 	}
 
-	public void setFronte(boolean fronte) {
-		this.fronte=fronte;
+	public void retro() {
+		fronte=false;
 	}
 	public Angolo[] getAngoli() {
 		return this.angoli;
@@ -53,5 +58,10 @@ public class CIniz extends Carta {
 
 	public ArrayList<Simbolo> getRisorseCentrali() {
 		return this.risorseCentrali;
+	}
+	
+	@Override
+	public int getIDCARTA() {
+		return IDCARTA;
 	}
 }
