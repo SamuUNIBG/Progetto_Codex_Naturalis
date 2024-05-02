@@ -81,7 +81,7 @@ public class Giocatore {
 		
 		sc.close();
 		
-		//se la carta è stata giocata sul retro si setta l'attributo fronte=false
+		//se la carta ï¿½ stata giocata sul retro si setta l'attributo fronte=false
 		if(retro==0) {
 			cInizPer.retro();
 		}
@@ -95,7 +95,7 @@ public class Giocatore {
 	public boolean giocaC() {
 		
 		Scanner sc = new Scanner(System.in);
-		int numCarta, posY, posX, retro;
+		int numCarta, posY, posX, retro = 0;
 		String posCarta;
 		boolean posCartaOk=false, preRequisito=false;
 		Carta carta;
@@ -117,12 +117,9 @@ public class Giocatore {
 				System.out.print("Inserire il numero relativo alla carta da giocare: ");
 				numCarta = sc.nextInt();
 			}while(numCarta<1 || numCarta>3);
-			
-<<<<<<< HEAD
 			//controllo giocabilitï¿½ carta oro
 			if(cMano.get(numCarta) instanceof COro)
 				if(cMano.get(numCarta).VerificaPrerequistio())
-=======
 			do {
 				System.out.print("Vuoi giocare la carta sul retro? [0(si) - 1(no)]: ");
 				retro = sc.nextInt();
@@ -130,10 +127,9 @@ public class Giocatore {
 			
 			carta = cMano.get(numCarta);
 			
-			//controllo giocabilità carta oro
+			//controllo giocabilitï¿½ carta oro
 			if(carta instanceof COro && retro==1)
 				if(carta.VerificaPrerequistio())
->>>>>>> a7e2230a105a88232f87ec84252b001df73e18df
 					preRequisito = true;
 		}while(!preRequisito);
 		
@@ -161,7 +157,7 @@ public class Giocatore {
 		
 		sc.close();
 		
-		//se la carta è stata giocata sul retro si crea una nuova carta
+		//se la carta ï¿½ stata giocata sul retro si crea una nuova carta
 		if(retro==0) {
 			if(carta instanceof CRis) {
 				CRis cartaRetro= new CRis(carta.getSimbolo(), carta.getColore(), carta.getIDCARTA());
@@ -229,7 +225,6 @@ public class Giocatore {
 	public CObb getCObbPer() {
 		return cObbPer;
 	}
-<<<<<<< HEAD
 	public int[] getRisPossedute() {
 		return this.risPossedute;
 	}
@@ -239,13 +234,10 @@ public class Giocatore {
 	public CampoGioco getCampoG() {
 		return this.campo;
 	}
-=======
 	
 	public CIniz getCInizPer() {
 		return cInizPer;
 	}
-	
->>>>>>> a7e2230a105a88232f87ec84252b001df73e18df
 	public void pescaC(Carta carta) {
 		 
 		if(carta instanceof CRis || carta instanceof COro) {
