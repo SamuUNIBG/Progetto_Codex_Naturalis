@@ -1,5 +1,7 @@
 package Carta;
 
+import Tavolo.Giocatore;
+
 public abstract class Carta {
 	
 	private final int puntiAssegnati; //le carte hanno punti
@@ -19,5 +21,6 @@ public abstract class Carta {
 	
 	public abstract Angolo[] getAngoli();
 	public abstract int getIDCARTA();
+	public abstract boolean VerificaPrerequistio();
 
 }

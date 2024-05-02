@@ -1,6 +1,7 @@
 package Carta;
 import java.util.*;
 import Enumerazione.*;
+import Tavolo.Giocatore;
 /**
  * le carte oro sono 40 totali di cui, una volta mescolato il mazzo,
  * le prime 2 vengono rivelate scoperte sul campo di gioco, al contempo

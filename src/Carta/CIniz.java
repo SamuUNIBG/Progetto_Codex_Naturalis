@@ -1,6 +1,7 @@
 package Carta;
 import java.util.*;
-import Enumerazione.*;  
+import Enumerazione.*;
+import Tavolo.Giocatore;  
 /**
  * le carte iniziali sono 6 ne vengono date 1 per ogni gocatore
  * che decide come giocarla, sul fronte o sul retro.
@@ -63,5 +64,11 @@ public class CIniz extends Carta {
 	@Override
 	public int getIDCARTA() {
 		return IDCARTA;
+	}
+
+	@Override
+	public boolean VerificaPrerequistio() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

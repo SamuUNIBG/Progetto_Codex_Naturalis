@@ -1,6 +1,7 @@
 package Carta;
 import java.util.*;
 import Enumerazione.*;
+import Tavolo.Giocatore;
 /**
  * le carte risorsa sono 40 totali di cui, una volta mescolato il mazzo,
  * le prime 2 vengono rivelate scoperte sul campo di gioco, al contempo
@@ -58,6 +59,12 @@ public class CRis extends Carta{
 	}
 	public boolean getFronte() {
 		return this.fronte;
+	}
+
+	@Override
+	public boolean VerificaPrerequistio() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }

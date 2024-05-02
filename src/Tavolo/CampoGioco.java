@@ -40,12 +40,17 @@ public class CampoGioco {
 		int posX = Integer.parseInt(splittedString[1]);
 		
 		campo[posY][posX]=carta;
-		copriAngoli(posizione);
 		controllaNuovePosizioni(posizione, carta);
 				
 	}
 	
-	public void copriAngoli(String posizione) {
+	public Simbolo[] copriAngoli(String posizione) {
+		
+		Simbolo[] simboli = new Simbolo[4];
+		
+		for(int i=0; i<simboli.length; i++) {
+			simboli[i]=null;
+		}
 		
 		String[] splittedString = posizione.split(",");
 		int posY = Integer.parseInt(splittedString[0]);
@@ -53,16 +58,22 @@ public class CampoGioco {
 		
 		if(campo[posY-1][posX-1]!=null) {
 			campo[posY-1][posX-1].getAngoli()[2].setCoperto();
+			simboli[0]=campo[posY-1][posX-1].getAngoli()[2].getSimbolo();
 		}
 		if(campo[posY+1][posX-1]!=null) {
 			campo[posY+1][posX-1].getAngoli()[1].setCoperto();
+			simboli[1]=campo[posY-1][posX-1].getAngoli()[1].getSimbolo();
 		}
 		if(campo[posY-1][posX+1]!=null) {
 			campo[posY-1][posX+1].getAngoli()[3].setCoperto();
+			simboli[2]=campo[posY-1][posX-1].getAngoli()[3].getSimbolo();
 		}
 		if(campo[posY+1][posX+1]!=null) {
 			campo[posY+1][posX+1].getAngoli()[0].setCoperto();
+			simboli[3]=campo[posY-1][posX-1].getAngoli()[0].getSimbolo();
 		}
+		
+		return simboli;
 		
 	}
 	

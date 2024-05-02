@@ -28,4 +28,9 @@ public class CObbRis extends CObb{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	@Override
+	public boolean VerificaPrerequistio() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
