@@ -101,4 +101,75 @@ public class COro extends Carta{
 	public int getIDCARTA() {
 		return IDCARTA;
 	}
+
+	@Override
+	public String toString() {
+		if(risNecessarie[0]==0) {
+			return "Carta oro: [angolo alto sinistro= " + angoli[0]+"\n"+"angolo alto destro= "+angoli[1]+"\n"+"angolo basso destro= "+angoli[2]+
+					"\n"+"angolo basso sinistro= "+angoli[3]+"\n" + "simbolo= " + simbolo +"\n"+ "colore= " + colore
+					+"\n"+ "obbiettivo= " + obbiettivo +"\n"+ "risorsa lupo necessaria= " + risNecessarie[1]+"\n" 
+					+"risora fungo necessaria= "+risNecessarie[2]+"\n"+"risorsa farfalla necessaria= "+risNecessarie[3]+"\n"+super.toString()+ "]";
+		}else if(risNecessarie[1]==0) {
+			return "Carta oro: [angolo alto sinistro= " + angoli[0]+"\n"+"angolo alto destro= "+angoli[1]+"\n"+"angolo basso destro= "+angoli[2]+
+					"\n"+"angolo basso sinistro= "+angoli[3]+"\n" + "simbolo= " + simbolo +"\n"+ "colore= " + colore
+					+"\n"+ "obbiettivo= " + obbiettivo +"\n"+ "risorsa foglie necessaria= " + risNecessarie[0]+"\n" 
+					+"risora fungo necessaria= "+risNecessarie[2]+"\n"+"risorsa farfalla necessaria= "+risNecessarie[3]+"\n"+super.toString()+ "]";
+		}else if(risNecessarie[2]==0) {
+			return "Carta oro: [angolo alto sinistro= " + angoli[0]+"\n"+"angolo alto destro= "+angoli[1]+"\n"+"angolo basso destro= "+angoli[2]+
+					"\n"+"angolo basso sinistro= "+angoli[3]+"\n" + "simbolo= " + simbolo +"\n"+ "colore= " + colore
+					+"\n"+ "obbiettivo= " + obbiettivo +"\n"+ "risorsa foglie necessaria= " + risNecessarie[0]+"\n" 
+					+"risora lupo necessaria= "+risNecessarie[1]+"\n"+"risorsa farfalla necessaria= "+risNecessarie[3]+"\n"+super.toString()+ "]";
+		}else if(risNecessarie[3]==0) {
+			return "Carta oro: [angolo alto sinistro= " + angoli[0]+"\n"+"angolo alto destro= "+angoli[1]+"\n"+"angolo basso destro= "+angoli[2]+
+					"\n"+"angolo basso sinistro= "+angoli[3]+"\n" + "simbolo= " + simbolo +"\n"+ "colore= " + colore
+					+"\n"+ "obbiettivo= " + obbiettivo +"\n"+ "risorsa foglie necessaria= " + risNecessarie[0]+"\n" 
+					+"risora lupo necessaria= "+risNecessarie[1]+"\n"+"risorsa fungo necessaria= "+risNecessarie[2]+"\n"+super.toString()+ "]";
+		}else if(risNecessarie[0]==0 && risNecessarie[1]==0 && risNecessarie[2]==0) {
+			return "Carta oro: [angolo alto sinistro= " + angoli[0]+"\n"+"angolo alto destro= "+angoli[1]+"\n"+"angolo basso destro= "+angoli[2]+
+					"\n"+"angolo basso sinistro= "+angoli[3]+"\n" + "simbolo= " + simbolo +"\n"+ "colore= " + colore
+					+"\n"+ "obbiettivo= " + obbiettivo +"\n"+ "risorsa farfalla necessaria= "+risNecessarie[3]+"\n"+super.toString()+ "]";
+		}else if(risNecessarie[0]==0 && risNecessarie[1]==0 && risNecessarie[3]==0) {
+			return "Carta oro: [angolo alto sinistro= " + angoli[0]+"\n"+"angolo alto destro= "+angoli[1]+"\n"+"angolo basso destro= "+angoli[2]+
+					"\n"+"angolo basso sinistro= "+angoli[3]+"\n" + "simbolo= " + simbolo +"\n"+ "colore= " + colore
+					+"\n"+ "obbiettivo= " + obbiettivo +"\n"+"risorsa fungo necessaria= "+ risNecessarie[2]+"\n"+super.toString()+ "]";
+		}else if(risNecessarie[2]==0 && risNecessarie[1]==0 && risNecessarie[3]==0) {
+			return "Carta oro: [angolo alto sinistro= " + angoli[0]+"\n"+"angolo alto destro= "+angoli[1]+"\n"+"angolo basso destro= "+angoli[2]+
+					"\n"+"angolo basso sinistro= "+angoli[3]+"\n" + "simbolo= " + simbolo +"\n"+ "colore= " + colore
+					+"\n"+ "obbiettivo= " + obbiettivo +"\n"+ "risorsa foglie necessaria= " + risNecessarie[0]+"\n"+super.toString()+ "]";
+		}else if(risNecessarie[2]==0 && risNecessarie[0]==0 && risNecessarie[3]==0) {
+			return "Carta oro: [angolo alto sinistro= " + angoli[0]+"\n"+"angolo alto destro= "+angoli[1]+"\n"+"angolo basso destro= "+angoli[2]+
+					"\n"+"angolo basso sinistro= "+angoli[3]+"\n" + "simbolo= " + simbolo +"\n"+ "colore= " + colore
+					+"\n"+ "obbiettivo= " + obbiettivo +"\n" +"risora lupo necessaria= "+risNecessarie[1]+"\n"+super.toString()+ "]";
+		}else if(risNecessarie[0]==0 && risNecessarie[1]==0) {
+			return "Carta oro: [angolo alto sinistro= " + angoli[0]+"\n"+"angolo alto destro= "+angoli[1]+"\n"+"angolo basso destro= "+angoli[2]+
+					"\n"+"angolo basso sinistro= "+angoli[3]+"\n" + "simbolo= " + simbolo +"\n"+ "colore= " + colore
+					+"\n"+ "obbiettivo= " + obbiettivo +"\n"+"risora fungo necessaria= "+risNecessarie[2]+"\n"+"risorsa farfalla necessaria= "+risNecessarie[3]+"\n"+super.toString()+ "]";
+		}else if(risNecessarie[0]==0 && risNecessarie[2]==0) {
+			return "Carta oro: [angolo alto sinistro= " + angoli[0]+"\n"+"angolo alto destro= "+angoli[1]+"\n"+"angolo basso destro= "+angoli[2]+
+					"\n"+"angolo basso sinistro= "+angoli[3]+"\n" + "simbolo= " + simbolo +"\n"+ "colore= " + colore
+					+"\n"+ "obbiettivo= " + obbiettivo +"\n"+"risora lupo necessaria= "+risNecessarie[1]+"\n"+"risorsa farfalla necessaria= "+risNecessarie[3]+"\n"+super.toString()+ "]";
+		}else if(risNecessarie[0]==0 && risNecessarie[3]==0) {
+			return "Carta oro: [angolo alto sinistro= " + angoli[0]+"\n"+"angolo alto destro= "+angoli[1]+"\n"+"angolo basso destro= "+angoli[2]+
+					"\n"+"angolo basso sinistro= "+angoli[3]+"\n" + "simbolo= " + simbolo +"\n"+ "colore= " + colore
+					+"\n"+ "obbiettivo= " + obbiettivo +"\n"+"risora fungo necessaria= "+risNecessarie[2]+"\n"+"risorsa lupo necessaria= "+risNecessarie[1]+"\n"+super.toString()+ "]";
+		}else if(risNecessarie[1]==0 && risNecessarie[2]==0) {
+			return "Carta oro: [angolo alto sinistro= " + angoli[0]+"\n"+"angolo alto destro= "+angoli[1]+"\n"+"angolo basso destro= "+angoli[2]+
+					"\n"+"angolo basso sinistro= "+angoli[3]+"\n" + "simbolo= " + simbolo +"\n"+ "colore= " + colore
+					+"\n"+ "obbiettivo= " + obbiettivo +"\n"+"risora foglie necessaria= "+risNecessarie[0]+"\n"+"risorsa farfalla necessaria= "+risNecessarie[3]+"\n"+super.toString()+ "]";
+		}else if(risNecessarie[1]==0 && risNecessarie[3]==0) {
+			return "Carta oro: [angolo alto sinistro= " + angoli[0]+"\n"+"angolo alto destro= "+angoli[1]+"\n"+"angolo basso destro= "+angoli[2]+
+					"\n"+"angolo basso sinistro= "+angoli[3]+"\n" + "simbolo= " + simbolo +"\n"+ "colore= " + colore
+					+"\n"+ "obbiettivo= " + obbiettivo +"\n"+"risora foglie necessaria= "+risNecessarie[0]+"\n"+"risorsa fungo necessaria= "+risNecessarie[2]+"\n"+super.toString()+ "]";
+		}else if(risNecessarie[2]==0 && risNecessarie[3]==0) {
+			return "Carta oro: [angolo alto sinistro= " + angoli[0]+"\n"+"angolo alto destro= "+angoli[1]+"\n"+"angolo basso destro= "+angoli[2]+
+					"\n"+"angolo basso sinistro= "+angoli[3]+"\n" + "simbolo= " + simbolo +"\n"+ "colore= " + colore
+					+"\n"+ "obbiettivo= " + obbiettivo +"\n"+"risora foglie necessaria= "+risNecessarie[0]+"\n"+"risorsa lupo necessaria= "+risNecessarie[1]+"\n"+super.toString()+ "]";
+		}
+		
+		return "Carta oro: [angolo alto sinistro= " + angoli[0]+"\n"+"angolo alto destro= "+angoli[1]+"\n"+"angolo basso destro= "+angoli[2]+
+				"\n"+"angolo basso sinistro= "+angoli[3]+"\n" + "simbolo= " + simbolo +"\n"+ "colore= " + colore
+				+"\n"+ "obbiettivo= " + obbiettivo +"\n"+ "risorse foglia necessarie= " + risNecessarie[0]+"\n"+"rsorse lupo necessarie= "+risNecessarie[1]+"\n" 
+				+"risorse fungo necessarie= "+risNecessarie[2]+"\n"+"risorse farfalla necessarie= "+risNecessarie[3]+"\n"+super.toString()+ "]";
+	}
+	
 }

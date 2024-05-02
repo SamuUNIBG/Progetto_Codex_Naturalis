@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import Carta.COro;
+import Carta.CRis;
 import Enumerazione.Colore;
 import Enumerazione.Simbolo;
 
@@ -84,5 +85,7 @@ public class MCOro extends Mazzo {
 	public int getCRimaste() {
 		return cMazzo.size();
 	}
-	
+	public ArrayList<COro> getCMazzo() {
+		return cMazzo;
+	}
 }

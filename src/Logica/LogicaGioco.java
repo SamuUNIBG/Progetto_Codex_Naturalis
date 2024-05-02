@@ -1,6 +1,8 @@
 package Logica;
 
 import java.util.ArrayList;
+
+
 import java.util.Scanner;
 
 import Carta.CObb;
@@ -14,8 +16,10 @@ import Tavolo.Tracciato;
 public class LogicaGioco {
 	
 	private CartaTavolo cartaTavolo;
+	
 	private Tracciato tracciato;
 	private int numGiocatori;
+	private Scanner sc;
 
 	public LogicaGioco() {
 		
@@ -89,15 +93,86 @@ public class LogicaGioco {
 	}
 
 	private void pescaCarta(Giocatore giocatoreAttuale) {
-		//Bisogna far scegliere all'utente quale carta pescare
+		sc=new Scanner(System.in);
+		System.out.println("Le carte risorsa scoperte in questo momento sul tavolo sono:\n");
+		for(int i=0;i<cartaTavolo.getcRisScp().size();i++) {
+			cartaTavolo.getcRisScp().get(i).toString();
+		}
+		System.out.println("Le carte oro scoperte in questo momento sul tavolo sono:\n");
+		for(int i=0;i<cartaTavolo.getcOroScp().size();i++) {
+			cartaTavolo.getcOroScp().get(i).toString();
+		}
+		System.out.println("Il colore della prima carta del mazzo delle carte risorsa è:\n ");
+		System.out.println(cartaTavolo.getMazzoRis().getCMazzo().get(0).getColore()+"\n");
+		System.out.println("Il colore della prima carta del mazzo delle carte oro è:\n ");
+		System.out.println(cartaTavolo.getMazzoOro().getCMazzo().get(0).getColore()+"\n");
+		System.out.println("Che cosa scegli?\n "+"1= pesca mazzo carte risorsa\n"+"2= pesca mazzo carte oro\n"+
+		"3= pesca una carta risorsa scoperta\n"+"4=pesca una carta oro scoperta\n");
+		int scelta=0;
+		do {
+			scelta=sc.nextInt();
+			if(scelta<1 ) {
+				System.out.println("Non puoi inserire un inserire un valore minore di 1,riprovare!");
+			}else if(scelta>4) {
+				System.out.println("Non puoi inserire un inserire un valore maggiore di 4, riprovare!");
+			}
+			
+		}while(scelta<1 ||scelta>4);
 		
-		//mostrare carte disponibili
-		//far scegliere la carta da pescare
-		//usare metodo pesca per prelevare la carta
-		cartaTavolo.pesca(null);
-		//passare la carta in input al metodo pescaC
-		giocatoreAttuale.pescaC(cartaTavolo.pesca(null));
 		
+			
+			switch(scelta) {
+			case 1:
+				System.out.println("hai pescato la prima carta del mazzo carte risorse correttamente!");
+				giocatoreAttuale.pescaC(cartaTavolo.pesca(TipoCarta.CRis));
+				break;
+			case 2:
+				System.out.println("hai pescato la prima carta del mazzo carte oro correttamente!");
+				giocatoreAttuale.pescaC(cartaTavolo.pesca(TipoCarta.COro));
+				break;
+				
+			case 3:
+				System.out.println("Quale carta risorsa scoperta vuoi pescare?\n"+
+						"1= prima\n"+"2=seconda\n");
+				int sceltaCartaRisSc=0;
+				do {
+					sceltaCartaRisSc=sc.nextInt();
+					if(sceltaCartaRisSc<1) {
+						System.out.println("Non puoi inserire un numero minore di 1, riprovare!");
+					}else if(sceltaCartaRisSc>2) {
+						System.out.println("Non puoi inserire un numero maggiore di 2, riprovare!");
+					}
+					
+				}while(sceltaCartaRisSc<1 ||sceltaCartaRisSc>2);
+				if(sceltaCartaRisSc==1) {
+					giocatoreAttuale.pescaC(cartaTavolo.pesca(TipoCarta.CRis,sceltaCartaRisSc-1));
+				}else {
+					giocatoreAttuale.pescaC(cartaTavolo.pesca(TipoCarta.CRis,sceltaCartaRisSc-1));
+				}
+				break;
+			case 4:
+				System.out.println("Quale carta oro scoperta vuoi pescare?\n"+
+						"1= prima\n"+"2=seconda\n");
+				int sceltaCartaoroSc=0;
+				do {
+					sceltaCartaoroSc=sc.nextInt();
+					if(sceltaCartaoroSc<1) {
+						System.out.println("Non puoi inserire un numero minore di 1, riprovare!");
+					}else if(sceltaCartaoroSc>2) {
+						System.out.println("Non puoi inserire un numero maggiore di 2, riprovare!");
+					}
+					
+				}while(sceltaCartaoroSc<1 ||sceltaCartaoroSc>2);
+				if(sceltaCartaoroSc==1) {
+					giocatoreAttuale.pescaC(cartaTavolo.pesca(TipoCarta.COro,sceltaCartaoroSc-1));
+				}else {
+					giocatoreAttuale.pescaC(cartaTavolo.pesca(TipoCarta.COro,sceltaCartaoroSc-1));
+				}
+				break;
+		
+		
+			
+		}
 	}
 
 	private void AddPuntiObb() {

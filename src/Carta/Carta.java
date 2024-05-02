@@ -6,6 +6,8 @@ import Tavolo.Giocatore;
 
 public abstract class Carta {
 	
+	
+
 	private final int puntiAssegnati; //le carte hanno punti
 	
 	public Carta(int puntiAssegnati) {
@@ -27,5 +29,9 @@ public abstract class Carta {
 	public abstract Simbolo getSimbolo();
 
 	public abstract Colore getColore();
-
+	
+	@Override
+	public String toString() {
+		return "punteggio carata= " + puntiAssegnati;
+	}
 }

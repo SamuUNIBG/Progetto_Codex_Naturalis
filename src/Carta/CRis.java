@@ -14,6 +14,8 @@ import Tavolo.Giocatore;
  */
 
 public class CRis extends Carta{
+	
+
 	private final int IDCARTA; //identificativo univoco di ogni carta risors
 	// va da 0 a 39 tot 40 carte risorsa
 	private static int lastId=0; //id incrementali
@@ -77,6 +79,10 @@ public class CRis extends Carta{
 	public boolean VerificaPrerequistio() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	@Override
+	public String toString() {
+		return "carata risorsa: [angolo alto sinistro= " + angoli[0]+"\n"+"Angolo altro destro= "+angoli[1]+"\n"+"Angolo basso destro= "+angoli[2]+"\n"+"Angolo basso sinistra= "+angoli[3]+"\n" + "simbolo carta= " + simbolo +"\n"+ "colore carta= " + colore+"\n"+super.toString() + "]";
 	}
 	
 }
