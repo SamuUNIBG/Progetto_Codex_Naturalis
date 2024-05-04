@@ -95,7 +95,7 @@ public class Giocatore {
 	public boolean giocaC() {
 		
 		Scanner sc = new Scanner(System.in);
-		int numCarta, posY, posX, retro;
+		int numCarta, posY, posX, retro = 0;
 		String posCarta;
 		boolean posCartaOk=false, preRequisito=false;
 		Carta carta;
@@ -117,12 +117,18 @@ public class Giocatore {
 				System.out.print("Inserire il numero relativo alla carta da giocare: ");
 				numCarta = sc.nextInt();
 			}while(numCarta<1 || numCarta>3);
+<<<<<<< HEAD
 			
 
 			//controllo giocabilit� carta oro
 			if(cMano.get(numCarta) instanceof COro)
 				if(cMano.get(numCarta).VerificaPrerequistio())
 
+=======
+			//controllo giocabilit� carta oro
+			if(cMano.get(numCarta) instanceof COro)
+				if(cMano.get(numCarta).VerificaPrerequistio())
+>>>>>>> debf92fcd894ecb875203cee1488fb69af5542bf
 			do {
 				System.out.print("Vuoi giocare la carta sul retro? [0(si) - 1(no)]: ");
 				retro = sc.nextInt();
@@ -133,7 +139,10 @@ public class Giocatore {
 			//controllo giocabilit� carta oro
 			if(carta instanceof COro && retro==1)
 				if(carta.VerificaPrerequistio())
+<<<<<<< HEAD
 
+=======
+>>>>>>> debf92fcd894ecb875203cee1488fb69af5542bf
 					preRequisito = true;
 		}while(!preRequisito);
 		
@@ -229,7 +238,10 @@ public class Giocatore {
 	public CObb getCObbPer() {
 		return cObbPer;
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> debf92fcd894ecb875203cee1488fb69af5542bf
 	public int[] getRisPossedute() {
 		return this.risPossedute;
 	}
@@ -239,13 +251,19 @@ public class Giocatore {
 	public CampoGioco getCampoG() {
 		return this.campo;
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> debf92fcd894ecb875203cee1488fb69af5542bf
 	
 	public CIniz getCInizPer() {
 		return cInizPer;
 	}
+<<<<<<< HEAD
 	
 
+=======
+>>>>>>> debf92fcd894ecb875203cee1488fb69af5542bf
 	public void pescaC(Carta carta) {
 		 
 		if(carta instanceof CRis || carta instanceof COro) {
