@@ -27,7 +27,7 @@ public abstract class Carta {
 	public abstract int getIDCARTA();
 	public abstract boolean VerificaPrerequistio();
 	public abstract Simbolo getSimbolo();
-
+	public abstract boolean isContataScala();
 	public abstract Colore getColore();
 	
 	@Override

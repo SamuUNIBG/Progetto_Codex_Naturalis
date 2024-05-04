@@ -23,6 +23,8 @@ public class CRis extends Carta{
 	private final Simbolo simbolo;
 	private final Colore colore;
 	private boolean fronte;
+	private boolean contataScala; //x capire se la carta e stata contata x obiettivo scala
+	private boolean contataL; //x capire se la carta e stata contata x obiettivo L
 
 	public CRis(int puntiAssegnati, Simbolo simbolo,Colore colore,
 			Simbolo angolo0, Simbolo angolo1,
@@ -83,6 +85,22 @@ public class CRis extends Carta{
 	@Override
 	public String toString() {
 		return "carata risorsa: [angolo alto sinistro= " + angoli[0]+"\n"+"Angolo altro destro= "+angoli[1]+"\n"+"Angolo basso destro= "+angoli[2]+"\n"+"Angolo basso sinistra= "+angoli[3]+"\n" + "simbolo carta= " + simbolo +"\n"+ "colore carta= " + colore+"\n"+super.toString() + "]";
+	}
+
+	public boolean isContataScala() {
+		return contataScala;
+	}
+
+	public void setContataScala(boolean contataScala) {
+		this.contataScala = contataScala;
+	}
+
+	public boolean isContataL() {
+		return contataL;
+	}
+
+	public void setContataL(boolean contataL) {
+		this.contataL = contataL;
 	}
 	
 }

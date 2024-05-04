@@ -32,6 +32,8 @@ public class COro extends Carta{
 	private final int[] risNecessarie = new int[4]; /*sono i requisiti (quindi 
 	le risorse da avere sul proprio campo) per poter piazzare la carta oro
 	sul fronte*/
+	private boolean contataScala; //x capire se la carta e stata contata x obiettivo scala
+	private boolean contataL; //x capire se la carta e stata contata x obiettivo L
 
 	public COro(int puntiAssegnati,  Simbolo obbiettivo,
 			Simbolo simbolo, Colore colore, Simbolo angolo0, Simbolo angolo1,
@@ -170,6 +172,22 @@ public class COro extends Carta{
 				"\n"+"angolo basso sinistro= "+angoli[3]+"\n" + "simbolo= " + simbolo +"\n"+ "colore= " + colore
 				+"\n"+ "obbiettivo= " + obbiettivo +"\n"+ "risorse foglia necessarie= " + risNecessarie[0]+"\n"+"rsorse lupo necessarie= "+risNecessarie[1]+"\n" 
 				+"risorse fungo necessarie= "+risNecessarie[2]+"\n"+"risorse farfalla necessarie= "+risNecessarie[3]+"\n"+super.toString()+ "]";
+	}
+
+	public boolean isContataScala() {
+		return contataScala;
+	}
+
+	public void setContataScala(boolean contataScala) {
+		this.contataScala = contataScala;
+	}
+
+	public boolean isContataL() {
+		return contataL;
+	}
+
+	public void setContataL(boolean contataL) {
+		this.contataL = contataL;
 	}
 	
 }
