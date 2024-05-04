@@ -189,5 +189,10 @@ public class COro extends Carta{
 	public void setContataL(boolean contataL) {
 		this.contataL = contataL;
 	}
+
+	public int calcolaMiniObb() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 }

@@ -83,4 +83,10 @@ public class CIniz extends Carta {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public boolean isContataScala() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

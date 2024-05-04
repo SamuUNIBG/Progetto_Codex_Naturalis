@@ -44,8 +44,8 @@ public class CObbScala extends CObb{
 		// TODO Auto-generated method stub
 		int volte = 0;  //per contare quante volte il giocatore fa l obiettivo
 		if(this.direzione==true) {  //e una scala crescente
-			for(int i=0; i<CampoGioco.getDimensionex()-1; i++) {
-				for(int j=0; j<CampoGioco.getDimensioney()-1; j++) {
+			for(int i=0; i<CampoGioco.getDimensioney()-1; i++) {
+				for(int j=0; j<CampoGioco.getDimensionex()-1; j++) {
 					
 					
 						if(giocatore.getCampoG().getCampo()[i][j]!=null
@@ -53,22 +53,22 @@ public class CObbScala extends CObb{
 						&& giocatore.getCampoG().getCampo()[i+1][j-1]!=null
 						/*se !=null vuol dire che nella cella e in quelle adiacenti
 						ci sono carte*/
-		&& (giocatore.getCampoG().getCampo()[i][j].getAngoli()[3].getCoperto()==true
-		|| giocatore.getCampoG().getCampo()[i-1][j+1].getAngoli()[1].getCoperto()==true) 
-		&& (giocatore.getCampoG().getCampo()[i][j].getAngoli()[1].getCoperto()==true
-		|| giocatore.getCampoG().getCampo()[i+1][j-1].getAngoli()[3].getCoperto()==true) 
-		//verifico la corretta copertura degli angoli
-		&& giocatore.getCampoG().getCampo()[i][j].getColore()==this.getColore()
-		&& giocatore.getCampoG().getCampo()[i-1][j+1].getColore()==this.getColore()
-		&& giocatore.getCampoG().getCampo()[i+1][j-1].getColore()==this.getColore()
-		/* verfico che il colore delle 3 carte prese in considerazione sia
-		  uguale al colore richiesto dalla carta obiettivo*/
-		&& !giocatore.getCampoG().getCampo()[i][j].isContataScala()
-		&& !giocatore.getCampoG().getCampo()[i-1][j+1].isContataScala()
-		&& !giocatore.getCampoG().getCampo()[i+1][j-1].isContataScala()){
-		/* verifico che le 3 carte non siano gia state contate per l'obietttivo
-		 * scala (le scale possibili sono 4 dei 4 colori diversi il che esclude
-		 * che una stessa carta possa esser contata x due scale di diverso colore)*/
+						&& (giocatore.getCampoG().getCampo()[i][j].getAngoli()[3].getCoperto()==true
+						|| giocatore.getCampoG().getCampo()[i-1][j+1].getAngoli()[1].getCoperto()==true) 
+						&& (giocatore.getCampoG().getCampo()[i][j].getAngoli()[1].getCoperto()==true
+						|| giocatore.getCampoG().getCampo()[i+1][j-1].getAngoli()[3].getCoperto()==true) 
+						//verifico la corretta copertura degli angoli
+						&& giocatore.getCampoG().getCampo()[i][j].getColore()==this.getColore()
+						&& giocatore.getCampoG().getCampo()[i-1][j+1].getColore()==this.getColore()
+						&& giocatore.getCampoG().getCampo()[i+1][j-1].getColore()==this.getColore()
+						/* verfico che il colore delle 3 carte prese in considerazione sia
+						  uguale al colore richiesto dalla carta obiettivo*/
+						&& !giocatore.getCampoG().getCampo()[i][j].isContataScala()
+						&& !giocatore.getCampoG().getCampo()[i-1][j+1].isContataScala()
+						&& !giocatore.getCampoG().getCampo()[i+1][j-1].isContataScala()){
+						/* verifico che le 3 carte non siano gia state contate per l'obietttivo
+						 * scala (le scale possibili sono 4 dei 4 colori diversi il che esclude
+						 * che una stessa carta possa esser contata x due scale di diverso colore)*/
 						   volte ++; 
 						   //numero di volte per cui si e realizzato l obiettivo
 						}
@@ -77,8 +77,8 @@ public class CObbScala extends CObb{
 		}
 		else {
 
-			for(int i=0; i<CampoGioco.getDimensionex()-1; i++) {
-				for(int j=0; j<CampoGioco.getDimensioney()-1; j++) {
+			for(int i=0; i<CampoGioco.getDimensioney()-1; i++) {
+				for(int j=0; j<CampoGioco.getDimensionex()-1; j++) {
 					
 					
 						if(giocatore.getCampoG().getCampo()[i][j]!=null
@@ -86,22 +86,22 @@ public class CObbScala extends CObb{
 						&& giocatore.getCampoG().getCampo()[i+1][j+1]!=null
 						/*se !=null vuol dire che nella cella e in quelle adiacenti
 						ci sono carte*/
-		&& (giocatore.getCampoG().getCampo()[i][j].getAngoli()[0].getCoperto()==true
-		|| giocatore.getCampoG().getCampo()[i-1][j-1].getAngoli()[2].getCoperto()==true) 
-		&& (giocatore.getCampoG().getCampo()[i][j].getAngoli()[2].getCoperto()==true
-		|| giocatore.getCampoG().getCampo()[i+1][j+1].getAngoli()[0].getCoperto()==true) 
-		//verifico la corretta copertura degli angoli
-		&& giocatore.getCampoG().getCampo()[i][j].getColore()==this.getColore()
-		&& giocatore.getCampoG().getCampo()[i-1][j-1].getColore()==this.getColore()
-		&& giocatore.getCampoG().getCampo()[i+1][j+1].getColore()==this.getColore()
-		/* verfico che il colore delle 3 carte prese in considerazione sia
-		  uguale al colore richiesto dalla carta obiettivo*/
-		&& !giocatore.getCampoG().getCampo()[i][j].isContataScala()
-		&& !giocatore.getCampoG().getCampo()[i-1][j-1].isContataScala()
-		&& !giocatore.getCampoG().getCampo()[i+1][j+1].isContataScala()){
-		/* verifico che le 3 carte non siano gia state contate per l'obietttivo
-		 * scala (le scale possibili sono 4 dei 4 colori diversi il che esclude
-		 * che una stessa carta possa esser contata x due scale di diverso colore)*/
+						&& (giocatore.getCampoG().getCampo()[i][j].getAngoli()[0].getCoperto()==true
+						|| giocatore.getCampoG().getCampo()[i-1][j-1].getAngoli()[2].getCoperto()==true) 
+						&& (giocatore.getCampoG().getCampo()[i][j].getAngoli()[2].getCoperto()==true
+						|| giocatore.getCampoG().getCampo()[i+1][j+1].getAngoli()[0].getCoperto()==true) 
+						//verifico la corretta copertura degli angoli
+						&& giocatore.getCampoG().getCampo()[i][j].getColore()==this.getColore()
+						&& giocatore.getCampoG().getCampo()[i-1][j-1].getColore()==this.getColore()
+						&& giocatore.getCampoG().getCampo()[i+1][j+1].getColore()==this.getColore()
+						/* verfico che il colore delle 3 carte prese in considerazione sia
+						  uguale al colore richiesto dalla carta obiettivo*/
+						&& !giocatore.getCampoG().getCampo()[i][j].isContataScala()
+						&& !giocatore.getCampoG().getCampo()[i-1][j-1].isContataScala()
+						&& !giocatore.getCampoG().getCampo()[i+1][j+1].isContataScala()){
+						/* verifico che le 3 carte non siano gia state contate per l'obietttivo
+						 * scala (le scale possibili sono 4 dei 4 colori diversi il che esclude
+						 * che una stessa carta possa esser contata x due scale di diverso colore)*/
 						   volte ++; 
 						   //numero di volte per cui si e realizzato l obiettivo
 						}

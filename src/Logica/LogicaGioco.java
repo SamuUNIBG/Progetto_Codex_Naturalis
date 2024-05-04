@@ -78,9 +78,10 @@ public class LogicaGioco {
 				giocatoreAttuale = tracciato.getGiocatore(i);				
 				giocatoreAttuale.giocaC();
 				
-				pescaCarta(giocatoreAttuale);
+				if(!ultimoGiro)
+					pescaCarta(giocatoreAttuale);
 				
-				if(giocatoreAttuale.getPunteggio() > 19) {
+				if(giocatoreAttuale.getPunteggio() > 19 || (cartaTavolo.getMazzoOro().getCRimaste()==0 && cartaTavolo.getMazzoRis().getCRimaste()==0)) {
 					punti20 = true;
 				}
 				
