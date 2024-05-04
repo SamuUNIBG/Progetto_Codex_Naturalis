@@ -44,8 +44,8 @@ public class CObbScala extends CObb{
 		// TODO Auto-generated method stub
 		int volte = 0;  //per contare quante volte il giocatore fa l obiettivo
 		if(this.direzione==true) {  //e una scala crescente
-			for(int i=0; i<CampoGioco.getDimensioney()-1; i++) {
-				for(int j=0; j<CampoGioco.getDimensionex()-1; j++) {
+			for(int i=1; i<CampoGioco.getDimensioney()-1; i++) {
+				for(int j=1; j<CampoGioco.getDimensionex()-1; j++) {
 					
 					
 						if(giocatore.getCampoG().getCampo()[i][j]!=null
@@ -71,14 +71,18 @@ public class CObbScala extends CObb{
 						 * che una stessa carta possa esser contata x due scale di diverso colore)*/
 						   volte ++; 
 						   //numero di volte per cui si e realizzato l obiettivo
+						   giocatore.getCampoG().getCampo()[i][j].setContataScala(true);
+						   giocatore.getCampoG().getCampo()[i-1][j+1].setContataScala(true);
+						   giocatore.getCampoG().getCampo()[i+1][j-1].setContataScala(true);
+						   //setto a true il fatto che queste carte sono state gia contate per quell obiettivo
 						}
 				}
 			}
 		}
 		else {
 
-			for(int i=0; i<CampoGioco.getDimensioney()-1; i++) {
-				for(int j=0; j<CampoGioco.getDimensionex()-1; j++) {
+			for(int i=1; i<CampoGioco.getDimensioney()-1; i++) {
+				for(int j=1; j<CampoGioco.getDimensionex()-1; j++) {
 					
 					
 						if(giocatore.getCampoG().getCampo()[i][j]!=null
@@ -104,6 +108,10 @@ public class CObbScala extends CObb{
 						 * che una stessa carta possa esser contata x due scale di diverso colore)*/
 						   volte ++; 
 						   //numero di volte per cui si e realizzato l obiettivo
+						   giocatore.getCampoG().getCampo()[i][j].setContataScala(true);
+						   giocatore.getCampoG().getCampo()[i-1][j-1].setContataScala(true);
+						   giocatore.getCampoG().getCampo()[i+1][j+1].setContataScala(true);
+						   //setto a true il fatto che queste carte sono state gia contate per quell obiettivo
 						}
 				}
 			}

@@ -27,11 +27,19 @@ public abstract class Carta {
 	public abstract int getIDCARTA();
 	public abstract boolean VerificaPrerequistio();
 	public abstract Simbolo getSimbolo();
-	public abstract boolean isContataScala();
+	
 	public abstract Colore getColore();
 	
 	@Override
 	public String toString() {
 		return "punteggio carata= " + puntiAssegnati;
+	}
+
+	public void setContataScala(boolean contataScala) {
+		// TODO Auto-generated method stub
+		
+	}
+	public boolean isContataScala() {
+		return false;
 	}
 }

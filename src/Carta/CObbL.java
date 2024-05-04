@@ -56,4 +56,9 @@ public class CObbL extends CObb{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public boolean isContataScala() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

@@ -86,12 +86,13 @@ public class CRis extends Carta{
 	public String toString() {
 		return "carata risorsa: [angolo alto sinistro= " + angoli[0]+"\n"+"Angolo altro destro= "+angoli[1]+"\n"+"Angolo basso destro= "+angoli[2]+"\n"+"Angolo basso sinistra= "+angoli[3]+"\n" + "simbolo carta= " + simbolo +"\n"+ "colore carta= " + colore+"\n"+super.toString() + "]";
 	}
-
+	@Override
 	public boolean isContataScala() {
 		return contataScala;
 	}
-
+	@Override
 	public void setContataScala(boolean contataScala) {
+		// TODO Auto-generated method stub
 		this.contataScala = contataScala;
 	}
 
@@ -102,5 +103,7 @@ public class CRis extends Carta{
 	public void setContataL(boolean contataL) {
 		this.contataL = contataL;
 	}
+
+	
 	
 }
