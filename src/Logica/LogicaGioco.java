@@ -113,14 +113,48 @@ public class LogicaGioco {
 		do {
 			scelta=sc.nextInt();
 			if(scelta<1 ) {
-				System.out.println("Non puoi inserire un inserire un valore minore di 1,riprovare!");
+				System.out.println("Non puoi inserire un valore minore di 1,riprovare!");
 			}else if(scelta>4) {
-				System.out.println("Non puoi inserire un inserire un valore maggiore di 4, riprovare!");
+				System.out.println("Non puoi inserire un valore maggiore di 4, riprovare!");
 			}
 			
 		}while(scelta<1 ||scelta>4);
 		
-		
+		if(scelta ==1) {
+			if(cartaTavolo.getMazzoRis().getCRimaste()==0) {
+				System.out.println("Le carte risorsa sono finite, inserire un altro metodo di pesca\n");
+				do {
+					
+					System.out.println("Che cosa scegli?\n "+"2= pesca mazzo carte oro\n"+
+							"3= pesca una carta risorsa scoperta\n"+"4=pesca una carta oro scoperta\n");
+					scelta=sc.nextInt();
+					if(scelta<2) {
+						System.out.println("Non puoi inserire un valore minore di 2,riprovare!");
+					}else if(scelta>4) {
+						System.out.println("Non puoi inserire un valore maggiore di 4,riprovare!");
+					}
+				}while(scelta<2 || scelta>4);
+				
+			}
+		}
+		if(scelta==2) {
+			if(cartaTavolo.getMazzoOro().getCRimaste()==0) {
+				System.out.println("Le carte Oro sono finite, inserire un altro metodo di pesca\n");
+				do {
+					
+					System.out.println("Che cosa scegli?\n "+"1= pesca mazzo carte risorsa\n"+
+							"3= pesca una carta risorsa scoperta\n"+"4=pesca una carta oro scoperta\n");
+					scelta=sc.nextInt();
+					if(scelta<1) {
+						System.out.println("Non puoi inserire un valore minore di 1,riprovare!");
+					}else if(scelta>4) {
+						System.out.println("Non puoi inserire un valore maggiore di 4,riprovare!");
+					}else if(scelta==2) {
+						System.out.println("Non puoi inserire un valore uguale a 2,riprovare!");
+					}
+				}while(scelta<1|| scelta>4|| scelta==2);
+			}
+		}
 			
 			switch(scelta) {
 			case 1:
@@ -207,6 +241,15 @@ public class LogicaGioco {
 				giocatore.add(tracciato.getGiocatore(i).getSoprannome());
 			}
 		}
+		if(giocatore.size()==1) {
+			System.out.println("Ha vinto solo un giocatore:\n");
+		}else {
+			System.out.println("Hanno vinto "+giocatore.size()+" giocatori:\n");
+		}
+		for(int i=0;i<giocatore.size();i++) {
+				System.out.println("Congratulazioni "+giocatore.get(i)+" hai vinto!\n");
+			}
+		
 		
 	}
 	
