@@ -44,8 +44,8 @@ public class CObbScala extends CObb{
 		// TODO Auto-generated method stub
 		int volte = 0;  //per contare quante volte il giocatore fa l obiettivo
 		if(this.direzione==true) {  //e una scala crescente
-			for(int i=1; i<CampoGioco.getDimensioney()-1; i++) {
-				for(int j=1; j<CampoGioco.getDimensionex()-1; j++) {
+			for(int i=1; i<CampoGioco.getDimensionex()-1; i++) {
+				for(int j=1; j<CampoGioco.getDimensioney()-1; j++) {
 					
 					
 						if(giocatore.getCampoG().getCampo()[i][j]!=null
@@ -81,8 +81,8 @@ public class CObbScala extends CObb{
 		}
 		else {
 
-			for(int i=1; i<CampoGioco.getDimensioney()-1; i++) {
-				for(int j=1; j<CampoGioco.getDimensionex()-1; j++) {
+			for(int i=1; i<CampoGioco.getDimensionex()-1; i++) {
+				for(int j=1; j<CampoGioco.getDimensioney()-1; j++) {
 					
 					
 						if(giocatore.getCampoG().getCampo()[i][j]!=null

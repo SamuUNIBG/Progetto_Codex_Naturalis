@@ -42,4 +42,11 @@ public abstract class Carta {
 	public boolean isContataScala() {
 		return false;
 	}
+	public void setContataL(boolean contataScala) {
+		// TODO Auto-generated method stub
+		
+	}
+	public boolean isContataL() {
+		return false;
+	}
 }
