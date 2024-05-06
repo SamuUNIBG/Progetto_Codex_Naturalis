@@ -69,6 +69,10 @@ public class COro extends Carta{
 		this.simbolo=simbolo;
 		this.fronte=false;
 		this.obbiettivo=Simbolo.ASSENTE;
+		this.risNecessarie[0]=0;
+		this.risNecessarie[1]=0;
+		this.risNecessarie[2]=0;
+		this.risNecessarie[3]=0;
 	}
 	
 	/**
@@ -77,12 +81,15 @@ public class COro extends Carta{
 	 * @return true se e soddisfatto altrimenti torna false
 	 */
 	public boolean VerificaPrerequistio(int[] vettoreRisorse) { 
+		int ok=0;
 		for(int i=0; i<risNecessarie.length; i++) {
 			if(risNecessarie[i]<=vettoreRisorse[i])
-				return true;
+				ok++;
 		}
-		
-		return false;
+		if(ok==4)
+			return true;
+		else
+			return false;
 	}
 	
 	public Angolo[] getAngoli() {

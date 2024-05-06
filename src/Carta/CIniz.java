@@ -51,7 +51,10 @@ public class CIniz extends Carta {
 		fronte=false;
 	}
 	public Angolo[] getAngoli() {
-		return this.angoli;
+		if(fronte)
+			return this.angoli;
+		else
+			return this.angoliR;
 	}
 
 	public boolean getFronte() {

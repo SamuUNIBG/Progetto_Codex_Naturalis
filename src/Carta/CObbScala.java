@@ -154,4 +154,10 @@ public class CObbScala extends CObb{
 		
 	}
 
+	@Override
+	public boolean getFronte() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

@@ -49,4 +49,6 @@ public abstract class Carta {
 	public boolean isContataL() {
 		return false;
 	}
+
+	public abstract boolean getFronte();
 }

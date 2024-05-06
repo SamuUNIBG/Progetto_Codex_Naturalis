@@ -58,5 +58,10 @@ public class CObbRis extends CObb{
 				"\n\t\t Obbiettivo -> Formare tris di -> " + simbolo +  "]";
 		
 	}
+	@Override
+	public boolean getFronte() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }

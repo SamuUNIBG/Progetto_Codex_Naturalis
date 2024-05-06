@@ -110,5 +110,10 @@ public class CObbOgg extends CObb{
 		return str +=  "]";
 		
 	}
+	@Override
+	public boolean getFronte() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }

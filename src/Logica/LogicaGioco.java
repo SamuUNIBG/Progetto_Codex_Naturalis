@@ -118,34 +118,33 @@ public class LogicaGioco {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("Le carte risorsa scoperte in questo momento sul tavolo sono:\n");
+		System.out.println("Le carte a disposizione per la pesca:");
+		System.out.println("Le prime carte dei mazzi:");
+		System.out.println("\t1)Il colore della prima carta del mazzo delle carte risorsa" + (char)233 + ": " + cartaTavolo.getMazzoRis().getCMazzo().get(0).getColore());
+		System.out.println("\t2)Il colore della prima carta del mazzo delle carte oro" + (char)233 + ": " + cartaTavolo.getMazzoOro().getCMazzo().get(0).getColore());
+		System.out.println("3)Le carte risorsa scoperte:");
 		for(int i=0;i<cartaTavolo.getcRisScp().size();i++) {
-			cartaTavolo.getcRisScp().get(i).toString();
+			System.out.println("\t" + cartaTavolo.getcRisScp().get(i).toString());
+			
 		}
-		System.out.println("Le carte oro scoperte in questo momento sul tavolo sono:\n");
+		System.out.println("4)Le carte oro scoperte:");
 		for(int i=0;i<cartaTavolo.getcOroScp().size();i++) {
-			cartaTavolo.getcOroScp().get(i).toString();
+			System.out.println("\t" + cartaTavolo.getcOroScp().get(i).toString());
 		}
-		System.out.println("Il colore della prima carta del mazzo delle carte risorsa è:\n ");
-		System.out.println(cartaTavolo.getMazzoRis().getCMazzo().get(0).getColore()+"\n");
-		System.out.println("Il colore della prima carta del mazzo delle carte oro è:\n ");
-		System.out.println(cartaTavolo.getMazzoOro().getCMazzo().get(0).getColore()+"\n");
-		System.out.println("Che cosa scegli?\n "+"1= pesca mazzo carte risorsa\n"+"2= pesca mazzo carte oro\n"+
-		"3= pesca una carta risorsa scoperta\n"+"4=pesca una carta oro scoperta\n");
+		
 		int scelta=0;
 		do {
+			System.out.print("Inserire il numero relativo alla carta da pescare: ");
 			scelta=sc.nextInt();
-			if(scelta<1 ) {
-				System.out.println("Non puoi inserire un valore minore di 1,riprovare!");
-			}else if(scelta>4) {
-				System.out.println("Non puoi inserire un valore maggiore di 4, riprovare!");
+			if(scelta<1 || scelta >4) {
+				System.out.println("ERRORE! Numero inserito non valido, riprovare");
 			}
 			
 		}while(scelta<1 ||scelta>4);
 		
 		if(scelta ==1) {
 			if(cartaTavolo.getMazzoRis().getCRimaste()==0) {
-				System.out.println("Le carte risorsa sono finite, inserire un altro metodo di pesca\n");
+				System.out.println("ERRORE! Le carte risorsa sono finite, inserire un altro metodo di pesca");
 				do {
 					
 					System.out.println("Che cosa scegli?\n "+"2= pesca mazzo carte oro\n"+
@@ -162,7 +161,7 @@ public class LogicaGioco {
 		}
 		if(scelta==2) {
 			if(cartaTavolo.getMazzoOro().getCRimaste()==0) {
-				System.out.println("Le carte Oro sono finite, inserire un altro metodo di pesca\n");
+				System.out.println("ERRORE! Le carte Oro sono finite, inserire un altro metodo di pescan");
 				do {
 					
 					System.out.println("Che cosa scegli?\n "+"1= pesca mazzo carte risorsa\n"+
@@ -181,11 +180,11 @@ public class LogicaGioco {
 			
 			switch(scelta) {
 			case 1:
-				System.out.println("hai pescato la prima carta del mazzo carte risorse correttamente!");
+				System.out.println("Hai pescato la prima carta del mazzo carte risorse correttamente!");
 				giocatoreAttuale.pescaC(cartaTavolo.pesca(TipoCarta.CRis));
 				break;
 			case 2:
-				System.out.println("hai pescato la prima carta del mazzo carte oro correttamente!");
+				System.out.println("Hai pescato la prima carta del mazzo carte oro correttamente!");
 				giocatoreAttuale.pescaC(cartaTavolo.pesca(TipoCarta.COro));
 				break;
 				
@@ -195,10 +194,8 @@ public class LogicaGioco {
 				int sceltaCartaRisSc=0;
 				do {
 					sceltaCartaRisSc=sc.nextInt();
-					if(sceltaCartaRisSc<1) {
-						System.out.println("Non puoi inserire un numero minore di 1, riprovare!");
-					}else if(sceltaCartaRisSc>2) {
-						System.out.println("Non puoi inserire un numero maggiore di 2, riprovare!");
+					if(sceltaCartaRisSc<1 || sceltaCartaRisSc >2) {
+						System.out.println("ERRORE! Numero inserito non valido, riprovare");
 					}
 					
 				}while(sceltaCartaRisSc<1 ||sceltaCartaRisSc>2);
@@ -214,10 +211,8 @@ public class LogicaGioco {
 				int sceltaCartaoroSc=0;
 				do {
 					sceltaCartaoroSc=sc.nextInt();
-					if(sceltaCartaoroSc<1) {
-						System.out.println("Non puoi inserire un numero minore di 1, riprovare!");
-					}else if(sceltaCartaoroSc>2) {
-						System.out.println("Non puoi inserire un numero maggiore di 2, riprovare!");
+					if(sceltaCartaoroSc<1 || sceltaCartaoroSc >2) {
+						System.out.println("ERRORE! Numero inserito non valido, riprovare");
 					}
 					
 				}while(sceltaCartaoroSc<1 ||sceltaCartaoroSc>2);
