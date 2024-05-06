@@ -101,27 +101,32 @@ public class Game extends JFrame implements ActionListener{
         scrollPlayingField4.getHorizontalScrollBar().setValue(((12500-204)/2)-(700));
         scrollPlayingField4.getVerticalScrollBar().setValue((5000-142)/2-(250));
         
+      //Pannelli opachi per posizionamento carte/mazzi
+        JLabel opacoLabel=new JLabel();
+        opacoLabel.setBackground(new Color(170, 170, 170, 80));
+        opacoLabel.setOpaque(true);
+        opacoLabel.setSize(new Dimension(204, 142));
+        opacoLabel.setVisible(true);
+        //204, 142
+        
         //Pannelli carte personali 
         JPanel cartePersonaliPanel=new JPanel();
         cartePersonaliPanel.setPreferredSize(new Dimension(300,300));
-        cartePersonaliPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         cartePersonaliPanel.setLayout(new BorderLayout());
-        cartePersonaliPanel.setOpaque(false);
+        cartePersonaliPanel.setOpaque(true);
         JPanel cartePersonaliPanel2=new JPanel();
         cartePersonaliPanel2.setPreferredSize(new Dimension(300,300));
-        cartePersonaliPanel2.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         cartePersonaliPanel2.setLayout(new BorderLayout());
-        cartePersonaliPanel2.setOpaque(false);
+        cartePersonaliPanel.setOpaque(true);
         JPanel cartePersonaliPanel3=new JPanel();
         cartePersonaliPanel3.setPreferredSize(new Dimension(300,300));
-        cartePersonaliPanel3.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         cartePersonaliPanel3.setLayout(new BorderLayout());
-        cartePersonaliPanel3.setOpaque(false);
+        cartePersonaliPanel.setOpaque(true);
         JPanel cartePersonaliPanel4=new JPanel();
         cartePersonaliPanel4.setPreferredSize(new Dimension(300,300));
-        cartePersonaliPanel4.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         cartePersonaliPanel4.setLayout(new BorderLayout());
-        cartePersonaliPanel4.setOpaque(false);
+        cartePersonaliPanel.setOpaque(true);
+        
         
         
         //contenitori carte personali
@@ -158,16 +163,27 @@ public class Game extends JFrame implements ActionListener{
         tabbedPane.add("Giocatore 2",contenitore2);
         tabbedPane.add("Giocatore 3",contenitore3);
         tabbedPane.add("Giocatore 4",contenitore4);
+        
+        
+      
         //pannello contenente nomi utente
         JPanel userPanel = new JPanel();
-        userPanel.setPreferredSize(new Dimension(300, 100));
+        userPanel.setPreferredSize(new Dimension(500, 300));
         userPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         userPanel.setLayout(new GridBagLayout());
         userPanel.setOpaque(false);
         
+      //pannello contenente le carte
+      	JPanel cartePanel=new JPanel();
+      	cartePanel.setPreferredSize(new Dimension(200, 200));
+      	cartePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+      	cartePanel.setLayout(new GridBagLayout());
+    	cartePanel.setOpaque(false);
+        
         GridBagConstraints gbc = new GridBagConstraints();
 		JLabel utente = new JLabel("Username");
 		JLabel carte=new JLabel("Carte");
+		JLabel carte2=new JLabel("Carte2");
 		carte.setMaximumSize(new Dimension(30,30));
 		JLabel tracciato=new JLabel("Tracciato");
 		utente.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 15));
@@ -175,20 +191,24 @@ public class Game extends JFrame implements ActionListener{
 		gbc.gridx=0;
 		gbc.gridy=0;
 		userPanel.add(utente,gbc);
+		cartePanel.add(opacoLabel,gbc);
+		gbc.gridx=0;
+		gbc.gridy=1;
+		cartePanel.add(carte2,gbc);
 		
-        
 		
-		//pannello contenente le carte
-		JPanel cartePanel=new JPanel();
-		cartePanel.setPreferredSize(new Dimension(200, 200));
-		cartePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		cartePanel.setLayout(new BorderLayout());
-		cartePanel.setOpaque(false);
-		cartePanel.add(carte,BorderLayout.CENTER);
-		cartePanel.add(userPanel,BorderLayout.WEST);
+		 //contenitore carte e username
+        JPanel contenitoreUC=new JPanel();
+        contenitoreUC.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        contenitoreUC.setLayout(new BorderLayout());
+        contenitoreUC.setOpaque(false);
+        contenitoreUC.setVisible(true);
+        contenitoreUC.add(userPanel,BorderLayout.WEST);
+        contenitoreUC.add(cartePanel,BorderLayout.CENTER);
+		
 		//pannello tracciato
 		JPanel tracciatoPanel=new JPanel();
-		tracciatoPanel.setPreferredSize(new Dimension(100, 300));
+		tracciatoPanel.setPreferredSize(new Dimension(500, 100));
 		tracciatoPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		tracciatoPanel.setLayout(new GridBagLayout());
 		tracciatoPanel.setOpaque(false);
@@ -216,7 +236,7 @@ public class Game extends JFrame implements ActionListener{
 			
       		//frame.add(scrollPlayingField);
 			frame.getContentPane().add(tabbedPane);
-      		frame.add(cartePanel,BorderLayout.NORTH);
+      		frame.add(contenitoreUC,BorderLayout.NORTH);
       		//frame.add(userPanel,BorderLayout.WEST);
       		frame.add(tracciatoPanel,BorderLayout.WEST);
       		//makes frame visible
