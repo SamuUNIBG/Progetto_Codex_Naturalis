@@ -44,7 +44,6 @@ public class Giocatore {
 			risPossedute[i]=0;
 			if(i<3) {
 				oggPosseduti[i]=0;
-				cMano.add(null);
 			}
 			
 		}
@@ -62,7 +61,8 @@ public class Giocatore {
 		punteggio+=punti;
 	}
 	public String getSoprannome() {
-		return soprannome;
+		System.out.println(this.soprannome);
+		return this.soprannome;
 	}
 	
 	public boolean giocaCIniz() {
@@ -79,9 +79,9 @@ public class Giocatore {
 			retro = sc.nextInt();
 		}while(retro!=0 && retro!=1);
 		
-		sc.close();
+		//sc.close();
 		
-		//se la carta � stata giocata sul retro si setta l'attributo fronte=false
+		//se la carta e' stata giocata sul retro si setta l'attributo fronte=false
 		if(retro==0) {
 			cInizPer.retro();
 		}
@@ -106,7 +106,7 @@ public class Giocatore {
 		System.out.println("Il tuo campo di gioco:");
 		campo.print();
 		System.out.println("Le carte in tuo possesso:");
-		System.out.println("0) " + cObbPer.toString());
+		System.out.println("0)" + cObbPer.toString());
 		for(int i=0; i<3; i++) {
 			System.out.println((i+1) + ") " + cMano.get(i).toString());
 		}
@@ -116,22 +116,16 @@ public class Giocatore {
 			do {
 				System.out.print("Inserire il numero relativo alla carta da giocare: ");
 				numCarta = sc.nextInt();
-			}while(numCarta<1 || numCarta>3);			
-
-			//controllo giocabilit� carta oro
-			if(cMano.get(numCarta) instanceof COro)
-				if(cMano.get(numCarta).VerificaPrerequistio())
-			//controllo giocabilit� carta oro
-			if(cMano.get(numCarta) instanceof COro)
-				if(cMano.get(numCarta).VerificaPrerequistio())
+			}while(numCarta<1 || numCarta>3);
+			
 			do {
 				System.out.print("Vuoi giocare la carta sul retro? [0(si) - 1(no)]: ");
 				retro = sc.nextInt();
 			}while(retro!=0 && retro!=1);
 			
-			carta = cMano.get(numCarta);
+			carta = cMano.get(numCarta-1);
 			
-			//controllo giocabilit� carta oro
+			//controllo giocabilita' carta oro
 			if(carta instanceof COro && retro==1)
 				if(carta.VerificaPrerequistio())
 					preRequisito = true;
@@ -159,7 +153,7 @@ public class Giocatore {
 			}
 		}while(!posCartaOk);
 		
-		sc.close();
+		//sc.close();
 		
 		//se la carta e' stata giocata sul retro si crea una nuova carta
 		if(retro==0) {

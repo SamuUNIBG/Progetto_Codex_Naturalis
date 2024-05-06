@@ -192,4 +192,31 @@ public class CObbL extends CObb{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public String toString() {
+		String str = "Carata obbiettivo L " /*+ IDCARTA*/ +
+				":\n\t\t[" + super.toString() +
+				"\n\t\t Obbiettivo -> Formare una L con tre carte" +
+				"\n\t\t Colore carte adiacenti -> " + colori[0] +
+				"\n\t\t Colore carta diagonale -> " + colori[1] +
+				"\n\t\t Forma -> ";
+		switch(direzione) {
+			case 1:
+				str += "_|^";
+				break;
+			case 2:
+				str += "|_^";
+				break;
+			case 3:
+				str += "|_";
+				break;
+			case 4:
+				str += "_|";
+				break;
+		}
+			
+		return str +=  "]";
+		
+	}
+	
 }

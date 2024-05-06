@@ -32,7 +32,7 @@ public abstract class Carta {
 	
 	@Override
 	public String toString() {
-		return "punteggio carata= " + puntiAssegnati;
+		return "Punteggio carta -> " + puntiAssegnati;
 	}
 
 	public void setContataScala(boolean contataScala) {

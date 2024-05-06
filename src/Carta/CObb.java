@@ -25,4 +25,9 @@ public abstract class CObb extends Carta{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public String toString() {
+		return super.toString();
+	}
+	
 }

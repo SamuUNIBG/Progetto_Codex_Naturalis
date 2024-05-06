@@ -23,6 +23,7 @@ public class CampoGioco {
 		posizioniDisponibili = new ArrayList<String>();
 		
 		campo = new Carta[dimensioneY][dimensioneX];
+		campoPrint = new int[dimensioneY][dimensioneX];
 		
 		for(int y=0; y<dimensioneY; y++) {
 			for(int x=0; x<dimensioneX; x++) {
@@ -118,21 +119,38 @@ public class CampoGioco {
 	}
 	
 	public void print() {
+		System.out.printf(" " + "%9d" + " |", 0);
+		for(int x=1; x<dimensioneX; x++) {
+			System.out.printf(" " + "%3d" + " ", x);
+			if(x<dimensioneX-1) {
+				System.out.print("|");
+			}
+		}
+		for(int x=0; x<dimensioneX; x++) {
+			System.out.print("----");
+			if(x<dimensioneX-1) {
+				System.out.print("--");
+			}
+		}
+		System.out.println("");
 		for(int y=0; y<dimensioneY; y++) {
+			System.out.printf(" " + "%3d" + " |", y);
 			for(int x=0; x<dimensioneX; x++) {
-					System.out.printf(" " + "%3d", campoPrint[y][x]);
+					System.out.printf(" " + "%3d" + " ", campoPrint[y][x]);
 				if(x<dimensioneX-1) {
-					System.out.print(" |");
+					System.out.print("|");
 				}
 			}
+			System.out.println("");
 			if(y<dimensioneY-1) {
 				for(int x=0; x<dimensioneX; x++) {
-					System.out.println("----");
+					System.out.print("----");
 					if(x<dimensioneX-1) {
 						System.out.print("--");
 					}
 				}
 			}
+			System.out.println("");
 		}
 	}
 

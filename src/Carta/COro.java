@@ -106,7 +106,23 @@ public class COro extends Carta{
 
 	@Override
 	public String toString() {
-		if(risNecessarie[0]==0) {
+		return "Carata oro " + IDCARTA +
+				":\n\t\t[" + super.toString() +
+				"\n\t\t Obbiettivo -> " + obbiettivo +
+				"\n\t\t Simbolo -> " + simbolo +
+				"\n\t\t Colore -> " + colore +
+				"\n\t\t Angoli:" +
+				"\n\t\t\tAlto sx -> " + angoli[0].getSimbolo() +
+				"\n\t\t\tAltro dx -> " + angoli[1].getSimbolo() +
+				"\n\t\t\tBasso dx -> "+angoli[2].getSimbolo() +
+				"\n\t\t\tBasso sx -> "+angoli[3].getSimbolo() +
+				"\n\t\t Risorsa necessarie:" +
+				"\n\t\t\tFoglie -> " + risNecessarie[0]+
+				"\n\t\t\tLupo -> " + risNecessarie[1] +
+				"\n\t\t\tFungo -> " + risNecessarie[2] +
+				"\n\t\t\tFarfalla -> " + risNecessarie[3] + "]";
+		
+		/*if(risNecessarie[0]==0) {
 			return "Carta oro: [angolo alto sinistro= " + angoli[0]+"\n"+"angolo alto destro= "+angoli[1]+"\n"+"angolo basso destro= "+angoli[2]+
 					"\n"+"angolo basso sinistro= "+angoli[3]+"\n" + "simbolo= " + simbolo +"\n"+ "colore= " + colore
 					+"\n"+ "obbiettivo= " + obbiettivo +"\n"+ "risorsa lupo necessaria= " + risNecessarie[1]+"\n" 
@@ -172,6 +188,7 @@ public class COro extends Carta{
 				"\n"+"angolo basso sinistro= "+angoli[3]+"\n" + "simbolo= " + simbolo +"\n"+ "colore= " + colore
 				+"\n"+ "obbiettivo= " + obbiettivo +"\n"+ "risorse foglia necessarie= " + risNecessarie[0]+"\n"+"rsorse lupo necessarie= "+risNecessarie[1]+"\n" 
 				+"risorse fungo necessarie= "+risNecessarie[2]+"\n"+"risorse farfalla necessarie= "+risNecessarie[3]+"\n"+super.toString()+ "]";
+	*/
 	}
 
 	public boolean isContataScala() {

@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Carta.CObb;
-import Carta.COro;
-import Carta.CRis;
 import Enumerazione.TipoCarta;
 import Tavolo.CartaTavolo;
 import Tavolo.Giocatore;
@@ -19,13 +17,37 @@ public class LogicaGioco {
 	
 	private Tracciato tracciato;
 	private int numGiocatori;
-	private Scanner sc;
 
 	public LogicaGioco() {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		//(char)233 é (char)224 à
+		
+		System.out.println("Nuova partita di Codex Naturalis avviata!");
 		
 		cartaTavolo = new CartaTavolo();
 		tracciato = new Tracciato();
 		numGiocatori = tracciato.getNumGiocatori();
+		
+		for(int i=0; i<numGiocatori; i++) {
+			ArrayList<CObb> cObb = new ArrayList<CObb>();
+			for(int j=0; j<2; j++) {
+				tracciato.getGiocatore(i).pescaC(cartaTavolo.pesca(TipoCarta.CRis));
+				cObb.add((CObb)cartaTavolo.pesca(TipoCarta.CObb));
+				cObb.add((CObb)cartaTavolo.pesca(TipoCarta.CObb));
+			}
+			System.out.println("Carte obbiettivo da scegliere:");
+			System.out.println("0)" + cObb.get(0).toString());
+			System.out.println("1)" + cObb.get(1).toString());
+			System.out.print("Inserire scelta: ");
+			
+			int scelta = sc.nextInt();
+						
+			tracciato.getGiocatore(i).pescaC(cObb.get(scelta));
+			tracciato.getGiocatore(i).pescaC(cartaTavolo.pesca(TipoCarta.COro));
+			tracciato.getGiocatore(i).pescaC(cartaTavolo.pesca(TipoCarta.CIniz));
+		}
 		
 		Turni();
 		
@@ -94,7 +116,9 @@ public class LogicaGioco {
 	}
 
 	private void pescaCarta(Giocatore giocatoreAttuale) {
-		sc=new Scanner(System.in);
+		
+		Scanner sc = new Scanner(System.in);
+		
 		System.out.println("Le carte risorsa scoperte in questo momento sul tavolo sono:\n");
 		for(int i=0;i<cartaTavolo.getcRisScp().size();i++) {
 			cartaTavolo.getcRisScp().get(i).toString();

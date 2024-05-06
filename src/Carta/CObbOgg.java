@@ -12,10 +12,11 @@ import Tavolo.Giocatore;
  * o coppie di oggetti ottieni quei punti)
  */
 public class CObbOgg extends CObb{
-	private final ArrayList<Simbolo> oggetti = null;
+	private final ArrayList<Simbolo> oggetti;
 	public CObbOgg(int puntiAssegnati, Simbolo oggetto1,
 			Simbolo oggetto2, Simbolo oggetto3) {
 		super(puntiAssegnati);
+		oggetti = new ArrayList<Simbolo>();
 		this.oggetti.add(oggetto1);
 		if (oggetto2!=Simbolo.ASSENTE) {
 			this.oggetti.add(oggetto2);
@@ -90,6 +91,24 @@ public class CObbOgg extends CObb{
 	public Colore getColore() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public String toString() {
+		String str = "Carata obbiettivo oggetti " /*+ IDCARTA*/ +
+				":\n\t\t[" + super.toString();
+		switch(oggetti.size()) {
+			case 1:
+				str += "\n\t\t Obbiettivo -> Formare coppie di -> " + oggetti.get(0);
+				break;
+			case 3:
+				str += "\n\t\t Obbiettivo -> Formare tris di -> " + oggetti.get(0) +
+				"\n\t\t\t\t\t\t" + oggetti.get(1) +
+				"\n\t\t\t\t\t\t" + oggetti.get(2);
+				break;
+		}
+			
+		return str +=  "]";
+		
 	}
 	
 }

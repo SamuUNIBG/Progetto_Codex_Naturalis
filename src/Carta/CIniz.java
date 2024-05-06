@@ -18,7 +18,7 @@ public class CIniz extends Carta {
 	// va da 80 a 85 tot 6 carte iniziali
 	private static int lastId=80;
 	private boolean fronte; //true se il fronte visibile della carta e visibile
-	private final ArrayList<Simbolo> risorseCentrali= null; /*le carte iniziali hanno
+	private final ArrayList<Simbolo> risorseCentrali; /*le carte iniziali hanno
 												fino a 4 risorse centrali*/
 	public CIniz( Simbolo angolo0,Simbolo angolo1,
 			Simbolo angolo2, Simbolo angolo3,Simbolo riscentrale1,
@@ -31,6 +31,7 @@ public class CIniz extends Carta {
 		this.angoli[2]=new Angolo(angolo2);
 		this.angoli[3]=new Angolo(angolo3);
 		this.fronte=true;
+		risorseCentrali = new ArrayList<Simbolo>();
 		this.risorseCentrali.add(riscentrale1);
 		if (riscentrale2!=Simbolo.ASSENTE) {
 			this.risorseCentrali.add(riscentrale2);

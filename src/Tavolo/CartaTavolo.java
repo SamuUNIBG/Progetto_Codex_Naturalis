@@ -42,10 +42,10 @@ public class CartaTavolo {
 		cRisScp = new ArrayList<CRis>(2);
 		cRisScp.add(mRis.pesca());
 		cRisScp.add(mRis.pesca());
-		cObbScp = new ArrayList<CObb>(2);
-		cOroScp.add(mOro.pesca());
-		cOroScp.add(mOro.pesca());
 		cOroScp = new ArrayList<COro>(2);
+		cOroScp.add(mOro.pesca());
+		cOroScp.add(mOro.pesca());
+		cObbScp = new ArrayList<CObb>(2);
 		cObbScp.add(mObb.pesca());
 		cObbScp.add(mObb.pesca());
 	}
@@ -159,4 +159,3 @@ public class CartaTavolo {
 	}
 	
 }
-	
