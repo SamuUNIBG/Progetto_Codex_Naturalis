@@ -68,12 +68,6 @@ public class CIniz extends Carta {
 	}
 
 	@Override
-	public boolean VerificaPrerequistio() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public Simbolo getSimbolo() {
 		// TODO Auto-generated method stub
 		return null;
@@ -90,4 +84,42 @@ public class CIniz extends Carta {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public boolean VerificaPrerequistio(int[] vettoreRisorse) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	public String toString() {
+		
+		String str = "Carata iniziale " + IDCARTA +
+				":\n\t\t[" + super.toString() +
+				"\n\t\t Angoli fronte:" +
+				"\n\t\t\tAlto sx -> " + angoli[0].getSimbolo() +
+				"\n\t\t\tAltro dx -> " + angoli[1].getSimbolo() +
+				"\n\t\t\tBasso dx -> " +angoli[2].getSimbolo() +
+				"\n\t\t\tBasso sx -> " +angoli[3].getSimbolo() +
+				"\n\t\t Risorse centrali:" +
+				"\n\t\t\t1) -> " + risorseCentrali.get(0);
+		switch(risorseCentrali.size()) {
+			case 2:
+				str += "\n\t\t\t2) -> " + risorseCentrali.get(1);
+				break;
+			case 3:
+				str += "\n\t\t\t2) -> " + risorseCentrali.get(1);
+				str += "\n\t\t\t3) -> " + risorseCentrali.get(2);
+				break;
+		}
+				
+		str += "\n\t\t Angoli retro:" +
+		"\n\t\t\tAlto sx -> " + angoliR[0].getSimbolo() +
+		"\n\t\t\tAltro dx -> " + angoliR[1].getSimbolo() +
+		"\n\t\t\tBasso dx -> " +angoliR[2].getSimbolo() +
+		"\n\t\t\tBasso sx -> " +angoliR[3].getSimbolo() + "]";
+		
+		return str;
+		
+	}
+	
 }

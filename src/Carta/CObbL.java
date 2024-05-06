@@ -177,7 +177,7 @@ public class CObbL extends CObb{
 		return 0;
 	}
 	@Override
-	public boolean VerificaPrerequistio() {
+	public boolean VerificaPrerequistio(int[] vettoreRisorse) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -196,7 +196,7 @@ public class CObbL extends CObb{
 	public String toString() {
 		String str = "Carata obbiettivo L " /*+ IDCARTA*/ +
 				":\n\t\t[" + super.toString() +
-				"\n\t\t Obbiettivo -> Formare una L con tre carte" +
+				"\n\t\t Obbiettivo -> Disporre tre carte a forma di L" +
 				"\n\t\t Colore carte adiacenti -> " + colori[0] +
 				"\n\t\t Colore carta diagonale -> " + colori[1] +
 				"\n\t\t Forma -> ";

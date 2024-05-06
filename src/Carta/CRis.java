@@ -78,7 +78,7 @@ public class CRis extends Carta{
 	}
 
 	@Override
-	public boolean VerificaPrerequistio() {
+	public boolean VerificaPrerequistio(int[] vettoreRisorse) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -91,8 +91,8 @@ public class CRis extends Carta{
 				"\n\t\t Angoli:" +
 				"\n\t\t\tAlto sx -> " + angoli[0].getSimbolo() +
 				"\n\t\t\tAltro dx -> " + angoli[1].getSimbolo() +
-				"\n\t\t\tBasso dx -> "+angoli[2].getSimbolo() +
-				"\n\t\t\tBasso sx -> "+angoli[3].getSimbolo() + "]";
+				"\n\t\t\tBasso dx -> " +angoli[2].getSimbolo() +
+				"\n\t\t\tBasso sx -> " +angoli[3].getSimbolo() + "]";
 				
 	}
 	@Override

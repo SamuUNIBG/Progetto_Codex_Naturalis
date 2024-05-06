@@ -126,16 +126,16 @@ public class Giocatore {
 			carta = cMano.get(numCarta-1);
 			
 			//controllo giocabilita' carta oro
-			if(carta instanceof COro && retro==1)
-				if(carta.VerificaPrerequistio())
+			if(carta instanceof COro && retro==1) {
+				if(carta.VerificaPrerequistio(risPossedute))
 					preRequisito = true;
+			}else
+				preRequisito = true;
 		}while(!preRequisito);
 		
 		//il giocatore sceglie dove giocare la carta
 		System.out.println("Posizioni (y,x) dove e' possibile posizionare la carta:");
-		for(int i=0; i<campo.getPosizioniDisponibili().size(); i++) {
-			System.out.println(campo.getPosizioniDisponibili());
-		}
+		System.out.println(campo.getPosizioniDisponibili());
 		
 		do {
 			do {
@@ -164,14 +164,16 @@ public class Giocatore {
 				COro cartaRetro= new COro(carta.getSimbolo(), carta.getColore(), carta.getIDCARTA());
 				cMano.set(numCarta, cartaRetro);
 			}
-		}else {
+		}
+		
+		PiazzaC(posCarta, carta);
+		
+		if(retro==1) {
 			int puntiCarta = carta.getPunti();
 			if(carta instanceof COro)
 				puntiCarta = ((COro)carta).calcolaMiniObb();
 			this.addPunteggio(puntiCarta);
 		}
-		
-		PiazzaC(posCarta, carta);
 		
 		return true;
 	}

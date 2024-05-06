@@ -42,7 +42,7 @@ public class CObbRis extends CObb{
 		return 0;
 	}
 	@Override
-	public boolean VerificaPrerequistio() {
+	public boolean VerificaPrerequistio(int[] vettoreRisorse) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -50,6 +50,13 @@ public class CObbRis extends CObb{
 	public Colore getColore() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public String toString() {
+		return "Carata obbiettivo oggetti " /*+ IDCARTA*/ +
+				":\n\t\t[" + super.toString() +
+				"\n\t\t Obbiettivo -> Formare tris di -> " + simbolo +  "]";
+		
 	}
 	
 }

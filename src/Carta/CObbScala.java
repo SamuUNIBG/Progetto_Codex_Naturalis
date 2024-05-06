@@ -128,7 +128,7 @@ public class CObbScala extends CObb{
 	}
 
 	@Override
-	public boolean VerificaPrerequistio() {
+	public boolean VerificaPrerequistio(int[] vettoreRisorse) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -137,6 +137,21 @@ public class CObbScala extends CObb{
 	public Simbolo getSimbolo() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public String toString() {
+		String str = "Carata obbiettivo scala " /*+ IDCARTA*/ +
+				":\n\t\t[" + super.toString() +
+				"\n\t\t Obbiettivo -> Disporre tre carte diagonalmente" +
+				"\n\t\t Colore -> " + colore +
+				"\n\t\t Forma -> ";
+		if(direzione)
+			str += "/";
+		else
+			str += "\\";
+		
+		return str +=  "]";
+		
 	}
 
 }

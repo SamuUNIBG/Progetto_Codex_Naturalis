@@ -24,7 +24,7 @@ public class LogicaGioco {
 		
 		//(char)233 é (char)224 à
 		
-		System.out.println("Nuova partita di Codex Naturalis avviata!");
+		System.out.println("\nNuova partita di Codex Naturalis avviata!");
 		
 		cartaTavolo = new CartaTavolo();
 		tracciato = new Tracciato();
@@ -34,7 +34,6 @@ public class LogicaGioco {
 			ArrayList<CObb> cObb = new ArrayList<CObb>();
 			for(int j=0; j<2; j++) {
 				tracciato.getGiocatore(i).pescaC(cartaTavolo.pesca(TipoCarta.CRis));
-				cObb.add((CObb)cartaTavolo.pesca(TipoCarta.CObb));
 				cObb.add((CObb)cartaTavolo.pesca(TipoCarta.CObb));
 			}
 			System.out.println("Carte obbiettivo da scegliere:");

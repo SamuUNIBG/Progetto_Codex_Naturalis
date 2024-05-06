@@ -76,9 +76,13 @@ public class COro extends Carta{
 	 * quindi se sul rispettivo campo di gioco ci sono le risorse richieste
 	 * @return true se e soddisfatto altrimenti torna false
 	 */
-	public boolean VerificaPrerequistio() { 
-		/* da implementare ...*/
-		return true;
+	public boolean VerificaPrerequistio(int[] vettoreRisorse) { 
+		for(int i=0; i<risNecessarie.length; i++) {
+			if(risNecessarie[i]<=vettoreRisorse[i])
+				return true;
+		}
+		
+		return false;
 	}
 	
 	public Angolo[] getAngoli() {

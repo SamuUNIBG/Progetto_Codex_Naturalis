@@ -48,6 +48,8 @@ public class CartaTavolo {
 		cObbScp = new ArrayList<CObb>(2);
 		cObbScp.add(mObb.pesca());
 		cObbScp.add(mObb.pesca());
+		System.out.println("Carte OBBIETTIVO RIMASTE" + mObb.getCRimaste());//eliminare
+		
 	}
 
 	/**

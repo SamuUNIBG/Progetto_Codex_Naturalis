@@ -63,15 +63,15 @@ public class CampoGioco {
 		}
 		if(campo[posY+1][posX-1]!=null) {
 			campo[posY+1][posX-1].getAngoli()[1].setCoperto();
-			simboli[1]=campo[posY-1][posX-1].getAngoli()[1].getSimbolo();
+			simboli[1]=campo[posY+1][posX-1].getAngoli()[1].getSimbolo();
 		}
 		if(campo[posY-1][posX+1]!=null) {
 			campo[posY-1][posX+1].getAngoli()[3].setCoperto();
-			simboli[2]=campo[posY-1][posX-1].getAngoli()[3].getSimbolo();
+			simboli[2]=campo[posY-1][posX+1].getAngoli()[3].getSimbolo();
 		}
 		if(campo[posY+1][posX+1]!=null) {
 			campo[posY+1][posX+1].getAngoli()[0].setCoperto();
-			simboli[3]=campo[posY-1][posX-1].getAngoli()[0].getSimbolo();
+			simboli[3]=campo[posY+1][posX+1].getAngoli()[0].getSimbolo();
 		}
 		
 		return simboli;
@@ -92,7 +92,7 @@ public class CampoGioco {
 		}
 		if(campo[posY+1][posX-1]==null && carta.getAngoli()[3].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY+1) + "," + (posX-1));
-			posizioniDisponibili.add((posY-1) + "," + (posX-1));
+			posizioniDisponibili.add((posY+1) + "," + (posX-1));
 		}
 		if(campo[posY-1][posX+1]==null && carta.getAngoli()[1].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY-1) + "," + (posX+1));

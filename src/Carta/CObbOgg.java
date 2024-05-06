@@ -78,7 +78,7 @@ public class CObbOgg extends CObb{
 		return 0;
 	}
 	@Override
-	public boolean VerificaPrerequistio() {
+	public boolean VerificaPrerequistio(int[] vettoreRisorse) {
 		// TODO Auto-generated method stub
 		return false;
 	}
