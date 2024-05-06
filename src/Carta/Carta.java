@@ -25,11 +25,11 @@ public abstract class Carta {
 	
 	public abstract Angolo[] getAngoli();
 	public abstract int getIDCARTA();
-<<<<<<< HEAD
-	
-=======
-	public abstract boolean VerificaPrerequistio(int[] vettoreRisorse);
->>>>>>> 223e696b9f49afa1eff4145cf86c40ef9c51b850
+
+	public boolean VerificaPrerequisito(int[] vettoreRisorse) {
+		return false;
+	}
+
 	public abstract Simbolo getSimbolo();
 	
 	public abstract Colore getColore();

@@ -41,15 +41,8 @@ public class CObbRis extends CObb{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	@Override
-<<<<<<< HEAD
-=======
-	public boolean VerificaPrerequistio(int[] vettoreRisorse) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	@Override
->>>>>>> 223e696b9f49afa1eff4145cf86c40ef9c51b850
+
+
 	public Colore getColore() {
 		// TODO Auto-generated method stub
 		return null;

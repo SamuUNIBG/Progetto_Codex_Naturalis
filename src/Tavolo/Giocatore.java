@@ -44,6 +44,7 @@ public class Giocatore {
 			risPossedute[i]=0;
 			if(i<3) {
 				oggPosseduti[i]=0;
+				cMano.add(null);
 			}
 			
 		}
@@ -61,7 +62,7 @@ public class Giocatore {
 		punteggio+=punti;
 	}
 	public String getSoprannome() {
-		return this.soprannome;
+		return soprannome;
 	}
 	
 	public boolean giocaCIniz() {
@@ -78,23 +79,11 @@ public class Giocatore {
 			retro = sc.nextInt();
 		}while(retro!=0 && retro!=1);
 		
-		//sc.close();
+		sc.close();
 		
-		//se la carta e' stata giocata sul retro si setta l'attributo fronte=false
+		//se la carta � stata giocata sul retro si setta l'attributo fronte=false
 		if(retro==0) {
 			cInizPer.retro();
-		}else {
-			for(int i=0; i<cInizPer.getRisorseCentrali().size(); i++) {
-				if(cInizPer.getRisorseCentrali().get(i)==Simbolo.FOGLIA) {
-					risPossedute[0]+=1;
-				}else if(cInizPer.getRisorseCentrali().get(i)==Simbolo.LUPO) {
-					risPossedute[1]+=1;
-				}else if(cInizPer.getRisorseCentrali().get(i)==Simbolo.FUNGO) {
-					risPossedute[2]+=1;
-				}else if(cInizPer.getRisorseCentrali().get(i)==Simbolo.FARFALLA) {
-					risPossedute[3]+=1;
-				}
-			}
 		}
 		
 		PiazzaC("40,40", cInizPer);
@@ -117,7 +106,7 @@ public class Giocatore {
 		System.out.println("Il tuo campo di gioco:");
 		campo.print();
 		System.out.println("Le carte in tuo possesso:");
-		System.out.println("0)" + cObbPer.toString());
+		System.out.println("0) " + cObbPer.toString());
 		for(int i=0; i<3; i++) {
 			System.out.println((i+1) + ") " + cMano.get(i).toString());
 		}
@@ -127,7 +116,6 @@ public class Giocatore {
 			do {
 				System.out.print("Inserire il numero relativo alla carta da giocare: ");
 				numCarta = sc.nextInt();
-<<<<<<< HEAD
 			}while(numCarta<1 || numCarta>3);			
 
 			//controllo giocabilit� carta oro
@@ -136,37 +124,24 @@ public class Giocatore {
 			//controllo giocabilit� carta oro
 			if(cMano.get(numCarta) instanceof COro)
 				if(cMano.get(numCarta).VerificaPrerequisito(this))
-=======
-			}while(numCarta<1 || numCarta>3);
-			
->>>>>>> 223e696b9f49afa1eff4145cf86c40ef9c51b850
 			do {
 				System.out.print("Vuoi giocare la carta sul retro? [0(si) - 1(no)]: ");
 				retro = sc.nextInt();
 			}while(retro!=0 && retro!=1);
 			
-			carta = cMano.get(numCarta-1);
+			carta = cMano.get(numCarta);
 			
-<<<<<<< HEAD
 			//controllo giocabilit� carta oro
 			if(carta instanceof COro && retro==1)
 				if(carta.VerificaPrerequisito(this))
-=======
-			//controllo giocabilita' carta oro
-			if(carta instanceof COro && retro==1) {
-				if(((COro)carta).VerificaPrerequistio(risPossedute))
->>>>>>> 223e696b9f49afa1eff4145cf86c40ef9c51b850
 					preRequisito = true;
-			}else
-				preRequisito = true;
 		}while(!preRequisito);
-		
-		//rimuovo la carta giocata da quelle possedute
-		cMano.remove(numCarta-1);
 		
 		//il giocatore sceglie dove giocare la carta
 		System.out.println("Posizioni (y,x) dove e' possibile posizionare la carta:");
-		System.out.println(campo.getPosizioniDisponibili());
+		for(int i=0; i<campo.getPosizioniDisponibili().size(); i++) {
+			System.out.println(campo.getPosizioniDisponibili());
+		}
 		
 		do {
 			do {
@@ -184,23 +159,19 @@ public class Giocatore {
 			}
 		}while(!posCartaOk);
 		
-		//sc.close();
+		sc.close();
 		
 		//se la carta e' stata giocata sul retro si crea una nuova carta
 		if(retro==0) {
 			if(carta instanceof CRis) {
-				carta = new CRis(carta.getSimbolo(), carta.getColore(), carta.getIDCARTA());
+				CRis cartaRetro= new CRis(carta.getSimbolo(), carta.getColore(), carta.getIDCARTA());
+				cMano.set(numCarta, cartaRetro);
 			}else if(carta instanceof COro) {
-				carta = new COro(carta.getSimbolo(), carta.getColore(), carta.getIDCARTA());
+				COro cartaRetro= new COro(carta.getSimbolo(), carta.getColore(), carta.getIDCARTA());
+				cMano.set(numCarta, cartaRetro);
 			}
 		}
-<<<<<<< HEAD
 		PiazzaC(posCarta, carta);
-=======
-		
-		PiazzaC(posCarta, carta);
-		
->>>>>>> 223e696b9f49afa1eff4145cf86c40ef9c51b850
 		if(retro==1) {
 			int puntiCarta = carta.getPunti();
 			if(carta instanceof COro)
@@ -216,36 +187,24 @@ public class Giocatore {
 		campo.aggiungiC(posCarta, carta);
 		campo.print(posCarta, carta);
 		
-		if(carta.getFronte()) {
-			//Incrementa array risorse/oggetti posseduti
-			Angolo[] angoli = carta.getAngoli();
-			for(int i=0; i<angoli.length; i++) {
-				if(angoli[i].getSimbolo()==Simbolo.FOGLIA) {
-					risPossedute[0]+=1;
-				}else if(angoli[i].getSimbolo()==Simbolo.LUPO) {
-					risPossedute[1]+=1;
-				}else if(angoli[i].getSimbolo()==Simbolo.FUNGO) {
-					risPossedute[2]+=1;
-				}else if(angoli[i].getSimbolo()==Simbolo.FARFALLA) {
-					risPossedute[3]+=1;
-				}
-				if(angoli[i].getSimbolo()==Simbolo.INCHIOSTRO) {
-					oggPosseduti[0]+=1;
-				}else if(angoli[i].getSimbolo()==Simbolo.PERGAMENA) {
-					oggPosseduti[1]+=1;
-				}else if(angoli[i].getSimbolo()==Simbolo.PIUMA) {
-					oggPosseduti[2]+=1;
-				}
-			}
-		}else {
-			if(carta.getSimbolo()==Simbolo.FOGLIA) {
+		//Incrementa array risorse/oggetti posseduti
+		Angolo[] angoli = carta.getAngoli();
+		for(int i=0; i<angoli.length; i++) {
+			if(angoli[i].getSimbolo()==Simbolo.FOGLIA) {
 				risPossedute[0]+=1;
-			}else if(carta.getSimbolo()==Simbolo.LUPO) {
+			}else if(angoli[i].getSimbolo()==Simbolo.LUPO) {
 				risPossedute[1]+=1;
-			}else if(carta.getSimbolo()==Simbolo.FUNGO) {
+			}else if(angoli[i].getSimbolo()==Simbolo.FUNGO) {
 				risPossedute[2]+=1;
-			}else if(carta.getSimbolo()==Simbolo.FARFALLA) {
+			}else if(angoli[i].getSimbolo()==Simbolo.FARFALLA) {
 				risPossedute[3]+=1;
+			}
+			if(angoli[i].getSimbolo()==Simbolo.INCHIOSTRO) {
+				oggPosseduti[0]+=1;
+			}else if(angoli[i].getSimbolo()==Simbolo.PERGAMENA) {
+				oggPosseduti[1]+=1;
+			}else if(angoli[i].getSimbolo()==Simbolo.PIUMA) {
+				oggPosseduti[2]+=1;
 			}
 		}
 		

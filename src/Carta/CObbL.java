@@ -176,16 +176,7 @@ public class CObbL extends CObb{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-<<<<<<< HEAD
-	
-=======
-	@Override
-	public boolean VerificaPrerequistio(int[] vettoreRisorse) {
-		// TODO Auto-generated method stub
-		return false;
-	}
->>>>>>> 223e696b9f49afa1eff4145cf86c40ef9c51b850
-	@Override
+
 	public Simbolo getSimbolo() {
 		// TODO Auto-generated method stub
 		return null;

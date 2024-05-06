@@ -70,11 +70,6 @@ public class CIniz extends Carta {
 		return IDCARTA;
 	}
 
-<<<<<<< HEAD
-	
-
-=======
->>>>>>> 223e696b9f49afa1eff4145cf86c40ef9c51b850
 	@Override
 	public Simbolo getSimbolo() {
 		// TODO Auto-generated method stub
@@ -93,11 +88,6 @@ public class CIniz extends Carta {
 		return false;
 	}
 
-	@Override
-	public boolean VerificaPrerequistio(int[] vettoreRisorse) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 	
 	public String toString() {
 		

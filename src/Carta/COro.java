@@ -81,7 +81,7 @@ public class COro extends Carta{
 	 * quindi se sul rispettivo campo di gioco ci sono le risorse richieste
 	 * @return true se e soddisfatto altrimenti torna false
 	 */
-<<<<<<< HEAD
+
 	public boolean VerificaPrerequisito(Giocatore giocatore) { 
 		
 		for(int i=0; i<this.getRisNecessarie().length; i++) {
@@ -95,7 +95,7 @@ public class COro extends Carta{
 			}
 		}
 		return true;
-=======
+	}
 	public boolean VerificaPrerequistio(int[] vettoreRisorse) { 
 		int ok=0;
 		for(int i=0; i<risNecessarie.length; i++) {
@@ -106,7 +106,7 @@ public class COro extends Carta{
 			return true;
 		else
 			return false;
->>>>>>> 223e696b9f49afa1eff4145cf86c40ef9c51b850
+
 	}
 	public Simbolo getObiettivo() {
 		return this.obbiettivo;

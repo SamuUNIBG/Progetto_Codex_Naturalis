@@ -78,15 +78,6 @@ public class CRis extends Carta{
 	}
 
 	@Override
-<<<<<<< HEAD
-	public boolean VerificaPrerequisito(Giocatore giocatore) {
-=======
-	public boolean VerificaPrerequistio(int[] vettoreRisorse) {
->>>>>>> 223e696b9f49afa1eff4145cf86c40ef9c51b850
-		// TODO Auto-generated method stub
-		return false;
-	}
-	@Override
 	public String toString() {
 		return "Carata risorsa " + IDCARTA +
 				":\n\t\t[" + super.toString() +
