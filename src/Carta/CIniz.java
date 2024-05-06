@@ -66,11 +66,7 @@ public class CIniz extends Carta {
 		return IDCARTA;
 	}
 
-	@Override
-	public boolean VerificaPrerequistio() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 	@Override
 	public Simbolo getSimbolo() {

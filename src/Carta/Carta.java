@@ -25,11 +25,13 @@ public abstract class Carta {
 	
 	public abstract Angolo[] getAngoli();
 	public abstract int getIDCARTA();
-	public abstract boolean VerificaPrerequistio();
+	
 	public abstract Simbolo getSimbolo();
 	
 	public abstract Colore getColore();
-	
+	public boolean VerificaPrerequisito(Giocatore giocatore) {
+		return false;
+	}
 	@Override
 	public String toString() {
 		return "punteggio carata= " + puntiAssegnati;

@@ -120,10 +120,10 @@ public class Giocatore {
 
 			//controllo giocabilit� carta oro
 			if(cMano.get(numCarta) instanceof COro)
-				if(cMano.get(numCarta).VerificaPrerequistio())
+				if(cMano.get(numCarta).VerificaPrerequisito(this))
 			//controllo giocabilit� carta oro
 			if(cMano.get(numCarta) instanceof COro)
-				if(cMano.get(numCarta).VerificaPrerequistio())
+				if(cMano.get(numCarta).VerificaPrerequisito(this))
 			do {
 				System.out.print("Vuoi giocare la carta sul retro? [0(si) - 1(no)]: ");
 				retro = sc.nextInt();
@@ -133,7 +133,7 @@ public class Giocatore {
 			
 			//controllo giocabilit� carta oro
 			if(carta instanceof COro && retro==1)
-				if(carta.VerificaPrerequistio())
+				if(carta.VerificaPrerequisito(this))
 					preRequisito = true;
 		}while(!preRequisito);
 		
@@ -170,14 +170,14 @@ public class Giocatore {
 				COro cartaRetro= new COro(carta.getSimbolo(), carta.getColore(), carta.getIDCARTA());
 				cMano.set(numCarta, cartaRetro);
 			}
-		}else {
+		}
+		PiazzaC(posCarta, carta);
+		if(retro==1) {
 			int puntiCarta = carta.getPunti();
 			if(carta instanceof COro)
-				puntiCarta = ((COro)carta).calcolaMiniObb();
+				puntiCarta = ((COro)carta).calcolaMiniObb(posCarta,this);
 			this.addPunteggio(puntiCarta);
 		}
-		
-		PiazzaC(posCarta, carta);
 		
 		return true;
 	}

@@ -127,11 +127,6 @@ public class CObbScala extends CObb{
 		return 0;
 	}
 
-	@Override
-	public boolean VerificaPrerequistio() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public Simbolo getSimbolo() {

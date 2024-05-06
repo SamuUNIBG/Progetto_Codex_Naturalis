@@ -1,6 +1,7 @@
 package Carta;
 import java.util.*;
 import Enumerazione.*;
+import Tavolo.CampoGioco;
 import Tavolo.Giocatore;
 /**
  * le carte oro sono 40 totali di cui, una volta mescolato il mazzo,
@@ -76,22 +77,34 @@ public class COro extends Carta{
 	 * quindi se sul rispettivo campo di gioco ci sono le risorse richieste
 	 * @return true se e soddisfatto altrimenti torna false
 	 */
-	public boolean VerificaPrerequistio() { 
-		/* da implementare ...*/
+	public boolean VerificaPrerequisito(Giocatore giocatore) { 
+		
+		for(int i=0; i<this.getRisNecessarie().length; i++) {
+			/*confronto le celle dei 2 array delle stesse posizioni che indicano
+			 * il numero di quella determintata risorsa che il giocatore 
+			 * possiede e che la cOro richiede x esser giocata... 
+			 * se il giocatore ne ha di meno vuol dire che non ne ha abbastanza
+			 * x giocare quella carta*/
+			if(giocatore.getRisPossedute()[i]<this.getRisNecessarie()[i]) {
+				return false; 
+			}
+		}
 		return true;
 	}
-	
+	public Simbolo getObiettivo() {
+		return this.obbiettivo;
+	}
 	public Angolo[] getAngoli() {
-		return angoli;
+		return this.angoli;
 	}
 	public Simbolo getSimbolo() {
-		return simbolo;
+		return this.simbolo;
 	}
 	public Colore getColore() {
-		return colore;
+		return this.colore;
 	}
 	public int[] getRisNecessarie() {
-		return risNecessarie;
+		return this.risNecessarie;
 	}
 	public void retro() {
 		this.fronte=false;
@@ -101,7 +114,7 @@ public class COro extends Carta{
 	}
 	@Override
 	public int getIDCARTA() {
-		return IDCARTA;
+		return this.IDCARTA;
 	}
 
 	@Override
@@ -175,7 +188,7 @@ public class COro extends Carta{
 	}
 
 	public boolean isContataScala() {
-		return contataScala;
+		return this.contataScala;
 	}
 
 	public void setContataScala(boolean contataScala) {
@@ -183,16 +196,52 @@ public class COro extends Carta{
 	}
 
 	public boolean isContataL() {
-		return contataL;
+		return this.contataL;
 	}
 
 	public void setContataL(boolean contataL) {
 		this.contataL = contataL;
 	}
 
-	public int calcolaMiniObb() {
+	public int calcolaMiniObb(String posizione, Giocatore giocatore) { 
 		// TODO Auto-generated method stub
+		if(this.getObiettivo()==Simbolo.FOGLIA) {
+			return giocatore.getOggPosseduti()[0]*this.getPunti();
+		}
+		if(this.getObiettivo()==Simbolo.LUPO) {
+			return giocatore.getOggPosseduti()[1]*this.getPunti();
+		}
+		if(this.getObiettivo()==Simbolo.FUNGO) {
+			return giocatore.getOggPosseduti()[2]*this.getPunti();
+		}
+		if(this.getObiettivo()==Simbolo.FARFALLA) {
+			return giocatore.getOggPosseduti()[3]*this.getPunti();
+		}
+		if(this.getObiettivo()==Simbolo.ANGOLO) {
+			String[] splittedString = posizione.split(",");
+			int posY = Integer.parseInt(splittedString[0]);
+			int posX = Integer.parseInt(splittedString[1]);
+			int angoliCoperti=0;
+			/*controllo se nelle celle adiacenti ci sono carte e i relativi angoli se verranno
+			 * coperti*/
+			if(giocatore.getCampoG().getCampo()[posY-1][posX-1]!=null 
+					&& giocatore.getCampoG().getCampo()[posY-1][posX-1].getAngoli()[2].getCoperto()){
+				angoliCoperti++;
+			}
+			if(giocatore.getCampoG().getCampo()[posY+1][posX-1]!=null 
+					&& giocatore.getCampoG().getCampo()[posY+1][posX-1].getAngoli()[1].getCoperto()){
+				angoliCoperti++;
+			}
+			if(giocatore.getCampoG().getCampo()[posY-1][posX+1]!=null 
+					&& giocatore.getCampoG().getCampo()[posY-1][posX+1].getAngoli()[3].getCoperto()){
+				angoliCoperti++;
+			}
+			if(giocatore.getCampoG().getCampo()[posY+1][posX+1]!=null 
+					&& giocatore.getCampoG().getCampo()[posY+1][posX+1].getAngoli()[0].getCoperto()){
+				angoliCoperti++;
+			}
+			return this.getPunti()*angoliCoperti;
+		}	
 		return 0;
 	}
-	
 }

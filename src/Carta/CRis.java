@@ -78,7 +78,7 @@ public class CRis extends Carta{
 	}
 
 	@Override
-	public boolean VerificaPrerequistio() {
+	public boolean VerificaPrerequisito(Giocatore giocatore) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -88,7 +88,7 @@ public class CRis extends Carta{
 	}
 	@Override
 	public boolean isContataScala() {
-		return contataScala;
+		return this.contataScala;
 	}
 	@Override
 	public void setContataScala(boolean contataScala) {
@@ -97,7 +97,7 @@ public class CRis extends Carta{
 	}
 
 	public boolean isContataL() {
-		return contataL;
+		return this.contataL;
 	}
 
 	public void setContataL(boolean contataL) {
