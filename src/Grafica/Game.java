@@ -100,13 +100,64 @@ public class Game extends JFrame implements ActionListener{
 		scrollPlayingField4.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPlayingField4.getHorizontalScrollBar().setValue(((12500-204)/2)-(700));
         scrollPlayingField4.getVerticalScrollBar().setValue((5000-142)/2-(250));
+        
+        //Pannelli carte personali 
+        JPanel cartePersonaliPanel=new JPanel();
+        cartePersonaliPanel.setPreferredSize(new Dimension(300,300));
+        cartePersonaliPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        cartePersonaliPanel.setLayout(new BorderLayout());
+        cartePersonaliPanel.setOpaque(false);
+        JPanel cartePersonaliPanel2=new JPanel();
+        cartePersonaliPanel2.setPreferredSize(new Dimension(300,300));
+        cartePersonaliPanel2.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        cartePersonaliPanel2.setLayout(new BorderLayout());
+        cartePersonaliPanel2.setOpaque(false);
+        JPanel cartePersonaliPanel3=new JPanel();
+        cartePersonaliPanel3.setPreferredSize(new Dimension(300,300));
+        cartePersonaliPanel3.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        cartePersonaliPanel3.setLayout(new BorderLayout());
+        cartePersonaliPanel3.setOpaque(false);
+        JPanel cartePersonaliPanel4=new JPanel();
+        cartePersonaliPanel4.setPreferredSize(new Dimension(300,300));
+        cartePersonaliPanel4.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        cartePersonaliPanel4.setLayout(new BorderLayout());
+        cartePersonaliPanel4.setOpaque(false);
+        
+        
+        //contenitori carte personali
+        JPanel contenitore=new JPanel();
+        contenitore.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        contenitore.setLayout(new BorderLayout());
+        contenitore.setOpaque(false);
+        contenitore.add(scrollPlayingField,BorderLayout.CENTER);
+        contenitore.add(cartePersonaliPanel,BorderLayout.SOUTH);
+        JPanel contenitore2=new JPanel();
+        contenitore2.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        contenitore2.setLayout(new BorderLayout());
+        contenitore2.setOpaque(false);
+        contenitore2.add(scrollPlayingField2,BorderLayout.CENTER);
+        contenitore2.add(cartePersonaliPanel2,BorderLayout.SOUTH);
+        JPanel contenitore3=new JPanel();
+        contenitore3.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        contenitore3.setLayout(new BorderLayout());
+        contenitore3.setOpaque(false);
+        contenitore3.add(scrollPlayingField3,BorderLayout.CENTER);
+        contenitore3.add(cartePersonaliPanel3,BorderLayout.SOUTH);
+        JPanel contenitore4=new JPanel();
+        contenitore4.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        contenitore4.setLayout(new BorderLayout());
+        contenitore4.setOpaque(false);
+        contenitore4.add(scrollPlayingField4,BorderLayout.CENTER);
+        contenitore4.add(cartePersonaliPanel4,BorderLayout.SOUTH);
+        
+     
         //finistre campo gioco giocatori
         JTabbedPane tabbedPane=new JTabbedPane();
         tabbedPane.setTabPlacement(JTabbedPane.TOP);
-        tabbedPane.add("Giocatore 1",scrollPlayingField);
-        tabbedPane.add("Giocatore 2",scrollPlayingField2);
-        tabbedPane.add("Giocatore 3",scrollPlayingField3);
-        tabbedPane.add("Giocatore 4",scrollPlayingField4);
+        tabbedPane.add("Giocatore 1",contenitore);
+        tabbedPane.add("Giocatore 2",contenitore2);
+        tabbedPane.add("Giocatore 3",contenitore3);
+        tabbedPane.add("Giocatore 4",contenitore4);
         //pannello contenente nomi utente
         JPanel userPanel = new JPanel();
         userPanel.setPreferredSize(new Dimension(300, 100));
