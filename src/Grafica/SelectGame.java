@@ -243,7 +243,7 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 					//System.out.println(username);
 					//System.out.println(userColor);
 					new Game(username, userColor);
-					new LogicaGioco(username, userColor);
+					//new LogicaGioco(username, userColor);
 			}else if(utenteNonInserito==1) {
 					JOptionPane.showMessageDialog(null, "Bisonga per forza inserire un nome utente!","ATTENZIONE!",JOptionPane.WARNING_MESSAGE);
 			}else if(utentiUguali==1) {

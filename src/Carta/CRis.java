@@ -78,13 +78,26 @@ public class CRis extends Carta{
 	}
 
 	@Override
+<<<<<<< HEAD
 	public boolean VerificaPrerequisito(Giocatore giocatore) {
+=======
+	public boolean VerificaPrerequistio(int[] vettoreRisorse) {
+>>>>>>> 223e696b9f49afa1eff4145cf86c40ef9c51b850
 		// TODO Auto-generated method stub
 		return false;
 	}
 	@Override
 	public String toString() {
-		return "carata risorsa: [angolo alto sinistro= " + angoli[0]+"\n"+"Angolo altro destro= "+angoli[1]+"\n"+"Angolo basso destro= "+angoli[2]+"\n"+"Angolo basso sinistra= "+angoli[3]+"\n" + "simbolo carta= " + simbolo +"\n"+ "colore carta= " + colore+"\n"+super.toString() + "]";
+		return "Carata risorsa " + IDCARTA +
+				":\n\t\t[" + super.toString() +
+				"\n\t\t Simbolo -> " + simbolo +
+				"\n\t\t Colore -> " + colore +
+				"\n\t\t Angoli:" +
+				"\n\t\t\tAlto sx -> " + angoli[0].getSimbolo() +
+				"\n\t\t\tAltro dx -> " + angoli[1].getSimbolo() +
+				"\n\t\t\tBasso dx -> " +angoli[2].getSimbolo() +
+				"\n\t\t\tBasso sx -> " +angoli[3].getSimbolo() + "]";
+				
 	}
 	@Override
 	public boolean isContataScala() {

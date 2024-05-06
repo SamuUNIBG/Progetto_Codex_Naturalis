@@ -7,51 +7,53 @@ import Enumerazione.Colore;
 public class Tracciato {
 	private ArrayList<Giocatore> tabellone;
 	private Colore coloreScelto;
+	private String s;
 	
 	private int quantiGiocatori() {
-		int nGiocatori=0;
+		int nGiocatori;
 		Scanner sc=new Scanner(System.in);
 		do {
-			System.out.println("In quanti volete giocare?\n"
-					+"massimo: 4\n"+"minimo:2");
-			 nGiocatori=sc.nextInt();
+			System.out.print("Inserire numero di giocatori [minimo: 2 massimo: 4]: ");
+			 nGiocatori=Integer.parseInt(sc.nextLine());;
 			if(nGiocatori<=1 ||nGiocatori>=5) {
-				System.out.println("Numero giocatori non valido,riprovare");
+				System.out.println("ERRORE! Numero giocatori non valido, riprovare");
 			}
 		}while(nGiocatori<=1 || nGiocatori>=5);
-		System.out.println("Giocherete in: "+nGiocatori);
-		sc.close();
+		System.out.println("Giocherete in: " + nGiocatori);
+		//sc.close();
 		return nGiocatori;
 	}
 	
 	public Tracciato() {
 	
+		System.out.println("\nCreazione giocatori");
+		
 		int giocatori=quantiGiocatori();
-		tabellone =new ArrayList<Giocatore>(giocatori);
+		tabellone = new ArrayList<Giocatore>(giocatori);
 		tabellone.clear();
 		Scanner sc=new Scanner(System.in);
-		System.out.println("ATTENZIONE!\n"+"il primo giocatore creato sar� il primo ad iniziare");
-		boolean primo=true;
+		System.out.println("\nATTENZIONE! Il primo giocatore creato sara' il primo ad iniziare");
+		System.out.println("ATTENZIONE! Eventuali spazi nei soprannomi verranno rimossi");
+		boolean primo=true, errore=false;
 		for(int i=0;i<giocatori;i++) {
 			
-			System.out.println("Creazione giocatore "+(i+1)+"\n");
-			System.out.println("scrivi il tuo soprannome: \n");
-			System.out.println("Attenzione. Eventuali spazi verranno rimossi!\n");
-			
+			System.out.println("\nCreazione giocatore " + (i+1));
+			System.out.print("Inserire il soprannome: ");
 			String soprannome=sc.nextLine();
-			
+				
 			//tolgo spazi vuoti tra i nomi
 			String s=new String(); //temporanea per salvare i nomi con spazi e cancellare spazi
 			s=soprannome.replace(" ", "");
 				
+			System.out.println("\nPedine disponibili:\n1)Rosso\n"+ "2)Azzurro\n"+ "3)Giallo\n"+"4)Verde\n");
 			
-			System.out.println("scegli il tuo colore:\n"
-					+ "1-Rosso\n"+ " 2-Azzurro\n"+ " 3-Giallo\n"+" 4-Verde\n");
-			int colore=sc.nextInt();
-			
+			int colore;
 			do {
+				System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
+				colore = Integer.parseInt(sc.nextLine());
+			
 				if(colore<1 || colore >4) {
-					System.out.println("Numero inserito non valido. Si possono mettere numeri da 1 a 4!");
+					System.out.println("ERRORE! Numero inserito non valido, riprovare");
 				}
 			}while(colore<1 || colore>4);
 			
@@ -68,13 +70,13 @@ public class Tracciato {
 			
 			switch(colore){
 			case 1:
-				System.out.println("Colore Rosso selezionato\n");
+				System.out.println("Colore Rosso selezionato");
 				if(i!=0) {//al primo giro non faccio il controllo, in quanto non ci sono nomi,colori
 					//controllo nomi uguali
 					for(int j=0;j<tabellone.size();j++) {
 						do {
 							if(tabellone.get(j).getSoprannome().trim().equals(s)) {
-								System.out.println("Non puoi inserire nomi utenti uguali, riprovare!\n");
+								System.out.println("ERRORE! Non puoi inserire nomi utenti uguali, riprovare!\n");
 								String nomeModificato=sc.nextLine();
 								s=nomeModificato.replace(" ", "");
 								
@@ -86,27 +88,26 @@ public class Tracciato {
 						do {
 							if(tabellone.get(k).getColore().equals(coloreScelto)) {
 								System.out.println("Non puoi inserire colori uguali, riprovare!\n");
-								System.out.println("scegli un colore diverso:\n"
-										+ "1-Rosso\n"+ " 2-Azzurro\n"+ " 3-Giallo\n"+" 4-Verde\n");
-								colore=sc.nextInt();
-								
+								System.out.println("Pedine disponibili:\n1)Rosso\n2)Azzurro\n3)Giallo\n4)Verde\n");
 								do {
+									System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
+									colore = Integer.parseInt(sc.nextLine());
 									if(colore<1 || colore >4) {
-										System.out.println("Numero inserito non valido. Si possono mettere numeri da 1 a 4!\n");
+										System.out.println("ERRORE! Numero inserito non valido, riprovare");
 									}
 								}while(colore<1 || colore>4);
 								
 								if(colore==1) {
-									System.out.println("Hai selezionato il colore Rosso\n");
+									System.out.println("Hai selezionato il colore Rosso");
 									coloreScelto=Colore.ROSSO;
 								}else if(colore==2) {
-									System.out.println("Hai selezionato il colore Azzurro\n");
+									System.out.println("Hai selezionato il colore Azzurro");
 									coloreScelto=Colore.AZZURRO;
 								}else if(colore==3) {
-									System.out.println("Hai selezionato il colore Giallo\n");
+									System.out.println("Hai selezionato il colore Giallo");
 									coloreScelto=Colore.GIALLO;
 								}else if(colore==4) {
-									System.out.println("Hai selezionato il colore Verde\n");
+									System.out.println("Hai selezionato il colore Verde");
 									coloreScelto=Colore.VERDE;
 								}
 							}
@@ -115,11 +116,11 @@ public class Tracciato {
 					}
 					
 					tabellone.add(new Giocatore(s,coloreScelto,primo));
-				}
-				tabellone.add(new Giocatore(s,Colore.ROSSO,primo));
+				}else
+					tabellone.add(new Giocatore(s,Colore.ROSSO,primo));
 				break;
 			case 2:
-				System.out.println("Colore Azzurro selezionato\n");
+				System.out.println("Colore Azzurro selezionato");
 				if(i!=0) {//al primo giro non faccio il controllo, in quanto non ci sono nomi,colori
 					//controllo nomi uguali
 					for(int j=0;j<tabellone.size();j++) {
@@ -137,27 +138,27 @@ public class Tracciato {
 						do {
 							if(tabellone.get(k).getColore().equals(coloreScelto)) {
 								System.out.println("Non puoi inserire colori uguali, riprovare!\n");
-								System.out.println("scegli un colore diverso:\n"
-										+ "1-Rosso\n"+ " 2-Azzurro\n"+ " 3-Giallo\n"+" 4-Verde\n");
-								colore=sc.nextInt();
+								System.out.println("Pedine disponibili:\n1-Rosso\n"+ " 2-Azzurro\n"+ " 3-Giallo\n"+" 4-Verde\n");
 								
 								do {
+									System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
+									colore = Integer.parseInt(sc.nextLine());
 									if(colore<1 || colore >4) {
-										System.out.println("Numero inserito non valido. Si possono mettere numeri da 1 a 4!\n");
+										System.out.println("ERRORE! Numero inserito non valido, riprovare");
 									}
 								}while(colore<1 || colore>4);
 								
 								if(colore==1) {
-									System.out.println("Hai selezionato il colore Rosso\n");
+									System.out.println("Hai selezionato il colore Rosso");
 									coloreScelto=Colore.ROSSO;
 								}else if(colore==2) {
-									System.out.println("Hai selezionato il colore Azzurro\n");
+									System.out.println("Hai selezionato il colore Azzurro");
 									coloreScelto=Colore.AZZURRO;
 								}else if(colore==3) {
-									System.out.println("Hai selezionato il colore Giallo\n");
+									System.out.println("Hai selezionato il colore Giallo");
 									coloreScelto=Colore.GIALLO;
 								}else if(colore==4) {
-									System.out.println("Hai selezionato il colore Verde\n");
+									System.out.println("Hai selezionato il colore Verde");
 									coloreScelto=Colore.VERDE;
 								}
 							}
@@ -166,17 +167,17 @@ public class Tracciato {
 					}
 					
 					tabellone.add(new Giocatore(s,coloreScelto,primo));
-				}
+				}else
 				tabellone.add(new Giocatore(s,Colore.AZZURRO,primo));
 				break;
 			case 3:
-				System.out.println("Colore Giallo selezionato\n");
+				System.out.println("Colore Giallo selezionato");
 				if(i!=0) {//al primo giro non faccio il controllo, in quanto non ci sono nomi,colori
 					//controllo nomi uguali
 					for(int j=0;j<tabellone.size();j++) {
 						do {
 							if(tabellone.get(j).getSoprannome().trim().equals(s)) {
-								System.out.println("Non puoi inserire nomi utenti uguali, riprovare!\n");
+								System.out.println("Non puoi inserire nomi utenti uguali, riprovare!");
 								String nomeModificato=sc.nextLine();
 								s=nomeModificato.replace(" ", "");
 								
@@ -187,28 +188,29 @@ public class Tracciato {
 					for(int k=0;k<tabellone.size();k++) {
 						do {
 							if(tabellone.get(k).getColore().equals(coloreScelto)) {
-								System.out.println("Non puoi inserire colori uguali, riprovare!\n");
+								System.out.println("Non puoi inserire colori uguali, riprovare!");
 								System.out.println("scegli un colore diverso:\n"
-										+ "1-Rosso\n"+ " 2-Azzurro\n"+ " 3-Giallo\n"+" 4-Verde\n");
-								colore=sc.nextInt();
+										+ "1-Rosso\n"+ " 2-Azzurro\n"+ " 3-Giallo\n"+" 4-Verde");
 								
 								do {
+									System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
+									colore = Integer.parseInt(sc.nextLine());
 									if(colore<1 || colore >4) {
-										System.out.println("Numero inserito non valido. Si possono mettere numeri da 1 a 4!\n");
+										System.out.println("ERRORE! Numero inserito non valido, riprovare");
 									}
 								}while(colore<1 || colore>4);
 								
 								if(colore==1) {
-									System.out.println("Hai selezionato il colore Rosso\n");
+									System.out.println("Hai selezionato il colore Rosso");
 									coloreScelto=Colore.ROSSO;
 								}else if(colore==2) {
-									System.out.println("Hai selezionato il colore Azzurro\n");
+									System.out.println("Hai selezionato il colore Azzurro");
 									coloreScelto=Colore.AZZURRO;
 								}else if(colore==3) {
-									System.out.println("Hai selezionato il colore Giallo\n");
+									System.out.println("Hai selezionato il colore Giallo");
 									coloreScelto=Colore.GIALLO;
 								}else if(colore==4) {
-									System.out.println("Hai selezionato il colore Verde\n");
+									System.out.println("Hai selezionato il colore Verde");
 									coloreScelto=Colore.VERDE;
 								}
 							}
@@ -217,7 +219,7 @@ public class Tracciato {
 					}
 					
 					tabellone.add(new Giocatore(s,coloreScelto,primo));
-				}
+				}else
 				tabellone.add(new Giocatore(s,Colore.GIALLO,primo));
 				break;
 			case 4:
@@ -239,9 +241,14 @@ public class Tracciato {
 						do {
 							if(tabellone.get(k).getColore().equals(coloreScelto)) {
 								System.out.println("Non puoi inserire colori uguali, riprovare!\n");
-								System.out.println("scegli un colore diverso:\n"
-										+ "1-Rosso\n"+ " 2-Azzurro\n"+ " 3-Giallo\n"+" 4-Verde\n");
-								colore=sc.nextInt();
+								System.out.println("scegli un colore diverso:\n1-Rosso\n2-Azzurro\n3-Giallo\n4-Verde\n");
+								do {
+									System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
+									colore = Integer.parseInt(sc.nextLine());
+									if(colore<1 || colore >4) {
+										System.out.println("ERRORE! Numero inserito non valido, riprovare");
+									}
+								}while(colore<1 || colore>4);
 								
 								do {
 									if(colore<1 || colore >4) {
@@ -250,16 +257,16 @@ public class Tracciato {
 								}while(colore<1 || colore>4);
 								
 								if(colore==1) {
-									System.out.println("Hai selezionato il colore Rosso\n");
+									System.out.println("Hai selezionato il colore Rosso");
 									coloreScelto=Colore.ROSSO;
 								}else if(colore==2) {
-									System.out.println("Hai selezionato il colore Azzurro\n");
+									System.out.println("Hai selezionato il colore Azzurro");
 									coloreScelto=Colore.AZZURRO;
 								}else if(colore==3) {
-									System.out.println("Hai selezionato il colore Giallo\n");
+									System.out.println("Hai selezionato il colore Giallo");
 									coloreScelto=Colore.GIALLO;
 								}else if(colore==4) {
-									System.out.println("Hai selezionato il colore Verde\n");
+									System.out.println("Hai selezionato il colore Verde");
 									coloreScelto=Colore.VERDE;
 								}
 							}
@@ -268,23 +275,22 @@ public class Tracciato {
 					}
 					
 					tabellone.add(new Giocatore(s,coloreScelto,primo));
-				}
+				}else { 
 				
 				tabellone.add(new Giocatore(s,Colore.VERDE,primo));
-				break;
+				break;}
 			}
 			
 			primo = false;			
 			
 		}
 		
-		sc.close();
-		
 	}
 	
 	//needed only for graphics input
 	public Tracciato(ArrayList<String> username, ArrayList<String> userColor) {
 		boolean primo = true;
+		tabellone = new ArrayList<Giocatore>(username.size());
 		for(int i=0; i<username.size(); i++) {
 			switch(userColor.get(i)){
 			case "Rosso":

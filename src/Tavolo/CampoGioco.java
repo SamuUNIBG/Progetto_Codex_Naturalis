@@ -23,6 +23,7 @@ public class CampoGioco {
 		posizioniDisponibili = new ArrayList<String>();
 		
 		campo = new Carta[dimensioneY][dimensioneX];
+		campoPrint = new int[dimensioneY][dimensioneX];
 		
 		for(int y=0; y<dimensioneY; y++) {
 			for(int x=0; x<dimensioneX; x++) {
@@ -62,15 +63,15 @@ public class CampoGioco {
 		}
 		if(campo[posY+1][posX-1]!=null) {
 			campo[posY+1][posX-1].getAngoli()[1].setCoperto();
-			simboli[1]=campo[posY-1][posX-1].getAngoli()[1].getSimbolo();
+			simboli[1]=campo[posY+1][posX-1].getAngoli()[1].getSimbolo();
 		}
 		if(campo[posY-1][posX+1]!=null) {
 			campo[posY-1][posX+1].getAngoli()[3].setCoperto();
-			simboli[2]=campo[posY-1][posX-1].getAngoli()[3].getSimbolo();
+			simboli[2]=campo[posY-1][posX+1].getAngoli()[3].getSimbolo();
 		}
 		if(campo[posY+1][posX+1]!=null) {
 			campo[posY+1][posX+1].getAngoli()[0].setCoperto();
-			simboli[3]=campo[posY-1][posX-1].getAngoli()[0].getSimbolo();
+			simboli[3]=campo[posY+1][posX+1].getAngoli()[0].getSimbolo();
 		}
 		
 		return simboli;
@@ -91,7 +92,7 @@ public class CampoGioco {
 		}
 		if(campo[posY+1][posX-1]==null && carta.getAngoli()[3].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY+1) + "," + (posX-1));
-			posizioniDisponibili.add((posY-1) + "," + (posX-1));
+			posizioniDisponibili.add((posY+1) + "," + (posX-1));
 		}
 		if(campo[posY-1][posX+1]==null && carta.getAngoli()[1].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY-1) + "," + (posX+1));
@@ -118,21 +119,38 @@ public class CampoGioco {
 	}
 	
 	public void print() {
+		System.out.printf(" " + "%9d" + " |", 0);
+		for(int x=1; x<dimensioneX; x++) {
+			System.out.printf(" " + "%3d" + " ", x);
+			if(x<dimensioneX-1) {
+				System.out.print("|");
+			}
+		}
+		for(int x=0; x<dimensioneX; x++) {
+			System.out.print("----");
+			if(x<dimensioneX-1) {
+				System.out.print("--");
+			}
+		}
+		System.out.println("");
 		for(int y=0; y<dimensioneY; y++) {
+			System.out.printf(" " + "%3d" + " |", y);
 			for(int x=0; x<dimensioneX; x++) {
-					System.out.printf(" " + "%3d", campoPrint[y][x]);
+					System.out.printf(" " + "%3d" + " ", campoPrint[y][x]);
 				if(x<dimensioneX-1) {
-					System.out.print(" |");
+					System.out.print("|");
 				}
 			}
+			System.out.println("");
 			if(y<dimensioneY-1) {
 				for(int x=0; x<dimensioneX; x++) {
-					System.out.println("----");
+					System.out.print("----");
 					if(x<dimensioneX-1) {
 						System.out.print("--");
 					}
 				}
 			}
+			System.out.println("");
 		}
 	}
 

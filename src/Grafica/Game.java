@@ -2,10 +2,16 @@ package Grafica;
 
 import javax.swing.*;
 
+
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.util.*;
 
 import java.io.File;
@@ -18,19 +24,34 @@ public class Game extends JFrame implements ActionListener{
 	
 	HashMap<Integer, String> cardImageMap;
 	ArrayList<ImageIcon> cardImageArr;
+	JFrame frame=new JFrame();
+	
 
 	public Game(ArrayList<String> username, ArrayList<String> userColor) {
 		
+		ImageIcon logo = new ImageIcon("images/codex_logo.png");
 		cardImageMap = new HashMap<Integer, String>();
 		cardImageArr = new ArrayList<ImageIcon>();
+		frame.setIconImage(logo.getImage());
+		frame.setTitle("Codex Naturalis - Partita");
+		//frame.setMinimumSize(new Dimension(sfondo.getIconWidth()+16, sfondo.getIconHeight()+39));
+		//sets the window not resizable by the users
+		frame.setResizable(true);
+		//gets the size of the screen
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		frame.setSize(1650,1080);
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		
+		//sets the window position to the center of the screen
+		frame.setLocation((screenSize.width/2)-(frame.getWidth()/2), (screenSize.height/2)-(frame.getHeight()/2));
+		//exit out of application
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		
 		createHashMap();
 		istantiateCardImage();
 		
-		ImageIcon logo = new ImageIcon("images/codex_logo.png");
 		
-		//sets title, dimension of the JFrame
-		this.setIconImage(logo.getImage());
 		
 		//per test
 		/*System.out.println(username.get(0));
@@ -42,20 +63,136 @@ public class Game extends JFrame implements ActionListener{
 		System.out.println(userColor.get(2));
 		System.out.println(userColor.get(3));*/
 		
+		//scrollBar
+		
 		PlayingField playingField = new PlayingField();
 		JScrollPane scrollPlayingField = new JScrollPane(playingField);
-		scrollPlayingField.getViewport().setPreferredSize(new Dimension(1600, 700));
+		scrollPlayingField.getViewport().setPreferredSize(new Dimension(600, 700));
 		playingField.setVisible(true);
 		scrollPlayingField.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);  
 		scrollPlayingField.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		
-		this.getContentPane().add(scrollPlayingField);  
-		this.pack();
-        this.setVisible(true);
-		
         scrollPlayingField.getHorizontalScrollBar().setValue(((12500-204)/2)-(700));
         scrollPlayingField.getVerticalScrollBar().setValue((5000-142)/2-(250));
         
+        PlayingField playingField2 = new PlayingField();
+		JScrollPane scrollPlayingField2 = new JScrollPane(playingField2);
+		scrollPlayingField2.getViewport().setPreferredSize(new Dimension(600, 700));
+		playingField2.setVisible(true);
+		scrollPlayingField2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);  
+		scrollPlayingField2.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPlayingField2.getHorizontalScrollBar().setValue(((12500-204)/2)-(700));
+        scrollPlayingField2.getVerticalScrollBar().setValue((5000-142)/2-(250));
+
+        PlayingField playingField3 = new PlayingField();
+		JScrollPane scrollPlayingField3 = new JScrollPane(playingField3);
+		scrollPlayingField3.getViewport().setPreferredSize(new Dimension(600, 700));
+		playingField3.setVisible(true);
+		scrollPlayingField3.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);  
+		scrollPlayingField3.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPlayingField3.getHorizontalScrollBar().setValue(((12500-204)/2)-(700));
+        scrollPlayingField3.getVerticalScrollBar().setValue((5000-142)/2-(250));
+        
+        PlayingField playingField4 = new PlayingField();
+		JScrollPane scrollPlayingField4 = new JScrollPane(playingField4);
+		scrollPlayingField4.getViewport().setPreferredSize(new Dimension(600, 700));
+		playingField2.setVisible(true);
+		scrollPlayingField4.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);  
+		scrollPlayingField4.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPlayingField4.getHorizontalScrollBar().setValue(((12500-204)/2)-(700));
+        scrollPlayingField4.getVerticalScrollBar().setValue((5000-142)/2-(250));
+        
+        //Pannelli carte personali 
+        JPanel cartePersonaliPanel=new JPanel();
+        cartePersonaliPanel.setPreferredSize(new Dimension(300,300));
+        cartePersonaliPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        cartePersonaliPanel.setLayout(new BorderLayout());
+        cartePersonaliPanel.setOpaque(false);
+        JPanel cartePersonaliPanel2=new JPanel();
+        cartePersonaliPanel2.setPreferredSize(new Dimension(300,300));
+        cartePersonaliPanel2.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        cartePersonaliPanel2.setLayout(new BorderLayout());
+        cartePersonaliPanel2.setOpaque(false);
+        JPanel cartePersonaliPanel3=new JPanel();
+        cartePersonaliPanel3.setPreferredSize(new Dimension(300,300));
+        cartePersonaliPanel3.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        cartePersonaliPanel3.setLayout(new BorderLayout());
+        cartePersonaliPanel3.setOpaque(false);
+        JPanel cartePersonaliPanel4=new JPanel();
+        cartePersonaliPanel4.setPreferredSize(new Dimension(300,300));
+        cartePersonaliPanel4.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        cartePersonaliPanel4.setLayout(new BorderLayout());
+        cartePersonaliPanel4.setOpaque(false);
+        
+        
+        //contenitori carte personali
+        JPanel contenitore=new JPanel();
+        contenitore.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        contenitore.setLayout(new BorderLayout());
+        contenitore.setOpaque(false);
+        contenitore.add(scrollPlayingField,BorderLayout.CENTER);
+        contenitore.add(cartePersonaliPanel,BorderLayout.SOUTH);
+        JPanel contenitore2=new JPanel();
+        contenitore2.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        contenitore2.setLayout(new BorderLayout());
+        contenitore2.setOpaque(false);
+        contenitore2.add(scrollPlayingField2,BorderLayout.CENTER);
+        contenitore2.add(cartePersonaliPanel2,BorderLayout.SOUTH);
+        JPanel contenitore3=new JPanel();
+        contenitore3.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        contenitore3.setLayout(new BorderLayout());
+        contenitore3.setOpaque(false);
+        contenitore3.add(scrollPlayingField3,BorderLayout.CENTER);
+        contenitore3.add(cartePersonaliPanel3,BorderLayout.SOUTH);
+        JPanel contenitore4=new JPanel();
+        contenitore4.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        contenitore4.setLayout(new BorderLayout());
+        contenitore4.setOpaque(false);
+        contenitore4.add(scrollPlayingField4,BorderLayout.CENTER);
+        contenitore4.add(cartePersonaliPanel4,BorderLayout.SOUTH);
+        
+     
+        //finistre campo gioco giocatori
+        JTabbedPane tabbedPane=new JTabbedPane();
+        tabbedPane.setTabPlacement(JTabbedPane.TOP);
+        tabbedPane.add("Giocatore 1",contenitore);
+        tabbedPane.add("Giocatore 2",contenitore2);
+        tabbedPane.add("Giocatore 3",contenitore3);
+        tabbedPane.add("Giocatore 4",contenitore4);
+        //pannello contenente nomi utente
+        JPanel userPanel = new JPanel();
+        userPanel.setPreferredSize(new Dimension(300, 100));
+        userPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        userPanel.setLayout(new GridBagLayout());
+        userPanel.setOpaque(false);
+        
+        GridBagConstraints gbc = new GridBagConstraints();
+		JLabel utente = new JLabel("Username");
+		JLabel carte=new JLabel("Carte");
+		carte.setMaximumSize(new Dimension(30,30));
+		JLabel tracciato=new JLabel("Tracciato");
+		utente.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 15));
+		utente.setBackground(Color.BLACK);
+		gbc.gridx=0;
+		gbc.gridy=0;
+		userPanel.add(utente,gbc);
+		
+        
+		
+		//pannello contenente le carte
+		JPanel cartePanel=new JPanel();
+		cartePanel.setPreferredSize(new Dimension(200, 200));
+		cartePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		cartePanel.setLayout(new BorderLayout());
+		cartePanel.setOpaque(false);
+		cartePanel.add(carte,BorderLayout.CENTER);
+		cartePanel.add(userPanel,BorderLayout.WEST);
+		//pannello tracciato
+		JPanel tracciatoPanel=new JPanel();
+		tracciatoPanel.setPreferredSize(new Dimension(100, 300));
+		tracciatoPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		tracciatoPanel.setLayout(new GridBagLayout());
+		tracciatoPanel.setOpaque(false);
+		tracciatoPanel.add(tracciato,gbc);
        // playingField.addLabel(posReturn);
         
         //test
@@ -75,7 +212,15 @@ public class Game extends JFrame implements ActionListener{
         playingField.addLabel(str);
         playingField.addLabel(str2);
         playingField.addLabel(str3);*/
-		
+      //add homePanel to window
+			
+      		//frame.add(scrollPlayingField);
+			frame.getContentPane().add(tabbedPane);
+      		frame.add(cartePanel,BorderLayout.NORTH);
+      		//frame.add(userPanel,BorderLayout.WEST);
+      		frame.add(tracciatoPanel,BorderLayout.WEST);
+      		//makes frame visible
+      		frame.setVisible(true);				
 	}
 	
 	private void createHashMap() {

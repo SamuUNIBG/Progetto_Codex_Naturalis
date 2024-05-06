@@ -176,7 +176,15 @@ public class CObbL extends CObb{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+<<<<<<< HEAD
 	
+=======
+	@Override
+	public boolean VerificaPrerequistio(int[] vettoreRisorse) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+>>>>>>> 223e696b9f49afa1eff4145cf86c40ef9c51b850
 	@Override
 	public Simbolo getSimbolo() {
 		// TODO Auto-generated method stub
@@ -188,4 +196,37 @@ public class CObbL extends CObb{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public String toString() {
+		String str = "Carata obbiettivo L " /*+ IDCARTA*/ +
+				":\n\t\t[" + super.toString() +
+				"\n\t\t Obbiettivo -> Disporre tre carte a forma di L" +
+				"\n\t\t Colore carte adiacenti -> " + colori[0] +
+				"\n\t\t Colore carta diagonale -> " + colori[1] +
+				"\n\t\t Forma -> ";
+		switch(direzione) {
+			case 1:
+				str += "_|^";
+				break;
+			case 2:
+				str += "|_^";
+				break;
+			case 3:
+				str += "|_";
+				break;
+			case 4:
+				str += "_|";
+				break;
+		}
+			
+		return str +=  "]";
+		
+	}
+
+	@Override
+	public boolean getFronte() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
 }
