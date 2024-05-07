@@ -6,8 +6,13 @@ import java.util.ArrayList;
 
 import java.util.Scanner;
 
+import Carta.CIniz;
 import Carta.CObb;
+import Carta.COro;
+import Carta.CRis;
+import Carta.Carta;
 import Enumerazione.TipoCarta;
+import Tavolo.CampoGioco;
 import Tavolo.CartaTavolo;
 import Tavolo.Giocatore;
 import Tavolo.Tracciato;
@@ -86,7 +91,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		for(int i=0; i<numGiocatori; i++) {
 			
 			giocatoreAttuale = tracciato.getGiocatore(i);				
-			giocatoreAttuale.giocaCIniz();
+			giocaCIniz(giocatoreAttuale);
 			
 		}
 		
@@ -97,9 +102,9 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 			
 			for(int i=0; i<numGiocatori; i++) {
 				
-				giocatoreAttuale = tracciato.getGiocatore(i);				
-				giocatoreAttuale.giocaC();
-				
+				giocatoreAttuale = tracciato.getGiocatore(i);
+				giocaC(giocatoreAttuale);
+					
 				if(!ultimoGiro)
 					pescaCarta(giocatoreAttuale);
 				
@@ -113,6 +118,123 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		
 		AddPuntiObb();
 		
+	}
+	
+	public boolean giocaCIniz(Giocatore giocatoreAttuale) {
+		
+		int retro;
+		CIniz cInizAttuale=giocatoreAttuale.getCInizPer();
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("La carta iniziale in tuo possesso");
+		System.out.println(cInizAttuale.toString());
+		
+		do {
+			System.out.print("Vuoi giocare la carta sul retro? [0(si) - 1(no)]: ");
+			retro = sc.nextInt();
+		}while(retro!=0 && retro!=1);
+		
+		//sc.close();
+		
+		//se la carta e' stata giocata sul retro si setta l'attributo fronte=false
+		if(retro==0) {
+			cInizAttuale.retro();
+		}
+		
+		giocatoreAttuale.piazzaC("40,40", cInizAttuale);
+		
+		return true;
+		
+	}
+	
+	public boolean giocaC(Giocatore giocatoreAttuale) {
+		
+		Scanner sc = new Scanner(System.in);
+		int numCarta, posY, posX, retro = 0;
+		String posCarta;
+		boolean posCartaOk=false, preRequisito=false;
+		Carta carta;
+		CampoGioco campoAttuale=giocatoreAttuale.getCampoG();
+		ArrayList<Carta> cManoAttuale=giocatoreAttuale.getCMano();
+		
+		//viene mostrato a schermo il campo di gioco del giocatore e le sue carte
+		System.out.println("Il tuo campo di gioco:");
+		campoAttuale.print();
+		//stampa legenda
+		System.out.println("Legenda:");
+		for(int i=0; i<giocatoreAttuale.getCPiazzate().size(); i++) {
+			System.out.println(giocatoreAttuale.getCPiazzate().get(i));
+		}
+		System.out.println("\nLe carte in tuo possesso:");
+		System.out.println("0)" + giocatoreAttuale.getCObbPer().toString());
+		for(int i=0; i<3; i++) {
+			System.out.println((i+1) + ") " + cManoAttuale.get(i).toString());
+		}
+		
+		do {
+			//il giocatore sceglie quale carta giocare e su che faccia
+			do {
+				System.out.print("Inserire il numero relativo alla carta da giocare: ");
+				numCarta = sc.nextInt();
+			}while(numCarta<1 || numCarta>3);
+			
+			do {
+				System.out.print("Vuoi giocare la carta sul retro? [0(si) - 1(no)]: ");
+				retro = sc.nextInt();
+			}while(retro!=0 && retro!=1);
+			
+			numCarta--;
+			
+			carta = cManoAttuale.get(numCarta);
+			
+			//controllo giocabilit e' carta oro
+			if(carta instanceof COro && retro==1) {
+				if(((COro)carta).VerificaPrerequistio(giocatoreAttuale.getRisPossedute()))
+					preRequisito = true;
+			}else
+				preRequisito = true;					
+		}while(!preRequisito);
+		
+		//il giocatore sceglie dove giocare la carta
+		System.out.println("Posizioni (y,x) dove e' possibile posizionare la carta:");
+			System.out.println(campoAttuale.getPosizioniDisponibili());
+		
+		do {
+			do {
+				System.out.print("Inserire le coordinate y di dove si vuole giocare la carta: ");
+				posY = sc.nextInt();
+			}while(posY<0 || posY>CampoGioco.dimensioneY);
+			do {
+				System.out.print("Inserire le coordinate x di dove si vuole giocare la carta: ");
+				posX = sc.nextInt();
+			}while(posX<0 || posX>CampoGioco.dimensioneX);
+			posCarta = posY + "," + posX;
+			for(int i=0; i<campoAttuale.getPosizioniDisponibili().size(); i++) {
+				if(posCarta.equals(campoAttuale.getPosizioniDisponibili().get(i)))
+					posCartaOk = true;
+			}
+		}while(!posCartaOk);
+		
+		//se la carta e' stata giocata sul retro si crea una nuova carta
+		if(retro==0) {
+			if(carta instanceof CRis) {
+				CRis cartaRetro= new CRis(carta.getSimbolo(), carta.getColore(), carta.getIDCARTA());
+				cManoAttuale.set(numCarta, cartaRetro);
+			}else if(carta instanceof COro) {
+				COro cartaRetro= new COro(carta.getSimbolo(), carta.getColore(), carta.getIDCARTA());
+				cManoAttuale.set(numCarta, cartaRetro);
+			}
+		}else {
+			int puntiCarta = carta.getPunti();
+			if(carta instanceof COro)
+				puntiCarta = ((COro)carta).calcolaMiniObb(posCarta, giocatoreAttuale);
+			giocatoreAttuale.addPunteggio(puntiCarta);
+		}
+		
+		giocatoreAttuale.piazzaC(posCarta, carta);
+		
+		return true;
 	}
 
 	public void pescaCarta(Giocatore giocatoreAttuale) {

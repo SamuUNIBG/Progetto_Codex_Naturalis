@@ -16,8 +16,6 @@ public class CodexNaturalis {
 			scelta=sc.nextInt();
 		}while(scelta!=0 && scelta!=1);
 		
-		//sc.close();
-		
 		if(scelta == 0) {
 			new LogicaGiocoConsole();
 		}else {

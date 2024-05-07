@@ -8,8 +8,8 @@ import Carta.CRis;
 
 public class CampoGioco {
 
-	static final int dimensioneX = 81;
-	static final int dimensioneY = 81;
+	public static final int dimensioneX = 81;
+	public static final int dimensioneY = 81;
 	
 	private Carta[][] campo;
 	private int[][] campoPrint;	
@@ -126,13 +126,14 @@ public class CampoGioco {
 				System.out.print("|");
 			}
 		}
+		System.out.println("");
 		for(int x=0; x<dimensioneX; x++) {
 			System.out.print("----");
 			if(x<dimensioneX-1) {
 				System.out.print("--");
 			}
 		}
-		System.out.println("");
+		System.out.println("-------");
 		for(int y=0; y<dimensioneY; y++) {
 			System.out.printf(" " + "%3d" + " |", y);
 			for(int x=0; x<dimensioneX; x++) {
@@ -149,6 +150,7 @@ public class CampoGioco {
 						System.out.print("--");
 					}
 				}
+				System.out.print("-------");
 			}
 			System.out.println("");
 		}
