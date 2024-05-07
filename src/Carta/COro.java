@@ -96,18 +96,6 @@ public class COro extends Carta implements InterfacciaCarte1,InterfacciaCarte2,I
 		}
 		return true;
 	}
-	public boolean VerificaPrerequistio(int[] vettoreRisorse) { 
-		int ok=0;
-		for(int i=0; i<risNecessarie.length; i++) {
-			if(risNecessarie[i]<=vettoreRisorse[i])
-				ok++;
-		}
-		if(ok==4)
-			return true;
-		else
-			return false;
-
-	}
 	public Simbolo getObiettivo() {
 		return this.obbiettivo;
 	}
