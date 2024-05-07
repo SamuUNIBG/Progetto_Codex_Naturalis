@@ -20,11 +20,7 @@ public abstract class CObb extends Carta{
 	 */
 	public abstract int calcolaObb(Giocatore giocatore); 
 	
-	@Override
-	public Angolo[] getAngoli() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	
 	public String toString() {
 		return super.toString();

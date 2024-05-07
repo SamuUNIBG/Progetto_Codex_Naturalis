@@ -21,7 +21,7 @@ import Tavolo.Giocatore;
  * . sul RETRO presentano i 4 angoli vuoti e una risorsa al centro sempre visibile
  * per piazzarla sul retro non occorre soddisfare i requisiti
  */
-public class COro extends Carta{
+public class COro extends Carta implements InterfacciaCarte1,InterfacciaCarte2,InterfacciaCarte3{
 	private final int IDCARTA; //identificativo univoco di ogni carta risors
 	// va da 40 a 79 tot 40 carte risorsa
 	private static int lastId=40;
@@ -82,7 +82,7 @@ public class COro extends Carta{
 	 * @return true se e soddisfatto altrimenti torna false
 	 */
 
-	public boolean VerificaPrerequisito(Giocatore giocatore) { 
+	public boolean VerificaPrerequisito(int[] vettoreRisorse) { 
 		
 		for(int i=0; i<this.getRisNecessarie().length; i++) {
 			/*confronto le celle dei 2 array delle stesse posizioni che indicano
@@ -90,7 +90,7 @@ public class COro extends Carta{
 			 * possiede e che la cOro richiede x esser giocata... 
 			 * se il giocatore ne ha di meno vuol dire che non ne ha abbastanza
 			 * x giocare quella carta*/
-			if(giocatore.getRisPossedute()[i]<this.getRisNecessarie()[i]) {
+			if(vettoreRisorse[i]<this.getRisNecessarie()[i]) {
 				return false; 
 			}
 		}

@@ -19,7 +19,7 @@ public class CodexNaturalis {
 		//sc.close();
 		
 		if(scelta == 0) {
-			new LogicaGioco();
+			new LogicaGiocoConsole();
 		}else {
 			new Home();
 		}

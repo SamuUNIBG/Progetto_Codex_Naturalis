@@ -128,11 +128,7 @@ public class CObbScala extends CObb{
 	}
 
 
-	@Override
-	public Simbolo getSimbolo() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	
 	public String toString() {
 		String str = "Carata obbiettivo scala " /*+ IDCARTA*/ +
@@ -149,10 +145,6 @@ public class CObbScala extends CObb{
 		
 	}
 
-	@Override
-	public boolean getFronte() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 }

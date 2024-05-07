@@ -43,10 +43,7 @@ public class CObbRis extends CObb{
 	}
 
 
-	public Colore getColore() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	
 	public String toString() {
 		return "Carata obbiettivo oggetti " /*+ IDCARTA*/ +
@@ -54,10 +51,6 @@ public class CObbRis extends CObb{
 				"\n\t\t Obbiettivo -> Formare tris di -> " + simbolo +  "]";
 		
 	}
-	@Override
-	public boolean getFronte() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 	
 }

@@ -176,17 +176,6 @@ public class CObbL extends CObb{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	public Simbolo getSimbolo() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Colore getColore() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	public String toString() {
 		String str = "Carata obbiettivo L " /*+ IDCARTA*/ +
@@ -214,10 +203,6 @@ public class CObbL extends CObb{
 		
 	}
 
-	@Override
-	public boolean getFronte() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 	
 }

@@ -13,7 +13,7 @@ import Tavolo.Giocatore;
  * sul retro hanno una risorsa permanente al centro della carta e i 4 angoli visibili
  */
 
-public class CRis extends Carta{
+public class CRis extends Carta implements InterfacciaCarte1,InterfacciaCarte3{
 	
 
 	private final int IDCARTA; //identificativo univoco di ogni carta risors

@@ -3,6 +3,7 @@ package Logica;
 import java.util.ArrayList;
 
 
+
 import java.util.Scanner;
 
 import Carta.CObb;
@@ -11,18 +12,18 @@ import Tavolo.CartaTavolo;
 import Tavolo.Giocatore;
 import Tavolo.Tracciato;
 
-public class LogicaGioco {
+public class LogicaGiocoConsole implements InterfacciaLogica {
 	
 	private CartaTavolo cartaTavolo;
 	
 	private Tracciato tracciato;
 	private int numGiocatori;
 
-	public LogicaGioco() {
+	public LogicaGiocoConsole() {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		//(char)233 é (char)224 à
+		//(char)233 ï¿½ (char)224 ï¿½
 		
 		System.out.println("\nNuova partita di Codex Naturalis avviata!");
 		
@@ -53,7 +54,7 @@ public class LogicaGioco {
 	}
 	
 	//needed only for graphics input
-	public LogicaGioco(ArrayList<String> username, ArrayList<String> userColor) {
+	public LogicaGiocoConsole(ArrayList<String> username, ArrayList<String> userColor) {
 		
 		cartaTavolo = new CartaTavolo();
 		tracciato = new Tracciato(username, userColor);
@@ -76,7 +77,7 @@ public class LogicaGioco {
 		
 	}
 
-	private void Turni() {
+	public void Turni() {
 		
 		Giocatore giocatoreAttuale;
 		boolean punti20 = false;
@@ -114,7 +115,7 @@ public class LogicaGioco {
 		
 	}
 
-	private void pescaCarta(Giocatore giocatoreAttuale) {
+	public void pescaCarta(Giocatore giocatoreAttuale) {
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -228,7 +229,7 @@ public class LogicaGioco {
 		}
 	}
 
-	private void AddPuntiObb() {
+	public void AddPuntiObb() {
 		
 		ArrayList<CObb> cObb = cartaTavolo.getcObbScp();
 		
@@ -243,7 +244,7 @@ public class LogicaGioco {
 		
 	}
 	
-	private void Vincitore() {
+	public void Vincitore() {
 		
 		int maxPunti=tracciato.getGiocatore(0).getPunteggio();
 		ArrayList<String> giocatore = new ArrayList<String>();

@@ -10,7 +10,7 @@ import Tavolo.Giocatore;
  * che son sempre disponibili (visibili che non possono esser coperte
  * da altre carte)
  */
-public class CIniz extends Carta {
+public class CIniz extends Carta implements InterfacciaCarte1{
 	
 	private final Angolo[] angoli = new Angolo[4];  // gli angoli del fronte delle singole carte
 	private final Angolo[] angoliR = new Angolo[4];  // gli angoli del retro delle singole carte
@@ -70,23 +70,6 @@ public class CIniz extends Carta {
 		return IDCARTA;
 	}
 
-	@Override
-	public Simbolo getSimbolo() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Colore getColore() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean isContataScala() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	
 	public String toString() {

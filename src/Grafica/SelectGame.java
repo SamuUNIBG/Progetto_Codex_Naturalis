@@ -2,6 +2,7 @@ package Grafica;
 
 import java.awt.*;
 
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -11,7 +12,7 @@ import java.util.HashSet;
 
 import javax.swing.*;
 
-import Logica.LogicaGioco;
+import Logica.LogicaGiocoConsole;
 
 public class SelectGame extends JFrame implements ActionListener,MouseListener{
 	
