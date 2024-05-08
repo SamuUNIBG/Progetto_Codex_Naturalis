@@ -1,6 +1,7 @@
 package Carta;
+
 import Enumerazione.Colore;
-import Enumerazione.Simbolo;
+
 import Tavolo.CampoGioco;
 import Tavolo.Giocatore;
 /**
@@ -18,148 +19,138 @@ public class CObbL extends CObb{
 	realizzare lo schema perche puo esser fatto da carte di diversi colori*/
 	private final int direzione; /*contiene 4 numeri che rappresentano le
 	4 direzioni possibili in cui la L puo essere orientata*/
-	public CObbL(int puntiAssegnati, Colore colore0,
-			Colore colore1, int direzione) {
-		super(puntiAssegnati);
+	private static int lastId=90;
+	
+	public CObbL(int puntiAssegnati, Colore colore0, Colore colore1, int direzione) {
+		super(puntiAssegnati, CObbL.lastId);
 		this.colori[0]=colore0;
 		this.colori[1]=colore1;
 		this.direzione=direzione;
-		// TODO Auto-generated constructor stub
+		CObbL.lastId++;
 	}
 	
 	@Override
 	public int calcolaObb(Giocatore giocatore) {
 		// TODO Auto-generated method stub
 		int volte = 0;  //per contare quante volte il giocatore fa l obiettivo
+		Carta[][] campoAttuale = giocatore.getCampoG().getCampo();
 		if (this.direzione==1) {
-			for(int i=0; i<CampoGioco.getDimensionex()-1; i++) {
-				for(int j=0; j<CampoGioco.getDimensioney()-2; j++) {
+			for(int i=0; i<CampoGioco.getDimensioney()-3; i++) {
+				for(int j=0; j<CampoGioco.getDimensionex()-1; j++) {
 					
-					
-						if(giocatore.getCampoG().getCampo()[i][j]!=null
-						&& giocatore.getCampoG().getCampo()[i+1][j+1]!=null
-						&& giocatore.getCampoG().getCampo()[i+1][j+2]!=null
-						/*se !=null vuol dire che nella cella e in quelle che formano
-						 lo schema della L ci sono carte*/
-						&& (giocatore.getCampoG().getCampo()[i][j].getAngoli()[2].getCoperto()==true
-						|| giocatore.getCampoG().getCampo()[i+1][j+1].getAngoli()[0].getCoperto()==true)  
-						//verifico la corretta copertura degli angoli
-						&& giocatore.getCampoG().getCampo()[i][j].getColore()==this.getColori()[1]
-						&& giocatore.getCampoG().getCampo()[i+1][j+1].getColore()==this.getColori()[0]
-						&& giocatore.getCampoG().getCampo()[i+1][j+2].getColore()==this.getColori()[0]
-						/* verfico che il colore delle 3 carte prese in considerazione sia
-						  uguale ai colori richiesti dalla carta obiettivo*/
-						&& !giocatore.getCampoG().getCampo()[i][j].isContataL()
-						&& !giocatore.getCampoG().getCampo()[i+1][j+1].isContataL()
-						&& !giocatore.getCampoG().getCampo()[i+1][j+2].isContataL()){
-						/* verifico che le 3 carte non siano gia state contate per l'obietttivo
-						 * L */
-						   volte ++; 
-						   //numero di volte per cui si e realizzato l obiettivo
-						   giocatore.getCampoG().getCampo()[i][j].setContataL(true);
-						   giocatore.getCampoG().getCampo()[i+1][j+1].setContataL(true);
-						   giocatore.getCampoG().getCampo()[i+1][j+2].setContataL(true);
-						   //setto a true il fatto che queste carte sono state gia contate per quell obiettivo
+					if(campoAttuale[i][j]!=null && !(campoAttuale[i][j] instanceof CIniz)
+							/*se !=null vuol dire che nella cella e in quelle che formano
+						 	lo schema della L ci sono carte*/
+							&& ((CGiocabiliSpeciali)campoAttuale[i][j]).getColore()==this.colori[1]
+							/* verfico che il colore delle 3 carte prese in considerazione sia
+							  uguale al colore richiesto dalla carta obiettivo*/
+							&& !((CGiocabiliSpeciali)campoAttuale[i][j]).isContataL()){
+						/* verifico che le 3 carte non siano gia state contate per l'obietttivo L */
+						if(campoAttuale[i+1][j+1]!=null && !(campoAttuale[i+1][j+1] instanceof CIniz)
+								&& ((CGiocabiliSpeciali)campoAttuale[i+1][j+1]).getColore()==this.colori[0]
+								&& !((CGiocabiliSpeciali)campoAttuale[i+1][j+1]).isContataL()) {
+							if(campoAttuale[i+3][j+1]!=null && !(campoAttuale[i+3][j+1] instanceof CIniz)
+							&& ((CGiocabiliSpeciali)campoAttuale[i+3][j+1]).getColore()==this.colori[0]
+							&& !((CGiocabiliSpeciali)campoAttuale[i+3][j+1]).isContataL()) {
+								volte ++; 
+								//numero di volte per cui si e realizzato l obiettivo
+								((CGiocabiliSpeciali)campoAttuale[i][j]).setContataL(true);
+								((CGiocabiliSpeciali)campoAttuale[i+1][j+1]).setContataL(true);
+								((CGiocabiliSpeciali)campoAttuale[i+3][j+1]).setContataL(true);
+								//setto a true il fatto che queste carte sono state gia contate per quell obiettivo
+							}
 						}
+					}
 				}
 			}
 		}
 		if (this.direzione==2) {
-			for(int i=1; i<CampoGioco.getDimensionex(); i++) {
-				for(int j=0; j<CampoGioco.getDimensioney()-2; j++) {
+			for(int i=0; i<CampoGioco.getDimensioney()-3; i++) {
+				for(int j=1; j<CampoGioco.getDimensionex(); j++) {
 					
-					
-						if(giocatore.getCampoG().getCampo()[i][j]!=null
-						&& giocatore.getCampoG().getCampo()[i-1][j+1]!=null
-						&& giocatore.getCampoG().getCampo()[i-1][j+2]!=null
-						/*se !=null vuol dire che nella cella e in quelle che formano
-						 lo schema della L ci sono carte*/
-						&& (giocatore.getCampoG().getCampo()[i][j].getAngoli()[3].getCoperto()==true
-						|| giocatore.getCampoG().getCampo()[i-1][j+1].getAngoli()[1].getCoperto()==true)  
-						//verifico la corretta copertura degli angoli
-						&& giocatore.getCampoG().getCampo()[i][j].getColore()==this.getColori()[1]
-						&& giocatore.getCampoG().getCampo()[i-1][j+1].getColore()==this.getColori()[0]
-						&& giocatore.getCampoG().getCampo()[i-1][j+2].getColore()==this.getColori()[0]
-						/* verfico che il colore delle 3 carte prese in considerazione sia
-						  uguale ai colori richiesti dalla carta obiettivo*/
-						&& !giocatore.getCampoG().getCampo()[i][j].isContataL()
-						&& !giocatore.getCampoG().getCampo()[i-1][j+1].isContataL()
-						&& !giocatore.getCampoG().getCampo()[i-1][j+2].isContataL()){
-						/* verifico che le 3 carte non siano gia state contate per l'obietttivo
-						 * L */
-						   volte ++; 
-						   //numero di volte per cui si e realizzato l obiettivo
-						   giocatore.getCampoG().getCampo()[i][j].setContataL(true);
-						   giocatore.getCampoG().getCampo()[i-1][j+1].setContataL(true);
-						   giocatore.getCampoG().getCampo()[i-1][j+2].setContataL(true);
-						   //setto a true il fatto che queste carte sono state gia contate per quell obiettivo
+					if(campoAttuale[i][j]!=null && !(campoAttuale[i][j] instanceof CIniz)
+							/*se !=null vuol dire che nella cella e in quelle che formano
+						 	lo schema della L ci sono carte*/
+							&& ((CGiocabiliSpeciali)campoAttuale[i][j]).getColore()==this.colori[1]
+							/* verfico che il colore delle 3 carte prese in considerazione sia
+							  uguale al colore richiesto dalla carta obiettivo*/
+							&& !((CGiocabiliSpeciali)campoAttuale[i][j]).isContataL()){
+						/* verifico che le 3 carte non siano gia state contate per l'obietttivo L */
+						if(campoAttuale[i+1][j-1]!=null && !(campoAttuale[i+1][j-1] instanceof CIniz)
+								&& ((CGiocabiliSpeciali)campoAttuale[i+1][j-1]).getColore()==this.colori[0]
+								&& !((CGiocabiliSpeciali)campoAttuale[i+1][j-1]).isContataL()) {
+							if(campoAttuale[i+3][j-1]!=null && !(campoAttuale[i+3][j-1] instanceof CIniz)
+							&& ((CGiocabiliSpeciali)campoAttuale[i+3][j-1]).getColore()==this.colori[0]
+							&& !((CGiocabiliSpeciali)campoAttuale[i+3][j-1]).isContataL()) {
+								volte ++; 
+								//numero di volte per cui si e realizzato l obiettivo
+								((CGiocabiliSpeciali)campoAttuale[i][j]).setContataL(true);
+								((CGiocabiliSpeciali)campoAttuale[i+1][j-1]).setContataL(true);
+								((CGiocabiliSpeciali)campoAttuale[i+3][j-1]).setContataL(true);
+								//setto a true il fatto che queste carte sono state gia contate per quell obiettivo
+							}
 						}
+					}
 				}
 			}
 		}
 		if (this.direzione==3) {
-			for(int i=0; i<CampoGioco.getDimensionex()-1; i++) {
-				for(int j=0; j<CampoGioco.getDimensioney()-2; j++) {
+			for(int i=3; i<CampoGioco.getDimensioney(); i++) {
+				for(int j=1; j<CampoGioco.getDimensionex(); j++) {
 					
-					
-						if(giocatore.getCampoG().getCampo()[i][j]!=null
-						&& giocatore.getCampoG().getCampo()[i][j+1]!=null
-						&& giocatore.getCampoG().getCampo()[i+1][j+2]!=null
-						/*se !=null vuol dire che nella cella e in quelle che formano
-						 lo schema della L ci sono carte*/
-						&& (giocatore.getCampoG().getCampo()[i][j+1].getAngoli()[2].getCoperto()==true
-						|| giocatore.getCampoG().getCampo()[i+1][j+2].getAngoli()[0].getCoperto()==true)  
-						//verifico la corretta copertura degli angoli
-						&& giocatore.getCampoG().getCampo()[i][j].getColore()==this.getColori()[0]
-						&& giocatore.getCampoG().getCampo()[i][j+1].getColore()==this.getColori()[0]
-						&& giocatore.getCampoG().getCampo()[i+1][j+2].getColore()==this.getColori()[1]
-						/* verfico che il colore delle 3 carte prese in considerazione sia
-						  uguale ai colori richiesti dalla carta obiettivo*/
-						&& !giocatore.getCampoG().getCampo()[i][j].isContataL()
-						&& !giocatore.getCampoG().getCampo()[i][j+1].isContataL()
-						&& !giocatore.getCampoG().getCampo()[i+1][j+2].isContataL()){
-						/* verifico che le 3 carte non siano gia state contate per l'obietttivo
-						 * L */
-						   volte ++; 
-						   //numero di volte per cui si e realizzato l obiettivo
-						   giocatore.getCampoG().getCampo()[i][j].setContataL(true);
-						   giocatore.getCampoG().getCampo()[i][j+1].setContataL(true);
-						   giocatore.getCampoG().getCampo()[i+1][j+2].setContataL(true);
-						   //setto a true il fatto che queste carte sono state gia contate per quell obiettivo
+					if(campoAttuale[i][j]!=null && !(campoAttuale[i][j] instanceof CIniz)
+							/*se !=null vuol dire che nella cella e in quelle che formano
+						 	lo schema della L ci sono carte*/
+							&& ((CGiocabiliSpeciali)campoAttuale[i][j]).getColore()==this.colori[1]
+							/* verfico che il colore delle 3 carte prese in considerazione sia
+							  uguale al colore richiesto dalla carta obiettivo*/
+							&& !((CGiocabiliSpeciali)campoAttuale[i][j]).isContataL()){
+						/* verifico che le 3 carte non siano gia state contate per l'obietttivo L */
+						if(campoAttuale[i-1][j-1]!=null && !(campoAttuale[i-1][j-1] instanceof CIniz)
+								&& ((CGiocabiliSpeciali)campoAttuale[i-1][j-1]).getColore()==this.colori[0]
+								&& !((CGiocabiliSpeciali)campoAttuale[i-1][j-1]).isContataL()) {
+							if(campoAttuale[i-3][j-1]!=null && !(campoAttuale[i-3][j-1] instanceof CIniz)
+							&& ((CGiocabiliSpeciali)campoAttuale[i-3][j-1]).getColore()==this.colori[0]
+							&& !((CGiocabiliSpeciali)campoAttuale[i-3][j-1]).isContataL()) {
+								volte ++; 
+								//numero di volte per cui si e realizzato l obiettivo
+								((CGiocabiliSpeciali)campoAttuale[i][j]).setContataL(true);
+								((CGiocabiliSpeciali)campoAttuale[i-1][j-1]).setContataL(true);
+								((CGiocabiliSpeciali)campoAttuale[i-3][j-1]).setContataL(true);
+								//setto a true il fatto che queste carte sono state gia contate per quell obiettivo
+							}
 						}
+					}
 				}
 			}
 		}
 		if (this.direzione==4) {
-			for(int i=1; i<CampoGioco.getDimensionex(); i++) {
-				for(int j=0; j<CampoGioco.getDimensioney()-2; j++) {
+			for(int i=3; i<CampoGioco.getDimensioney(); i++) {
+				for(int j=0; j<CampoGioco.getDimensionex()-1; j++) {
 					
-					
-						if(giocatore.getCampoG().getCampo()[i][j]!=null
-						&& giocatore.getCampoG().getCampo()[i][j+1]!=null
-						&& giocatore.getCampoG().getCampo()[i-1][j+2]!=null
-						/*se !=null vuol dire che nella cella e in quelle che formano
-						 lo schema della L ci sono carte*/
-						&& (giocatore.getCampoG().getCampo()[i][j+1].getAngoli()[3].getCoperto()==true
-						|| giocatore.getCampoG().getCampo()[i-1][j+2].getAngoli()[1].getCoperto()==true)  
-						//verifico la corretta copertura degli angoli
-						&& giocatore.getCampoG().getCampo()[i][j].getColore()==this.getColori()[0]
-						&& giocatore.getCampoG().getCampo()[i][j+1].getColore()==this.getColori()[0]
-						&& giocatore.getCampoG().getCampo()[i-1][j+2].getColore()==this.getColori()[1]
-						/* verfico che il colore delle 3 carte prese in considerazione sia
-						  uguale ai colori richiesti dalla carta obiettivo*/
-						&& !giocatore.getCampoG().getCampo()[i][j].isContataL()
-						&& !giocatore.getCampoG().getCampo()[i][j+1].isContataL()
-						&& !giocatore.getCampoG().getCampo()[i-1][j+2].isContataL()){
-						/* verifico che le 3 carte non siano gia state contate per l'obietttivo
-						 * L */
-						   volte ++; 
-						   //numero di volte per cui si e realizzato l obiettivo
-						   giocatore.getCampoG().getCampo()[i][j].setContataL(true);
-						   giocatore.getCampoG().getCampo()[i][j+1].setContataL(true);
-						   giocatore.getCampoG().getCampo()[i-1][j+2].setContataL(true);
-						   //setto a true il fatto che queste carte sono state gia contate per quell obiettivo
+					if(campoAttuale[i][j]!=null && !(campoAttuale[i][j] instanceof CIniz)
+							/*se !=null vuol dire che nella cella e in quelle che formano
+						 	lo schema della L ci sono carte*/
+							&& ((CGiocabiliSpeciali)campoAttuale[i][j]).getColore()==this.colori[1]
+							/* verfico che il colore delle 3 carte prese in considerazione sia
+							  uguale al colore richiesto dalla carta obiettivo*/
+							&& !((CGiocabiliSpeciali)campoAttuale[i][j]).isContataL()){
+						/* verifico che le 3 carte non siano gia state contate per l'obietttivo L */
+						if(campoAttuale[i-1][j+1]!=null && !(campoAttuale[i-1][j+1] instanceof CIniz)
+								&& ((CGiocabiliSpeciali)campoAttuale[i-1][j+1]).getColore()==this.colori[0]
+								&& !((CGiocabiliSpeciali)campoAttuale[i-1][j+1]).isContataL()) {
+							if(campoAttuale[i-3][j+2]!=null && !(campoAttuale[i-3][j+2] instanceof CIniz)
+							&& ((CGiocabiliSpeciali)campoAttuale[i-3][j+2]).getColore()==this.colori[0]
+							&& !((CGiocabiliSpeciali)campoAttuale[i-3][j+2]).isContataL()) {
+								volte ++; 
+								//numero di volte per cui si e realizzato l obiettivo
+								((CGiocabiliSpeciali)campoAttuale[i][j]).setContataL(true);
+								((CGiocabiliSpeciali)campoAttuale[i-1][j+1]).setContataL(true);
+								((CGiocabiliSpeciali)campoAttuale[i-3][j+2]).setContataL(true);
+								//setto a true il fatto che queste carte sono state gia contate per quell obiettivo
+							}
 						}
+					}
 				}
 			}
 		}
@@ -172,13 +163,12 @@ public class CObbL extends CObb{
 		return direzione;
 	}
 	@Override
-	public int getIDCARTA() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getIdCarta() {
+		return super.getIdCarta();
 	}
 	
 	public String toString() {
-		String str = "Carata obbiettivo L " /*+ IDCARTA*/ +
+		String str = "Carata obbiettivo L " + super.getIdCarta() +
 				":\n\t\t[" + super.toString() +
 				"\n\t\t Obbiettivo -> Disporre tre carte a forma di L" +
 				"\n\t\t Colore carte adiacenti -> " + colori[0] +

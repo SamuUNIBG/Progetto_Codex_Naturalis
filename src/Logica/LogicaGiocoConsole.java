@@ -1,17 +1,16 @@
 package Logica;
 
 import java.util.ArrayList;
-
-
-
 import java.util.Scanner;
 
 import Carta.CIniz;
 import Carta.CObb;
 import Carta.COro;
 import Carta.CRis;
-import Carta.Carta;
+import Carta.CGiocabiliSpeciali;
+
 import Enumerazione.TipoCarta;
+
 import Tavolo.CampoGioco;
 import Tavolo.CartaTavolo;
 import Tavolo.Giocatore;
@@ -28,7 +27,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		//(char)233 � (char)224 �
+		//(char)233 e' (char)224 a'
 		
 		System.out.println("\nNuova partita di Codex Naturalis avviata!");
 		
@@ -154,9 +153,9 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		int numCarta, posY, posX, retro = 0;
 		String posCarta;
 		boolean posCartaOk=false, preRequisito=false;
-		Carta carta;
+		CGiocabiliSpeciali carta;
 		CampoGioco campoAttuale=giocatoreAttuale.getCampoG();
-		ArrayList<Carta> cManoAttuale=giocatoreAttuale.getCMano();
+		ArrayList<CGiocabiliSpeciali> cManoAttuale=giocatoreAttuale.getCMano();
 		
 		//viene mostrato a schermo il campo di gioco del giocatore e le sue carte
 		System.out.println("Il tuo campo di gioco:");
@@ -190,7 +189,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 			
 			//controllo giocabilit e' carta oro
 			if(carta instanceof COro && retro==1) {
-				if(((COro)carta).VerificaPrerequistio(giocatoreAttuale.getRisPossedute()))
+				if(((COro)carta).VerificaPrerequisito(giocatoreAttuale.getRisPossedute()))
 					preRequisito = true;
 			}else
 				preRequisito = true;					
@@ -219,10 +218,10 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		//se la carta e' stata giocata sul retro si crea una nuova carta
 		if(retro==0) {
 			if(carta instanceof CRis) {
-				CRis cartaRetro= new CRis(carta.getSimbolo(), carta.getColore(), carta.getIDCARTA());
+				CRis cartaRetro= new CRis(((CRis)carta).getSimbolo(), ((CRis)carta).getColore(), ((CRis)carta).getIdCarta());
 				cManoAttuale.set(numCarta, cartaRetro);
 			}else if(carta instanceof COro) {
-				COro cartaRetro= new COro(carta.getSimbolo(), carta.getColore(), carta.getIDCARTA());
+				COro cartaRetro= new COro(((CRis)carta).getSimbolo(), ((CRis)carta).getColore(), ((CRis)carta).getIdCarta());
 				cManoAttuale.set(numCarta, cartaRetro);
 			}
 		}else {

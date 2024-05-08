@@ -13,9 +13,10 @@ import Tavolo.Giocatore;
  */
 public class CObbOgg extends CObb{
 	private final ArrayList<Simbolo> oggetti;
-	public CObbOgg(int puntiAssegnati, Simbolo oggetto1,
-			Simbolo oggetto2, Simbolo oggetto3) {
-		super(puntiAssegnati);
+	private static int lastId=98;
+	
+	public CObbOgg(int puntiAssegnati, Simbolo oggetto1, Simbolo oggetto2, Simbolo oggetto3) {
+		super(puntiAssegnati, CObbOgg.lastId);
 		oggetti = new ArrayList<Simbolo>();
 		this.oggetti.add(oggetto1);
 		if (oggetto2!=Simbolo.ASSENTE) {
@@ -24,32 +25,31 @@ public class CObbOgg extends CObb{
 		if (oggetto3!=Simbolo.ASSENTE) {
 			this.oggetti.add(oggetto3);
 		}
-		// TODO Auto-generated constructor stub
+		CObbOgg.lastId++;
 	}
+	
 	public ArrayList<Simbolo> getOggetti() {
 		return oggetti;
 	}
 	@Override
 	public int calcolaObb(Giocatore giocatore) {
-		// TODO Auto-generated method stub
-		if(this.oggetti.size()==2){ 
+		
+		if(this.oggetti.size()==1){ 
 			/*vuol dire che l obiettivo richiede una
 			coppia di oggetti identici*/
 			switch(this.oggetti.get(0)) { //l ogg in pos 0 e lo stesso di pos 1
-			case INCHIOSTRO:
-				return (this.getPunti())*(giocatore.getOggPosseduti()[0]/2);
-			case PERGAMENA:
-				return (this.getPunti())*(giocatore.getOggPosseduti()[1]/2);
-			case PIUMA:
-				return (this.getPunti())*(giocatore.getOggPosseduti()[2]/2);
+				case INCHIOSTRO:
+					return (this.getPunti())*(giocatore.getOggPosseduti()[0]/2);
+				case PERGAMENA:
+					return (this.getPunti())*(giocatore.getOggPosseduti()[1]/2);
+				case PIUMA:
+					return (this.getPunti())*(giocatore.getOggPosseduti()[2]/2);
 			}
 		}
 		if (this.oggetti.size()==3) {
-			/*vuol dire che l obiettivo richiede un set
-			di tre oggetti tutti diversi*/
+			/*vuol dire che l obiettivo richiede un set	di tre oggetti tutti diversi*/
 			if(giocatore.getOggPosseduti()[0]==giocatore.getOggPosseduti()[1]
-				&& giocatore.getOggPosseduti()[0]==giocatore.getOggPosseduti()[2]
-				&& giocatore.getOggPosseduti()[1]==giocatore.getOggPosseduti()[2]){
+				&& giocatore.getOggPosseduti()[0]==giocatore.getOggPosseduti()[2]){
 				return (this.getPunti())*(giocatore.getOggPosseduti()[0]);
 				/* il giocatore possiede lo stesso numero dei 3 oggetti
 				 * quindi otterra i punti della carta per il numero di oggetti*/
@@ -73,15 +73,14 @@ public class CObbOgg extends CObb{
 		return 0;
 	}
 	@Override
-	public int getIDCARTA() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getIdCarta() {
+		return super.getIdCarta();
 	}
 
 	
 	
 	public String toString() {
-		String str = "Carata obbiettivo oggetti " /*+ IDCARTA*/ +
+		String str = "Carata obbiettivo oggetti " + super.getIdCarta() +
 				":\n\t\t[" + super.toString();
 		switch(oggetti.size()) {
 			case 1:
@@ -89,8 +88,8 @@ public class CObbOgg extends CObb{
 				break;
 			case 3:
 				str += "\n\t\t Obbiettivo -> Formare tris di -> " + oggetti.get(0) +
-				"\n\t\t\t\t\t\t" + oggetti.get(1) +
-				"\n\t\t\t\t\t\t" + oggetti.get(2);
+				"\n\t\t\t\t\t\t  " + oggetti.get(1) +
+				"\n\t\t\t\t\t\t  " + oggetti.get(2);
 				break;
 		}
 			

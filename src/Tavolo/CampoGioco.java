@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 import Carta.Carta;
 import Enumerazione.Simbolo;
-import Carta.CRis;
+import Carta.CGiocabili;
 
 public class CampoGioco {
 
 	public static final int dimensioneX = 81;
 	public static final int dimensioneY = 81;
 	
-	private Carta[][] campo;
+	private CGiocabili[][] campo;
 	private int[][] campoPrint;	
 	
 	private ArrayList<String> posReturn;
@@ -22,7 +22,7 @@ public class CampoGioco {
 		posReturn = new ArrayList<String>();
 		posizioniDisponibili = new ArrayList<String>();
 		
-		campo = new Carta[dimensioneY][dimensioneX];
+		campo = new CGiocabili[dimensioneY][dimensioneX];
 		campoPrint = new int[dimensioneY][dimensioneX];
 		
 		for(int y=0; y<dimensioneY; y++) {
@@ -34,7 +34,7 @@ public class CampoGioco {
 		
 	}
 	
-	public void aggiungiC(String posizione, Carta carta) {
+	public void aggiungiC(String posizione, CGiocabili carta) {
 		
 		String[] splittedString = posizione.split(",");
 		int posY = Integer.parseInt(splittedString[0]);
@@ -58,20 +58,20 @@ public class CampoGioco {
 		int posX = Integer.parseInt(splittedString[1]);
 		
 		if(campo[posY-1][posX-1]!=null) {
-			campo[posY-1][posX-1].getAngoli()[2].setCoperto();
-			simboli[0]=campo[posY-1][posX-1].getAngoli()[2].getSimbolo();
+			((CGiocabili)campo[posY-1][posX-1]).getAngoli()[2].setCoperto();
+			simboli[0]=((CGiocabili)campo[posY-1][posX-1]).getAngoli()[2].getSimbolo();
 		}
 		if(campo[posY+1][posX-1]!=null) {
-			campo[posY+1][posX-1].getAngoli()[1].setCoperto();
-			simboli[1]=campo[posY+1][posX-1].getAngoli()[1].getSimbolo();
+			((CGiocabili)campo[posY+1][posX-1]).getAngoli()[1].setCoperto();
+			simboli[1]=((CGiocabili)campo[posY+1][posX-1]).getAngoli()[1].getSimbolo();
 		}
 		if(campo[posY-1][posX+1]!=null) {
-			campo[posY-1][posX+1].getAngoli()[3].setCoperto();
-			simboli[2]=campo[posY-1][posX+1].getAngoli()[3].getSimbolo();
+			((CGiocabili)campo[posY-1][posX+1]).getAngoli()[3].setCoperto();
+			simboli[2]=((CGiocabili)campo[posY-1][posX+1]).getAngoli()[3].getSimbolo();
 		}
 		if(campo[posY+1][posX+1]!=null) {
-			campo[posY+1][posX+1].getAngoli()[0].setCoperto();
-			simboli[3]=campo[posY+1][posX+1].getAngoli()[0].getSimbolo();
+			((CGiocabili)campo[posY+1][posX+1]).getAngoli()[0].setCoperto();
+			simboli[3]=((CGiocabili)campo[posY+1][posX+1]).getAngoli()[0].getSimbolo();
 		}
 		
 		return simboli;
@@ -86,19 +86,19 @@ public class CampoGioco {
 		int posY = Integer.parseInt(splittedString[0]);
 		int posX = Integer.parseInt(splittedString[1]);
 		
-		if(campo[posY-1][posX-1]==null && carta.getAngoli()[0].getSimbolo()!=Simbolo.ASSENTE) {
+		if(campo[posY-1][posX-1]==null && ((CGiocabili)carta).getAngoli()[0].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY-1) + "," + (posX-1));
 			posizioniDisponibili.add((posY-1) + "," + (posX-1));
 		}
-		if(campo[posY+1][posX-1]==null && carta.getAngoli()[3].getSimbolo()!=Simbolo.ASSENTE) {
+		if(campo[posY+1][posX-1]==null && ((CGiocabili)carta).getAngoli()[3].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY+1) + "," + (posX-1));
 			posizioniDisponibili.add((posY+1) + "," + (posX-1));
 		}
-		if(campo[posY-1][posX+1]==null && carta.getAngoli()[1].getSimbolo()!=Simbolo.ASSENTE) {
+		if(campo[posY-1][posX+1]==null && ((CGiocabili)carta).getAngoli()[1].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY-1) + "," + (posX+1));
 			posizioniDisponibili.add((posY-1) + "," + (posX+1));
 		}
-		if(campo[posY+1][posX+1]==null && carta.getAngoli()[2].getSimbolo()!=Simbolo.ASSENTE) {
+		if(campo[posY+1][posX+1]==null && ((CGiocabili)carta).getAngoli()[2].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY+1) + "," + (posX+1));
 			posizioniDisponibili.add((posY+1) + "," + (posX+1));
 		}
@@ -114,7 +114,7 @@ public class CampoGioco {
 		int posY = Integer.parseInt(splittedString[0]);
 		int posX = Integer.parseInt(splittedString[1]);
 		
-		campoPrint[posY][posX]=carta.getIDCARTA();
+		campoPrint[posY][posX]=carta.getIdCarta();
 		
 	}
 	
@@ -169,7 +169,7 @@ public class CampoGioco {
 		return this.campo;
 	}
 
-	public void setCampo(Carta[][] campo) {
+	public void setCampo(CGiocabili[][] campo) {
 		this.campo = campo;
 	}
 	

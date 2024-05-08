@@ -1,7 +1,6 @@
 package Carta;
-import java.util.*;
+
 import Enumerazione.*;
-import Tavolo.Giocatore;
 /**
  * le carte risorsa sono 40 totali di cui, una volta mescolato il mazzo,
  * le prime 2 vengono rivelate scoperte sul campo di gioco, al contempo
@@ -13,100 +12,72 @@ import Tavolo.Giocatore;
  * sul retro hanno una risorsa permanente al centro della carta e i 4 angoli visibili
  */
 
-public class CRis extends Carta implements InterfacciaCarte1,InterfacciaCarte3{
+public class CRis extends CGiocabiliSpeciali {
 	
-
-	private final int IDCARTA; //identificativo univoco di ogni carta risors
-	// va da 0 a 39 tot 40 carte risorsa
 	private static int lastId=0; //id incrementali
-	private final Angolo[] angoli = new Angolo[4];
-	private final Simbolo simbolo;
-	private final Colore colore;
-	private boolean fronte;
-	private boolean contataScala; //x capire se la carta e stata contata x obiettivo scala
-	private boolean contataL; //x capire se la carta e stata contata x obiettivo L
 
-	public CRis(int puntiAssegnati, Simbolo simbolo,Colore colore,
-			Simbolo angolo0, Simbolo angolo1,
-			Simbolo angolo2, Simbolo angolo3) {
-		super(puntiAssegnati);
-		this.angoli[0]=new Angolo(angolo0);
-		this.angoli[1]=new Angolo(angolo1);
-		this.angoli[2]=new Angolo(angolo2);
-		this.angoli[3]=new Angolo(angolo3);
-		this.colore=colore;
-		this.IDCARTA=CRis.lastId;
+	public CRis(int puntiAssegnati, Simbolo simbolo,Colore colore, Simbolo angolo0, Simbolo angolo1, Simbolo angolo2, Simbolo angolo3) {
+		super(puntiAssegnati, simbolo, colore, true, angolo0, angolo1, angolo2, angolo3, CRis.lastId);
 		CRis.lastId++;
-		this.simbolo=simbolo;
-		this.fronte=true;
 	}
 	
-	public CRis(Simbolo simbolo, Colore colore, int IDCARTA) {
-		super(0);
-		this.angoli[0]=new Angolo(Simbolo.VUOTO);
-		this.angoli[1]=new Angolo(Simbolo.VUOTO);
-		this.angoli[2]=new Angolo(Simbolo.VUOTO);
-		this.angoli[3]=new Angolo(Simbolo.VUOTO);
-		this.colore=colore;
-		this.IDCARTA=IDCARTA;
-		this.simbolo=simbolo;
-		this.fronte=false;
+	public CRis(Simbolo simbolo, Colore colore, int IdCarta) {
+		super(0, simbolo, colore, false, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.VUOTO, IdCarta);
 	}
 	
-	@Override
-	public int getIDCARTA() {
-		return this.IDCARTA;
+	//@Override
+	/*public int getIdCarta() {
+		return super.getIdCarta();
 	}
 
 	public Angolo[] getAngoli() {
-		return this.angoli;
+		return super.getAngoli();
 	}
 
 	public Simbolo getSimbolo() {
-		return this.simbolo;
+		return super.getSimbolo();
 	}
 
 	public Colore getColore() {
-		return this.colore;
+		return super.getColore();
 	}
 	
 	public void retro() {
-		this.fronte=false;
+		super.retro();
 	}
 	public boolean getFronte() {
-		return this.fronte;
-	}
+		return super.getFronte();
+	}*/
 
 	@Override
 	public String toString() {
-		return "Carata risorsa " + IDCARTA +
+		return "Carata risorsa " + super.getIdCarta() +
 				":\n\t\t[" + super.toString() +
-				"\n\t\t Simbolo -> " + simbolo +
-				"\n\t\t Colore -> " + colore +
+				"\n\t\t Simbolo -> " + super.getSimbolo() +
+				"\n\t\t Colore -> " + super.getColore() +
 				"\n\t\t Angoli:" +
-				"\n\t\t\tAlto sx -> " + angoli[0].getSimbolo() +
-				"\n\t\t\tAltro dx -> " + angoli[1].getSimbolo() +
-				"\n\t\t\tBasso dx -> " +angoli[2].getSimbolo() +
-				"\n\t\t\tBasso sx -> " +angoli[3].getSimbolo() + "]";
+				"\n\t\t\tAlto sx -> " + super.getAngoli()[0].getSimbolo() +
+				"\n\t\t\tAltro dx -> " + super.getAngoli()[1].getSimbolo() +
+				"\n\t\t\tBasso dx -> " +super.getAngoli()[2].getSimbolo() +
+				"\n\t\t\tBasso sx -> " +super.getAngoli()[3].getSimbolo() + "]";
 				
 	}
-	@Override
+	/*@Override
 	public boolean isContataScala() {
-		return this.contataScala;
+		return super.isContataScala();
 	}
 	@Override
 	public void setContataScala(boolean contataScala) {
-		// TODO Auto-generated method stub
-		this.contataScala = contataScala;
+		super.setContataScala(contataScala);
 	}
-
+	@Override
 	public boolean isContataL() {
-		return this.contataL;
+		return super.isContataL();
 	}
-
+	@Override
 	public void setContataL(boolean contataL) {
-		this.contataL = contataL;
-	}
+		super.setContataL(contataL);
+	}*/
 
 	
 	

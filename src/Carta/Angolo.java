@@ -1,6 +1,7 @@
 package Carta;
-import java.util.*;
+
 import Enumerazione.*;
+
 public class Angolo {
 	
 	private final Simbolo simbolo; //cosa c e nell'angolo (null se angolo vuoto)

@@ -1,6 +1,7 @@
 package Carta;
+
 import Enumerazione.Colore;
-import Enumerazione.Simbolo;
+
 import Tavolo.Giocatore;
 import Tavolo.CampoGioco;
 /**
@@ -22,13 +23,13 @@ public class CObbScala extends CObb{
 	 * a basso (dx) --> \
 	 */
 	private final boolean direzione;
+	private static int lastId=86;
 	
-	public CObbScala(int puntiAssegnati, Colore colore, 
-			boolean direzione) {
-		super(puntiAssegnati);
+	public CObbScala(int puntiAssegnati, Colore colore, boolean direzione) {
+		super(puntiAssegnati, CObbScala.lastId);
 		this.colore=colore;
 		this.direzione=direzione;
-		// TODO Auto-generated constructor stub
+		CObbScala.lastId++;
 	}
 
 	public Colore getColore() {
@@ -43,76 +44,67 @@ public class CObbScala extends CObb{
 	public int calcolaObb(Giocatore giocatore) {
 		// TODO Auto-generated method stub
 		int volte = 0;  //per contare quante volte il giocatore fa l obiettivo
+		Carta[][] campoAttuale = giocatore.getCampoG().getCampo();
 		if(this.direzione==true) {  //e una scala crescente
 			for(int i=1; i<CampoGioco.getDimensionex()-1; i++) {
 				for(int j=1; j<CampoGioco.getDimensioney()-1; j++) {
 					
-					
-						if(giocatore.getCampoG().getCampo()[i][j]!=null
-						&& giocatore.getCampoG().getCampo()[i-1][j+1]!=null
-						&& giocatore.getCampoG().getCampo()[i+1][j-1]!=null
-						/*se !=null vuol dire che nella cella e in quelle adiacenti
-						ci sono carte*/
-						&& (giocatore.getCampoG().getCampo()[i][j].getAngoli()[3].getCoperto()==true
-						|| giocatore.getCampoG().getCampo()[i-1][j+1].getAngoli()[1].getCoperto()==true) 
-						&& (giocatore.getCampoG().getCampo()[i][j].getAngoli()[1].getCoperto()==true
-						|| giocatore.getCampoG().getCampo()[i+1][j-1].getAngoli()[3].getCoperto()==true) 
-						//verifico la corretta copertura degli angoli
-						&& giocatore.getCampoG().getCampo()[i][j].getColore()==this.getColore()
-						&& giocatore.getCampoG().getCampo()[i-1][j+1].getColore()==this.getColore()
-						&& giocatore.getCampoG().getCampo()[i+1][j-1].getColore()==this.getColore()
-						/* verfico che il colore delle 3 carte prese in considerazione sia
-						  uguale al colore richiesto dalla carta obiettivo*/
-						&& !giocatore.getCampoG().getCampo()[i][j].isContataScala()
-						&& !giocatore.getCampoG().getCampo()[i-1][j+1].isContataScala()
-						&& !giocatore.getCampoG().getCampo()[i+1][j-1].isContataScala()){
-						/* verifico che le 3 carte non siano gia state contate per l'obietttivo
-						 * scala (le scale possibili sono 4 dei 4 colori diversi il che esclude
-						 * che una stessa carta possa esser contata x due scale di diverso colore)*/
-						   volte ++; 
-						   //numero di volte per cui si e realizzato l obiettivo
-						   giocatore.getCampoG().getCampo()[i][j].setContataScala(true);
-						   giocatore.getCampoG().getCampo()[i-1][j+1].setContataScala(true);
-						   giocatore.getCampoG().getCampo()[i+1][j-1].setContataScala(true);
-						   //setto a true il fatto che queste carte sono state gia contate per quell obiettivo
+					if(campoAttuale[i][j]!=null && !(campoAttuale[i][j] instanceof CIniz)
+							/*se !=null vuol dire che nella cella e in quelle adiacenti
+							ci sono carte*/
+							&& ((CGiocabiliSpeciali)campoAttuale[i][j]).getColore()==this.colore
+							/* verfico che il colore delle 3 carte prese in considerazione sia
+							  uguale al colore richiesto dalla carta obiettivo*/
+							&& !((CGiocabiliSpeciali)campoAttuale[i][j]).isContataScala()){
+							/* verifico che le 3 carte non siano gia state contate per l'obietttivo
+							 * scala (le scale possibili sono 4 dei 4 colori diversi il che esclude
+							 * che una stessa carta possa esser contata x due scale di diverso colore)*/
+						if(campoAttuale[i-1][j+1]!=null && !(campoAttuale[i-1][j+1] instanceof CIniz)
+								&& ((CGiocabiliSpeciali)campoAttuale[i-1][j+1]).getColore()==this.colore
+								&& !((CGiocabiliSpeciali)campoAttuale[i-1][j+1]).isContataScala()) {
+							if(campoAttuale[i+1][j-1]!=null && !(campoAttuale[i+1][j-1] instanceof CIniz)
+							&& ((CGiocabiliSpeciali)campoAttuale[i+1][j-1]).getColore()==this.colore
+							&& !((CGiocabiliSpeciali)campoAttuale[i+1][j-1]).isContataScala()) {
+								volte ++; 
+								//numero di volte per cui si e realizzato l' obiettivo
+								((CGiocabiliSpeciali)campoAttuale[i][j]).setContataScala(true);
+								((CGiocabiliSpeciali)campoAttuale[i-1][j+1]).setContataScala(true);
+								((CGiocabiliSpeciali)campoAttuale[i+1][j-1]).setContataScala(true);
+								//setto a true il fatto che queste carte sono state gia contate per quell obiettivo
+							}
 						}
+					}
 				}
 			}
-		}
-		else {
+		}else {
 
 			for(int i=1; i<CampoGioco.getDimensionex()-1; i++) {
 				for(int j=1; j<CampoGioco.getDimensioney()-1; j++) {
-					
-					
-						if(giocatore.getCampoG().getCampo()[i][j]!=null
-						&& giocatore.getCampoG().getCampo()[i-1][j-1]!=null
-						&& giocatore.getCampoG().getCampo()[i+1][j+1]!=null
-						/*se !=null vuol dire che nella cella e in quelle adiacenti
-						ci sono carte*/
-						&& (giocatore.getCampoG().getCampo()[i][j].getAngoli()[0].getCoperto()==true
-						|| giocatore.getCampoG().getCampo()[i-1][j-1].getAngoli()[2].getCoperto()==true) 
-						&& (giocatore.getCampoG().getCampo()[i][j].getAngoli()[2].getCoperto()==true
-						|| giocatore.getCampoG().getCampo()[i+1][j+1].getAngoli()[0].getCoperto()==true) 
-						//verifico la corretta copertura degli angoli
-						&& giocatore.getCampoG().getCampo()[i][j].getColore()==this.getColore()
-						&& giocatore.getCampoG().getCampo()[i-1][j-1].getColore()==this.getColore()
-						&& giocatore.getCampoG().getCampo()[i+1][j+1].getColore()==this.getColore()
-						/* verfico che il colore delle 3 carte prese in considerazione sia
-						  uguale al colore richiesto dalla carta obiettivo*/
-						&& !giocatore.getCampoG().getCampo()[i][j].isContataScala()
-						&& !giocatore.getCampoG().getCampo()[i-1][j-1].isContataScala()
-						&& !giocatore.getCampoG().getCampo()[i+1][j+1].isContataScala()){
-						/* verifico che le 3 carte non siano gia state contate per l'obietttivo
-						 * scala (le scale possibili sono 4 dei 4 colori diversi il che esclude
-						 * che una stessa carta possa esser contata x due scale di diverso colore)*/
-						   volte ++; 
-						   //numero di volte per cui si e realizzato l obiettivo
-						   giocatore.getCampoG().getCampo()[i][j].setContataScala(true);
-						   giocatore.getCampoG().getCampo()[i-1][j-1].setContataScala(true);
-						   giocatore.getCampoG().getCampo()[i+1][j+1].setContataScala(true);
-						   //setto a true il fatto che queste carte sono state gia contate per quell obiettivo
+					if(campoAttuale[i][j]!=null && !(campoAttuale[i][j] instanceof CIniz)
+							/*se !=null vuol dire che nella cella e in quelle adiacenti
+							ci sono carte*/
+							&& ((CGiocabiliSpeciali)campoAttuale[i][j]).getColore()==this.colore
+							/* verfico che il colore delle 3 carte prese in considerazione sia
+							  uguale al colore richiesto dalla carta obiettivo*/
+							&& !((CGiocabiliSpeciali)campoAttuale[i][j]).isContataScala()){
+							/* verifico che le 3 carte non siano gia state contate per l'obietttivo
+							 * scala (le scale possibili sono 4 dei 4 colori diversi il che esclude
+							 * che una stessa carta possa esser contata x due scale di diverso colore)*/
+						if(campoAttuale[i-1][j-1]!=null && !(campoAttuale[i-1][j-1] instanceof CIniz)
+								&& ((CGiocabiliSpeciali)campoAttuale[i-1][j-1]).getColore()==this.colore
+								&& !((CGiocabiliSpeciali)campoAttuale[i-1][j-1]).isContataScala()) {
+							if(campoAttuale[i+1][j+1]!=null && !(campoAttuale[i+1][j+1] instanceof CIniz)
+							&& ((CGiocabiliSpeciali)campoAttuale[i+1][j+1]).getColore()==this.colore
+							&& !((CGiocabiliSpeciali)campoAttuale[i+1][j+1]).isContataScala()) {
+								volte ++; 
+								//numero di volte per cui si e realizzato l' obiettivo
+								((CGiocabiliSpeciali)campoAttuale[i][j]).setContataScala(true);
+								((CGiocabiliSpeciali)campoAttuale[i-1][j-1]).setContataScala(true);
+								((CGiocabiliSpeciali)campoAttuale[i+1][j+1]).setContataScala(true);
+								//setto a true il fatto che queste carte sono state gia contate per quell obiettivo
+							}
 						}
+					}
 				}
 			}
 		}
@@ -121,17 +113,12 @@ public class CObbScala extends CObb{
 		
 	}
 
-	@Override
-	public int getIDCARTA() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-	
+	public int getIdCarta() {
+		return super.getIdCarta();
+	}	
 	
 	public String toString() {
-		String str = "Carata obbiettivo scala " /*+ IDCARTA*/ +
+		String str = "Carata obbiettivo scala " + super.getIdCarta() +
 				":\n\t\t[" + super.toString() +
 				"\n\t\t Obbiettivo -> Disporre tre carte diagonalmente" +
 				"\n\t\t Colore -> " + colore +

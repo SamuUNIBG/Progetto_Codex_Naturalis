@@ -1,13 +1,12 @@
 package Tavolo;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import Carta.Angolo;
+import Carta.CGiocabili;
+import Carta.CGiocabiliSpeciali;
 import Carta.CIniz;
 import Carta.CObb;
-import Carta.COro;
-import Carta.CRis;
 import Carta.Carta;
 import Enumerazione.Colore;
 import Enumerazione.Simbolo;
@@ -18,7 +17,7 @@ public class Giocatore {
 	private final Colore colore;
 	private int punteggio;
 	private final boolean primo;
-	private ArrayList<Carta> cMano;
+	private ArrayList<CGiocabiliSpeciali> cMano;
 	private CObb cObbPer;
 	private CIniz cInizPer;
 	private CampoGioco campo;
@@ -33,7 +32,7 @@ public class Giocatore {
 		punteggio=0;
 		campo = new CampoGioco();
 		
-		cMano = new ArrayList<Carta>();
+		cMano = new ArrayList<CGiocabiliSpeciali>();
 		cPiazzate =  new ArrayList<String>();
 		cPiazzate.add("999 -> cella vuota");
 
@@ -65,7 +64,6 @@ public class Giocatore {
 		punteggio+=punti;
 	}
 	public String getSoprannome() {
-		System.out.println(this.soprannome);
 		return this.soprannome;
 	}
 	
@@ -76,7 +74,7 @@ public class Giocatore {
 		return cPiazzate;
 	}
 	
-	public void piazzaC(String posCarta, Carta carta) {
+	public void piazzaC(String posCarta, CGiocabili carta) {
 		
 		campo.aggiungiC(posCarta, carta);
 		campo.print(posCarta, carta);
@@ -143,8 +141,8 @@ public class Giocatore {
 	}
 	public void pescaC(Carta carta) {
 		 
-		if(carta instanceof CRis || carta instanceof COro) {
-			cMano.add(carta);
+		if(carta instanceof CGiocabiliSpeciali) {
+			cMano.add((CGiocabiliSpeciali)carta);
 		}else if(carta instanceof CObb){
 			cObbPer = (CObb)carta;
 		}else if(carta instanceof CIniz){
@@ -153,7 +151,7 @@ public class Giocatore {
 		
 	}
 
-	public ArrayList<Carta> getCMano() {
+	public ArrayList<CGiocabiliSpeciali> getCMano() {
 		return cMano;
 	}
 

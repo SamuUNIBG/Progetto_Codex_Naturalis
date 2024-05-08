@@ -8,9 +8,8 @@ import Tavolo.Giocatore;
  */
 public abstract class CObb extends Carta{
 	
-	public CObb(int puntiAssegnati) {
-		super(puntiAssegnati);
-		// TODO Auto-generated constructor stub
+	public CObb(int puntiAssegnati, int idCarta) {
+		super(puntiAssegnati, idCarta);
 	}
 	/**
 	 * metodo per verificare se un obiettivo e stato raggiunto e quante volte 
@@ -18,9 +17,7 @@ public abstract class CObb extends Carta{
 	 * @param giocatore
 	 * @return
 	 */
-	public abstract int calcolaObb(Giocatore giocatore); 
-	
-	
+	public abstract int calcolaObb(Giocatore giocatore);
 	
 	public String toString() {
 		return super.toString();
