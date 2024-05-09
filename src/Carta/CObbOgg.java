@@ -1,7 +1,6 @@
 package Carta;
 import java.util.*;
 
-import Enumerazione.Colore;
 import Enumerazione.Simbolo;
 import Tavolo.Giocatore;
 /**

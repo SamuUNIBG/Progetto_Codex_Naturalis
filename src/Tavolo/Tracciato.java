@@ -26,7 +26,6 @@ public class Tracciato {
 			
 		}while(nGiocatori<=1 || nGiocatori>=5);
 		System.out.println("Giocherete in: " + nGiocatori);
-		//sc.close();
 		return nGiocatori;
 	}
 	
@@ -343,18 +342,18 @@ public class Tracciato {
 		tabellone = new ArrayList<Giocatore>(username.size());
 		for(int i=0; i<username.size(); i++) {
 			switch(userColor.get(i)){
-			case "Rosso":
-				tabellone.add(new Giocatore(username.get(i),Colore.ROSSO,primo));
-				break;
-			case "Azzurro":
-				tabellone.add(new Giocatore(username.get(i),Colore.AZZURRO,primo));
-				break;
-			case "Giallo":
-				tabellone.add(new Giocatore(username.get(i),Colore.GIALLO,primo));
-				break;
-			case "Verde":
-				tabellone.add(new Giocatore(username.get(i),Colore.VERDE,primo));
-				break;
+				case "Rosso":
+					tabellone.add(new Giocatore(username.get(i),Colore.ROSSO,primo));
+					break;
+				case "Azzurro":
+					tabellone.add(new Giocatore(username.get(i),Colore.AZZURRO,primo));
+					break;
+				case "Giallo":
+					tabellone.add(new Giocatore(username.get(i),Colore.GIALLO,primo));
+					break;
+				case "Verde":
+					tabellone.add(new Giocatore(username.get(i),Colore.VERDE,primo));
+					break;
 			}
 			primo=false;
 		}

@@ -118,7 +118,7 @@ public class CampoGioco {
 		
 	}
 	
-	public void print() {
+	public void print(Giocatore giocatoreAttuale) {
 		System.out.printf(" " + "%9d" + " |", 0);
 		for(int x=1; x<dimensioneX; x++) {
 			System.out.printf(" " + "%3d" + " ", x);
@@ -154,6 +154,12 @@ public class CampoGioco {
 			}
 			System.out.println("");
 		}
+		//stampa legenda		
+		System.out.println("Legenda:");
+		for(String s : giocatoreAttuale.getCPiazzate()) {
+			System.out.println(s);
+		}
+		
 	}
 
 	public static int getDimensionex() {

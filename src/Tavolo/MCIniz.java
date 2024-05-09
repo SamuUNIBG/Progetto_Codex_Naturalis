@@ -29,11 +29,7 @@ public class MCIniz extends Mazzo {
 		cMazzo.add(CIniz3 = new CIniz(Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.LUPO, Simbolo.FARFALLA, Simbolo.ASSENTE, Simbolo.FOGLIA, Simbolo.FARFALLA, Simbolo.FUNGO, Simbolo.LUPO));
 		cMazzo.add(CIniz4 = new CIniz(Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.ASSENTE, Simbolo.LUPO, Simbolo.FARFALLA, Simbolo.FOGLIA, Simbolo.FARFALLA, Simbolo.FUNGO, Simbolo.LUPO, Simbolo.FOGLIA));
 		cMazzo.add(CIniz5 = new CIniz(Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.ASSENTE, Simbolo.FOGLIA, Simbolo.LUPO, Simbolo.FUNGO, Simbolo.FUNGO, Simbolo.LUPO, Simbolo.FARFALLA, Simbolo.FOGLIA));
-		
-		
-		
-		
-		
+				
 		Collections.shuffle(cMazzo);
 	}
 

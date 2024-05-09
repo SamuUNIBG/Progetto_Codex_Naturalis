@@ -100,6 +100,19 @@ public class Giocatore {
 			}
 		}
 		
+		if(carta instanceof CGiocabiliSpeciali && !(((CGiocabiliSpeciali)carta).getFronte())) {
+			Simbolo simbolo = ((CGiocabiliSpeciali)carta).getSimbolo();
+			if(simbolo==Simbolo.FOGLIA) {
+				risPossedute[0]+=1;
+			}else if(simbolo==Simbolo.LUPO) {
+				risPossedute[1]+=1;
+			}else if(simbolo==Simbolo.FUNGO) {
+				risPossedute[2]+=1;
+			}else if(simbolo==Simbolo.FARFALLA) {
+				risPossedute[3]+=1;
+			}
+		}
+		
 		Simbolo[] simboli = campo.copriAngoli(posCarta);
 		//Decrementa array risorse/oggetti posseduti
 		for(int i=0; i<simboli.length; i++) {
@@ -156,7 +169,9 @@ public class Giocatore {
 	}
 	
 	public String toString() {
-		return "Soprannome: " + soprannome + ", colore: " + colore + ", punti: " + punteggio + ", risorse possedute: " + risPossedute +  ", oggetti posseduti: " + oggPosseduti;
+		return "Soprannome: " + soprannome + ", colore: " + colore + ", punti: " + punteggio +
+				", risorse possedute: [" + risPossedute[0] + ", " + risPossedute[1] + ", " + risPossedute[2] + ", " + risPossedute[3] +
+				"], oggetti posseduti: [" + + oggPosseduti[0] + ", " + oggPosseduti[1] + ", " + oggPosseduti[2] + "]";
 	}
 
 }

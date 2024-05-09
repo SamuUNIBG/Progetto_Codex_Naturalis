@@ -125,7 +125,7 @@ public class CIniz extends CGiocabili {
 			}
 			str +=  "]";
 		}else {
-			str += "\n\t\t Angoli retro:" +
+			str += "\n\t\t[Angoli retro:" +
 					"\n\t\t\tAlto sx -> " + angoliR[0].getSimbolo() +
 					"\n\t\t\tAltro dx -> " + angoliR[1].getSimbolo() +
 					"\n\t\t\tBasso dx -> " + angoliR[2].getSimbolo() +

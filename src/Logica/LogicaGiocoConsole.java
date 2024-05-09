@@ -3,14 +3,13 @@ package Logica;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.annotation.processing.SupportedSourceVersion;
-
 import Carta.CIniz;
 import Carta.CObb;
 import Carta.COro;
 import Carta.CRis;
 import Carta.CGiocabiliSpeciali;
 
+import Enumerazione.Simbolo;
 import Enumerazione.TipoCarta;
 
 import Tavolo.CampoGioco;
@@ -43,6 +42,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 				tracciato.getGiocatore(i).pescaC(cartaTavolo.pesca(TipoCarta.CRis));
 				cObb.add((CObb)cartaTavolo.pesca(TipoCarta.CObb));
 			}
+			System.out.println(Character.toUpperCase((char)233) + " il turno di: " + tracciato.getGiocatore(i).getSoprannome() + ", colore -> " + tracciato.getGiocatore(i).getColore() + ", punti -> " + tracciato.getGiocatore(i).getPunteggio());
 			System.out.println("Carte obbiettivo da scegliere:");
 			System.out.println("0)" + cObb.get(0).toString());
 			System.out.println("1)" + cObb.get(1).toString());
@@ -74,30 +74,6 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		Turni();
 		
 	}
-	
-	//needed only for graphics input
-	public LogicaGiocoConsole(ArrayList<String> username, ArrayList<String> userColor) {
-		
-		cartaTavolo = new CartaTavolo();
-		tracciato = new Tracciato(username, userColor);
-		numGiocatori = tracciato.getNumGiocatori();
-		
-		for(int i=0; i<numGiocatori; i++) {
-			ArrayList<CObb> cObb = new ArrayList<CObb>();
-			for(int j=0; j<2; j++) {
-				tracciato.getGiocatore(i).pescaC(cartaTavolo.pesca(TipoCarta.CRis));
-				cObb.add((CObb)cartaTavolo.pesca(TipoCarta.CObb));
-				cObb.add((CObb)cartaTavolo.pesca(TipoCarta.CObb));
-			}
-			//Bisogna far scegliere all'utente quale carta obbiettivo tenere
-			tracciato.getGiocatore(i).pescaC(cObb.get(0));
-			tracciato.getGiocatore(i).pescaC(cartaTavolo.pesca(TipoCarta.COro));
-			tracciato.getGiocatore(i).pescaC(cartaTavolo.pesca(TipoCarta.CIniz));
-		}
-		
-		Turni();
-		
-	}
 
 	public void Turni() {
 		
@@ -109,7 +85,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		for(int i=0; i<numGiocatori; i++) {
 			
 			giocatoreAttuale = tracciato.getGiocatore(i);	
-			System.out.println((char)233 + " il turno di: " + giocatoreAttuale.getSoprannome() + ", colore" + giocatoreAttuale.getColore() + ", punti" + giocatoreAttuale.getPunteggio());
+			System.out.println(Character.toUpperCase((char)233) + " il turno di: " + giocatoreAttuale.getSoprannome() + ", colore -> " + giocatoreAttuale.getColore() + ", punti -> " + giocatoreAttuale.getPunteggio());
 			giocaCIniz(giocatoreAttuale);
 			
 		}
@@ -130,7 +106,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 			for(int i=0; i<numGiocatori; i++) {
 				
 				giocatoreAttuale = tracciato.getGiocatore(i);
-				System.out.println((char)233 + " il turno di: " + giocatoreAttuale.getSoprannome() + ", colore" + giocatoreAttuale.getColore() + ", punti= " + giocatoreAttuale.getPunteggio());
+				System.out.println(Character.toUpperCase((char)233) + " il turno di: " + giocatoreAttuale.getSoprannome() + ", colore -> " + giocatoreAttuale.getColore() + ", punti -> " + giocatoreAttuale.getPunteggio());
 				giocaC(giocatoreAttuale);
 					
 				if(!ultimoGiro)
@@ -179,6 +155,21 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		giocatoreAttuale.getCPiazzate().add(cInizAttuale.toStringBreve());
 		giocatoreAttuale.piazzaC("40,40", cInizAttuale);
 		
+		if(retro==1) {
+			//aggiunge al vettore delle risorse possedute le risorse centrali della carta
+			for(int i=0; i<cInizAttuale.getRisorseCentrali().size(); i++) {
+				if(cInizAttuale.getRisorseCentrali().get(i)==Simbolo.FOGLIA) {
+					giocatoreAttuale.getRisPossedute()[0]+=1;
+				}else if(cInizAttuale.getRisorseCentrali().get(i)==Simbolo.LUPO) {
+					giocatoreAttuale.getRisPossedute()[1]+=1;
+				}else if(cInizAttuale.getRisorseCentrali().get(i)==Simbolo.FUNGO) {
+					giocatoreAttuale.getRisPossedute()[2]+=1;
+				}else if(cInizAttuale.getRisorseCentrali().get(i)==Simbolo.FARFALLA) {
+					giocatoreAttuale.getRisPossedute()[3]+=1;
+				}
+			}
+		}
+		
 		return true;
 		
 	}
@@ -212,6 +203,23 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 			switch(opz) {
 				case 1:
 					//mostro mazzi, carte scoperte e carte obbiettivo
+					System.out.println("Le carte presenti sul tavolo:");
+					System.out.println("1)Le prime carte dei mazzi:");
+					System.out.println("\tIl colore della prima carta del mazzo delle carte risorsa " + (char)233 + ": " + cartaTavolo.getMazzoRis().getCMazzo().get(0).getColore() + "[Carte rimanenti: " + cartaTavolo.getMazzoRis().getCMazzo().size() + "]");
+					System.out.println("\tIl colore della prima carta del mazzo delle carte oro " + (char)233 + ": " + cartaTavolo.getMazzoOro().getCMazzo().get(0).getColore() + "[Carte rimanenti: " + cartaTavolo.getMazzoOro().getCMazzo().size() + "]");
+					System.out.println("3)Le carte risorsa scoperte:");
+					for(int i=0;i<cartaTavolo.getcRisScp().size();i++) {
+						System.out.println("\t" + cartaTavolo.getcRisScp().get(i).toString());
+						
+					}
+					System.out.println("4)Le carte oro scoperte:");
+					for(int i=0;i<cartaTavolo.getcOroScp().size();i++) {
+						System.out.println("\t" + cartaTavolo.getcOroScp().get(i).toString());
+					}
+					System.out.println("5)Le carte obbiettivo:");
+					for(int i=0;i<cartaTavolo.getcObbScp().size();i++) {
+						System.out.println("\t" + cartaTavolo.getcObbScp().get(i).toString());
+					}
 					break;
 				case 2:
 					int opzC=-1;
@@ -233,7 +241,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 						}
 						
 					}while(opzC<1 || opzC>numGiocatori);
-					tracciato.getGiocatore(opzC-1).getCampoG().print();
+					tracciato.getGiocatore(opzC-1).getCampoG().print(tracciato.getGiocatore(opzC-1));
 					break;
 				case 3:
 					//mostra nome, colore, punti, ris possedute e ogg posseduti
@@ -279,12 +287,8 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		
 		//viene mostrato a schermo il campo di gioco del giocatore e le sue carte
 		System.out.println("Il tuo campo di gioco:");
-		campoAttuale.print();
-		//stampa legenda
-		System.out.println("Legenda:");
-		for(int i=0; i<giocatoreAttuale.getCPiazzate().size(); i++) {
-			System.out.println(giocatoreAttuale.getCPiazzate().get(i));
-		}
+		campoAttuale.print(giocatoreAttuale);
+		
 		System.out.println("\nLe carte in tuo possesso:");
 		System.out.println("0)" + giocatoreAttuale.getCObbPer().toString());
 		for(int i=0; i<3; i++) {
@@ -365,7 +369,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 					System.out.print("Inserire le coordinate x di dove si vuole giocare la carta: ");
 					posX =  Integer.parseInt(sc.nextLine());
 					if(posX<0 || posX>CampoGioco.dimensioneX) {
-						System.out.println("Numero non valido, riprovare!");
+						System.out.println("ERRORE! Numero non valido, riprovare");
 					}
 				}catch(NumberFormatException ex) {
 					
@@ -379,6 +383,8 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 				if(posCarta.equals(campoAttuale.getPosizioniDisponibili().get(i)))
 					posCartaOk = true;
 			}
+			if(!posCartaOk)
+				System.out.println("ERRORE! Coordinata non valida, riprovare");
 		}while(!posCartaOk);
 		
 		//se la carta e' stata giocata sul retro si crea una nuova carta
@@ -409,8 +415,8 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		
 		System.out.println("Le carte a disposizione per la pesca:");
 		System.out.println("Le prime carte dei mazzi:");
-		System.out.println("\t1)Il colore della prima carta del mazzo delle carte risorsa" + (char)233 + ": " + cartaTavolo.getMazzoRis().getCMazzo().get(0).getColore());
-		System.out.println("\t2)Il colore della prima carta del mazzo delle carte oro" + (char)233 + ": " + cartaTavolo.getMazzoOro().getCMazzo().get(0).getColore());
+		System.out.println("\t1)Il colore della prima carta del mazzo delle carte risorsa " + (char)233 + ": " + cartaTavolo.getMazzoRis().getCMazzo().get(0).getColore() + "[Carte rimanenti: " + cartaTavolo.getMazzoRis().getCMazzo().size() + "]");
+		System.out.println("\t2)Il colore della prima carta del mazzo delle carte oro " + (char)233 + ": " + cartaTavolo.getMazzoOro().getCMazzo().get(0).getColore() + "[Carte rimanenti: " + cartaTavolo.getMazzoOro().getCMazzo().size() + "]");
 		System.out.println("3)Le carte risorsa scoperte:");
 		for(int i=0;i<cartaTavolo.getcRisScp().size();i++) {
 			System.out.println("\t" + cartaTavolo.getcRisScp().get(i).toString());
