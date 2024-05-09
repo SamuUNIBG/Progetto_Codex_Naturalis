@@ -20,17 +20,21 @@ public abstract class Carta{
 	/**
 	 * sara poi usato dalle sottoclassi per ottenere informazioni
 	 * sui punti delle rispettive carte
-	 * @return
+	 * @return int punti Assegnati
 	 */
 	public int getPunti() {  
 		return this.puntiAssegnati;
 	}
 	
-	
+	/** ottenere l'id della carta
+	 * @return int IdCarta
+	 */
 	public int getIdCarta() {
 		return idCarta;
 	}
-
+	/** torna una stringa con tutte le informazioni della carta 
+	 * @return String
+	 */
 	public String toString() {
 		return idCarta +
 			":\n\t\t[Punteggio assegnato -> " + puntiAssegnati;

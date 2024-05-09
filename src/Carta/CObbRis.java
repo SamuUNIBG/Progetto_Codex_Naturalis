@@ -23,6 +23,13 @@ public class CObbRis extends CObb{
 		return simbolo;
 	}
 	@Override
+	/**
+	 * tutte le carte richiedono un set di 3 risorse identiche per dare 
+	 * i punti quindi vedo quante di quelle ne possiede il giocatore e 
+	 * faccio diviso 3
+	 * @return i punti della carta moltiplicato per il numero di set delle
+	 * 3 risorse che il giocatore possiede
+	 */
 	public int calcolaObb(Giocatore giocatore) {
 		// TODO Auto-generated method stub
 		/*torna un int quindi fa in automatico l approssimazione*/
