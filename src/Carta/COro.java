@@ -97,6 +97,10 @@ public class COro extends CGiocabiliSpeciali implements InterfacciaCarte2 {
 	}*/
 
 	@Override
+	/** torna una stringa con tutte le informazioni della carta 
+	 * utile per capire le carte della mano
+	 * @return String
+	 */
 	public String toString() {
 		return "Carata oro " + super.toString() +
 				"\n\t\t Obbiettivo -> " + obbiettivo +
@@ -113,7 +117,12 @@ public class COro extends CGiocabiliSpeciali implements InterfacciaCarte2 {
 				"\n\t\t\tFungo -> " + risNecessarie[2] +
 				"\n\t\t\tFarfalla -> " + risNecessarie[3] + "]";
 	}
-	
+	/** torna una stringa le informazioni della carta una volta
+	 * che è stata piazzata sul campo, se e stata piazzata sul fronte 
+	 * da le informazioni relative solo al fronte e analogalmente se
+	 * piazzata sul retro
+	 * @return String
+	 */
 	public String toStringBreve() {
 		
 		String str = "Carata oro " + this.getIdCarta() +
@@ -153,7 +162,14 @@ public class COro extends CGiocabiliSpeciali implements InterfacciaCarte2 {
 	public void setContataL(boolean contataL) {
 		super.setContataL(contataL);
 	}*/
-
+	/**
+	 * le carte oro possono dare dei punti al loro piazzamento se viene
+	 * realizzato l obiettivo richeisto dalla carta in questione
+	 * il quale puo essere una risorsa da avere o il coprire angoli
+	 * con la carta
+	 * @return i punti della carta * le volte di realizzazione del
+	 * mini obiettivo della carta oro
+	 */
 	public int calcolaMiniObb(String posizione, Giocatore giocatore) { 
 		
 		if(this.obbiettivo==Simbolo.INCHIOSTRO) {

@@ -1,4 +1,4 @@
-	package Carta;
+package Carta;
 
 import Tavolo.Giocatore;
 
@@ -13,9 +13,9 @@ public abstract class CObb extends Carta{
 	}
 	/**
 	 * metodo per verificare se un obiettivo e stato raggiunto e quante volte 
-	 * e stato raggiunto, torna il numero di punti ottenuti
+	 * e stato raggiunto
 	 * @param giocatore
-	 * @return
+	 * @return il numero di punti ottenuti grazie a quell'obiettivo
 	 */
 	public abstract int calcolaObb(Giocatore giocatore);
 	

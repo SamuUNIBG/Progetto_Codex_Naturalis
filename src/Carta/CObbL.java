@@ -30,6 +30,11 @@ public class CObbL extends CObb{
 	}
 	
 	@Override
+	/**
+	 * verifica se e quante volte lo schema L è stato realizzato
+	 * @return i punti della carta per il numero di volte in cui
+	 * l'obiettivo e stato realizzato
+	 */
 	public int calcolaObb(Giocatore giocatore) {
 		// TODO Auto-generated method stub
 		int volte = 0;  //per contare quante volte il giocatore fa l obiettivo
@@ -156,9 +161,25 @@ public class CObbL extends CObb{
 		}
 		return (this.getPunti())*volte; //torno il punteggio della carta moltiplicato per le volte in cui si e realizzato  l obiettivo
 	}
+	/**
+	 * per ottenere i colori delle carte con le quali realizzare
+	 * lo schema
+	 * @return un array di 2 colori
+	 */
 	public Colore[] getColori() {
 		return colori;
 	}
+	/**
+	 * per ottenere uno dei 4 possibili schemi a L da realizzare
+	 * @return un intero che puo essere 1: se lo schema è due carte viola
+	 * in verticale e una azzurra a nord ovest 
+	 * 2: se lo schema è due carte azzurre
+	 * in verticale e una rossa a nord est
+	 * 3: se lo schema e due carte rosse
+	 * in verticale e una verde a sud est
+	 * 4: se lo schema e due carte verdi
+	 * in verticale e una viola a sud ovest 
+	 */
 	public int getDirezione() {
 		return direzione;
 	}
@@ -166,7 +187,10 @@ public class CObbL extends CObb{
 	public int getIdCarta() {
 		return super.getIdCarta();
 	}
-	
+	/** torna una stringa con tutte le informazioni della carta 
+	 * obiettivo in questione
+	 * @return String
+	 */
 	public String toString() {
 		String str = "Carata obbiettivo L " + super.toString() +
 				"\n\t\t Obbiettivo -> Disporre tre carte a forma di L" +
@@ -191,7 +215,7 @@ public class CObbL extends CObb{
 		return str +=  "]";
 		
 	}
-
+	
 	
 	
 }

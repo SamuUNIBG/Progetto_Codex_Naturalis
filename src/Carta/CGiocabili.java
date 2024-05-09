@@ -1,9 +1,9 @@
 package Carta;
 
 import Enumerazione.Simbolo;
-
+// classe astratta i cui metodi saranno implementati dalle Carte iniziali 
 public abstract class CGiocabili extends Carta {
-
+	
 	private boolean fronte;
 	private final Angolo[] angoli = new Angolo[4];
 	
@@ -17,13 +17,21 @@ public abstract class CGiocabili extends Carta {
 		this.fronte = fronte;
 		
 	}
-	
+	/** setta a false l'attributo fronte della carta
+	 * 
+	 */
 	public void retro() {
 		this.fronte=false;
 	}
+	/** capire se una carte e di fronte (true) o di retro (false)
+	 * @return boolean fronte
+	 */
 	public boolean getFronte() {
 		return this.fronte;
 	}
+	/** torna l array di angoli della carta
+	 * @return Angolo[] angoli
+	 */
 
 	public Angolo[] getAngoli() {
 		return angoli;

@@ -27,11 +27,20 @@ public class CObbOgg extends CObb{
 		}
 		CObbOgg.lastId++;
 	}
-	
+	/**
+	 * ottenere gli oggetti da avere x realizzare l obiettivo
+	 * @return il set di oggetti richiesti dalla carta
+	 */
 	public ArrayList<Simbolo> getOggetti() {
 		return oggetti;
 	}
 	@Override
+	/**
+	 * calcola l obiettivo in base agli oggetti visibili che il giocatore
+	 * possiede sul proprio campo di gioco confrontandoli con quelli
+	 * richeisti dalla carta
+	 * @return i punti della carta
+	 */
 	public int calcolaObb(Giocatore giocatore) {
 		
 		if(this.oggetti.size()==1){ 

@@ -15,12 +15,26 @@ import Enumerazione.*;
 public class CRis extends CGiocabiliSpeciali {
 	
 	private static int lastId=0; //id incrementali
-
+	/**
+	 * se piazzata sul fronte
+	 * @param puntiAssegnati
+	 * @param simbolo
+	 * @param colore
+	 * @param angolo0
+	 * @param angolo1
+	 * @param angolo2
+	 * @param angolo3
+	 */
 	public CRis(int puntiAssegnati, Simbolo simbolo,Colore colore, Simbolo angolo0, Simbolo angolo1, Simbolo angolo2, Simbolo angolo3) {
 		super(puntiAssegnati, simbolo, colore, true, angolo0, angolo1, angolo2, angolo3, CRis.lastId);
 		CRis.lastId++;
 	}
-	
+	/**
+	 * se piazzata sul retro
+	 * @param simbolo
+	 * @param colore
+	 * @param IdCarta
+	 */
 	public CRis(Simbolo simbolo, Colore colore, int IdCarta) {
 		super(0, simbolo, colore, false, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.VUOTO, IdCarta);
 	}
@@ -50,6 +64,10 @@ public class CRis extends CGiocabiliSpeciali {
 	}*/
 
 	@Override
+	/** torna una stringa con tutte le informazioni della carta 
+	 * utile per capire le carte della mano
+	 * @return String
+	 */
 	public String toString() {
 		return "Carata risorsa " + super.toString() +
 				"\n\t\t Simbolo -> " + this.getSimbolo() +
@@ -60,7 +78,12 @@ public class CRis extends CGiocabiliSpeciali {
 				"\n\t\t\tBasso dx -> " + this.getAngoli()[2].getSimbolo() +
 				"\n\t\t\tBasso sx -> " + this.getAngoli()[3].getSimbolo() + "]";			
 	}
-	
+	/** torna una stringa le informazioni della carta una volta
+	 * che è stata piazzata sul campo, se e stata piazzata sul fronte 
+	 * da le informazioni relative solo al fronte e analogalmente se
+	 * piazzata sul retro
+	 * @return String
+	 */
 	public String toStringBreve() {
 		
 		String str = "Carata risorsa " + this.getIdCarta() +

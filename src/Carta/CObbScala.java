@@ -31,16 +31,31 @@ public class CObbScala extends CObb{
 		this.direzione=direzione;
 		CObbScala.lastId++;
 	}
-
+	/**
+	 * ottenere il colore delle carte con le quali realizzare la scala
+	 * @return il colore delle 3 carte richieste in scala
+	 */
 	public Colore getColore() {
 		return colore;
 	}
-
+	/**
+	 * direzione conterrà true se la diagonale sarà crescente quindi da basso (sx)
+	 * ad alto (dx) --> /
+	 * altrimenti false se la diagonale sarà decrescente quindi da alto (sx)
+	 * a basso (dx) --> \
+	 *@return una delle due direzioni per le quali realizzare la scala diagonale
+	 */
 	public boolean getDirezione() {
 		return direzione;
 	}
 
 	@Override
+	/**
+	 * verifica se e quante volte lo schema a scala diagonale
+	 *  è stato realizzato
+	 * @return i punti della carta per il numero di volte in cui
+	 * l'obiettivo e stato realizzato
+	 */
 	public int calcolaObb(Giocatore giocatore) {
 		// TODO Auto-generated method stub
 		int volte = 0;  //per contare quante volte il giocatore fa l obiettivo
