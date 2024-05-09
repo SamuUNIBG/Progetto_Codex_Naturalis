@@ -32,7 +32,8 @@ public abstract class Carta{
 	}
 
 	public String toString() {
-		return "Punteggio assegnato -> " + puntiAssegnati;
+		return idCarta +
+			":\n\t\t[Punteggio assegnato -> " + puntiAssegnati;
 	}
 	
 }

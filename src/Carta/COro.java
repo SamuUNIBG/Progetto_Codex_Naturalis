@@ -98,21 +98,43 @@ public class COro extends CGiocabiliSpeciali implements InterfacciaCarte2 {
 
 	@Override
 	public String toString() {
-		return "Carata oro " + super.getIdCarta() +
-				":\n\t\t[" + super.toString() +
+		return "Carata oro " + super.toString() +
 				"\n\t\t Obbiettivo -> " + obbiettivo +
-				"\n\t\t Simbolo -> " + super.getSimbolo() +
-				"\n\t\t Colore -> " + super.getColore() +
+				"\n\t\t Simbolo -> " + this.getSimbolo() +
+				"\n\t\t Colore -> " + this.getColore() +
 				"\n\t\t Angoli:" +
-				"\n\t\t\tAlto sx -> " + super.getAngoli()[0].getSimbolo() +
-				"\n\t\t\tAlto dx -> " + super.getAngoli()[1].getSimbolo() +
-				"\n\t\t\tBasso dx -> "+ super.getAngoli()[2].getSimbolo() +
-				"\n\t\t\tBasso sx -> "+ super.getAngoli()[3].getSimbolo() +
+				"\n\t\t\tAlto sx -> " + this.getAngoli()[0].getSimbolo() +
+				"\n\t\t\tAlto dx -> " + this.getAngoli()[1].getSimbolo() +
+				"\n\t\t\tBasso dx -> "+ this.getAngoli()[2].getSimbolo() +
+				"\n\t\t\tBasso sx -> "+ this.getAngoli()[3].getSimbolo() +
 				"\n\t\t Risorsa necessarie:" +
 				"\n\t\t\tFoglie -> " + risNecessarie[0]+
 				"\n\t\t\tLupo -> " + risNecessarie[1] +
 				"\n\t\t\tFungo -> " + risNecessarie[2] +
 				"\n\t\t\tFarfalla -> " + risNecessarie[3] + "]";
+	}
+	
+	public String toStringBreve() {
+		
+		String str = "Carata oro " + this.getIdCarta() +
+					 ":\n\t\t[Simbolo -> " + this.getSimbolo() +
+					 "\n\t\t Colore -> " + this.getColore();
+		if(this.getFronte()) {
+			str += ":\n\t\t Angoli fronte:" +
+					"\n\t\t\tAlto sx -> " + this.getAngoli()[0].toString() +
+					"\n\t\t\tAltro dx -> " + this.getAngoli()[1].toString() +
+					"\n\t\t\tBasso dx -> " + this.getAngoli()[2].toString() +
+					"\n\t\t\tBasso sx -> " + this.getAngoli()[3].toString() + "]";
+		}else {
+			str += "\n\t\t Angoli retro:" +
+					"\n\t\t\tAlto sx -> " + this.getAngoli()[0].getSimbolo() +
+					"\n\t\t\tAltro dx -> " + this.getAngoli()[1].getSimbolo() +
+					"\n\t\t\tBasso dx -> " + this.getAngoli()[2].getSimbolo() +
+					"\n\t\t\tBasso sx -> " + this.getAngoli()[3].getSimbolo() + "]";
+		}
+		
+		return str;
+		
 	}
 
 	/*@Override

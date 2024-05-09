@@ -80,8 +80,8 @@ public class CObbOgg extends CObb{
 	
 	
 	public String toString() {
-		String str = "Carata obbiettivo oggetti " + super.getIdCarta() +
-				":\n\t\t[" + super.toString();
+		String str = "Carata obbiettivo oggetti " + super.toString();
+		
 		switch(oggetti.size()) {
 			case 1:
 				str += "\n\t\t Obbiettivo -> Formare coppie di -> " + oggetti.get(0);

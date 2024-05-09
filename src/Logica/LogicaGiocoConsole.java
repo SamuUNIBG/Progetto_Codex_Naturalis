@@ -86,22 +86,33 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		Giocatore giocatoreAttuale;
 		boolean punti20 = false;
 		boolean ultimoGiro = false;
+		int nGiro = 0;
 		
 		for(int i=0; i<numGiocatori; i++) {
 			
-			giocatoreAttuale = tracciato.getGiocatore(i);				
+			giocatoreAttuale = tracciato.getGiocatore(i);	
+			System.out.println((char)233 + " il turno di: " + giocatoreAttuale.getSoprannome() + ", colore" + giocatoreAttuale.getColore() + ", punti" + giocatoreAttuale.getPunteggio());
 			giocaCIniz(giocatoreAttuale);
 			
 		}
 		
 		do {
 			
-			if(punti20)
+			nGiro++;
+			
+			if(punti20) {
 					ultimoGiro = true;
+					System.out.println("Giro numero: " + nGiro);
+					System.out.println("ATTENZIONE! Ultimo giro");
+			}else
+				System.out.println("Giro numero: " + nGiro);
+			
+			opzioniTurno();
 			
 			for(int i=0; i<numGiocatori; i++) {
 				
 				giocatoreAttuale = tracciato.getGiocatore(i);
+				System.out.println((char)233 + " il turno di: " + giocatoreAttuale.getSoprannome() + ", colore" + giocatoreAttuale.getColore() + ", punti" + giocatoreAttuale.getPunteggio());
 				giocaC(giocatoreAttuale);
 					
 				if(!ultimoGiro)
@@ -119,7 +130,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		
 	}
 	
-	public boolean giocaCIniz(Giocatore giocatoreAttuale) {
+	private boolean giocaCIniz(Giocatore giocatoreAttuale) {
 		
 		int retro;
 		CIniz cInizAttuale=giocatoreAttuale.getCInizPer();
@@ -134,20 +145,72 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 			retro = sc.nextInt();
 		}while(retro!=0 && retro!=1);
 		
-		//sc.close();
-		
 		//se la carta e' stata giocata sul retro si setta l'attributo fronte=false
 		if(retro==0) {
 			cInizAttuale.retro();
 		}
 		
+		giocatoreAttuale.getCPiazzate().add(cInizAttuale.toStringBreve());
 		giocatoreAttuale.piazzaC("40,40", cInizAttuale);
 		
 		return true;
 		
 	}
 	
-	public boolean giocaC(Giocatore giocatoreAttuale) {
+	private void opzioniTurno() {
+		
+		int opz, continua;
+		
+		Scanner sc = new Scanner(System.in);
+		
+		do {
+			do {
+				System.out.println("Azioni disponibili: ");
+				System.out.println("1)Visualizzare le carte comuni");//tutte compres i mazzi e gli obb
+				System.out.println("2)Visualizzare il campo degli avversari");//possibilità di scegliere l'avversario
+				System.out.println("3)Visualizzare il tracciato segnapunti");//verrà mostrato elenco giocatori con info su punteggio ris e ogg posseduti
+				System.out.println("4)Giocare una carta");
+				System.out.println("Inserire il numero corrispondente all'azione da compiere: ");
+				opz = sc.nextInt();
+			}while(opz<1 || opz>4);
+			
+			switch(opz) {
+				case 1:
+					//mostro mazzi, carte scoperte e carte obbiettivo
+					break;
+				case 2:
+					int opzC;
+					System.out.println("Campi da gioco osservabili:");
+					for(int i=0; i<numGiocatori; i++) {
+						System.out.println((i+1) + ")Campo di " + tracciato.getGiocatore(i).getSoprannome());
+					}
+					do {
+						System.out.println("Inserire il numero corrispondente al campo da visualizzare: ");
+						opzC = sc.nextInt();
+						if(opzC<1 || opzC>numGiocatori)
+							System.out.println("ERRORE! Numero inserito non valido, riprovare");
+					}while(opzC<1 || opzC>numGiocatori);
+					tracciato.getGiocatore(opzC-1).getCampoG().print();
+					break;
+				case 3:
+					//mostrare nome, colore, punti, ris possedute e ogg posseduti
+					break;
+				case 4:
+					return;
+			}
+			
+			do {
+				System.out.println("Desideri esegiore altre azioni? [0(si) - 1(no)]: ");
+				continua =  sc.nextInt();
+			}while(continua!=0 && continua!=1);
+			if(continua==1)
+				System.out.println("ATTENZIONE! " + (char)233 + " obbligatorio eseguire l'azione gioca carta");
+		}while(continua==0);
+		
+		return;
+	}
+	
+	private boolean giocaC(Giocatore giocatoreAttuale) {
 		
 		Scanner sc = new Scanner(System.in);
 		int numCarta, posY, posX, retro = 0;
@@ -191,9 +254,13 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 			if(carta instanceof COro && retro==1) {
 				if(((COro)carta).VerificaPrerequisito(giocatoreAttuale.getRisPossedute()))
 					preRequisito = true;
+				else
+					System.out.println("ERRORE! Risorse insufficienti, riprovare");
 			}else
 				preRequisito = true;					
 		}while(!preRequisito);
+		
+		cManoAttuale.remove(numCarta);
 		
 		//il giocatore sceglie dove giocare la carta
 		System.out.println("Posizioni (y,x) dove e' possibile posizionare la carta:");
@@ -231,6 +298,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 			giocatoreAttuale.addPunteggio(puntiCarta);
 		}
 		
+		giocatoreAttuale.getCPiazzate().add(carta.toStringBreve());
 		giocatoreAttuale.piazzaC(posCarta, carta);
 		
 		return true;
@@ -300,7 +368,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 			}
 		}
 			
-			switch(scelta) {
+		switch(scelta) {
 			case 1:
 				System.out.println("Hai pescato la prima carta del mazzo carte risorse correttamente!");
 				giocatoreAttuale.pescaC(cartaTavolo.pesca(TipoCarta.CRis));
@@ -344,9 +412,6 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 					giocatoreAttuale.pescaC(cartaTavolo.pesca(TipoCarta.COro,sceltaCartaoroSc-1));
 				}
 				break;
-		
-		
-			
 		}
 	}
 

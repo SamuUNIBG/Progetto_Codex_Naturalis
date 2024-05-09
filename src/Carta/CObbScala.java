@@ -118,8 +118,7 @@ public class CObbScala extends CObb{
 	}	
 	
 	public String toString() {
-		String str = "Carata obbiettivo scala " + super.getIdCarta() +
-				":\n\t\t[" + super.toString() +
+		String str = "Carata obbiettivo scala " + super.toString() +
 				"\n\t\t Obbiettivo -> Disporre tre carte diagonalmente" +
 				"\n\t\t Colore -> " + colore +
 				"\n\t\t Forma -> ";

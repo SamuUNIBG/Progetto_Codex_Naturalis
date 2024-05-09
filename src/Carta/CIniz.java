@@ -39,7 +39,7 @@ public class CIniz extends CGiocabili {
 		super.retro();
 	}*/
 	public Angolo[] getAngoli() {
-		if(super.getFronte())
+		if(this.getFronte())
 			return super.getAngoli();
 		else
 			return this.angoliR;
@@ -60,13 +60,12 @@ public class CIniz extends CGiocabili {
 	
 	public String toString() {
 		
-		String str = "Carata iniziale " + super.getIdCarta() +
-				":\n\t\t[" + super.toString() +
+		String str = "Carata iniziale " + super.toString() +
 				"\n\t\t Angoli fronte:" +
-				"\n\t\t\tAlto sx -> " + super.getAngoli()[0].getSimbolo() +
-				"\n\t\t\tAltro dx -> " + super.getAngoli()[1].getSimbolo() +
-				"\n\t\t\tBasso dx -> " + super.getAngoli()[2].getSimbolo() +
-				"\n\t\t\tBasso sx -> " + super.getAngoli()[3].getSimbolo() +
+				"\n\t\t\tAlto sx -> " + this.getAngoli()[0].getSimbolo() +
+				"\n\t\t\tAltro dx -> " + this.getAngoli()[1].getSimbolo() +
+				"\n\t\t\tBasso dx -> " + this.getAngoli()[2].getSimbolo() +
+				"\n\t\t\tBasso sx -> " + this.getAngoli()[3].getSimbolo() +
 				"\n\t\t Risorse centrali:" +
 				"\n\t\t\t1) -> " + risorseCentrali.get(0);
 		switch(risorseCentrali.size()) {
@@ -84,6 +83,40 @@ public class CIniz extends CGiocabili {
 		"\n\t\t\tAltro dx -> " + angoliR[1].getSimbolo() +
 		"\n\t\t\tBasso dx -> " +angoliR[2].getSimbolo() +
 		"\n\t\t\tBasso sx -> " +angoliR[3].getSimbolo() + "]";
+		
+		return str;
+		
+	}
+	
+	public String toStringBreve() {
+		
+		String str = "Carata iniziale " + this.getIdCarta();
+		
+		if(this.getFronte()) {
+			str += ":\n\t\t[Angoli fronte:" +
+					"\n\t\t\tAlto sx -> " + this.getAngoli()[0].toString() +
+					"\n\t\t\tAltro dx -> " + this.getAngoli()[1].toString() +
+					"\n\t\t\tBasso dx -> " + this.getAngoli()[2].toString() +
+					"\n\t\t\tBasso sx -> " + this.getAngoli()[3].toString() +
+					"\n\t\t Risorse centrali:" +
+					"\n\t\t\t1) -> " + risorseCentrali.get(0);
+			switch(risorseCentrali.size()) {
+				case 2:
+					str += "\n\t\t\t2) -> " + risorseCentrali.get(1);
+					break;
+				case 3:
+					str += "\n\t\t\t2) -> " + risorseCentrali.get(1);
+					str += "\n\t\t\t3) -> " + risorseCentrali.get(2);
+					break;
+			}
+			str +=  "]";
+		}else {
+			str += "\n\t\t Angoli retro:" +
+					"\n\t\t\tAlto sx -> " + angoliR[0].getSimbolo() +
+					"\n\t\t\tAltro dx -> " + angoliR[1].getSimbolo() +
+					"\n\t\t\tBasso dx -> " + angoliR[2].getSimbolo() +
+					"\n\t\t\tBasso sx -> " + angoliR[3].getSimbolo() + "]";
+		}
 		
 		return str;
 		

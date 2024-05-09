@@ -19,8 +19,4 @@ public abstract class CObb extends Carta{
 	 */
 	public abstract int calcolaObb(Giocatore giocatore);
 	
-	public String toString() {
-		return super.toString();
-	}
-	
 }

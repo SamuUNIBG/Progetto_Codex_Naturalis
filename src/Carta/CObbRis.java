@@ -48,8 +48,7 @@ public class CObbRis extends CObb{
 	
 	
 	public String toString() {
-		return "Carata obbiettivo oggetti " + super.getIdCarta() +
-				":\n\t\t[" + super.toString() +
+		return "Carata obbiettivo risorsa " + super.toString() +
 				"\n\t\t Obbiettivo -> Formare tris di -> " + simbolo +  "]";
 		
 	}

@@ -23,4 +23,16 @@ public class Angolo {
 	public void setCoperto() {
 		this.coperto=true;
 	}
+	
+	public String toString() {
+		String str = "" + simbolo;
+		
+		if(coperto)
+			str += ", COPERTO";
+		else
+			str += ", ESPOSTO";
+		
+		return str;
+	}
+	
 }

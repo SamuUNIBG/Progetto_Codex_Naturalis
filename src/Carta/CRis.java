@@ -51,17 +51,39 @@ public class CRis extends CGiocabiliSpeciali {
 
 	@Override
 	public String toString() {
-		return "Carata risorsa " + super.getIdCarta() +
-				":\n\t\t[" + super.toString() +
-				"\n\t\t Simbolo -> " + super.getSimbolo() +
-				"\n\t\t Colore -> " + super.getColore() +
+		return "Carata risorsa " + super.toString() +
+				"\n\t\t Simbolo -> " + this.getSimbolo() +
+				"\n\t\t Colore -> " + this.getColore() +
 				"\n\t\t Angoli:" +
-				"\n\t\t\tAlto sx -> " + super.getAngoli()[0].getSimbolo() +
-				"\n\t\t\tAltro dx -> " + super.getAngoli()[1].getSimbolo() +
-				"\n\t\t\tBasso dx -> " +super.getAngoli()[2].getSimbolo() +
-				"\n\t\t\tBasso sx -> " +super.getAngoli()[3].getSimbolo() + "]";
-				
+				"\n\t\t\tAlto sx -> " + this.getAngoli()[0].getSimbolo() +
+				"\n\t\t\tAltro dx -> " + this.getAngoli()[1].getSimbolo() +
+				"\n\t\t\tBasso dx -> " + this.getAngoli()[2].getSimbolo() +
+				"\n\t\t\tBasso sx -> " + this.getAngoli()[3].getSimbolo() + "]";			
 	}
+	
+	public String toStringBreve() {
+		
+		String str = "Carata risorsa " + this.getIdCarta() +
+					 ":\n\t\t[Simbolo -> " + this.getSimbolo() +
+					 "\n\t\t Colore -> " + this.getColore();
+		if(this.getFronte()) {
+			str += ":\n\t\t Angoli fronte:" +
+					"\n\t\t\tAlto sx -> " + this.getAngoli()[0].toString() +
+					"\n\t\t\tAltro dx -> " + this.getAngoli()[1].toString() +
+					"\n\t\t\tBasso dx -> " + this.getAngoli()[2].toString() +
+					"\n\t\t\tBasso sx -> " + this.getAngoli()[3].toString() + "]";
+		}else {
+			str += "\n\t\t Angoli retro:" +
+					"\n\t\t\tAlto sx -> " + this.getAngoli()[0].getSimbolo() +
+					"\n\t\t\tAltro dx -> " + this.getAngoli()[1].getSimbolo() +
+					"\n\t\t\tBasso dx -> " + this.getAngoli()[2].getSimbolo() +
+					"\n\t\t\tBasso sx -> " + this.getAngoli()[3].getSimbolo() + "]";
+		}
+		
+		return str;
+		
+	}
+	
 	/*@Override
 	public boolean isContataScala() {
 		return super.isContataScala();
