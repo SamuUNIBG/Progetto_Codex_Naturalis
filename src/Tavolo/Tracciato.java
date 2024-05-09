@@ -10,14 +10,20 @@ public class Tracciato {
 	private String s;
 	
 	private int quantiGiocatori() {
-		int nGiocatori;
+		int nGiocatori=0;
 		Scanner sc=new Scanner(System.in);
 		do {
-			System.out.print("Inserire numero di giocatori [minimo: 2 massimo: 4]: ");
-			 nGiocatori=Integer.parseInt(sc.nextLine());;
-			if(nGiocatori<=1 ||nGiocatori>=5) {
-				System.out.println("ERRORE! Numero giocatori non valido, riprovare");
+			try {
+				System.out.print("Inserire numero di giocatori [minimo: 2 massimo: 4]: ");
+				 nGiocatori=Integer.parseInt(sc.nextLine());
+				if(nGiocatori<=1 ||nGiocatori>=5) {
+					System.out.println("ERRORE! Numero giocatori non valido, riprovare");
+				}
+			}catch(NumberFormatException ex){
+				System.out.println("Non puoi inserire una stringa");
+				
 			}
+			
 		}while(nGiocatori<=1 || nGiocatori>=5);
 		System.out.println("Giocherete in: " + nGiocatori);
 		//sc.close();
@@ -47,14 +53,21 @@ public class Tracciato {
 				
 			System.out.println("\nPedine disponibili:\n1)Rosso\n"+ "2)Azzurro\n"+ "3)Giallo\n"+"4)Verde\n");
 			
-			int colore;
+			int colore=0;
 			do {
-				System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
-				colore = Integer.parseInt(sc.nextLine());
-			
-				if(colore<1 || colore >4) {
-					System.out.println("ERRORE! Numero inserito non valido, riprovare");
+				try {
+					System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
+					colore = Integer.parseInt(sc.nextLine());
+				
+					if(colore<1 || colore >4) {
+						System.out.println("ERRORE! Numero inserito non valido, riprovare");
+					}
+					
+				}catch(NumberFormatException ex) {
+					
+					System.out.println("Non puoi inserire una stringa");
 				}
+				
 			}while(colore<1 || colore>4);
 			
 			if(colore==1) {
@@ -77,6 +90,7 @@ public class Tracciato {
 						do {
 							if(tabellone.get(j).getSoprannome().trim().equals(s)) {
 								System.out.println("ERRORE! Non puoi inserire nomi utenti uguali, riprovare!\n");
+								System.out.print("Inserire il soprannome: ");
 								String nomeModificato=sc.nextLine();
 								s=nomeModificato.replace(" ", "");
 								
@@ -90,11 +104,18 @@ public class Tracciato {
 								System.out.println("Non puoi inserire colori uguali, riprovare!\n");
 								System.out.println("Pedine disponibili:\n1)Rosso\n2)Azzurro\n3)Giallo\n4)Verde\n");
 								do {
-									System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
-									colore = Integer.parseInt(sc.nextLine());
-									if(colore<1 || colore >4) {
-										System.out.println("ERRORE! Numero inserito non valido, riprovare");
+									try {
+										System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
+										colore = Integer.parseInt(sc.nextLine());
+										if(colore<1 || colore >4) {
+											System.out.println("ERRORE! Numero inserito non valido, riprovare");
+										}
+										
+									}catch(NumberFormatException ex) {
+										
+										System.out.println("Non puoi inserire una stringa");
 									}
+									
 								}while(colore<1 || colore>4);
 								
 								if(colore==1) {
@@ -127,6 +148,8 @@ public class Tracciato {
 						do {
 							if(tabellone.get(j).getSoprannome().trim().equals(s)) {
 								System.out.println("Non puoi inserire nomi utenti uguali, riprovare!\n");
+
+								System.out.print("Inserire il soprannome: ");
 								String nomeModificato=sc.nextLine();
 								s=nomeModificato.replace(" ", "");
 								
@@ -141,11 +164,20 @@ public class Tracciato {
 								System.out.println("Pedine disponibili:\n1-Rosso\n"+ " 2-Azzurro\n"+ " 3-Giallo\n"+" 4-Verde\n");
 								
 								do {
-									System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
-									colore = Integer.parseInt(sc.nextLine());
-									if(colore<1 || colore >4) {
-										System.out.println("ERRORE! Numero inserito non valido, riprovare");
+									try {
+										
+										System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
+										colore = Integer.parseInt(sc.nextLine());
+										if(colore<1 || colore >4) {
+											System.out.println("ERRORE! Numero inserito non valido, riprovare");
+										}
+										
+									}catch(NumberFormatException ex) {
+										
+										System.out.println("Non puoi inserire una stringa");
 									}
+									
+									
 								}while(colore<1 || colore>4);
 								
 								if(colore==1) {
@@ -178,6 +210,8 @@ public class Tracciato {
 						do {
 							if(tabellone.get(j).getSoprannome().trim().equals(s)) {
 								System.out.println("Non puoi inserire nomi utenti uguali, riprovare!");
+
+								System.out.print("Inserire il soprannome: ");
 								String nomeModificato=sc.nextLine();
 								s=nomeModificato.replace(" ", "");
 								
@@ -193,11 +227,18 @@ public class Tracciato {
 										+ "1-Rosso\n"+ " 2-Azzurro\n"+ " 3-Giallo\n"+" 4-Verde");
 								
 								do {
-									System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
-									colore = Integer.parseInt(sc.nextLine());
-									if(colore<1 || colore >4) {
-										System.out.println("ERRORE! Numero inserito non valido, riprovare");
+									try{
+										System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
+										colore = Integer.parseInt(sc.nextLine());
+										if(colore<1 || colore >4) {
+											System.out.println("ERRORE! Numero inserito non valido, riprovare");
+										}
+										
+									}catch(NumberFormatException ex) {
+										
+										System.out.println("Non puoi inserire una stringa");
 									}
+									
 								}while(colore<1 || colore>4);
 								
 								if(colore==1) {
@@ -230,6 +271,8 @@ public class Tracciato {
 						do {
 							if(tabellone.get(j).getSoprannome().trim().equals(s)) {
 								System.out.println("Non puoi inserire nomi utenti uguali, riprovare!\n");
+
+								System.out.print("Inserire il soprannome: ");
 								String nomeModificato=sc.nextLine();
 								s=nomeModificato.replace(" ", "");
 								
@@ -243,11 +286,18 @@ public class Tracciato {
 								System.out.println("Non puoi inserire colori uguali, riprovare!\n");
 								System.out.println("scegli un colore diverso:\n1-Rosso\n2-Azzurro\n3-Giallo\n4-Verde\n");
 								do {
-									System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
-									colore = Integer.parseInt(sc.nextLine());
-									if(colore<1 || colore >4) {
-										System.out.println("ERRORE! Numero inserito non valido, riprovare");
+									try{
+										System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
+										colore = Integer.parseInt(sc.nextLine());
+										if(colore<1 || colore >4) {
+											System.out.println("ERRORE! Numero inserito non valido, riprovare");
+										}
+										
+									}catch(NumberFormatException ex) {
+										
+										System.out.println("Non puoi inserire una stringa");
 									}
+									
 								}while(colore<1 || colore>4);
 								
 								do {

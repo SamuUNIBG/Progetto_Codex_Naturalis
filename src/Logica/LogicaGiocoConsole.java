@@ -3,6 +3,8 @@ package Logica;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.annotation.processing.SupportedSourceVersion;
+
 import Carta.CIniz;
 import Carta.CObb;
 import Carta.COro;
@@ -44,9 +46,25 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 			System.out.println("Carte obbiettivo da scegliere:");
 			System.out.println("0)" + cObb.get(0).toString());
 			System.out.println("1)" + cObb.get(1).toString());
-			System.out.print("Inserire scelta: ");
 			
-			int scelta = sc.nextInt();
+			int scelta=-1;
+			do {
+				
+				try {
+					System.out.print("Inserire scelta: ");
+					scelta = Integer.parseInt(sc.nextLine());
+					if(scelta<0||scelta>1) {
+						System.out.println("ERRORE! Sono solo consetiti 1 e 0 come scelta, riprovare");
+					}
+					
+				}catch(NumberFormatException ex) {
+					
+					System.out.println("Non puoi inserire una stringa");
+					
+				}
+				
+			}while(scelta<0||scelta>1);
+			
 						
 			tracciato.getGiocatore(i).pescaC(cObb.get(scelta));
 			tracciato.getGiocatore(i).pescaC(cartaTavolo.pesca(TipoCarta.COro));
@@ -112,7 +130,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 			for(int i=0; i<numGiocatori; i++) {
 				
 				giocatoreAttuale = tracciato.getGiocatore(i);
-				System.out.println((char)233 + " il turno di: " + giocatoreAttuale.getSoprannome() + ", colore" + giocatoreAttuale.getColore() + ", punti" + giocatoreAttuale.getPunteggio());
+				System.out.println((char)233 + " il turno di: " + giocatoreAttuale.getSoprannome() + ", colore" + giocatoreAttuale.getColore() + ", punti= " + giocatoreAttuale.getPunteggio());
 				giocaC(giocatoreAttuale);
 					
 				if(!ultimoGiro)
@@ -132,7 +150,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 	
 	private boolean giocaCIniz(Giocatore giocatoreAttuale) {
 		
-		int retro;
+		int retro=-1;
 		CIniz cInizAttuale=giocatoreAttuale.getCInizPer();
 		
 		Scanner sc = new Scanner(System.in);
@@ -141,8 +159,16 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		System.out.println(cInizAttuale.toString());
 		
 		do {
-			System.out.print("Vuoi giocare la carta sul retro? [0(si) - 1(no)]: ");
-			retro = sc.nextInt();
+			try {
+				System.out.print("Vuoi giocare la carta sul retro? [0(si) - 1(no)]: ");
+				retro = Integer.parseInt(sc.nextLine());
+				
+			}catch(NumberFormatException ex) {
+				
+				System.out.println("Non puoi inserire una stringa");
+				
+			}
+			
 		}while(retro!=0 && retro!=1);
 		
 		//se la carta e' stata giocata sul retro si setta l'attributo fronte=false
@@ -159,19 +185,28 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 	
 	private void opzioniTurno() {
 		
-		int opz, continua;
+		int opz=-1, continua=-1;
+		
 		
 		Scanner sc = new Scanner(System.in);
 		
 		do {
 			do {
-				System.out.println("Azioni disponibili: ");
-				System.out.println("1)Visualizzare le carte comuni");//tutte compres i mazzi e gli obb
-				System.out.println("2)Visualizzare il campo degli avversari");//possibilità di scegliere l'avversario
-				System.out.println("3)Visualizzare il tracciato segnapunti");//verrà mostrato elenco giocatori con info su punteggio ris e ogg posseduti
-				System.out.println("4)Giocare una carta");
-				System.out.println("Inserire il numero corrispondente all'azione da compiere: ");
-				opz = sc.nextInt();
+				try {
+					System.out.println("Azioni disponibili: ");
+					System.out.println("1)Visualizzare le carte comuni");//tutte compres i mazzi e gli obb
+					System.out.println("2)Visualizzare il campo degli avversari");//possibilitï¿½ di scegliere l'avversario
+					System.out.println("3)Visualizzare il tracciato segnapunti");//verrï¿½ mostrato elenco giocatori con info su punteggio ris e ogg posseduti
+					System.out.println("4)Giocare una carta");
+					System.out.println("Inserire il numero corrispondente all'azione da compiere: ");
+					opz = Integer.parseInt(sc.nextLine());
+					
+				}catch(NumberFormatException ex) {
+					
+					System.out.println("Non puoi inserire una stringa");
+					
+				}
+				
 			}while(opz<1 || opz>4);
 			
 			switch(opz) {
@@ -179,16 +214,24 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 					//mostro mazzi, carte scoperte e carte obbiettivo
 					break;
 				case 2:
-					int opzC;
+					int opzC=-1;
 					System.out.println("Campi da gioco osservabili:");
 					for(int i=0; i<numGiocatori; i++) {
 						System.out.println((i+1) + ")Campo di " + tracciato.getGiocatore(i).getSoprannome());
 					}
 					do {
-						System.out.println("Inserire il numero corrispondente al campo da visualizzare: ");
-						opzC = sc.nextInt();
-						if(opzC<1 || opzC>numGiocatori)
-							System.out.println("ERRORE! Numero inserito non valido, riprovare");
+						try {
+							System.out.println("Inserire il numero corrispondente al campo da visualizzare: ");
+							opzC = Integer.parseInt(sc.nextLine());
+							if(opzC<1 || opzC>numGiocatori)
+								System.out.println("ERRORE! Numero inserito non valido, riprovare");
+							
+						}catch(NumberFormatException ex) {
+							
+							System.out.println("Non puoi inserire una stringa");
+							
+						}
+						
 					}while(opzC<1 || opzC>numGiocatori);
 					tracciato.getGiocatore(opzC-1).getCampoG().print();
 					break;
@@ -203,8 +246,19 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 			}
 			
 			do {
-				System.out.println("Desideri esegiore altre azioni? [0(si) - 1(no)]: ");
-				continua =  sc.nextInt();
+				try {
+					System.out.println("Desideri esegiore altre azioni? [0(si) - 1(no)]: ");
+					continua =  Integer.parseInt(sc.nextLine());
+					if(continua!=0 && continua!=1) {
+						System.out.println("ERRORE! I numeri consentiti sono 1 e 0, riprovare!");
+					}
+					
+				}catch(NumberFormatException ex) {
+					
+					System.out.println("Non puoi inserire una stringa");
+					
+				}
+				
 			}while(continua!=0 && continua!=1);
 			if(continua==1)
 				System.out.println("ATTENZIONE! " + (char)233 + " obbligatorio eseguire l'azione gioca carta");
@@ -216,7 +270,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 	private boolean giocaC(Giocatore giocatoreAttuale) {
 		
 		Scanner sc = new Scanner(System.in);
-		int numCarta, posY, posX, retro = 0;
+		int numCarta=-1, posY=-1, posX=-1, retro = -1;
 		String posCarta;
 		boolean posCartaOk=false, preRequisito=false;
 		CGiocabiliSpeciali carta;
@@ -240,14 +294,36 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		do {
 			//il giocatore sceglie quale carta giocare e su che faccia
 			do {
-				System.out.print("Inserire il numero relativo alla carta da giocare: ");
-				numCarta = sc.nextInt();
+				try {
+					System.out.print("Inserire il numero relativo alla carta da giocare: ");
+					numCarta = Integer.parseInt(sc.nextLine());
+					if(numCarta<1 || numCarta>3) {
+						System.out.println("ATTENZIONE! Si possono inserire solo i numeri delle carte sopraelencate, rirpovare!");
+					}
+					
+				}catch(NumberFormatException ex) {
+					
+					System.out.println("Non puoi inserire una stringa");
+					
+				}
+				
 			}while(numCarta<1 || numCarta>3);
 			
 			do {
-				System.out.print("Vuoi giocare la carta sul retro? [0(si) - 1(no)]: ");
-				retro = sc.nextInt();
-			}while(retro!=0 && retro!=1);
+				try {
+					System.out.print("Vuoi giocare la carta sul retro? [0(si) - 1(no)]: ");
+					retro = Integer.parseInt(sc.nextLine());
+					if(retro<0 || retro>1) {
+						System.out.println("ATTENZIONE! Si possono inserire solo i numeri 0 e 1, riprovare!");
+					}
+					
+				}catch(NumberFormatException ex) {
+					
+					System.out.println("Non puoi inserire una stringa");
+					
+				}
+				
+			}while(retro<0 || retro>1);
 			
 			numCarta--;
 			
@@ -271,12 +347,32 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		
 		do {
 			do {
-				System.out.print("Inserire le coordinate y di dove si vuole giocare la carta: ");
-				posY = sc.nextInt();
+				try {
+					System.out.print("Inserire le coordinate y di dove si vuole giocare la carta: ");
+					posY =  Integer.parseInt(sc.nextLine());
+					if(posY<0 || posY>CampoGioco.dimensioneY) {
+						System.out.println("Numero non valido, riprovare!");
+					}
+				}catch(NumberFormatException ex) {
+					
+					System.out.println("Non puoi inserire una stringa");
+					
+				}
+				
 			}while(posY<0 || posY>CampoGioco.dimensioneY);
 			do {
-				System.out.print("Inserire le coordinate x di dove si vuole giocare la carta: ");
-				posX = sc.nextInt();
+				try {
+					System.out.print("Inserire le coordinate x di dove si vuole giocare la carta: ");
+					posX =  Integer.parseInt(sc.nextLine());
+					if(posX<0 || posX>CampoGioco.dimensioneX) {
+						System.out.println("Numero non valido, riprovare!");
+					}
+				}catch(NumberFormatException ex) {
+					
+					System.out.println("Non puoi inserire una stringa");
+					
+				}
+				
 			}while(posX<0 || posX>CampoGioco.dimensioneX);
 			posCarta = posY + "," + posX;
 			for(int i=0; i<campoAttuale.getPosizioniDisponibili().size(); i++) {
@@ -325,13 +421,21 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 			System.out.println("\t" + cartaTavolo.getcOroScp().get(i).toString());
 		}
 		
-		int scelta=0;
+		int scelta=-1;
 		do {
-			System.out.print("Inserire il numero relativo alla carta da pescare: ");
-			scelta=sc.nextInt();
-			if(scelta<1 || scelta >4) {
-				System.out.println("ERRORE! Numero inserito non valido, riprovare");
+			try {
+				System.out.print("Inserire il numero relativo alla carta da pescare: ");
+				scelta=Integer.parseInt(sc.nextLine());
+				if(scelta<1 || scelta >4) {
+					System.out.println("ERRORE! Numero inserito non valido, riprovare");
+				}
+				
+			}catch(NumberFormatException ex) {
+				
+				System.out.println("Non puoi inserire una stringa");
+				
 			}
+			
 			
 		}while(scelta<1 ||scelta>4);
 		
@@ -339,15 +443,22 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 			if(cartaTavolo.getMazzoRis().getCRimaste()==0) {
 				System.out.println("ERRORE! Le carte risorsa sono finite, inserire un altro metodo di pesca");
 				do {
-					
-					System.out.println("Che cosa scegli?\n "+"2= pesca mazzo carte oro\n"+
-							"3= pesca una carta risorsa scoperta\n"+"4=pesca una carta oro scoperta\n");
-					scelta=sc.nextInt();
-					if(scelta<2) {
-						System.out.println("Non puoi inserire un valore minore di 2,riprovare!");
-					}else if(scelta>4) {
-						System.out.println("Non puoi inserire un valore maggiore di 4,riprovare!");
+					try {
+						System.out.println("Che cosa scegli?\n "+"2= pesca mazzo carte oro\n"+
+								"3= pesca una carta risorsa scoperta\n"+"4=pesca una carta oro scoperta\n");
+						scelta=Integer.parseInt(sc.nextLine());
+						if(scelta<2) {
+							System.out.println("Non puoi inserire un valore minore di 2,riprovare!");
+						}else if(scelta>4) {
+							System.out.println("Non puoi inserire un valore maggiore di 4,riprovare!");
+						}
+						
+					}catch(NumberFormatException ex) {
+						
+						System.out.println("Non puoi inserire una stringa");
+						
 					}
+					
 				}while(scelta<2 || scelta>4);
 				
 			}
@@ -356,17 +467,24 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 			if(cartaTavolo.getMazzoOro().getCRimaste()==0) {
 				System.out.println("ERRORE! Le carte Oro sono finite, inserire un altro metodo di pescan");
 				do {
-					
-					System.out.println("Che cosa scegli?\n "+"1= pesca mazzo carte risorsa\n"+
-							"3= pesca una carta risorsa scoperta\n"+"4=pesca una carta oro scoperta\n");
-					scelta=sc.nextInt();
-					if(scelta<1) {
-						System.out.println("Non puoi inserire un valore minore di 1,riprovare!");
-					}else if(scelta>4) {
-						System.out.println("Non puoi inserire un valore maggiore di 4,riprovare!");
-					}else if(scelta==2) {
-						System.out.println("Non puoi inserire un valore uguale a 2,riprovare!");
+					try {
+						System.out.println("Che cosa scegli?\n "+"1= pesca mazzo carte risorsa\n"+
+								"3= pesca una carta risorsa scoperta\n"+"4=pesca una carta oro scoperta\n");
+						scelta=Integer.parseInt(sc.nextLine());
+						if(scelta<1) {
+							System.out.println("Non puoi inserire un valore minore di 1,riprovare!");
+						}else if(scelta>4) {
+							System.out.println("Non puoi inserire un valore maggiore di 4,riprovare!");
+						}else if(scelta==2) {
+							System.out.println("Non puoi inserire un valore uguale a 2,riprovare!");
+						}
+						
+					}catch(NumberFormatException ex) {
+						
+						System.out.println("Non puoi inserire una stringa");
+						
 					}
+					
 				}while(scelta<1|| scelta>4|| scelta==2);
 			}
 		}
@@ -384,12 +502,20 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 			case 3:
 				System.out.println("Quale carta risorsa scoperta vuoi pescare?\n"+
 						"1= prima\n"+"2=seconda\n");
-				int sceltaCartaRisSc=0;
+				int sceltaCartaRisSc=-1;
 				do {
-					sceltaCartaRisSc=sc.nextInt();
-					if(sceltaCartaRisSc<1 || sceltaCartaRisSc >2) {
-						System.out.println("ERRORE! Numero inserito non valido, riprovare");
+					try {
+						sceltaCartaRisSc=Integer.parseInt(sc.nextLine());
+						if(sceltaCartaRisSc<1 || sceltaCartaRisSc >2) {
+							System.out.println("ERRORE! Numero inserito non valido, riprovare");
+						}
+						
+					}catch(NumberFormatException ex) {
+						
+						System.out.println("Non puoi inserire una stringa");
+						
 					}
+					
 					
 				}while(sceltaCartaRisSc<1 ||sceltaCartaRisSc>2);
 				if(sceltaCartaRisSc==1) {
@@ -401,12 +527,20 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 			case 4:
 				System.out.println("Quale carta oro scoperta vuoi pescare?\n"+
 						"1= prima\n"+"2=seconda\n");
-				int sceltaCartaoroSc=0;
+				int sceltaCartaoroSc=-1;
 				do {
-					sceltaCartaoroSc=sc.nextInt();
-					if(sceltaCartaoroSc<1 || sceltaCartaoroSc >2) {
-						System.out.println("ERRORE! Numero inserito non valido, riprovare");
+					try {
+						sceltaCartaoroSc=Integer.parseInt(sc.nextLine());
+						if(sceltaCartaoroSc<1 || sceltaCartaoroSc >2) {
+							System.out.println("ERRORE! Numero inserito non valido, riprovare");
+						}
+						
+					}catch(NumberFormatException ex) {
+						
+						System.out.println("Non puoi inserire una stringa");
+						
 					}
+					
 					
 				}while(sceltaCartaoroSc<1 ||sceltaCartaoroSc>2);
 				if(sceltaCartaoroSc==1) {
