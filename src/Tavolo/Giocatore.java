@@ -154,5 +154,9 @@ public class Giocatore {
 	public ArrayList<CGiocabiliSpeciali> getCMano() {
 		return cMano;
 	}
+	
+	public String toString() {
+		return "Soprannome: " + soprannome + ", colore: " + colore + ", punti: " + punteggio + ", risorse possedute: " + risPossedute +  ", oggetti posseduti: " + oggPosseduti;
+	}
 
 }

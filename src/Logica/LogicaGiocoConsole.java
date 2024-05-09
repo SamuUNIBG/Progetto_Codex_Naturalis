@@ -193,7 +193,10 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 					tracciato.getGiocatore(opzC-1).getCampoG().print();
 					break;
 				case 3:
-					//mostrare nome, colore, punti, ris possedute e ogg posseduti
+					//mostra nome, colore, punti, ris possedute e ogg posseduti
+					for(int i=0; i<numGiocatori; i++) {
+						System.out.println((i+1) + ")" + tracciato.getGiocatore(i).toString());
+					}
 					break;
 				case 4:
 					return;
