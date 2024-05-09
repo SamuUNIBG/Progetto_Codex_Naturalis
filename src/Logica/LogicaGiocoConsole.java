@@ -245,8 +245,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 				System.out.print("Vuoi giocare la carta sul retro? [0(si) - 1(no)]: ");
 				retro = sc.nextInt();
 			}while(retro!=0 && retro!=1);
-			//rimuovo la carta giocata dalle carte che ho in mano
-			giocatoreAttuale.getCMano().remove(numCarta);
+			
 			numCarta--;
 			
 			carta = cManoAttuale.get(numCarta);
