@@ -32,7 +32,6 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 		
 		ImageIcon icon = new ImageIcon("blue_gold_card_front_1.jpg");
 		
-		//System.out.println(icon.getIconWidth() + " " + icon.getIconHeight());
 		//add homePanel to window
 		this.add(placedCardLabel.get(0), Integer.valueOf(0));
 		
