@@ -171,6 +171,9 @@ public class COro extends CGiocabiliSpeciali implements InterfacciaCarte2 {
 	 * mini obiettivo della carta oro
 	 */
 	public int calcolaMiniObb(String posizione, Giocatore giocatore) { 
+		if(this.obbiettivo==Simbolo.ASSENTE) {
+			return this.getPunti();
+		}
 		
 		if(this.obbiettivo==Simbolo.INCHIOSTRO) {
 			return (giocatore.getOggPosseduti()[0]*this.getPunti())+1;

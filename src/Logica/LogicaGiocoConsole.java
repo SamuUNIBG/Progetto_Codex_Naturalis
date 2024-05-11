@@ -101,14 +101,13 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 			}else
 				System.out.println("Giro numero: " + nGiro);
 			
-			opzioniTurno();
+			
 			
 			for(int i=0; i<numGiocatori; i++) {
-				
 				giocatoreAttuale = tracciato.getGiocatore(i);
 				System.out.println(Character.toUpperCase((char)233) + " il turno di: " + giocatoreAttuale.getSoprannome() + ", colore -> " + giocatoreAttuale.getColore() + ", punti -> " + giocatoreAttuale.getPunteggio());
+				opzioniTurno();
 				giocaC(giocatoreAttuale);
-					
 				if(!ultimoGiro)
 					pescaCarta(giocatoreAttuale);
 				
@@ -400,7 +399,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 			int puntiCarta = carta.getPunti();
 			if(carta instanceof COro)
 				puntiCarta = ((COro)carta).calcolaMiniObb(posCarta, giocatoreAttuale);
-			giocatoreAttuale.addPunteggio(puntiCarta);
+				giocatoreAttuale.addPunteggio(puntiCarta);
 		}
 		
 		giocatoreAttuale.getCPiazzate().add(carta.toStringBreve());

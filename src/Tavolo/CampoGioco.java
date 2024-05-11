@@ -28,7 +28,7 @@ public class CampoGioco {
 		for(int y=0; y<dimensioneY; y++) {
 			for(int x=0; x<dimensioneX; x++) {
 				campo[y][x]=null;
-				campoPrint[y][x]=999;
+				campoPrint[y][x]=000;
 			}
 		}
 		
@@ -80,6 +80,7 @@ public class CampoGioco {
 	
 	private void controllaNuovePosizioni(String posizione, Carta carta) {
 		posReturn.clear();
+		posizioniDisponibili.remove(posizione);
 		posReturn.add(posizione);
 		
 		String[] splittedString = posizione.split(",");
