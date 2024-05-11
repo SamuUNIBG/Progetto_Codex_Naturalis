@@ -184,15 +184,10 @@ public class Game extends JFrame implements ActionListener{
     	
     	
         GridBagConstraints gbc = new GridBagConstraints();
-		JLabel utente = new JLabel("Username");
 		JLabel carte=new JLabel("Carte");
 		carte.setMaximumSize(new Dimension(30,30));
-		
-		utente.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 15));
-		utente.setBackground(Color.BLACK);
 		gbc.gridx=0;
 		gbc.gridy=0;
-		userPanel.add(utente,gbc);
 		
 		
 		//contenitore carte e username
@@ -201,7 +196,10 @@ public class Game extends JFrame implements ActionListener{
         contenitoreUC.setLayout(new BorderLayout());
         contenitoreUC.setOpaque(false);
         contenitoreUC.setVisible(true);
-        contenitoreUC.add(userPanel,BorderLayout.WEST);
+        
+        User user = new User(username, userColor);
+        
+        contenitoreUC.add(user,BorderLayout.WEST);
         contenitoreUC.add(cartePanel,BorderLayout.CENTER);
         
         
