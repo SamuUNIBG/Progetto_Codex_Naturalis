@@ -1,6 +1,7 @@
 package Grafica;
 
 import javax.swing.*;
+
 import java.awt.*;
 
 import java.awt.event.ActionEvent;
@@ -42,8 +43,8 @@ public class Game extends JFrame implements ActionListener{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
-		createHashMap();
-		istantiateCardImage();
+		this.createHashMap();
+		this.istantiateCardImage();
 		
 		
 		//per test
@@ -186,7 +187,7 @@ public class Game extends JFrame implements ActionListener{
 		JLabel utente = new JLabel("Username");
 		JLabel carte=new JLabel("Carte");
 		carte.setMaximumSize(new Dimension(30,30));
-		JLabel tracciato=new JLabel("Tracciato");
+		
 		utente.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 15));
 		utente.setBackground(Color.BLACK);
 		gbc.gridx=0;
@@ -203,14 +204,11 @@ public class Game extends JFrame implements ActionListener{
         contenitoreUC.add(userPanel,BorderLayout.WEST);
         contenitoreUC.add(cartePanel,BorderLayout.CENTER);
         
-		
-		//pannello tracciato
-		JPanel tracciatoPanel=new JPanel();
-		tracciatoPanel.setPreferredSize(new Dimension(500, 100));
-		tracciatoPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		tracciatoPanel.setLayout(new GridBagLayout());
-		tracciatoPanel.setOpaque(false);
-		tracciatoPanel.add(tracciato,gbc);
+        
+        ScoreTrack scoreTrackPane = new ScoreTrack(userColor);
+        
+        //test
+        scoreTrackPane.movePawn(1, 15);
         
         //test
         /*ArrayList<String> str = new ArrayList<String>(5);
@@ -236,7 +234,7 @@ public class Game extends JFrame implements ActionListener{
 		frame.add(tabbedPane);
       	frame.add(contenitoreUC,BorderLayout.NORTH);
       	//frame.add(userPanel,BorderLayout.WEST);
-      	frame.add(tracciatoPanel,BorderLayout.WEST);
+      	frame.add(scoreTrackPane,BorderLayout.WEST);
       	//makes frame visible
       	frame.setVisible(true);				
 	}
@@ -245,7 +243,7 @@ public class Game extends JFrame implements ActionListener{
 		
 		//add all card's URL to HashMap
 		try {
-			Scanner sc = new Scanner(new FileInputStream(new File("cards_URL.csv")));
+			Scanner sc = new Scanner(new FileInputStream(new File("file/cards_URL.csv")));
 	        
 	        while (sc.hasNextLine()) {
 	            String frase = sc.nextLine();
