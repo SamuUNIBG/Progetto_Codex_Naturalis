@@ -4,7 +4,11 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Grafica.Home;
-
+/**
+ * la prima classe ad essere eseguita, consente di scegliere
+ * se giocare da console (linea di comando), richiamando LogicaGiocoConsole
+ * oppure da Grafica richiamando Home
+ */
 public class CodexNaturalis {
 
 	public static void main(String[] args) {

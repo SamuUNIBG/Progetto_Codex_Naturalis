@@ -1,7 +1,9 @@
 package Logica;
 
 import Tavolo.Giocatore;
-
+/**
+ * contiene metodi per classe LogicaGiocoConsole
+ */
 public interface InterfacciaLogica {
 
 	

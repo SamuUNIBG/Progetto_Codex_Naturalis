@@ -32,14 +32,18 @@ public class MCIniz extends Mazzo {
 				
 		Collections.shuffle(cMazzo);
 	}
-
+	/**
+	 * gestisce la pescata dal mazzo delle carte iniziali
+	 */
 	@Override
 	public CIniz pesca() {
 		CIniz carta = cMazzo.get(0);
 		cMazzo.remove(0);
 		return carta;
 	} 
-
+	/**
+	 * mostra quante carte ci sono nel mazzo
+	 */
 	@Override
 	public int getCRimaste() {
 		return cMazzo.size();

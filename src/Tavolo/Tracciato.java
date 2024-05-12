@@ -8,7 +8,11 @@ public class Tracciato {
 	private ArrayList<Giocatore> tabellone;
 	private Colore coloreScelto;
 	private String s;
-	
+	/**
+	 * metodo che chiede di inserire il numero di giocatori e 
+	 * e ne gestisce eventuali errori
+	 * @return il numero di giocatori
+	 */
 	private int quantiGiocatori() {
 		int nGiocatori=0;
 		Scanner sc=new Scanner(System.in);
@@ -369,12 +373,20 @@ public class Tracciato {
 		}
 		
 	}
-	
+	/**
+	 * 
+	 * @return il numero di giocatori
+	 */
 	public int getNumGiocatori() {
 		
 		return tabellone.size();
 		
 	}
+	/**
+	 * 
+	 * @param la posizione del giocatore nel tracciato
+	 * @return il giocatore in quella posizione
+	 */
 	
 	public Giocatore getGiocatore(int i) {
 		

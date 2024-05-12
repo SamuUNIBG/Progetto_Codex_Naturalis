@@ -16,7 +16,9 @@ import Tavolo.CampoGioco;
 import Tavolo.CartaTavolo;
 import Tavolo.Giocatore;
 import Tavolo.Tracciato;
-
+/**
+ * classe per giocare da linea di comando
+ */
 public class LogicaGiocoConsole implements InterfacciaLogica {
 	
 	private CartaTavolo cartaTavolo;
@@ -74,7 +76,11 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		Turni();
 		
 	}
-
+	/**
+	 * metodo per la gestione dei turni, regola anche la fine della partita
+	 * nel caso un giocatore sia arrivato a 20 punti, che da avvio
+	 * all ultimo giro
+	 */
 	public void Turni() {
 		
 		Giocatore giocatoreAttuale;
@@ -123,7 +129,11 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		AddPuntiObb();
 		
 	}
-	
+	/**
+	 * gestice la giocata della carta iniziale di ciascun giocatore
+	 * @param giocatoreAttuale
+	 * @return true quando e stata giocata
+	 */
 	private boolean giocaCIniz(Giocatore giocatoreAttuale) {
 		
 		int retro=-1;
@@ -173,7 +183,12 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		return true;
 		
 	}
-	
+	/**
+	 * metodo richiamato all inizio del turno di ogni giocatore
+	 * che mostra un menu con le azioni possibili per il giocatore,
+	 * in base al numero che sceglie verranno richiamati i metodi utili
+	 * per l azione desiderata
+	 */
 	private void opzioniTurno() {
 		
 		int opz=-1, continua=-1;
@@ -274,7 +289,13 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		
 		return;
 	}
-	
+	/**
+	 * metodo che gestisce la giocata della carta del giocatore
+	 * @param giocatoreAttuale
+	 * @return true quando tutto e andato a buon fine e il giocatore
+	 * ha piazzato la propria carta con successo
+	 *
+	 */
 	private boolean giocaC(Giocatore giocatoreAttuale) {
 		
 		Scanner sc = new Scanner(System.in);
@@ -408,6 +429,11 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		
 		return true;
 	}
+	/**
+	 * metodo per gestire la pescata da parte del giocatore
+	 * mostrando le carte scoperte pescabili e il colore della prima 
+	 * carta di ogni mazzo
+	 */
 
 	public void pescaCarta(Giocatore giocatoreAttuale) {
 		
@@ -557,7 +583,11 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 				break;
 		}
 	}
-
+	/**
+	 * metodo che verrà richiamato alla fine della partita per contare
+	 * i punti realizzati dai giocatori attraverso gli obiettivi ed 
+	 * aggiungendoli ai punti già ottenuti
+	 */
 	public void AddPuntiObb() {
 		
 		ArrayList<CObb> cObb = cartaTavolo.getcObbScp();
@@ -572,7 +602,10 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		Vincitore();
 		
 	}
-	
+	/**
+	 * metodo che controlla chi e il vincitore in base a chi ha 
+	 * ottenuto il punteggio piu alto e lo comunica
+	 */
 	public void Vincitore() {
 		
 		int maxPunti=tracciato.getGiocatore(0).getPunteggio();

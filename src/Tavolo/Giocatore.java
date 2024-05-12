@@ -52,17 +52,31 @@ public class Giocatore {
 		}
 		
 	}
-	
+	/**
+	 * 
+	 * @return il colore della pedina del giocatore
+	 */
 	public Colore getColore() {
 		return colore;
 	}
-	
+	/**
+	 * 
+	 * @return punteggio del giocatore
+	 */
 	public int getPunteggio() {
 		return punteggio;
 	}
+	/**
+	 * per aggiungere di volta in volta i punti ottenuti dal giocatore
+	 * @param punti ottenuti
+	 */
 	public void addPunteggio(int punti) {
 		punteggio+=punti;
 	}
+	/**
+	 * inserire il soprannome del giocatore
+	 * @return il soprannome
+	 */
 	public String getSoprannome() {
 		return this.soprannome;
 	}
@@ -73,7 +87,12 @@ public class Giocatore {
 	public ArrayList<String> getCPiazzate() {
 		return cPiazzate;
 	}
-	
+	/**
+	 * metodo per il piazzamento della carta che controlla
+	 * anche se la carta da dei punti al giocatore al piazzamento
+	 * @param coordinate in cui posizionare la carta
+	 * @param carta
+	 */
 	public void piazzaC(String posCarta, CGiocabili carta) {
 		
 		campo.aggiungiC(posCarta, carta);
@@ -135,23 +154,46 @@ public class Giocatore {
 		}
 		
 	}
-	
+	/**
+	 * 
+	 * @return l obbiettivo personale che solo il giocatore conosce
+	 */
 	public CObb getCObbPer() {
 		return cObbPer;
 	}
+	/**
+	 * 
+	 * @return l array con le risorse possedute dal giocatore
+	 */
 	public int[] getRisPossedute() {
 		return this.risPossedute;
 	}
+	/**
+	 * 
+	 * @return l array con gli oggetti posseduti dal giocatore
+	 */
 	public int[] getOggPosseduti() {
 		return this.oggPosseduti;
 	}
+	/**
+	 * 
+	 * @return il campo del giocatore
+	 */
 	public CampoGioco getCampoG() {
 		return this.campo;
 	}
-	
+	/**
+	 * 
+	 * @return la carta iniziale del giocatore
+	 */
 	public CIniz getCInizPer() {
 		return cInizPer;
 	}
+	/**
+	 * gestisce la pescata della carta aggiungendola a quelle in mano
+	 * quindi possedute dal giocatore
+	 * @param carta pescata
+	 */
 	public void pescaC(Carta carta) {
 		 
 		if(carta instanceof CGiocabiliSpeciali) {
@@ -163,11 +205,17 @@ public class Giocatore {
 		}
 		
 	}
-
+	/**
+	 * mostra le carte del giocatore
+	 * @return l ArrayList con le carte della mano del giocatore
+	 */
 	public ArrayList<CGiocabiliSpeciali> getCMano() {
 		return cMano;
 	}
-	
+	/**
+	 * mostra le informazioni del giocatore, nome, colore, risorse possedute,
+	 * oggetti posseduti
+	 */
 	public String toString() {
 		return "Soprannome: " + soprannome + ", colore: " + colore + ", punti: " + punteggio +
 				", risorse possedute: [" + risPossedute[0] + ", " + risPossedute[1] + ", " + risPossedute[2] + ", " + risPossedute[3] +

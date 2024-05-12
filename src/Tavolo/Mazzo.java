@@ -10,12 +10,13 @@ import Carta.Carta;
 public abstract class Mazzo {
 	
 	/**
-	 * @return the top card of the deck
+	 * @return la prima carta del mazzo
 	 */
 	public abstract Carta pesca();
 	
 	/**
-	 * @return the number of cards remaining in the deck
+	 * mostra quante carte ci sono nel mazzo
+	 * @return il numero delle carte rimanenti
 	 */
 	public abstract int getCRimaste();
 	

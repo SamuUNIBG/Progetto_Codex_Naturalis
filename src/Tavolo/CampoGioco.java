@@ -33,7 +33,13 @@ public class CampoGioco {
 		}
 		
 	}
-	
+	/**
+	 * metodo che posiziona la carta scelta sul campo di gioco
+	 * in base alle coordinate scelte e verificando che sia effettivamente
+	 * una posizione disponibile
+	 * @param le coordinate delle carta 
+	 * @param la carta da posizionare 
+	 */
 	public void aggiungiC(String posizione, CGiocabili carta) {
 		
 		String[] splittedString = posizione.split(",");
@@ -77,8 +83,14 @@ public class CampoGioco {
 		return simboli;
 		
 	}
-	
+	/**
+	 * per mostrare le posizioni possibile nelle quali poter
+	 * posizionare la carta e mostrarle al giocatore
+	 * @param posizione che contiene le coordinate x e y
+	 * @param carta gia posizionata
+	 */
 	private void controllaNuovePosizioni(String posizione, Carta carta) {
+		
 		posReturn.clear();
 		posReturn.add(posizione);
 		
@@ -104,7 +116,10 @@ public class CampoGioco {
 		}
 		
 	}
-	
+	/**
+	 * 
+	 * @return l ArrayList con le posizioni libere
+	 */
 	public ArrayList<String> getPosizioniDisponibili() {
 		return posizioniDisponibili;
 	}
@@ -117,7 +132,12 @@ public class CampoGioco {
 		campoPrint[posY][posX]=carta.getIdCarta();
 		
 	}
-	
+	/**
+	 * consente di stampare la matrice ovvero le celle del campo
+	 * di gioco del giocatore, mostrando l id delle carte piazzate
+	 * specificate da una piccola legenda
+	 * @param giocatoreAttuale
+	 */
 	public void print(Giocatore giocatoreAttuale) {
 		System.out.printf(" " + "%9d" + " |", 0);
 		for(int x=1; x<dimensioneX; x++) {
@@ -161,20 +181,32 @@ public class CampoGioco {
 		}
 		
 	}
-
+	/**
+	 * 
+	 * @return dimensioneX del campo di gioco
+	 */
 	public static int getDimensionex() {
 		return dimensioneX;
 	}
-	
+	/**
+	 * 
+	 * @return dimensioneY dle campo di gioco
+	 */
 
 	public static int getDimensioney() {
 		return dimensioneY;
 	}
-
+	/**
+	 * 
+	 * @return la matrice che rappresenta il campo di gioco
+	 */
 	public Carta[][] getCampo() {
 		return this.campo;
 	}
-
+	/**
+	 * per aggiornare il campo di gioco con le carte giocate 
+	 * @param campo di gioco
+	 */
 	public void setCampo(CGiocabili[][] campo) {
 		this.campo = campo;
 	}
