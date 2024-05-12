@@ -75,6 +75,4 @@ public abstract class CGiocabiliSpeciali extends CGiocabili {
 		return super.getIdCarta();
 	}
 	
-	public abstract String toStringBreve();
-	
 }

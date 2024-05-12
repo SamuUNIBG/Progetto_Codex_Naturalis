@@ -37,4 +37,6 @@ public abstract class CGiocabili extends Carta {
 		return angoli;
 	}
 	
+	public abstract String toStringBreve();
+	
 }

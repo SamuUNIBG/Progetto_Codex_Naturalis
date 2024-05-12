@@ -131,13 +131,13 @@ public class COro extends CGiocabiliSpeciali implements InterfacciaCarte2 {
 		if(this.getFronte()) {
 			str += ":\n\t\t Angoli fronte:" +
 					"\n\t\t\tAlto sx -> " + this.getAngoli()[0].toString() +
-					"\n\t\t\tAltro dx -> " + this.getAngoli()[1].toString() +
+					"\n\t\t\tAlto dx -> " + this.getAngoli()[1].toString() +
 					"\n\t\t\tBasso dx -> " + this.getAngoli()[2].toString() +
 					"\n\t\t\tBasso sx -> " + this.getAngoli()[3].toString() + "]";
 		}else {
 			str += "\n\t\t Angoli retro:" +
 					"\n\t\t\tAlto sx -> " + this.getAngoli()[0].getSimbolo() +
-					"\n\t\t\tAltro dx -> " + this.getAngoli()[1].getSimbolo() +
+					"\n\t\t\tAlto dx -> " + this.getAngoli()[1].getSimbolo() +
 					"\n\t\t\tBasso dx -> " + this.getAngoli()[2].getSimbolo() +
 					"\n\t\t\tBasso sx -> " + this.getAngoli()[3].getSimbolo() + "]";
 		}

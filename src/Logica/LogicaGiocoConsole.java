@@ -151,8 +151,8 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 			cInizAttuale.retro();
 		}
 		
-		giocatoreAttuale.getCPiazzate().add(cInizAttuale.toStringBreve());
-		giocatoreAttuale.piazzaC("40,40", cInizAttuale);
+		giocatoreAttuale.getCPiazzate().put(cInizAttuale.getIdCarta(), cInizAttuale.toStringBreve());
+		giocatoreAttuale.piazzaC(giocatoreAttuale.getCPiazzate(), "40,40", cInizAttuale);
 		
 		if(retro==1) {
 			//aggiunge al vettore delle risorse possedute le risorse centrali della carta
@@ -402,8 +402,8 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 				giocatoreAttuale.addPunteggio(puntiCarta);
 		}
 		
-		giocatoreAttuale.getCPiazzate().add(carta.toStringBreve());
-		giocatoreAttuale.piazzaC(posCarta, carta);
+		giocatoreAttuale.getCPiazzate().put(carta.getIdCarta(), carta.toStringBreve());
+		giocatoreAttuale.piazzaC(giocatoreAttuale.getCPiazzate(), posCarta, carta);
 		
 		return true;
 	}

@@ -19,7 +19,7 @@ public class CodexNaturalis {
 				System.out.print("Desideri continuare con l'interfaccia testuale? [0(si) - 1(no)]: ");
 				scelta=Integer.parseInt(sc.nextLine());
 				if(scelta<0 || scelta>1) {
-					System.out.println("Puoi inserire solo 1 o 0");
+					System.out.println("Errore! Numero inserito non valido, riprovare");
 				}
 				
 			}catch(NumberFormatException ex){
