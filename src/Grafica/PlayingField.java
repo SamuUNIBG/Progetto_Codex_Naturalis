@@ -13,7 +13,7 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 	ArrayList<JLabel> placedCardLabel;	
 	HashMap<Integer, String> coordinate = new HashMap<Integer, String>();
 	HashMap<String, Integer> coordinate2 = new HashMap<String, Integer>();
-	ImageIcon icon = new ImageIcon("blue_gold_card_front_1.jpg");
+	ImageIcon icon = new ImageIcon("blue_gold_card_front_2.jpg");
 	
 	public PlayingField(){
 		
@@ -27,16 +27,14 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 		placedCardLabel.get(0).setBackground(new Color(170, 170, 170, 80));
 		placedCardLabel.get(0).setIcon(icon);
 		placedCardLabel.get(0).setOpaque(true);
-		placedCardLabel.get(0).setBounds(6148, 2429, 204, 142);
+		placedCardLabel.get(0).setBounds(4918, 2693, 163, 113);
 		placedCardLabel.get(0).addMouseListener(this);
-		
-		ImageIcon icon = new ImageIcon("blue_gold_card_front_1.jpg");
 		
 		//add homePanel to window
 		this.add(placedCardLabel.get(0), Integer.valueOf(0));
 		
 		this.setOpaque(true);
-		this.setPreferredSize(new Dimension(12500, 5000));
+		this.setPreferredSize(new Dimension(10000, 5500));
 			
 		//makes frame visible
 		this.setVisible(true);
@@ -76,19 +74,19 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 			if(newX<oldX && newY<oldY) {
 				newLabel.setBackground(Color.RED);
 				newLabel.setIcon(icon);
-				newLabel.setBounds(x-150,y-80,204,142);
+				newLabel.setBounds(x-120,y-64,163,113);
 			}else if(newX<oldX && newY>oldY) {
 				newLabel.setBackground(Color.GREEN);
 				newLabel.setIcon(icon);
-				newLabel.setBounds(x-150,y+80,204,142);
+				newLabel.setBounds(x-120,y+64,163,113);
 			}else if(newX>oldX && newY<oldY) {
 				newLabel.setBackground(Color.BLUE);
 				newLabel.setIcon(icon);
-				newLabel.setBounds(x+150,y-80,204,142);
+				newLabel.setBounds(x+120,y-64,163,113);
 			}else if(newX>oldX && newY>oldY) {
 				newLabel.setBackground(Color.YELLOW);
 				newLabel.setIcon(icon);
-				newLabel.setBounds(x+150,y+80,204,142);
+				newLabel.setBounds(x+120,y+64,163,113);
 			}
 			
 			//add new JLabel to JLabel ArrayList

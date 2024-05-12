@@ -128,4 +128,74 @@ public class User extends JPanel{
 	    this.setOpaque(false);
 	}
 	
+	public void addResource(int[] risAggiungere) {
+		if(risAggiungere[0]!=0) {
+			int ris = Integer.parseInt(risorse.get(0).getText());
+			risorse.get(0).setText("" + (ris+risAggiungere[0]));
+		}
+		if(risAggiungere[1]!=0) {
+			int ris = Integer.parseInt(risorse.get(1).getText());
+			risorse.get(1).setText("" + (ris+risAggiungere[1]));
+		}
+		if(risAggiungere[2]!=0) {
+			int ris = Integer.parseInt(risorse.get(2).getText());
+			risorse.get(2).setText("" + (ris+risAggiungere[2]));
+		}
+		if(risAggiungere[3]!=0) {
+			int ris = Integer.parseInt(risorse.get(3).getText());
+			risorse.get(3).setText("" + (ris+risAggiungere[3]));
+		}
+			
+	}
+	
+	public void removeResource(int[] risRimuovere) {
+		if(risRimuovere[0]!=0) {
+			int ris = Integer.parseInt(risorse.get(0).getText());
+			risorse.get(0).setText("" + (ris-risRimuovere[0]));
+		}
+		if(risRimuovere[1]!=0) {
+			int ris = Integer.parseInt(risorse.get(1).getText());
+			risorse.get(1).setText("" + (ris-risRimuovere[1]));
+		}
+		if(risRimuovere[2]!=0) {
+			int ris = Integer.parseInt(risorse.get(2).getText());
+			risorse.get(2).setText("" + (ris-risRimuovere[2]));
+		}
+		if(risRimuovere[3]!=0) {
+			int ris = Integer.parseInt(risorse.get(3).getText());
+			risorse.get(3).setText("" + (ris-risRimuovere[3]));
+		}
+	}
+	
+	public void addObjects(int[] oggAggiungere) {
+		if(oggAggiungere[0]!=0) {
+			int ogg = Integer.parseInt(risorse.get(0).getText());
+			risorse.get(0).setText("" + (ogg+oggAggiungere[0]));
+		}
+		if(oggAggiungere[1]!=0) {
+			int ogg = Integer.parseInt(risorse.get(1).getText());
+			risorse.get(1).setText("" + (ogg+oggAggiungere[1]));
+		}
+		if(oggAggiungere[2]!=0) {
+			int ogg = Integer.parseInt(risorse.get(2).getText());
+			risorse.get(2).setText("" + (ogg+oggAggiungere[2]));
+		}
+			
+	}
+	
+	public void removeObjects(int[] oggRimuovere) {
+		if(oggRimuovere[0]!=0) {
+			int ogg = Integer.parseInt(risorse.get(0).getText());
+			risorse.get(0).setText("" + (ogg-oggRimuovere[0]));
+		}
+		if(oggRimuovere[1]!=0) {
+			int ogg = Integer.parseInt(risorse.get(1).getText());
+			risorse.get(1).setText("" + (ogg-oggRimuovere[1]));
+		}
+		if(oggRimuovere[2]!=0) {
+			int ogg = Integer.parseInt(risorse.get(2).getText());
+			risorse.get(2).setText("" + (ogg-oggRimuovere[2]));
+		}
+	}
+	
 }

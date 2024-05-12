@@ -10,8 +10,6 @@ public class Home extends JFrame implements ActionListener{
 	
 	//declaration of buttons to add to the window
 	JButton nuovoGioco, regole, impostazioni,  ringraziamenti;
-	//this window
-	private JFrame frame = new JFrame();
 	
 	public Home() {
 		
@@ -20,17 +18,17 @@ public class Home extends JFrame implements ActionListener{
 		ImageIcon logo = new ImageIcon("images/codex_logo.png");
 		
 		//sets title, dimension of the JFrame
-		frame.setIconImage(logo.getImage());
-		frame.setTitle("Codex Naturalis - Home");
-		frame.setMinimumSize(new Dimension(sfondo.getIconWidth()+16, sfondo.getIconHeight()+39));
+		this.setIconImage(logo.getImage());
+		this.setTitle("Codex Naturalis - Home");
+		this.setMinimumSize(new Dimension(sfondo.getIconWidth()+16, sfondo.getIconHeight()+39));
 		//sets the window not resizable by the users
-		frame.setResizable(false);
+		this.setResizable(false);
 		//gets the size of the screen
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		//sets the window position to the center of the screen
-		frame.setLocation((screenSize.width/2)-(frame.getWidth()/2), (screenSize.height/2)-(frame.getHeight()/2));
+		this.setLocation((screenSize.width/2)-(this.getWidth()/2), (screenSize.height/2)-(this.getHeight()/2));
 		//exit out of application
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
 		//game title label
@@ -147,25 +145,25 @@ public class Home extends JFrame implements ActionListener{
 		homePanel.add(sfondoLabel, gbc);
 		
 		//add homePanel to window
-		frame.add(homePanel);	
+		this.add(homePanel);	
 		//makes frame visible
-		frame.setVisible(true);
+		this.setVisible(true);
 		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==nuovoGioco) {
-			frame.dispose();
+			this.dispose();
 			new SelectGame();
 		}else if(e.getSource()==regole) {
-			frame.dispose();
+			this.dispose();
 			new Rules();
 		}else if(e.getSource()==impostazioni) {
-			frame.dispose();
+			this.dispose();
 			Settings settingsFrame = new Settings();
 		}else if(e.getSource()==ringraziamenti) {
-			frame.dispose();
+			this.dispose();
 			new Thanks();
 		}
 		
