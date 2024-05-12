@@ -98,19 +98,14 @@ public class CampoGioco {
 		return simboli;
 		
 	}
-<<<<<<< HEAD
+
 	/**
 	 * per mostrare le posizioni possibile nelle quali poter
 	 * posizionare la carta e mostrarle al giocatore
 	 * @param posizione che contiene le coordinate x e y
 	 * @param carta gia posizionata
-	 */
-	private void controllaNuovePosizioni(String posizione, Carta carta) {
-		
-=======
-	
+	 */	
 	private void controllaNuovePosizioni(String posizione, CGiocabili carta) {
->>>>>>> 9d28edc056f3e8fe92bdcb96d634131501086634
 		posReturn.clear();
 		posizioniDisponibili.remove(posizione);
 		posReturn.add(posizione);

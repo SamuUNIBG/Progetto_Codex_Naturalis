@@ -88,18 +88,14 @@ public class Giocatore {
 	public HashMap<Integer, String> getCPiazzate() {
 		return cPiazzate;
 	}
-<<<<<<< HEAD
+	
 	/**
 	 * metodo per il piazzamento della carta che controlla
 	 * anche se la carta da dei punti al giocatore al piazzamento
 	 * @param coordinate in cui posizionare la carta
 	 * @param carta
-	 */
-	public void piazzaC(String posCarta, CGiocabili carta) {
-=======
-	
+	 */	
 	public void piazzaC(HashMap<Integer, String> cPiazzate, String posCarta, CGiocabili carta) {
->>>>>>> 9d28edc056f3e8fe92bdcb96d634131501086634
 		
 		campo.aggiungiC(posCarta, carta);
 		campo.print(posCarta, carta);

@@ -8,17 +8,13 @@ public class Tracciato {
 	private ArrayList<Giocatore> tabellone;
 	private Colore coloreScelto;
 	private String s;
-<<<<<<< HEAD
+	private ArrayList<String> coloriDisp=new ArrayList<String>();
+	
 	/**
 	 * metodo che chiede di inserire il numero di giocatori e 
 	 * e ne gestisce eventuali errori
 	 * @return il numero di giocatori
 	 */
-=======
-	private ArrayList<String> coloriDisp=new ArrayList<String>();
-	
-	
->>>>>>> 9d28edc056f3e8fe92bdcb96d634131501086634
 	private int quantiGiocatori() {
 		int nGiocatori=0;
 		Scanner sc=new Scanner(System.in);
