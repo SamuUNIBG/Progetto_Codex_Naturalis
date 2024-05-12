@@ -72,7 +72,7 @@ public class CIniz extends CGiocabili {
 		String str = "Carata iniziale " + super.toString() +
 				"\n\t\t Angoli fronte:" +
 				"\n\t\t\tAlto sx -> " + this.getAngoli()[0].getSimbolo() +
-				"\n\t\t\tAltro dx -> " + this.getAngoli()[1].getSimbolo() +
+				"\n\t\t\tAlto dx -> " + this.getAngoli()[1].getSimbolo() +
 				"\n\t\t\tBasso dx -> " + this.getAngoli()[2].getSimbolo() +
 				"\n\t\t\tBasso sx -> " + this.getAngoli()[3].getSimbolo() +
 				"\n\t\t Risorse centrali:" +
@@ -89,7 +89,7 @@ public class CIniz extends CGiocabili {
 				
 		str += "\n\t\t Angoli retro:" +
 		"\n\t\t\tAlto sx -> " + angoliR[0].getSimbolo() +
-		"\n\t\t\tAltro dx -> " + angoliR[1].getSimbolo() +
+		"\n\t\t\tAlto dx -> " + angoliR[1].getSimbolo() +
 		"\n\t\t\tBasso dx -> " +angoliR[2].getSimbolo() +
 		"\n\t\t\tBasso sx -> " +angoliR[3].getSimbolo() + "]";
 		
@@ -109,7 +109,7 @@ public class CIniz extends CGiocabili {
 		if(this.getFronte()) {
 			str += ":\n\t\t[Angoli fronte:" +
 					"\n\t\t\tAlto sx -> " + this.getAngoli()[0].toString() +
-					"\n\t\t\tAltro dx -> " + this.getAngoli()[1].toString() +
+					"\n\t\t\tAlto dx -> " + this.getAngoli()[1].toString() +
 					"\n\t\t\tBasso dx -> " + this.getAngoli()[2].toString() +
 					"\n\t\t\tBasso sx -> " + this.getAngoli()[3].toString() +
 					"\n\t\t Risorse centrali:" +
@@ -127,7 +127,7 @@ public class CIniz extends CGiocabili {
 		}else {
 			str += "\n\t\t[Angoli retro:" +
 					"\n\t\t\tAlto sx -> " + angoliR[0].getSimbolo() +
-					"\n\t\t\tAltro dx -> " + angoliR[1].getSimbolo() +
+					"\n\t\t\tAlto dx -> " + angoliR[1].getSimbolo() +
 					"\n\t\t\tBasso dx -> " + angoliR[2].getSimbolo() +
 					"\n\t\t\tBasso sx -> " + angoliR[3].getSimbolo() + "]";
 		}

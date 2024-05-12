@@ -8,11 +8,17 @@ public class Tracciato {
 	private ArrayList<Giocatore> tabellone;
 	private Colore coloreScelto;
 	private String s;
+<<<<<<< HEAD
 	/**
 	 * metodo che chiede di inserire il numero di giocatori e 
 	 * e ne gestisce eventuali errori
 	 * @return il numero di giocatori
 	 */
+=======
+	private ArrayList<String> coloriDisp=new ArrayList<String>();
+	
+	
+>>>>>>> 9d28edc056f3e8fe92bdcb96d634131501086634
 	private int quantiGiocatori() {
 		int nGiocatori=0;
 		Scanner sc=new Scanner(System.in);
@@ -35,8 +41,17 @@ public class Tracciato {
 	
 	public Tracciato() {
 	
-		System.out.println("\nCreazione giocatori");
+		//popolo l'array dei colori
+		coloriDisp.add("Rosso");
+		coloriDisp.add("Azzurro");
+		coloriDisp.add("Giallo");
+		coloriDisp.add("Verde");
+		boolean cRosso=true;
+		boolean cAzzurro=true;
+		boolean cGiallo=true;
+		boolean cVerde=true;
 		
+		System.out.println("\nCreazione giocatori");
 		int giocatori=quantiGiocatori();
 		tabellone = new ArrayList<Giocatore>(giocatori);
 		tabellone.clear();
@@ -45,7 +60,7 @@ public class Tracciato {
 		System.out.println("ATTENZIONE! Eventuali spazi nei soprannomi verranno rimossi");
 		boolean primo=true, errore=false;
 		for(int i=0;i<giocatori;i++) {
-			
+			 
 			System.out.println("\nCreazione giocatore " + (i+1));
 			System.out.print("Inserire il soprannome: ");
 			String soprannome=sc.nextLine();
@@ -53,8 +68,31 @@ public class Tracciato {
 			//tolgo spazi vuoti tra i nomi
 			String s=new String(); //temporanea per salvare i nomi con spazi e cancellare spazi
 			s=soprannome.replace(" ", "");
+			
+			System.out.println("\nPedine disponibili: ");
+			if(i!=0) {
+				for(int j=0;j<coloriDisp.size();j++) {
+					
+					if(cRosso==false && coloriDisp.get(j).equals("Rosso")) {
+						System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+					}else if(cAzzurro==false && coloriDisp.get(j).equals("Azzurro")) {
+						System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+					}else if(cGiallo==false && coloriDisp.get(j).equals("Giallo")) {
+						System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+					}else if(cVerde==false && coloriDisp.get(j).equals("Verde")) {
+						System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+					}else {
+						System.out.println(j+1+")"+coloriDisp.get(j));
+					}
+					
+			}
 				
-			System.out.println("\nPedine disponibili:\n1)Rosso\n"+ "2)Azzurro\n"+ "3)Giallo\n"+"4)Verde\n");
+			}else {
+				for(int j=0;j<coloriDisp.size();j++) {
+					System.out.println(j+1+")"+coloriDisp.get(j));
+				}
+			}
+			
 			
 			int colore=0;
 			do {
@@ -75,12 +113,16 @@ public class Tracciato {
 			
 			if(colore==1) {
 				coloreScelto=Colore.ROSSO;
+				cRosso=false;
 			}else if(colore==2) {
 				coloreScelto=Colore.AZZURRO;
+				cAzzurro=false;
 			}else if(colore==3) {
 				coloreScelto=Colore.GIALLO;
+				cGiallo=false;
 			}else if(colore==4) {
 				coloreScelto=Colore.VERDE;
+				cVerde=false;
 			}
 			
 			
@@ -105,7 +147,34 @@ public class Tracciato {
 						do {
 							if(tabellone.get(k).getColore().equals(coloreScelto)) {
 								System.out.println("Non puoi inserire colori uguali, riprovare!\n");
-								System.out.println("Pedine disponibili:\n1)Rosso\n2)Azzurro\n3)Giallo\n4)Verde\n");
+								System.out.println("Pedine disponibili:");
+								if(i!=0) {
+									for(int j=0;j<coloriDisp.size();j++) {
+										
+										if(cRosso==false && coloriDisp.get(j).equals("Rosso")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else if(cAzzurro==false && coloriDisp.get(j).equals("Azzurro")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else if(cGiallo==false && coloriDisp.get(j).equals("Giallo")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else if(cVerde==false && coloriDisp.get(j).equals("Verde")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else {
+											System.out.println(j+1+")"+coloriDisp.get(j));
+										}
+										
+								}
+									
+								}else {
+									for(int j=0;j<coloriDisp.size();j++) {
+										System.out.println(j+1+")"+coloriDisp.get(j));
+									}
+								}
+								
+								
+								
+								
+								
 								do {
 									try {
 										System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
@@ -124,15 +193,19 @@ public class Tracciato {
 								if(colore==1) {
 									System.out.println("Hai selezionato il colore Rosso");
 									coloreScelto=Colore.ROSSO;
+									cRosso=false;
 								}else if(colore==2) {
 									System.out.println("Hai selezionato il colore Azzurro");
 									coloreScelto=Colore.AZZURRO;
+									cAzzurro=false;
 								}else if(colore==3) {
 									System.out.println("Hai selezionato il colore Giallo");
 									coloreScelto=Colore.GIALLO;
+									cGiallo=false;
 								}else if(colore==4) {
 									System.out.println("Hai selezionato il colore Verde");
 									coloreScelto=Colore.VERDE;
+									cVerde=false;
 								}
 							}
 						}while(tabellone.get(k).getColore().equals(coloreScelto));
@@ -164,7 +237,32 @@ public class Tracciato {
 						do {
 							if(tabellone.get(k).getColore().equals(coloreScelto)) {
 								System.out.println("Non puoi inserire colori uguali, riprovare!\n");
-								System.out.println("Pedine disponibili:\n1-Rosso\n"+ " 2-Azzurro\n"+ " 3-Giallo\n"+" 4-Verde\n");
+								System.out.println("Pedine disponibili:");
+								
+								
+								System.out.println("Pedine disponibili:");
+								if(i!=0) {
+									for(int j=0;j<coloriDisp.size();j++) {
+										
+										if(cRosso==false && coloriDisp.get(j).equals("Rosso")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else if(cAzzurro==false && coloriDisp.get(j).equals("Azzurro")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else if(cGiallo==false && coloriDisp.get(j).equals("Giallo")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else if(cVerde==false && coloriDisp.get(j).equals("Verde")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else {
+											System.out.println(j+1+")"+coloriDisp.get(j));
+										}
+										
+								}
+									
+								}else {
+									for(int j=0;j<coloriDisp.size();j++) {
+										System.out.println(j+1+")"+coloriDisp.get(j));
+									}
+								}
 								
 								do {
 									try {
@@ -186,15 +284,19 @@ public class Tracciato {
 								if(colore==1) {
 									System.out.println("Hai selezionato il colore Rosso");
 									coloreScelto=Colore.ROSSO;
+									cRosso=false;
 								}else if(colore==2) {
 									System.out.println("Hai selezionato il colore Azzurro");
 									coloreScelto=Colore.AZZURRO;
+									cAzzurro=false;
 								}else if(colore==3) {
 									System.out.println("Hai selezionato il colore Giallo");
 									coloreScelto=Colore.GIALLO;
+									cGiallo=false;
 								}else if(colore==4) {
 									System.out.println("Hai selezionato il colore Verde");
 									coloreScelto=Colore.VERDE;
+									cVerde=false;
 								}
 							}
 						}while(tabellone.get(k).getColore().equals(coloreScelto));
@@ -225,9 +327,33 @@ public class Tracciato {
 					for(int k=0;k<tabellone.size();k++) {
 						do {
 							if(tabellone.get(k).getColore().equals(coloreScelto)) {
-								System.out.println("Non puoi inserire colori uguali, riprovare!");
-								System.out.println("scegli un colore diverso:\n"
-										+ "1-Rosso\n"+ " 2-Azzurro\n"+ " 3-Giallo\n"+" 4-Verde");
+								System.out.println("Non puoi inserire colori uguali, riprovare!\n");
+								System.out.println("Pedine disponibili:");
+								
+								
+								System.out.println("Pedine disponibili:");
+								if(i!=0) {
+									for(int j=0;j<coloriDisp.size();j++) {
+										
+										if(cRosso==false && coloriDisp.get(j).equals("Rosso")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else if(cAzzurro==false && coloriDisp.get(j).equals("Azzurro")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else if(cGiallo==false && coloriDisp.get(j).equals("Giallo")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else if(cVerde==false && coloriDisp.get(j).equals("Verde")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else {
+											System.out.println(j+1+")"+coloriDisp.get(j));
+										}
+										
+								}
+									
+								}else {
+									for(int j=0;j<coloriDisp.size();j++) {
+										System.out.println(j+1+")"+coloriDisp.get(j));
+									}
+								}
 								
 								do {
 									try{
@@ -247,15 +373,19 @@ public class Tracciato {
 								if(colore==1) {
 									System.out.println("Hai selezionato il colore Rosso");
 									coloreScelto=Colore.ROSSO;
+									cRosso=false;
 								}else if(colore==2) {
 									System.out.println("Hai selezionato il colore Azzurro");
 									coloreScelto=Colore.AZZURRO;
+									cAzzurro=false;
 								}else if(colore==3) {
 									System.out.println("Hai selezionato il colore Giallo");
 									coloreScelto=Colore.GIALLO;
+									cGiallo=false;
 								}else if(colore==4) {
 									System.out.println("Hai selezionato il colore Verde");
 									coloreScelto=Colore.VERDE;
+									cVerde=false;
 								}
 							}
 						}while(tabellone.get(k).getColore().equals(coloreScelto));
@@ -287,7 +417,32 @@ public class Tracciato {
 						do {
 							if(tabellone.get(k).getColore().equals(coloreScelto)) {
 								System.out.println("Non puoi inserire colori uguali, riprovare!\n");
-								System.out.println("scegli un colore diverso:\n1-Rosso\n2-Azzurro\n3-Giallo\n4-Verde\n");
+								System.out.println("Pedine disponibili:");
+								
+								
+								System.out.println("Pedine disponibili:");
+								if(i!=0) {
+									for(int j=0;j<coloriDisp.size();j++) {
+										
+										if(cRosso==false && coloriDisp.get(j).equals("Rosso")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else if(cAzzurro==false && coloriDisp.get(j).equals("Azzurro")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else if(cGiallo==false && coloriDisp.get(j).equals("Giallo")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else if(cVerde==false && coloriDisp.get(j).equals("Verde")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else {
+											System.out.println(j+1+")"+coloriDisp.get(j));
+										}
+										
+								}
+									
+								}else {
+									for(int j=0;j<coloriDisp.size();j++) {
+										System.out.println(j+1+")"+coloriDisp.get(j));
+									}
+								}
 								do {
 									try{
 										System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
@@ -312,15 +467,19 @@ public class Tracciato {
 								if(colore==1) {
 									System.out.println("Hai selezionato il colore Rosso");
 									coloreScelto=Colore.ROSSO;
+									cRosso=false;
 								}else if(colore==2) {
 									System.out.println("Hai selezionato il colore Azzurro");
 									coloreScelto=Colore.AZZURRO;
+									cAzzurro=false;
 								}else if(colore==3) {
 									System.out.println("Hai selezionato il colore Giallo");
 									coloreScelto=Colore.GIALLO;
+									cGiallo=false;
 								}else if(colore==4) {
 									System.out.println("Hai selezionato il colore Verde");
 									coloreScelto=Colore.VERDE;
+									cVerde=false;
 								}
 							}
 						}while(tabellone.get(k).getColore().equals(coloreScelto));

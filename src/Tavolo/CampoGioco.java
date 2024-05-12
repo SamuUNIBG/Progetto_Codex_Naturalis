@@ -1,10 +1,12 @@
 package Tavolo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import Carta.Carta;
 import Enumerazione.Simbolo;
 import Carta.CGiocabili;
+import Carta.CGiocabiliSpeciali;
 
 public class CampoGioco {
 
@@ -28,7 +30,7 @@ public class CampoGioco {
 		for(int y=0; y<dimensioneY; y++) {
 			for(int x=0; x<dimensioneX; x++) {
 				campo[y][x]=null;
-				campoPrint[y][x]=999;
+				campoPrint[y][x]=000;
 			}
 		}
 		
@@ -51,7 +53,7 @@ public class CampoGioco {
 				
 	}
 	
-	public Simbolo[] copriAngoli(String posizione) {
+	public Simbolo[] copriAngoli(HashMap<Integer, String> cPiazzate, String posizione) {
 		
 		Simbolo[] simboli = new Simbolo[4];
 		
@@ -64,25 +66,39 @@ public class CampoGioco {
 		int posX = Integer.parseInt(splittedString[1]);
 		
 		if(campo[posY-1][posX-1]!=null) {
-			((CGiocabili)campo[posY-1][posX-1]).getAngoli()[2].setCoperto();
-			simboli[0]=((CGiocabili)campo[posY-1][posX-1]).getAngoli()[2].getSimbolo();
+			CGiocabili c = (CGiocabili)campo[posY-1][posX-1];
+			c.getAngoli()[2].setCoperto();
+			simboli[0]=c.getAngoli()[2].getSimbolo();
+			cPiazzate.remove(c.getIdCarta());
+			cPiazzate.put(c.getIdCarta(), c.toStringBreve());
+			
 		}
 		if(campo[posY+1][posX-1]!=null) {
-			((CGiocabili)campo[posY+1][posX-1]).getAngoli()[1].setCoperto();
-			simboli[1]=((CGiocabili)campo[posY+1][posX-1]).getAngoli()[1].getSimbolo();
+			CGiocabili c = campo[posY+1][posX-1];
+			c.getAngoli()[1].setCoperto();
+			simboli[1]=c.getAngoli()[1].getSimbolo();
+			cPiazzate.remove(c.getIdCarta());
+			cPiazzate.put(c.getIdCarta(), c.toStringBreve());
 		}
 		if(campo[posY-1][posX+1]!=null) {
-			((CGiocabili)campo[posY-1][posX+1]).getAngoli()[3].setCoperto();
-			simboli[2]=((CGiocabili)campo[posY-1][posX+1]).getAngoli()[3].getSimbolo();
+			CGiocabili c = campo[posY-1][posX+1];
+			c.getAngoli()[3].setCoperto();
+			simboli[2]=c.getAngoli()[3].getSimbolo();
+			cPiazzate.remove(c.getIdCarta());
+			cPiazzate.put(c.getIdCarta(), c.toStringBreve());
 		}
 		if(campo[posY+1][posX+1]!=null) {
-			((CGiocabili)campo[posY+1][posX+1]).getAngoli()[0].setCoperto();
-			simboli[3]=((CGiocabili)campo[posY+1][posX+1]).getAngoli()[0].getSimbolo();
+			CGiocabili c = campo[posY+1][posX+1];
+			c.getAngoli()[0].setCoperto();
+			simboli[3]=c.getAngoli()[0].getSimbolo();
+			cPiazzate.remove(c.getIdCarta());
+			cPiazzate.put(c.getIdCarta(), c.toStringBreve());
 		}
 		
 		return simboli;
 		
 	}
+<<<<<<< HEAD
 	/**
 	 * per mostrare le posizioni possibile nelle quali poter
 	 * posizionare la carta e mostrarle al giocatore
@@ -91,26 +107,31 @@ public class CampoGioco {
 	 */
 	private void controllaNuovePosizioni(String posizione, Carta carta) {
 		
+=======
+	
+	private void controllaNuovePosizioni(String posizione, CGiocabili carta) {
+>>>>>>> 9d28edc056f3e8fe92bdcb96d634131501086634
 		posReturn.clear();
+		posizioniDisponibili.remove(posizione);
 		posReturn.add(posizione);
 		
 		String[] splittedString = posizione.split(",");
 		int posY = Integer.parseInt(splittedString[0]);
 		int posX = Integer.parseInt(splittedString[1]);
 		
-		if(campo[posY-1][posX-1]==null && ((CGiocabili)carta).getAngoli()[0].getSimbolo()!=Simbolo.ASSENTE) {
+		if(campo[posY-1][posX-1]==null && carta.getAngoli()[0].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY-1) + "," + (posX-1));
 			posizioniDisponibili.add((posY-1) + "," + (posX-1));
 		}
-		if(campo[posY+1][posX-1]==null && ((CGiocabili)carta).getAngoli()[3].getSimbolo()!=Simbolo.ASSENTE) {
+		if(campo[posY+1][posX-1]==null && carta.getAngoli()[3].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY+1) + "," + (posX-1));
 			posizioniDisponibili.add((posY+1) + "," + (posX-1));
 		}
-		if(campo[posY-1][posX+1]==null && ((CGiocabili)carta).getAngoli()[1].getSimbolo()!=Simbolo.ASSENTE) {
+		if(campo[posY-1][posX+1]==null && carta.getAngoli()[1].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY-1) + "," + (posX+1));
 			posizioniDisponibili.add((posY-1) + "," + (posX+1));
 		}
-		if(campo[posY+1][posX+1]==null && ((CGiocabili)carta).getAngoli()[2].getSimbolo()!=Simbolo.ASSENTE) {
+		if(campo[posY+1][posX+1]==null && carta.getAngoli()[2].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY+1) + "," + (posX+1));
 			posizioniDisponibili.add((posY+1) + "," + (posX+1));
 		}
@@ -176,8 +197,8 @@ public class CampoGioco {
 		}
 		//stampa legenda		
 		System.out.println("Legenda:");
-		for(String s : giocatoreAttuale.getCPiazzate()) {
-			System.out.println(s);
+		for (Integer i : giocatoreAttuale.getCPiazzate().keySet()) {
+			  System.out.println(giocatoreAttuale.getCPiazzate().get(i));
 		}
 		
 	}

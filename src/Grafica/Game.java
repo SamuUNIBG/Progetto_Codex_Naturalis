@@ -135,14 +135,7 @@ public class Game extends JFrame implements ActionListener{
         for(int i=0; i<username.size(); i++) {
         	tabbedPane.add("Giocatore " + (i+1),contenitore.get(i));
         }
-      
-        //pannello contenente nomi utente
-        JPanel userPanel = new JPanel();
-        userPanel.setPreferredSize(new Dimension(500, 300));
-        userPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        userPanel.setLayout(new GridBagLayout());
-        userPanel.setOpaque(false);
-        
+
         
         //pannello contenente le carte
       	JPanel cartePanel=new JPanel();
@@ -197,16 +190,17 @@ public class Game extends JFrame implements ActionListener{
         contenitoreUC.setOpaque(false);
         contenitoreUC.setVisible(true);
         
-        User user = new User(username, userColor);
+        //pannello contenente nomi utente
+        UserPanel userPanel = new UserPanel(username, userColor);
         
-        contenitoreUC.add(user,BorderLayout.WEST);
+        contenitoreUC.add(userPanel,BorderLayout.WEST);
         contenitoreUC.add(cartePanel,BorderLayout.CENTER);
         
         
         ScoreTrack scoreTrackPane = new ScoreTrack(userColor);
         
         //test
-        scoreTrackPane.movePawn(1, 15);
+        //scoreTrackPane.movePawn(1, 15);
         
         //test
         /*ArrayList<String> str = new ArrayList<String>(5);

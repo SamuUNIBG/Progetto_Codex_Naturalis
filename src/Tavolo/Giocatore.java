@@ -1,6 +1,7 @@
 package Tavolo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import Carta.Angolo;
 import Carta.CGiocabili;
@@ -23,7 +24,7 @@ public class Giocatore {
 	private CampoGioco campo;
 	private int[] risPossedute;
 	private int[] oggPosseduti;
-	private ArrayList<String> cPiazzate;
+	private HashMap<Integer, String> cPiazzate;
 	
 	public Giocatore(String soprannome,Colore colore,boolean primo) {
 		this.soprannome=soprannome;
@@ -33,8 +34,8 @@ public class Giocatore {
 		campo = new CampoGioco();
 		
 		cMano = new ArrayList<CGiocabiliSpeciali>();
-		cPiazzate =  new ArrayList<String>();
-		cPiazzate.add("999 -> cella vuota");
+		cPiazzate =  new HashMap<Integer, String>();
+		cPiazzate.put(0, "000 -> cella vuota");
 
 		
 		cObbPer = null;
@@ -84,9 +85,10 @@ public class Giocatore {
 	/**
 	 * @return the cPiazzate
 	 */
-	public ArrayList<String> getCPiazzate() {
+	public HashMap<Integer, String> getCPiazzate() {
 		return cPiazzate;
 	}
+<<<<<<< HEAD
 	/**
 	 * metodo per il piazzamento della carta che controlla
 	 * anche se la carta da dei punti al giocatore al piazzamento
@@ -94,6 +96,10 @@ public class Giocatore {
 	 * @param carta
 	 */
 	public void piazzaC(String posCarta, CGiocabili carta) {
+=======
+	
+	public void piazzaC(HashMap<Integer, String> cPiazzate, String posCarta, CGiocabili carta) {
+>>>>>>> 9d28edc056f3e8fe92bdcb96d634131501086634
 		
 		campo.aggiungiC(posCarta, carta);
 		campo.print(posCarta, carta);
@@ -132,7 +138,7 @@ public class Giocatore {
 			}
 		}
 		
-		Simbolo[] simboli = campo.copriAngoli(posCarta);
+		Simbolo[] simboli = campo.copriAngoli(cPiazzate, posCarta);
 		//Decrementa array risorse/oggetti posseduti
 		for(int i=0; i<simboli.length; i++) {
 			if(simboli[i]==Simbolo.FOGLIA) {
