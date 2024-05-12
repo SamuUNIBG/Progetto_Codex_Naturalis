@@ -88,13 +88,22 @@ public class Giocatore {
 	public HashMap<Integer, String> getCPiazzate() {
 		return cPiazzate;
 	}
+<<<<<<< HEAD
+
+=======
 	
+>>>>>>> bd256fb8dbdb05315d3d2e6cf5a069703dd167c4
 	/**
 	 * metodo per il piazzamento della carta che controlla
 	 * anche se la carta da dei punti al giocatore al piazzamento
 	 * @param coordinate in cui posizionare la carta
 	 * @param carta
+<<<<<<< HEAD
+	 */
+
+=======
 	 */	
+>>>>>>> bd256fb8dbdb05315d3d2e6cf5a069703dd167c4
 	public void piazzaC(HashMap<Integer, String> cPiazzate, String posCarta, CGiocabili carta) {
 		
 		campo.aggiungiC(posCarta, carta);
@@ -220,8 +229,15 @@ public class Giocatore {
 	 */
 	public String toString() {
 		return "Soprannome: " + soprannome + ", colore: " + colore + ", punti: " + punteggio +
-				", risorse possedute: [" + risPossedute[0] + ", " + risPossedute[1] + ", " + risPossedute[2] + ", " + risPossedute[3] +
-				"], oggetti posseduti: [" + + oggPosseduti[0] + ", " + oggPosseduti[1] + ", " + oggPosseduti[2] + "]";
+				", risorse possedute:\n"
+				+ "FOGLIA->" + risPossedute[0] + "\n"
+						+ "LUPO->" + risPossedute[1] + "\n"
+						+ "FUNGO->" + risPossedute[2] + "\n"
+						+ "FARFALLA " + risPossedute[3] +"\n"
+				+ "oggetti posseduti:\n"
+				+ "INCHIOSTRO->" + oggPosseduti[0] + "\n"
+						+ "PERGAMENA-> " + oggPosseduti[1] + "\n"
+						+ "PIUMA-> " + oggPosseduti[2] ;
 	}
 
 }

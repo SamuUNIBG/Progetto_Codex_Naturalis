@@ -104,8 +104,14 @@ public class CampoGioco {
 	 * posizionare la carta e mostrarle al giocatore
 	 * @param posizione che contiene le coordinate x e y
 	 * @param carta gia posizionata
+<<<<<<< HEAD
+	 */
+	private void controllaNuovePosizioni(String posizione, CGiocabili carta) {
+
+=======
 	 */	
 	private void controllaNuovePosizioni(String posizione, CGiocabili carta) {
+>>>>>>> bd256fb8dbdb05315d3d2e6cf5a069703dd167c4
 		posReturn.clear();
 		posizioniDisponibili.remove(posizione);
 		posReturn.add(posizione);
