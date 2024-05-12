@@ -15,6 +15,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class User extends JPanel{
 	
@@ -42,6 +43,9 @@ public class User extends JPanel{
 		nome = new JLabel();
 		nome.setText(username);
 		nome.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 15));
+		nome.setBackground(new Color(0xFEFCEF));
+		nome.setOpaque(true);
+		nome.setHorizontalAlignment(JLabel.CENTER);
 		switch(userColor) {
 	       	case "Azzurro":
 	       		nome.setForeground(Color.BLUE);
@@ -60,9 +64,14 @@ public class User extends JPanel{
 	       		this.setBackground(Color.YELLOW);
 	       		break;
 	   	}	
-				
+		
+		FlowLayout layoutRisOgg = new FlowLayout();
+		layoutRisOgg.setHgap(5);	
+		
 		risorsePanel = new JPanel();
-		risorsePanel.setLayout(new FlowLayout());
+		risorsePanel.setLayout(layoutRisOgg);
+		risorsePanel.setBackground(new Color(0xFEFCEF));
+		risorsePanel.setOpaque(true);
 		try {
 			Scanner sc = new Scanner(new FileInputStream(new File("file/resources_URL.csv")));
 	        
@@ -84,10 +93,12 @@ public class User extends JPanel{
 	    } 
 	    catch (FileNotFoundException e) {
 	        e.printStackTrace();
-	    }
-			
+	    }	
+		
 		oggettiPanel = new JPanel();
-		oggettiPanel.setLayout(new FlowLayout());
+		oggettiPanel.setLayout(layoutRisOgg);
+		oggettiPanel.setBackground(new Color(0xFEFCEF));
+		oggettiPanel.setOpaque(true);
 		try {
 			Scanner sc = new Scanner(new FileInputStream(new File("file/objects_URL.csv")));
 	        

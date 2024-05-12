@@ -200,7 +200,7 @@ public class Game extends JFrame implements ActionListener{
         ScoreTrack scoreTrackPane = new ScoreTrack(userColor);
         
         //test
-        scoreTrackPane.movePawn(1, 15);
+        //scoreTrackPane.movePawn(1, 15);
         
         //test
         /*ArrayList<String> str = new ArrayList<String>(5);
