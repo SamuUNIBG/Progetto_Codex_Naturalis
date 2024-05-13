@@ -13,11 +13,13 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 	ArrayList<JLabel> placedCardLabel;	
 	HashMap<Integer, String> coordinate = new HashMap<Integer, String>();
 	HashMap<String, Integer> coordinate2 = new HashMap<String, Integer>();
-	ImageIcon icon = new ImageIcon("blue_gold_card_front_2.jpg");
+	ArrayList<ImageIcon> iconPlacedCard;
 	
 	public PlayingField(){
 		
 		this.setLayout(null);
+		
+		iconPlacedCard = new ArrayList<ImageIcon>();
 		
 		placedCardLabel = new ArrayList<JLabel>();
 		placedCardLabel.add(new JLabel());
@@ -25,7 +27,6 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 		coordinate2.put("40,40", 0);
 		
 		placedCardLabel.get(0).setBackground(new Color(170, 170, 170, 80));
-		placedCardLabel.get(0).setIcon(icon);
 		placedCardLabel.get(0).setOpaque(true);
 		placedCardLabel.get(0).setBounds(4918, 2693, 163, 113);
 		placedCardLabel.get(0).addMouseListener(this);
@@ -73,19 +74,19 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 			//set location and size of new JLabel
 			if(newX<oldX && newY<oldY) {
 				newLabel.setBackground(Color.RED);
-				newLabel.setIcon(icon);
+				//newLabel.setIcon(icon);
 				newLabel.setBounds(x-120,y-64,163,113);
 			}else if(newX<oldX && newY>oldY) {
 				newLabel.setBackground(Color.GREEN);
-				newLabel.setIcon(icon);
+				//newLabel.setIcon(icon);
 				newLabel.setBounds(x-120,y+64,163,113);
 			}else if(newX>oldX && newY<oldY) {
 				newLabel.setBackground(Color.BLUE);
-				newLabel.setIcon(icon);
+				//newLabel.setIcon(icon);
 				newLabel.setBounds(x+120,y-64,163,113);
 			}else if(newX>oldX && newY>oldY) {
 				newLabel.setBackground(Color.YELLOW);
-				newLabel.setIcon(icon);
+				//newLabel.setIcon(icon);
 				newLabel.setBounds(x+120,y+64,163,113);
 			}
 			
@@ -101,6 +102,11 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 		}
 		
 		
+	}
+	
+	public void posCIniz(String url) {
+		iconPlacedCard.add(new ImageIcon(url));
+		placedCardLabel.get(0).setIcon(iconPlacedCard.get(iconPlacedCard.size()-1));
 	}
 
 	@Override
