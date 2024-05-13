@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -55,6 +56,11 @@ public class CarteComuniPanel extends JPanel {
     	this.add(sottoPanel[1]);
 		
       	
+	}
+
+	public void piazzaCarta(int pos, String url) {
+		opacoLabelCComuni[pos].setIcon(new ImageIcon(url));
+		
 	}
 	
 }

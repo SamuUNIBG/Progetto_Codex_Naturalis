@@ -627,8 +627,8 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 			System.out.println("Hanno vinto "+giocatore.size()+" giocatori:\n");
 		}
 		for(int i=0;i<giocatore.size();i++) {
-				System.out.println("Congratulazioni "+giocatore.get(i)+" hai vinto!\n");
-			}
+			System.out.println("Congratulazioni "+giocatore.get(i)+" hai vinto!\n");
+		}
 		
 		
 	}

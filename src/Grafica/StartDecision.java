@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -19,9 +20,9 @@ public class StartDecision implements MouseListener {
 	private int giocatore;
 	private Game game;
 	private LogicaGiocoGrafica logica;
-	private String urlImage;
+	private Icon urlImage;
 	
-	public StartDecision(String urlImage, String nome, Game game, LogicaGiocoGrafica logica, int giocatore) {
+	public StartDecision(Icon urlImage, String nome, Game game, LogicaGiocoGrafica logica, int giocatore) {
 		this.giocatore = giocatore;
 		this.game = game;
 		this.logica = logica;
@@ -36,7 +37,7 @@ public class StartDecision implements MouseListener {
 		dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		dialog.setTitle(nome + " - Come vuoi giocare la carta?");
 		cInizScelLabel = new JLabel();
-		cInizScelLabel.setIcon(new ImageIcon(urlImage));
+		cInizScelLabel.setIcon(urlImage);
 		cInizScelLabel.addMouseListener(this);
 		dialog.add(cInizScelLabel);
 		dialog.setVisible(true);

@@ -104,8 +104,8 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 		
 	}
 	
-	public void posCIniz(String url) {
-		iconPlacedCard.add(new ImageIcon(url));
+	public void posCIniz(Icon url) {
+		iconPlacedCard.add((ImageIcon) url);
 		placedCardLabel.get(0).setIcon(iconPlacedCard.get(iconPlacedCard.size()-1));
 	}
 

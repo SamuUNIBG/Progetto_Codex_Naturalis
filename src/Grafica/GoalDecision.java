@@ -22,7 +22,7 @@ public class GoalDecision implements MouseListener {
 	private Game game;
 	private LogicaGiocoGrafica logica;
 	
-	public GoalDecision(String[] urlImage, String nome, Game game, LogicaGiocoGrafica logica, int giocatore){
+	public GoalDecision(ImageIcon[] urlImage, String nome, Game game, LogicaGiocoGrafica logica, int giocatore){
 		this.giocatore = giocatore;
 		this.game = game;
 		this.logica = logica;
@@ -37,7 +37,7 @@ public class GoalDecision implements MouseListener {
 		dialog.setTitle(nome + " - Seleziona la carta obbiettivo che preferisci");
 		for(int i=0; i<2; i++) {
 			cObbScelLabel[i] = new JLabel();
-			cObbScelLabel[i].setIcon(new ImageIcon(urlImage[i]));
+			cObbScelLabel[i].setIcon(urlImage[i]);
 			cObbScelLabel[i].addMouseListener(this);
 			dialog.add(cObbScelLabel[i]);
 		}

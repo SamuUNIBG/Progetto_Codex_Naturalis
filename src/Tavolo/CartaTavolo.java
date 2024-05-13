@@ -64,6 +64,7 @@ public class CartaTavolo {
 	 */	
 	public void addcRisScp(CRis carta) {
 		cRisScp.add(carta);
+		
 	}
 
 	/**
@@ -86,6 +87,7 @@ public class CartaTavolo {
 	 */
 	public void addcOroScp(COro carta) {
 		cOroScp.add(carta);
+		
 	}
 	
 	/**

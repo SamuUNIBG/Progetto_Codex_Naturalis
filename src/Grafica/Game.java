@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import Carta.CObb;
 import Logica.LogicaGiocoGrafica;
+import Tavolo.Giocatore;
 
 import java.awt.*;
 
@@ -23,10 +24,11 @@ import java.io.FileNotFoundException;
 public class Game extends JFrame implements ActionListener{
 	
 	HashMap<Integer, String> cardImageMap;
-	ArrayList<ImageIcon> cardImageArr;
+	static ArrayList<Icon> cardImageArr;
 	LogicaGiocoGrafica logica;
 	JLabel[] opacoLabelCPersonali;
 	ArrayList<UserPlayGround> userPlayGround;
+	CarteComuniPanel cComuniPanel;
 
 	public Game(ArrayList<String> username, ArrayList<String> userColor) {
 		
@@ -53,7 +55,7 @@ public class Game extends JFrame implements ActionListener{
         playingField.get(0).addLabel(str3);*/
 		
 		cardImageMap = new HashMap<Integer, String>();
-		cardImageArr = new ArrayList<ImageIcon>();
+		cardImageArr = new ArrayList<Icon>();
 		ImageIcon logo = new ImageIcon("images/codex_logo.png");
 		
 		this.setIconImage(logo.getImage());
@@ -100,7 +102,7 @@ public class Game extends JFrame implements ActionListener{
         UserPanel userPanel = new UserPanel(username, userColor);
         
         //sotto pannello contenente le carte
-      	CarteComuniPanel cComuniPanel = new CarteComuniPanel();
+      	cComuniPanel = new CarteComuniPanel();
       	
         contenitoreUC.add(userPanel,BorderLayout.WEST);
         contenitoreUC.add(cComuniPanel,BorderLayout.CENTER);
@@ -146,22 +148,38 @@ public class Game extends JFrame implements ActionListener{
 	private void istantiateCardImage() {
 		
 		for(int i=0; i<cardImageMap.size(); i++) {
-			cardImageArr.add(new ImageIcon(cardImageMap.get(i)));
+			ImageIcon image = new ImageIcon(cardImageMap.get(i));
+			image.setDescription(i+"");
+			cardImageArr.add(image);
 		}
 		
+	}
+	
+	public static Icon getImage(int id) {
+		return cardImageArr.get(id);
 	}
 	
 	public String getURLImage(int id) {
 		return cardImageMap.get(id);
 	}
 	
-	public void piazzaCartaPers(int giocatore, int pos, String carta) {
+	public void piazzaCartaPers(int giocatore, int pos, Icon carta) {
 		userPlayGround.get(giocatore).pescaCartaP(pos, carta);
 	}
 	
-	//piazzaCartaIniz
-	public void piazzaCartaIniz(int giocatore, String carta) {
+	public void piazzaCartaIniz(int giocatore, Icon carta) {
 		userPlayGround.get(giocatore).piazzaCartaIniz(carta);
+	}
+	
+	public void piazzaCartaCom(int pos, Integer id) {
+		cComuniPanel.piazzaCarta(pos,this.getURLImage(id));
+		
+	}
+	
+	public void pescaCarta(int pos) {
+		int id = logica.pescaCarta(pos);
+		if(id!=999)
+			this.piazzaCartaCom(pos, id);
 	}
 
 	@Override
@@ -169,5 +187,7 @@ public class Game extends JFrame implements ActionListener{
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 
 }
