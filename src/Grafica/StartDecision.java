@@ -21,6 +21,7 @@ public class StartDecision implements MouseListener {
 	private Game game;
 	private LogicaGiocoGrafica logica;
 	private Icon urlImage;
+	private Icon imgSelectedC, imgEnteredC;
 	
 	public StartDecision(Icon urlImage, String nome, Game game, LogicaGiocoGrafica logica, int giocatore) {
 		this.giocatore = giocatore;
@@ -67,13 +68,37 @@ public class StartDecision implements MouseListener {
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
+		if(e.getSource()==cInizScelLabel) {
+			imgEnteredC = cInizScelLabel.getIcon();
+			cInizScelLabel.setIcon(Game.getImage(calcolaNewId(Integer.parseInt(((ImageIcon)imgEnteredC).getDescription()))));
+		}
 		
+	}
+
+	private int calcolaNewId(int id) {
+		switch(id){
+			case 80:
+				return 110;
+			case 81:
+				return 111;
+			case 82:
+				return 112;
+			case 83:
+				return 113;
+			case 84:
+				return 114;
+			case 85:
+				return 115;
+		
+		}
+		return 0;
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
+		if(e.getSource()==cInizScelLabel) {
+			cInizScelLabel.setIcon(imgEnteredC);
+		}
 		
 	}
 
