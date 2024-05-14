@@ -8,16 +8,23 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class PlayingField extends JLayeredPane implements MouseListener {
-	int z=0;
 	
-	ArrayList<JLabel> placedCardLabel;	
-	HashMap<Integer, String> coordinate = new HashMap<Integer, String>();
-	HashMap<String, Integer> coordinate2 = new HashMap<String, Integer>();
-	ArrayList<ImageIcon> iconPlacedCard;
+	private int z;
+	private boolean mouseListenerEnable;
 	
-	public PlayingField(){
+	private ArrayList<JLabel> placedCardLabel;	
+	private HashMap<Integer, String> coordinate = new HashMap<Integer, String>();
+	private HashMap<String, Integer> coordinate2 = new HashMap<String, Integer>();
+	private ArrayList<ImageIcon> iconPlacedCard;
+	private UserPlayGround userPlayGroundMother;
+	
+	public PlayingField(UserPlayGround userPlayGroundMother){
 		
 		this.setLayout(null);
+		
+		z = 0;
+		mouseListenerEnable = false;
+		this.userPlayGroundMother = userPlayGroundMother;
 		
 		iconPlacedCard = new ArrayList<ImageIcon>();
 		
@@ -29,7 +36,6 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 		placedCardLabel.get(0).setBackground(new Color(170, 170, 170, 80));
 		placedCardLabel.get(0).setOpaque(true);
 		placedCardLabel.get(0).setBounds(4918, 2693, 163, 113);
-		placedCardLabel.get(0).addMouseListener(this);
 		
 		//add homePanel to window
 		this.add(placedCardLabel.get(0), Integer.valueOf(0));
@@ -73,20 +79,16 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 			
 			//set location and size of new JLabel
 			if(newX<oldX && newY<oldY) {
-				newLabel.setBackground(Color.RED);
-				//newLabel.setIcon(icon);
+				newLabel.setBackground(new Color(170, 170, 170, 80));
 				newLabel.setBounds(x-120,y-64,163,113);
 			}else if(newX<oldX && newY>oldY) {
-				newLabel.setBackground(Color.GREEN);
-				//newLabel.setIcon(icon);
+				newLabel.setBackground(new Color(170, 170, 170, 80));
 				newLabel.setBounds(x-120,y+64,163,113);
 			}else if(newX>oldX && newY<oldY) {
-				newLabel.setBackground(Color.BLUE);
-				//newLabel.setIcon(icon);
+				newLabel.setBackground(new Color(170, 170, 170, 80));
 				newLabel.setBounds(x+120,y-64,163,113);
 			}else if(newX>oldX && newY>oldY) {
-				newLabel.setBackground(Color.YELLOW);
-				//newLabel.setIcon(icon);
+				newLabel.setBackground(new Color(170, 170, 170, 80));
 				newLabel.setBounds(x+120,y+64,163,113);
 			}
 			
@@ -108,26 +110,31 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 		iconPlacedCard.add((ImageIcon) url);
 		placedCardLabel.get(0).setIcon(iconPlacedCard.get(iconPlacedCard.size()-1));
 	}
+	
+	public void mouseListenerEnable(boolean enable) {
+		mouseListenerEnable = enable;
+	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-//		for(int i=0; i<placedCardLabel.size(); i++) {
-//			
-//			if(e.getSource()==placedCardLabel.get(i)) {
-//				placedCardLabel.get(i).setIcon(new ImageIcon());
-//				placedCardLabel.get(i).removeMouseListener(this);
-//				
-//			}
-//			
-//		}
-		
+		if(mouseListenerEnable) {
+			for(int i=1; i<placedCardLabel.size(); i++) {
+				
+				if(e.getSource()==placedCardLabel.get(i)) {
+					placedCardLabel.get(i).setIcon(userPlayGroundMother.getImgSelectedC());
+					placedCardLabel.get(i).removeMouseListener(this);
+					this.mouseListenerEnable(false);
+					userPlayGroundMother.mouseListenerEnable(false);
+				}
+				
+			}
+		}
 		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

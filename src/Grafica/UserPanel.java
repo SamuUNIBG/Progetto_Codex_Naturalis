@@ -29,4 +29,8 @@ public class UserPanel extends JPanel{
         this.setOpaque(false);
 	}
 	
+	public User getUser(int giocatore) {
+		return utenti.get(giocatore);
+	}
+	
 }

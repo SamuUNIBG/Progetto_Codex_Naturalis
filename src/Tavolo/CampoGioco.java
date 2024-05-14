@@ -227,4 +227,8 @@ public class CampoGioco {
 		this.campo = campo;
 	}
 	
+	public ArrayList<String> getPosReturn(){
+		return posReturn;
+	}
+	
 }

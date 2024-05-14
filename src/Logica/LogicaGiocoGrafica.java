@@ -9,15 +9,18 @@ import javax.swing.*;
 
 import java.awt.event.*;
 
+import Carta.CGiocabiliSpeciali;
 import Carta.CIniz;
 import Carta.CObb;
 import Carta.COro;
 import Carta.CRis;
 import Enumerazione.Colore;
+import Enumerazione.Simbolo;
 import Enumerazione.TipoCarta;
 import Grafica.Game;
 import Grafica.GoalDecision;
 import Grafica.StartDecision;
+import Tavolo.CampoGioco;
 import Tavolo.CartaTavolo;
 import Tavolo.Giocatore;
 import Tavolo.Tracciato;
@@ -170,6 +173,82 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 		
 		AddPuntiObb();
 		
+	}
+	
+	public boolean giocaCIniz(int giocatore, boolean retro) {
+		Giocatore giocatoreAttuale = tracciato.getGiocatore(giocatore);
+		CIniz cInizAttuale=giocatoreAttuale.getCInizPer();
+		
+		//se la carta e' stata giocata sul retro si setta l'attributo fronte=false
+		if(retro) {
+			cInizAttuale.retro();
+		}
+		
+		giocatoreAttuale.getCPiazzate().put(cInizAttuale.getIdCarta(), cInizAttuale.toStringBreve());
+		giocatoreAttuale.piazzaC(giocatoreAttuale.getCPiazzate(), "40,40", cInizAttuale);
+		
+		if(!retro) {
+			//aggiunge al vettore delle risorse possedute le risorse centrali della carta
+			for(int i=0; i<cInizAttuale.getRisorseCentrali().size(); i++) {
+				if(cInizAttuale.getRisorseCentrali().get(i)==Simbolo.FOGLIA) {
+					giocatoreAttuale.getRisPossedute()[0]+=1;
+				}else if(cInizAttuale.getRisorseCentrali().get(i)==Simbolo.LUPO) {
+					giocatoreAttuale.getRisPossedute()[1]+=1;
+				}else if(cInizAttuale.getRisorseCentrali().get(i)==Simbolo.FUNGO) {
+					giocatoreAttuale.getRisPossedute()[2]+=1;
+				}else if(cInizAttuale.getRisorseCentrali().get(i)==Simbolo.FARFALLA) {
+					giocatoreAttuale.getRisPossedute()[3]+=1;
+				}
+			}
+		}
+		
+		game.getUserPanel().getUser(giocatore).aggiornaResource(giocatoreAttuale.getRisPossedute());
+		
+		game.getUserPlayGround(giocatore).getPlayingField().addLabel(giocatoreAttuale.getCampoG().getPosReturn());
+		
+		return true;
+		
+	}
+	
+	public boolean giocaC(int giocatore, int numCarta, boolean retro, String posCarta) {
+		
+		Giocatore giocatoreAttuale = tracciato.getGiocatore(giocatore);
+		
+		ArrayList<CGiocabiliSpeciali> cManoAttuale=giocatoreAttuale.getCMano();
+		CGiocabiliSpeciali carta = cManoAttuale.get(numCarta);
+		cManoAttuale.remove(numCarta);
+		
+		//controllo da fare in carte personali panel
+		//controllo giocabilit e' carta oro
+		if(carta instanceof COro && !retro)
+			((COro)carta).VerificaPrerequisito(giocatoreAttuale.getRisPossedute());
+		
+		//se la carta e' stata giocata sul retro si crea una nuova carta
+		if(retro) {
+			if(carta instanceof CRis) {
+				CRis cartaRetro= new CRis(((CRis)carta).getSimbolo(), ((CRis)carta).getColore(), ((CRis)carta).getIdCarta());
+				cManoAttuale.set(numCarta, cartaRetro);
+			}else if(carta instanceof COro) {
+				COro cartaRetro= new COro(((CRis)carta).getSimbolo(), ((CRis)carta).getColore(), ((CRis)carta).getIdCarta());
+				cManoAttuale.set(numCarta, cartaRetro);
+			}
+		}else {
+			int puntiCarta = carta.getPunti();
+			if(carta instanceof COro)
+				puntiCarta = ((COro)carta).calcolaMiniObb(posCarta, giocatoreAttuale);
+			giocatoreAttuale.addPunteggio(puntiCarta);
+			game.getScoreTrackPane().movePawn(giocatore, giocatoreAttuale.getPunteggio());
+		}
+		
+		giocatoreAttuale.getCPiazzate().put(carta.getIdCarta(), carta.toStringBreve());
+		giocatoreAttuale.piazzaC(giocatoreAttuale.getCPiazzate(), posCarta, carta);
+		
+		game.getUserPanel().getUser(giocatore).aggiornaResource(giocatoreAttuale.getRisPossedute());
+		game.getUserPanel().getUser(giocatore).aggiornaObjects(giocatoreAttuale.getOggPosseduti());
+		
+		game.getUserPlayGround(giocatore).getPlayingField().addLabel(giocatoreAttuale.getCampoG().getPosReturn());
+		
+		return true;
 	}
 	
 	public int pescaCarta(int pos) {

@@ -420,7 +420,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 			int puntiCarta = carta.getPunti();
 			if(carta instanceof COro)
 				puntiCarta = ((COro)carta).calcolaMiniObb(posCarta, giocatoreAttuale);
-				giocatoreAttuale.addPunteggio(puntiCarta);
+			giocatoreAttuale.addPunteggio(puntiCarta);
 		}
 		
 		giocatoreAttuale.getCPiazzate().put(carta.getIdCarta(), carta.toStringBreve());

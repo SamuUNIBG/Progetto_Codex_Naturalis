@@ -23,12 +23,14 @@ import java.io.FileNotFoundException;
 
 public class Game extends JFrame implements ActionListener{
 	
-	HashMap<Integer, String> cardImageMap;
-	static ArrayList<Icon> cardImageArr;
-	LogicaGiocoGrafica logica;
-	JLabel[] opacoLabelCPersonali;
-	ArrayList<UserPlayGround> userPlayGround;
-	CarteComuniPanel cComuniPanel;
+	private HashMap<Integer, String> cardImageMap;
+	public static ArrayList<Icon> cardImageArr;
+	private LogicaGiocoGrafica logica;
+	private JLabel[] opacoLabelCPersonali;
+	private ArrayList<UserPlayGround> userPlayGround;
+	private CarteComuniPanel cComuniPanel;
+	private UserPanel userPanel;
+	private ScoreTrack scoreTrackPane;
 
 	public Game(ArrayList<String> username, ArrayList<String> userColor) {
 		
@@ -100,7 +102,7 @@ public class Game extends JFrame implements ActionListener{
         contenitoreUC.setVisible(true);
         
         //pannello contenente nomi utente
-        UserPanel userPanel = new UserPanel(username, userColor);
+        userPanel = new UserPanel(username, userColor);
         
         //sotto pannello contenente le carte
       	cComuniPanel = new CarteComuniPanel();
@@ -109,7 +111,7 @@ public class Game extends JFrame implements ActionListener{
         contenitoreUC.add(cComuniPanel,BorderLayout.CENTER);
         
         
-        ScoreTrack scoreTrackPane = new ScoreTrack(userColor);
+        scoreTrackPane = new ScoreTrack(userColor);
         
 			
       	//add component to window
@@ -182,6 +184,14 @@ public class Game extends JFrame implements ActionListener{
 		if(id!=999)
 			this.piazzaCartaCom(pos, id);
 	}
+	
+	public UserPanel getUserPanel() {
+		return userPanel;
+	}
+	
+	public ScoreTrack getScoreTrackPane() {
+		return scoreTrackPane;
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -189,6 +199,8 @@ public class Game extends JFrame implements ActionListener{
 		
 	}
 
-	
+	public UserPlayGround getUserPlayGround(int giocatore) {
+		return userPlayGround.get(giocatore);
+	}
 
 }

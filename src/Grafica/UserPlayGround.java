@@ -11,17 +11,21 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import Carta.CGiocabiliSpeciali;
+
 public class UserPlayGround extends JPanel implements MouseListener {
 	
 	private JLabel[] opacoLabelCPersonali;
 	private PlayingField playingField;
 	private int posSelectedC;
 	private Icon imgSelectedC, imgEnteredC;
+	private boolean mouseListenerEnable;
 
 	public UserPlayGround() {
 		
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		mouseListenerEnable = true;
 		
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		
 		
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -31,7 +35,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 				
 		//creo scrollPlayingField e playingField in base al numero di giocatori
 				
-		playingField = new PlayingField();
+		playingField = new PlayingField(this);
 		playingField.setVisible(true);
 		
 		JScrollPane	scrollPlayingField = new JScrollPane(playingField);
@@ -97,10 +101,17 @@ public class UserPlayGround extends JPanel implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		for(int i=0; i<opacoLabelCPersonali.length-1; i++) {
-			if(e.getSource()==opacoLabelCPersonali[i]) {
-				posSelectedC = i;
-				imgSelectedC = opacoLabelCPersonali[i].getIcon();
+		if(mouseListenerEnable) {
+			for(int i=0; i<opacoLabelCPersonali.length-1; i++) {
+				if(e.getSource()==opacoLabelCPersonali[i]) {
+					posSelectedC = i;
+					playingField.mouseListenerEnable((true));
+					if(e.getButton() == MouseEvent.BUTTON1) {
+						imgSelectedC = imgEnteredC;
+					}else if(e.getButton() == MouseEvent.BUTTON3) {
+						imgSelectedC = opacoLabelCPersonali[i].getIcon();
+					}
+				}
 			}
 		}
 		
@@ -160,6 +171,18 @@ public class UserPlayGround extends JPanel implements MouseListener {
 			}
 		}
 		
+	}
+	
+	public PlayingField getPlayingField() {
+		return playingField;
+	}
+	
+	public Icon getImgSelectedC() {
+		return imgSelectedC;
+	}
+	
+	public void mouseListenerEnable(boolean enable) {
+		mouseListenerEnable = enable;
 	}
 	
 }
