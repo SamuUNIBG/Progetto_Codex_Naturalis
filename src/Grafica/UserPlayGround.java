@@ -23,7 +23,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		
 		
-		this.add(new JPanel());
+		
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		this.setLayout(new GridBagLayout());
 		this.setOpaque(false);
@@ -44,7 +44,8 @@ public class UserPlayGround extends JPanel implements MouseListener {
 		scrollPlayingField.getVerticalScrollBar().setMinimum(0);
 		scrollPlayingField.getVerticalScrollBar().setMaximum(5500);
 		scrollPlayingField.getVerticalScrollBar().setValue((5500-113)/2-(screenSize.height-545-113)/2);
-				
+		
+		
 		FlowLayout CPlayout=new FlowLayout();
 		CPlayout.setHgap(190);
 		CPlayout.setVgap(16);

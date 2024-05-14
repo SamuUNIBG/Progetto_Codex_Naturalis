@@ -42,7 +42,7 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 		
 	}
 	
-	//il metodo che si occuperà di aggiungere la carta nella matrice richiamerà questo metodo passandogli un vettore
+	//il metodo che si occuperï¿½ di aggiungere la carta nella matrice richiamerï¿½ questo metodo passandogli un vettore
 	//di stringhe contenente nella prima cella le coordinate ("x,y") dell'ultima carta aggiunta e le coordinate delle altre celle occupabili
 	//adds opaque JLabels, where cards can be placed, to the playing field
 	public void addLabel(ArrayList<String> pos) {
@@ -111,15 +111,15 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		for(int i=0; i<placedCardLabel.size(); i++) {
-			
-			if(e.getSource()==placedCardLabel.get(i)) {
-				placedCardLabel.get(i).setIcon(new ImageIcon());
-				placedCardLabel.get(i).removeMouseListener(this);
-				
-			}
-			
-		}
+//		for(int i=0; i<placedCardLabel.size(); i++) {
+//			
+//			if(e.getSource()==placedCardLabel.get(i)) {
+//				placedCardLabel.get(i).setIcon(new ImageIcon());
+//				placedCardLabel.get(i).removeMouseListener(this);
+//				
+//			}
+//			
+//		}
 		
 		
 	}

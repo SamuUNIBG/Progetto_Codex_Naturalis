@@ -80,6 +80,7 @@ public class Game extends JFrame implements ActionListener{
         JTabbedPane tabbedPane = new JTabbedPane();
         tabbedPane.setTabPlacement(JTabbedPane.TOP);
         
+        
         //Campo gioco giocatori (PlayFields + Pannello carte personali)
         userPlayGround = new  ArrayList<UserPlayGround>();
         for(int i=0; i<username.size(); i++) {

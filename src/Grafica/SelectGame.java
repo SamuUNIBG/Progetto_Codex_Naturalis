@@ -48,15 +48,23 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 		frame.setLocation((screenSize.width/2)-(frame.getWidth()/2), (screenSize.height/2)-(frame.getHeight()/2));
 		//exit out of application
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		int num=0;
 		//asks how many players will play
 		do {
-			giocatori=JOptionPane.showInputDialog("In quanti giocatori volete giocare?");
 			
-			if(Integer.parseInt(giocatori)>4 ||Integer.parseInt(giocatori)<2) {
-				JOptionPane.showMessageDialog(null,"I giocatori devono essere minimo 2, massimo 4","Attenzione!",JOptionPane.ERROR_MESSAGE);
+			try {
+				giocatori=JOptionPane.showInputDialog("In quanti giocatori volete giocare?");
+				if(Integer.parseInt(giocatori)>4 ||Integer.parseInt(giocatori)<2) {
+					JOptionPane.showMessageDialog(null,"I giocatori devono essere minimo 2, massimo 4","Attenzione!",JOptionPane.ERROR_MESSAGE);
+				}
+				num=Integer.parseInt(giocatori);
+				
+			}catch(NumberFormatException e){
+				
+				System.out.println("Si prega di inserire un numero intero");
 			}
-		}while(Integer.parseInt(giocatori)>4 ||Integer.parseInt(giocatori)<2);
+			
+		}while(num>4 ||num<2);
 		
 		
 		//"select game" title label
