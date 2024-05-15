@@ -125,6 +125,7 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 					placedCardLabel.get(i).removeMouseListener(this);
 					this.mouseListenerEnable(false);
 					userPlayGroundMother.mouseListenerEnable(false);
+					userPlayGroundMother.giocaC(Integer.parseInt(((ImageIcon)userPlayGroundMother.getImgSelectedC()).getDescription()), coordinate.get(i));
 				}
 				
 			}

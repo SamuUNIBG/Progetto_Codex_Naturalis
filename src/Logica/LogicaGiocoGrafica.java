@@ -210,11 +210,15 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 		
 	}
 	
-	public boolean giocaC(int giocatore, int numCarta, boolean retro, String posCarta) {
+	public boolean giocaC(int giocatore, int idCarta, boolean retro, String posCarta) {
 		
 		Giocatore giocatoreAttuale = tracciato.getGiocatore(giocatore);
-		
+		int numCarta=-1;
 		ArrayList<CGiocabiliSpeciali> cManoAttuale=giocatoreAttuale.getCMano();
+		for(int i=0; i<cManoAttuale.size(); i++) {
+			if(cManoAttuale.get(i).getIdCarta()==idCarta)
+				numCarta=i;
+		}
 		CGiocabiliSpeciali carta = cManoAttuale.get(numCarta);
 		cManoAttuale.remove(numCarta);
 		

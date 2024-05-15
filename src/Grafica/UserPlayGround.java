@@ -20,8 +20,16 @@ public class UserPlayGround extends JPanel implements MouseListener {
 	private int posSelectedC;
 	private Icon imgSelectedC, imgEnteredC;
 	private boolean mouseListenerEnable;
+	private Game game;
+	private boolean retro;
+	private int id;
+	public static int lastId=0;
 
-	public UserPlayGround() {
+	public UserPlayGround(Game game) {
+		
+		this.game=game;
+		id = UserPlayGround.lastId;
+		UserPlayGround.lastId++;
 		
 		mouseListenerEnable = true;
 		
@@ -98,6 +106,10 @@ public class UserPlayGround extends JPanel implements MouseListener {
 	public void piazzaCartaIniz(Icon url) {
 		playingField.posCIniz(url);
 	}
+	
+	public void giocaC(int numCarta, String posCarta) {
+		game.giocaC(id, numCarta, retro, posCarta);
+	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -108,8 +120,10 @@ public class UserPlayGround extends JPanel implements MouseListener {
 					playingField.mouseListenerEnable((true));
 					if(e.getButton() == MouseEvent.BUTTON1) {
 						imgSelectedC = imgEnteredC;
+						retro = false;
 					}else if(e.getButton() == MouseEvent.BUTTON3) {
 						imgSelectedC = opacoLabelCPersonali[i].getIcon();
+						retro = true;
 					}
 				}
 			}

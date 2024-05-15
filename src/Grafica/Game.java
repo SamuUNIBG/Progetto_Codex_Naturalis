@@ -86,7 +86,7 @@ public class Game extends JFrame implements ActionListener{
         //Campo gioco giocatori (PlayFields + Pannello carte personali)
         userPlayGround = new  ArrayList<UserPlayGround>();
         for(int i=0; i<username.size(); i++) {
-        	userPlayGround.add(new UserPlayGround());
+        	userPlayGround.add(new UserPlayGround(this));
         }
 		
         //finistre campo gioco giocatori
@@ -201,6 +201,10 @@ public class Game extends JFrame implements ActionListener{
 
 	public UserPlayGround getUserPlayGround(int giocatore) {
 		return userPlayGround.get(giocatore);
+	}
+	
+	public void giocaC(int giocatore, int idCarta, boolean retro, String posCarta) {
+		logica.giocaC(giocatore, idCarta, retro, posCarta);
 	}
 
 }
