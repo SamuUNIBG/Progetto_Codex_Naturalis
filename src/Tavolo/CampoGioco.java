@@ -10,8 +10,8 @@ import Carta.CGiocabiliSpeciali;
 
 public class CampoGioco {
 
-	public static final int dimensioneX = 81;
-	public static final int dimensioneY = 81;
+	public static final int DIMENSIONEX = 81;
+	public static final int DIMENSIONEY = 81;
 	
 	private CGiocabili[][] campo;
 	private int[][] campoPrint;	
@@ -24,11 +24,11 @@ public class CampoGioco {
 		posReturn = new ArrayList<String>();
 		posizioniDisponibili = new ArrayList<String>();
 		
-		campo = new CGiocabili[dimensioneY][dimensioneX];
-		campoPrint = new int[dimensioneY][dimensioneX];
+		campo = new CGiocabili[DIMENSIONEY][DIMENSIONEX];
+		campoPrint = new int[DIMENSIONEY][DIMENSIONEX];
 		
-		for(int y=0; y<dimensioneY; y++) {
-			for(int x=0; x<dimensioneX; x++) {
+		for(int y=0; y<DIMENSIONEY; y++) {
+			for(int x=0; x<DIMENSIONEX; x++) {
 				campo[y][x]=null;
 				campoPrint[y][x]=000;
 			}
@@ -156,33 +156,33 @@ public class CampoGioco {
 	 */
 	public void print(Giocatore giocatoreAttuale) {
 		System.out.printf(" " + "%9d" + " |", 0);
-		for(int x=1; x<dimensioneX; x++) {
+		for(int x=1; x<DIMENSIONEX; x++) {
 			System.out.printf(" " + "%3d" + " ", x);
-			if(x<dimensioneX-1) {
+			if(x<DIMENSIONEX-1) {
 				System.out.print("|");
 			}
 		}
 		System.out.println("");
-		for(int x=0; x<dimensioneX; x++) {
+		for(int x=0; x<DIMENSIONEX; x++) {
 			System.out.print("----");
-			if(x<dimensioneX-1) {
+			if(x<DIMENSIONEX-1) {
 				System.out.print("--");
 			}
 		}
 		System.out.println("-------");
-		for(int y=0; y<dimensioneY; y++) {
+		for(int y=0; y<DIMENSIONEY; y++) {
 			System.out.printf(" " + "%3d" + " |", y);
-			for(int x=0; x<dimensioneX; x++) {
+			for(int x=0; x<DIMENSIONEX; x++) {
 					System.out.printf(" " + "%3d" + " ", campoPrint[y][x]);
-				if(x<dimensioneX-1) {
+				if(x<DIMENSIONEX-1) {
 					System.out.print("|");
 				}
 			}
 			System.out.println("");
-			if(y<dimensioneY-1) {
-				for(int x=0; x<dimensioneX; x++) {
+			if(y<DIMENSIONEY-1) {
+				for(int x=0; x<DIMENSIONEX; x++) {
 					System.out.print("----");
-					if(x<dimensioneX-1) {
+					if(x<DIMENSIONEX-1) {
 						System.out.print("--");
 					}
 				}
@@ -199,18 +199,18 @@ public class CampoGioco {
 	}
 	/**
 	 * 
-	 * @return dimensioneX del campo di gioco
+	 * @return DIMENSIONEX del campo di gioco
 	 */
-	public static int getDimensionex() {
-		return dimensioneX;
+	public static int getDIMENSIONEX() {
+		return DIMENSIONEX;
 	}
 	/**
 	 * 
-	 * @return dimensioneY dle campo di gioco
+	 * @return DIMENSIONEY dle campo di gioco
 	 */
 
-	public static int getDimensioney() {
-		return dimensioneY;
+	public static int getDIMENSIONEY() {
+		return DIMENSIONEY;
 	}
 	/**
 	 * 

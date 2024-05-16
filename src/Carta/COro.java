@@ -22,7 +22,7 @@ import Tavolo.Giocatore;
  */
 public class COro extends CGiocabiliSpeciali implements InterfacciaCarte2 {
 	
-	private static int lastId=40;
+	private static int LASTID=40;
 	private final Simbolo obbiettivo;
 	private final int[] risNecessarie = new int[4]; /*sono i requisiti (quindi 
 	le risorse da avere sul proprio campo) per poter piazzare la carta oro
@@ -30,9 +30,9 @@ public class COro extends CGiocabiliSpeciali implements InterfacciaCarte2 {
 
 	public COro(int puntiAssegnati, Simbolo obbiettivo, Simbolo simbolo, Colore colore, Simbolo angolo0, Simbolo angolo1,
 			Simbolo angolo2, Simbolo angolo3, int risnecessaria1, int risnecessaria2, int risnecessaria3, int risnecessaria4) {
-		super(puntiAssegnati, simbolo, colore, true, angolo0, angolo1, angolo2, angolo3, COro.lastId);
+		super(puntiAssegnati, simbolo, colore, true, angolo0, angolo1, angolo2, angolo3, COro.LASTID);
 		this.obbiettivo=obbiettivo;
-		COro.lastId++;
+		COro.LASTID++;
 		this.risNecessarie[0]=risnecessaria1;
 		this.risNecessarie[1]=risnecessaria2;
 		this.risNecessarie[2]=risnecessaria3;

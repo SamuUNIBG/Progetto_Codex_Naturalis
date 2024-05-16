@@ -23,13 +23,13 @@ public class UserPlayGround extends JPanel implements MouseListener {
 	private Game game;
 	private boolean retro;
 	private int id;
-	public static int lastId=0;
+	public static int LASTID=0;
 
 	public UserPlayGround(Game game) {
 		
 		this.game=game;
-		id = UserPlayGround.lastId;
-		UserPlayGround.lastId++;
+		id = UserPlayGround.LASTID;
+		UserPlayGround.LASTID++;
 		
 		mouseListenerEnable = true;
 		

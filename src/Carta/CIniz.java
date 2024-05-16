@@ -14,12 +14,12 @@ import Enumerazione.*;
 public class CIniz extends CGiocabili {
 	
 	private final Angolo[] angoliR = new Angolo[4];  // gli angoli del retro delle singole carte
-	private static int lastId=80;
+	private static int LASTID=80;
 	private final ArrayList<Simbolo> risorseCentrali; /*le carte iniziali hanno
 												fino a 4 risorse centrali*/
 	public CIniz( Simbolo angolo0,Simbolo angolo1, Simbolo angolo2, Simbolo angolo3,Simbolo riscentrale1, Simbolo riscentrale2,
 			Simbolo riscentrale3, Simbolo angolo4,Simbolo angolo5, Simbolo angolo6, Simbolo angolo7 ) {
-		super(0, CIniz.lastId, angolo0, angolo1, angolo2, angolo3, true); //le carte iniziali non danno punti
+		super(0, CIniz.LASTID, angolo0, angolo1, angolo2, angolo3, true); //le carte iniziali non danno punti
 		risorseCentrali = new ArrayList<Simbolo>();
 		this.risorseCentrali.add(riscentrale1);
 		if (riscentrale2!=Simbolo.ASSENTE) {
@@ -28,7 +28,7 @@ public class CIniz extends CGiocabili {
 		if (riscentrale3!=Simbolo.ASSENTE) {
 			this.risorseCentrali.add(riscentrale3);
 		}
-		CIniz.lastId++;
+		CIniz.LASTID++;
 		this.angoliR[0]=new Angolo(angolo4);
 		this.angoliR[1]=new Angolo(angolo5);
 		this.angoliR[2]=new Angolo(angolo6);

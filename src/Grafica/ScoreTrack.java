@@ -17,9 +17,9 @@ import javax.swing.JLayeredPane;
 
 public class ScoreTrack extends JLayeredPane{
 	
-	HashMap<Integer, String> pawnPositionMap;
-	ArrayList<JLabel> pedine;
-	JLabel tracciato;
+	private HashMap<Integer, String> pawnPositionMap;
+	private ArrayList<JLabel> pedine;
+	private JLabel tracciato;
 	
 	public ScoreTrack(ArrayList<String> userColor) {
 		

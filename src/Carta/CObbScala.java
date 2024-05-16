@@ -23,13 +23,13 @@ public class CObbScala extends CObb{
 	 * a basso (dx) --> \
 	 */
 	private final boolean direzione;
-	private static int lastId=86;
+	private static int LASTID=86;
 	
 	public CObbScala(int puntiAssegnati, Colore colore, boolean direzione) {
-		super(puntiAssegnati, CObbScala.lastId);
+		super(puntiAssegnati, CObbScala.LASTID);
 		this.colore=colore;
 		this.direzione=direzione;
-		CObbScala.lastId++;
+		CObbScala.LASTID++;
 	}
 	/**
 	 * ottenere il colore delle carte con le quali realizzare la scala
@@ -61,8 +61,8 @@ public class CObbScala extends CObb{
 		int volte = 0;  //per contare quante volte il giocatore fa l obiettivo
 		Carta[][] campoAttuale = giocatore.getCampoG().getCampo();
 		if(this.direzione==true) {  //e una scala crescente
-			for(int i=1; i<CampoGioco.getDimensionex()-1; i++) {
-				for(int j=1; j<CampoGioco.getDimensioney()-1; j++) {
+			for(int i=1; i<CampoGioco.getDIMENSIONEX()-1; i++) {
+				for(int j=1; j<CampoGioco.getDIMENSIONEY()-1; j++) {
 					
 					if(campoAttuale[i][j]!=null && !(campoAttuale[i][j] instanceof CIniz)
 							/*se !=null vuol dire che nella cella e in quelle adiacenti
@@ -93,8 +93,8 @@ public class CObbScala extends CObb{
 			}
 		}else {
 
-			for(int i=1; i<CampoGioco.getDimensionex()-1; i++) {
-				for(int j=1; j<CampoGioco.getDimensioney()-1; j++) {
+			for(int i=1; i<CampoGioco.getDIMENSIONEX()-1; i++) {
+				for(int j=1; j<CampoGioco.getDIMENSIONEY()-1; j++) {
 					if(campoAttuale[i][j]!=null && !(campoAttuale[i][j] instanceof CIniz)
 							/*se !=null vuol dire che nella cella e in quelle adiacenti
 							ci sono carte*/

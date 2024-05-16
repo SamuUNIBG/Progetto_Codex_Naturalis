@@ -12,8 +12,8 @@ import javax.swing.JPanel;
 
 public class CarteComuniPanel extends JPanel {
 	
-	JPanel[] sottoPanel;
-	JLabel[] opacoLabelCComuni;
+	private JPanel[] sottoPanel;
+	private JLabel[] opacoLabelCComuni;
 	
 	public CarteComuniPanel() {
 		

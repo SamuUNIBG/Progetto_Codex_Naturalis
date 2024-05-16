@@ -19,14 +19,14 @@ public class CObbL extends CObb{
 	realizzare lo schema perche puo esser fatto da carte di diversi colori*/
 	private final int direzione; /*contiene 4 numeri che rappresentano le
 	4 direzioni possibili in cui la L puo essere orientata*/
-	private static int lastId=90;
+	private static int LASTID=90;
 	
 	public CObbL(int puntiAssegnati, Colore colore0, Colore colore1, int direzione) {
-		super(puntiAssegnati, CObbL.lastId);
+		super(puntiAssegnati, CObbL.LASTID);
 		this.colori[0]=colore0;
 		this.colori[1]=colore1;
 		this.direzione=direzione;
-		CObbL.lastId++;
+		CObbL.LASTID++;
 	}
 	
 	@Override
@@ -40,8 +40,8 @@ public class CObbL extends CObb{
 		int volte = 0;  //per contare quante volte il giocatore fa l obiettivo
 		Carta[][] campoAttuale = giocatore.getCampoG().getCampo();
 		if (this.direzione==1) {
-			for(int i=0; i<CampoGioco.getDimensioney()-3; i++) {
-				for(int j=0; j<CampoGioco.getDimensionex()-1; j++) {
+			for(int i=0; i<CampoGioco.getDIMENSIONEY()-3; i++) {
+				for(int j=0; j<CampoGioco.getDIMENSIONEX()-1; j++) {
 					
 					if(campoAttuale[i][j]!=null && !(campoAttuale[i][j] instanceof CIniz)
 							/*se !=null vuol dire che nella cella e in quelle che formano
@@ -70,8 +70,8 @@ public class CObbL extends CObb{
 			}
 		}
 		if (this.direzione==2) {
-			for(int i=0; i<CampoGioco.getDimensioney()-3; i++) {
-				for(int j=1; j<CampoGioco.getDimensionex(); j++) {
+			for(int i=0; i<CampoGioco.getDIMENSIONEY()-3; i++) {
+				for(int j=1; j<CampoGioco.getDIMENSIONEX(); j++) {
 					
 					if(campoAttuale[i][j]!=null && !(campoAttuale[i][j] instanceof CIniz)
 							/*se !=null vuol dire che nella cella e in quelle che formano
@@ -100,8 +100,8 @@ public class CObbL extends CObb{
 			}
 		}
 		if (this.direzione==3) {
-			for(int i=3; i<CampoGioco.getDimensioney(); i++) {
-				for(int j=1; j<CampoGioco.getDimensionex(); j++) {
+			for(int i=3; i<CampoGioco.getDIMENSIONEY(); i++) {
+				for(int j=1; j<CampoGioco.getDIMENSIONEX(); j++) {
 					
 					if(campoAttuale[i][j]!=null && !(campoAttuale[i][j] instanceof CIniz)
 							/*se !=null vuol dire che nella cella e in quelle che formano
@@ -130,8 +130,8 @@ public class CObbL extends CObb{
 			}
 		}
 		if (this.direzione==4) {
-			for(int i=3; i<CampoGioco.getDimensioney(); i++) {
-				for(int j=0; j<CampoGioco.getDimensionex()-1; j++) {
+			for(int i=3; i<CampoGioco.getDIMENSIONEY(); i++) {
+				for(int j=0; j<CampoGioco.getDIMENSIONEX()-1; j++) {
 					
 					if(campoAttuale[i][j]!=null && !(campoAttuale[i][j] instanceof CIniz)
 							/*se !=null vuol dire che nella cella e in quelle che formano

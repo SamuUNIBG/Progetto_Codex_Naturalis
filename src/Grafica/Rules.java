@@ -9,11 +9,11 @@ import javax.swing.*;
 public class Rules extends JFrame implements ActionListener{
 
 		//declaration of buttons to add to the window
-		JButton homeButton, precedente, successivo;
+	private JButton homeButton, precedente, successivo;
 		//declaration of label that contains rule-book image
-		JLabel ruleLabel;
+	private JLabel ruleLabel;
 		//declaration of rule-book image array
-		ImageIcon[] ruleBook = {new ImageIcon("images/rule_book/Rulebook_1.jpg"),new ImageIcon("images/rule_book/Rulebook_2.jpg"),new ImageIcon("images/rule_book/Rulebook_3.jpg"),
+	private ImageIcon[] ruleBook = {new ImageIcon("images/rule_book/Rulebook_1.jpg"),new ImageIcon("images/rule_book/Rulebook_2.jpg"),new ImageIcon("images/rule_book/Rulebook_3.jpg"),
 								new ImageIcon("images/rule_book/Rulebook_4.jpg"),new ImageIcon("images/rule_book/Rulebook_5.jpg"),new ImageIcon("images/rule_book/Rulebook_6.jpg"),
 								new ImageIcon("images/rule_book/Rulebook_7.jpg"),new ImageIcon("images/rule_book/Rulebook_8.jpg"),new ImageIcon("images/rule_book/Rulebook_9.jpg"),
 								new ImageIcon("images/rule_book/Rulebook_10.jpg"),new ImageIcon("images/rule_book/Rulebook_11.jpg"),new ImageIcon("images/rule_book/Rulebook_12.jpg")};

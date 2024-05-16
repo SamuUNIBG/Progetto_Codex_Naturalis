@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class Thanks extends JFrame implements ActionListener{
-	JButton homeButton;
+	private JButton homeButton;
 	//this window
 	private JFrame frame = new JFrame();
 	
