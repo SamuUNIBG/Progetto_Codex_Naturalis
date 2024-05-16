@@ -18,12 +18,10 @@ public class GoalDecision implements MouseListener {
 	
 	private JLabel[] cObbScelLabel;
 	private JDialog dialog;
-	private int giocatore;
 	private Game game;
 	private LogicaGiocoGrafica logica;
 	
-	public GoalDecision(ImageIcon[] urlImage, String nome, Game game, LogicaGiocoGrafica logica, int giocatore){
-		this.giocatore = giocatore;
+	public GoalDecision(ImageIcon[] urlImage, String nome, Game game, LogicaGiocoGrafica logica){
 		this.game = game;
 		this.logica = logica;
 		cObbScelLabel = new JLabel[2];
@@ -47,11 +45,11 @@ public class GoalDecision implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if(e.getSource()==cObbScelLabel[0]) {
-			logica.pescaCObb(giocatore, 0);
+			logica.pescaCObb(LogicaGiocoGrafica.GIOCATOREATTUALE, 0);
 			dialog.dispose();
 			
 		}else if(e.getSource()==cObbScelLabel[1]) {
-			logica.pescaCObb(giocatore, 1);
+			logica.pescaCObb(LogicaGiocoGrafica.GIOCATOREATTUALE, 1);
 			dialog.dispose();
 		}
 		

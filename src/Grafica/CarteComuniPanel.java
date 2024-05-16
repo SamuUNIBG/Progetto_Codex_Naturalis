@@ -4,18 +4,31 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class CarteComuniPanel extends JPanel {
+public class CarteComuniPanel extends JPanel implements MouseListener {
 	
-	JPanel[] sottoPanel;
-	JLabel[] opacoLabelCComuni;
+	private JPanel[] sottoPanel;
+	private JLabel[] opacoLabelCComuni;
+	protected static boolean MOUSELISTENERENABLE;
+	private int posSelectedC;
+	private Icon imgSelectedC;
+	private Icon imgMazzoRis;
+	private Icon imgMazzoOro;
 	
-	public CarteComuniPanel() {
+	private Game game;
+	
+	public CarteComuniPanel(Game game) {
+		
+		MOUSELISTENERENABLE = false;
+		this.game = game;
 		
 		this.setPreferredSize(new Dimension(200, 200));
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -44,6 +57,8 @@ public class CarteComuniPanel extends JPanel {
 			opacoLabelCComuni[i].setOpaque(true);
 			opacoLabelCComuni[i].setPreferredSize(new Dimension(163, 113));
 			opacoLabelCComuni[i].setVisible(true);
+			if(i!=3 || i!=7)
+				opacoLabelCComuni[i].addMouseListener(this);
 		}
 		
 		for(int i=0; i<4; i++) {
@@ -58,8 +73,118 @@ public class CarteComuniPanel extends JPanel {
       	
 	}
 
-	public void piazzaCarta(int pos, String url) {
-		opacoLabelCComuni[pos].setIcon(new ImageIcon(url));
+	public void piazzaCarta(int pos, Icon url) {
+		if(pos==0) {
+			imgMazzoRis = url;
+			url = Game.getImage(this.calcolaNewId(Integer.parseInt(((ImageIcon)url).getDescription())));
+		}else if(pos==4){
+			imgMazzoOro = url;
+			url = Game.getImage(this.calcolaNewId(Integer.parseInt(((ImageIcon)url).getDescription())));
+		}
+		
+		opacoLabelCComuni[pos].setIcon(url);
+		
+	}
+	
+	private int calcolaNewId(int id) {
+		switch(id){
+			case 0,1,2,3,4,5,6,7,8,9:
+				return 102;
+			case 10,11,12,13,14,15,16,17,18,19:
+				return 104;
+			case 20,21,22,23,24,25,26,27,28,29:
+				return 106;
+			case 30,31,32,33,34,35,36,37,38,39:
+				return 108;
+			case 40,41,42,43,44,45,46,47,48,49:
+				return 103;
+			case 50,51,52,53,54,55,56,57,58,59:
+				return 105;
+			case 60,61,62,63,64,65,66,67,68,69:
+				return 107;
+			case 70,71,72,73,74,75,76,77,78,79:
+				return 109;
+		
+		}
+		return 0;
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if(CarteComuniPanel.MOUSELISTENERENABLE) {
+			for(int i=0; i<opacoLabelCComuni.length-1; i++) {
+				if(e.getSource()==opacoLabelCComuni[i]) {
+					CarteComuniPanel.MOUSELISTENERENABLE = false;
+					posSelectedC = i;
+					if(posSelectedC == 0) {
+						imgSelectedC = imgMazzoRis;
+					}else if(posSelectedC == 4) {
+						imgSelectedC = imgMazzoOro;
+					}else {
+						imgSelectedC = opacoLabelCComuni[i].getIcon();
+					}
+					
+					if(i==1 || i==2)
+						opacoLabelCComuni[i].setIcon(imgMazzoRis);
+					if(i==5 || i==6)
+						opacoLabelCComuni[i].setIcon(imgMazzoOro);
+					if(i==1 || i==5)
+						this.moveLabel();
+					game.pescaCarta(Integer.parseInt(((ImageIcon)imgSelectedC).getDescription()));
+					game.assegnaCarta(imgSelectedC);
+					//userPlayGroundMother.enableML();
+				}
+			}
+		}
+		
+	}
+
+	private void moveLabel() {
+		System.out.println("posizione: " +posSelectedC);
+		if(posSelectedC!=0 && posSelectedC!=4) {
+			if(posSelectedC==1) {
+					JLabel temp = opacoLabelCComuni[2];
+					opacoLabelCComuni[2] = opacoLabelCComuni[1];
+					opacoLabelCComuni[1] = temp;
+			}else if(posSelectedC==5) {
+					JLabel temp = opacoLabelCComuni[6];
+					opacoLabelCComuni[6] = opacoLabelCComuni[5];
+					opacoLabelCComuni[5] = temp;
+			}
+			sottoPanel[0].removeAll();
+			for(int i=0; i<4; i++) {
+				sottoPanel[0].add(opacoLabelCComuni[i]);
+				
+			}
+			sottoPanel[1].removeAll();
+			for(int i=4; i<8; i++) {
+				sottoPanel[1].add(opacoLabelCComuni[i]);
+				
+			}
+		}
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 	

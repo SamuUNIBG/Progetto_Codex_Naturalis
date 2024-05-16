@@ -22,16 +22,14 @@ public class UserPlayGround extends JPanel implements MouseListener {
 	private boolean mouseListenerEnable;
 	private Game game;
 	private boolean retro;
-	private int id;
-	public static int lastId=0;
-
+	private JPanel cartePersonaliPanel;
+	private int idSelectedC;
+	
 	public UserPlayGround(Game game) {
 		
 		this.game=game;
-		id = UserPlayGround.lastId;
-		UserPlayGround.lastId++;
 		
-		mouseListenerEnable = true;
+		mouseListenerEnable = false;
 		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		
@@ -63,7 +61,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 		CPlayout.setVgap(16);
 			    
 		//Pannelli carte personali
-		JPanel cartePersonaliPanel = new JPanel();
+		cartePersonaliPanel = new JPanel();
 		cartePersonaliPanel.setMinimumSize(new Dimension(screenSize.width-313,145));
 		cartePersonaliPanel.setLayout(CPlayout);
 		cartePersonaliPanel.setOpaque(true);
@@ -81,6 +79,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 			    
 		for(int i=0; i<4; i++) {
 			cartePersonaliPanel.add(opacoLabelCPersonali[i]);
+			
 		}
 				
 		GridBagConstraints gbc = new GridBagConstraints();
@@ -93,13 +92,32 @@ public class UserPlayGround extends JPanel implements MouseListener {
 			
 	}
 	
+	public void moveLabel() {
+		opacoLabelCPersonali[posSelectedC] = new JLabel();
+		opacoLabelCPersonali[posSelectedC].setBackground(new Color(170, 170, 170, 80));
+		opacoLabelCPersonali[posSelectedC].setOpaque(true);
+		opacoLabelCPersonali[posSelectedC].setPreferredSize(new Dimension(163, 113));
+		opacoLabelCPersonali[posSelectedC].setVisible(true);
+		for(int i=posSelectedC; i<2; i++) {
+			JLabel temp = opacoLabelCPersonali[i+1];
+			opacoLabelCPersonali[i+1] = opacoLabelCPersonali[i];
+			opacoLabelCPersonali[i] = temp; 
+		}
+		cartePersonaliPanel.removeAll();
+		for(int i=0; i<4; i++) {
+			cartePersonaliPanel.add(opacoLabelCPersonali[i]);
+			
+		}
+	}
+	
+	//utile per il primo inserimento
 	public void pescaCartaP(int pos, Icon url) {
 		opacoLabelCPersonali[pos].setIcon(url);
 		//opacoLabelCPersonali[this.posSelectedC].setDisabledIcon(imgEnteredC);
 	}
 	
-	public void pescaCartaP(String url) {
-		opacoLabelCPersonali[this.posSelectedC].setIcon(new ImageIcon(url));
+	public void pescaCartaP(Icon url) {
+		opacoLabelCPersonali[this.posSelectedC].setIcon(url);
 		//opacoLabelCPersonali[this.posSelectedC].setDisabledIcon(imgEnteredC);
 	}
 	
@@ -107,8 +125,8 @@ public class UserPlayGround extends JPanel implements MouseListener {
 		playingField.posCIniz(url);
 	}
 	
-	public void giocaC(int numCarta, String posCarta) {
-		game.giocaC(id, numCarta, retro, posCarta);
+	public void giocaC(int idCarta, String posCarta) {
+		game.giocaC(idCarta, retro, posCarta);
 	}
 
 	@Override
@@ -117,7 +135,8 @@ public class UserPlayGround extends JPanel implements MouseListener {
 			for(int i=0; i<opacoLabelCPersonali.length-1; i++) {
 				if(e.getSource()==opacoLabelCPersonali[i]) {
 					posSelectedC = i;
-					playingField.mouseListenerEnable((true));
+					idSelectedC = Integer.parseInt(((ImageIcon)imgEnteredC).getDescription());
+					playingField.mouseListenerEnable(true);
 					if(e.getButton() == MouseEvent.BUTTON1) {
 						imgSelectedC = imgEnteredC;
 						retro = false;
@@ -189,6 +208,10 @@ public class UserPlayGround extends JPanel implements MouseListener {
 	
 	public PlayingField getPlayingField() {
 		return playingField;
+	}
+	
+	public int getIdSelectedC() {
+		return idSelectedC;
 	}
 	
 	public Icon getImgSelectedC() {

@@ -129,38 +129,24 @@ public class User extends JPanel{
 	}
 	
 	public void aggiornaResource(int[] risAggiungere) {
-		if(risAggiungere[0]!=0) {
 			risorse.get(0).setText(null);
 			risorse.get(0).setText("" + (risAggiungere[0]));
-		}
-		if(risAggiungere[1]!=0) {
 			risorse.get(2).setText(null);
 			risorse.get(2).setText("" + (risAggiungere[1]));
-		}
-		if(risAggiungere[2]!=0) {
 			risorse.get(4).setText(null);
 			risorse.get(4).setText("" + (risAggiungere[2]));
-		}
-		if(risAggiungere[3]!=0) {
 			risorse.get(6).setText(null);
 			risorse.get(6).setText("" + (risAggiungere[3]));
-		}
 			
 	}
 	
 	public void aggiornaObjects(int[] oggAggiungere) {
-		if(oggAggiungere[0]!=0) {
 			oggetti.get(0).setText(null);
 			oggetti.get(0).setText("" + (oggAggiungere[0]));
-		}
-		if(oggAggiungere[1]!=0) {
 			oggetti.get(2).setText(null);
 			oggetti.get(2).setText("" + (oggAggiungere[1]));
-		}
-		if(oggAggiungere[2]!=0) {
 			oggetti.get(4).setText(null);
 			oggetti.get(4).setText("" + (oggAggiungere[2]));
-		}
 			
 	}
 	

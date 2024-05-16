@@ -105,7 +105,7 @@ public class Game extends JFrame implements ActionListener{
         userPanel = new UserPanel(username, userColor);
         
         //sotto pannello contenente le carte
-      	cComuniPanel = new CarteComuniPanel();
+      	cComuniPanel = new CarteComuniPanel(this);
       	
         contenitoreUC.add(userPanel,BorderLayout.WEST);
         contenitoreUC.add(cComuniPanel,BorderLayout.CENTER);
@@ -175,7 +175,7 @@ public class Game extends JFrame implements ActionListener{
 	}
 	
 	public void piazzaCartaCom(int pos, Integer id) {
-		cComuniPanel.piazzaCarta(pos,this.getURLImage(id));
+		cComuniPanel.piazzaCarta(pos,Game.getImage(id));
 		
 	}
 	
@@ -183,6 +183,10 @@ public class Game extends JFrame implements ActionListener{
 		int id = logica.pescaCarta(pos);
 		if(id!=999)
 			this.piazzaCartaCom(pos, id);
+	}
+	
+	public void assegnaCarta(Icon img) {
+		userPlayGround.get(LogicaGiocoGrafica.GIOCATOREATTUALE).pescaCartaP(img);
 	}
 	
 	public UserPanel getUserPanel() {
@@ -203,8 +207,13 @@ public class Game extends JFrame implements ActionListener{
 		return userPlayGround.get(giocatore);
 	}
 	
-	public void giocaC(int giocatore, int idCarta, boolean retro, String posCarta) {
-		logica.giocaC(giocatore, idCarta, retro, posCarta);
+	public void giocaC(int idCarta, boolean retro, String posCarta) {
+		logica.giocaC(idCarta, retro, posCarta);
+	}
+	
+	//sistemare
+	public void enableMLSeleziona() {
+		//cComuniPanel.mouseListenerEnable(true);
 	}
 
 }

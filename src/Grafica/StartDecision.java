@@ -17,14 +17,12 @@ public class StartDecision implements MouseListener {
 	
 	private JLabel cInizScelLabel;
 	private JDialog dialog;
-	private int giocatore;
 	private Game game;
 	private LogicaGiocoGrafica logica;
 	private Icon urlImage;
 	private Icon imgSelectedC, imgEnteredC;
 	
-	public StartDecision(Icon urlImage, String nome, Game game, LogicaGiocoGrafica logica, int giocatore) {
-		this.giocatore = giocatore;
+	public StartDecision(Icon urlImage, String nome, Game game, LogicaGiocoGrafica logica) {
 		this.game = game;
 		this.logica = logica;
 		this.urlImage = urlImage;
@@ -48,12 +46,12 @@ public class StartDecision implements MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		if(e.getSource()==cInizScelLabel) {
 			if(e.getButton()==MouseEvent.BUTTON1) {
-				logica.pescaCIniz(giocatore, urlImage);
-				logica.giocaCIniz(giocatore, false);
+				logica.pescaCIniz(urlImage);
+				logica.giocaCIniz(false);
 				dialog.dispose();
 			}else if(e.getButton()==MouseEvent.BUTTON3) {
-				logica.pescaCIniz(giocatore, Game.getImage(calcolaNewId(Integer.parseInt(((ImageIcon)urlImage).getDescription()))));
-				logica.giocaCIniz(giocatore, true);
+				logica.pescaCIniz(Game.getImage(calcolaNewId(Integer.parseInt(((ImageIcon)urlImage).getDescription()))));
+				logica.giocaCIniz(true);
 				dialog.dispose();
 			}
 			

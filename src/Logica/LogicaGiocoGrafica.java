@@ -2,11 +2,7 @@ package Logica;
 
 import java.util.ArrayList;
 
-import java.util.Scanner;
-
-import java.awt.*;
 import javax.swing.*;
-
 import java.awt.event.*;
 
 import Carta.CGiocabiliSpeciali;
@@ -14,13 +10,14 @@ import Carta.CIniz;
 import Carta.CObb;
 import Carta.COro;
 import Carta.CRis;
-import Enumerazione.Colore;
+
 import Enumerazione.Simbolo;
 import Enumerazione.TipoCarta;
+
 import Grafica.Game;
 import Grafica.GoalDecision;
 import Grafica.StartDecision;
-import Tavolo.CampoGioco;
+
 import Tavolo.CartaTavolo;
 import Tavolo.Giocatore;
 import Tavolo.Tracciato;
@@ -36,60 +33,29 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 	
 	private ArrayList<CObb> cObb;
 	private ImageIcon[] URLObb;
-	private ArrayList<Integer> URLCCom;
+	private ArrayList<Integer> idCCom;
 	
 	private Giocatore giocatoreAttuale;
+	public static int GIOCATOREATTUALE;
 	
 	public LogicaGiocoGrafica(ArrayList<String> username, ArrayList<String> userColor, Game game) {
 		
 		this.game = game;
 		
-		URLCCom = new ArrayList<Integer>();
+		idCCom = new ArrayList<Integer>();
 		cartaTavolo = new CartaTavolo();
-		switch(cartaTavolo.getMazzoRis().getCMazzo().get(0).getColore()) {
-			case VERDE:
-				URLCCom.add(104);
-				break;
-			case AZZURRO:
-				URLCCom.add(102);
-				break;
-			case ROSSO:
-				URLCCom.add(108);
-				break;
-			case VIOLA:
-				URLCCom.add(106);
-				break;
-			case GIALLO:
-				break;
-			case NERO:
-				break;
-		}
-		URLCCom.add(cartaTavolo.getcRisScp().get(0).getIdCarta());
-		URLCCom.add(cartaTavolo.getcRisScp().get(1).getIdCarta());
-		URLCCom.add(cartaTavolo.getcObbScp().get(0).getIdCarta());
-		switch(cartaTavolo.getMazzoRis().getCMazzo().get(0).getColore()) {
-			case VERDE:
-				URLCCom.add(105);
-				break;
-			case AZZURRO:
-				URLCCom.add(103);
-				break;
-			case ROSSO:
-				URLCCom.add(109);
-				break;
-			case VIOLA:
-				URLCCom.add(107);
-				break;
-			case GIALLO:
-				break;
-			case NERO:
-				break;
-		}
-		URLCCom.add(cartaTavolo.getcOroScp().get(0).getIdCarta());
-		URLCCom.add(cartaTavolo.getcOroScp().get(1).getIdCarta());
-		URLCCom.add(cartaTavolo.getcObbScp().get(1).getIdCarta());
 		
-		this.piazzaCCom(URLCCom);
+		idCCom.add(cartaTavolo.getMazzoRis().getCMazzo().get(0).getIdCarta());
+		idCCom.add(cartaTavolo.getcRisScp().get(0).getIdCarta());
+		idCCom.add(cartaTavolo.getcRisScp().get(1).getIdCarta());
+		idCCom.add(cartaTavolo.getcObbScp().get(0).getIdCarta());
+		
+		idCCom.add(cartaTavolo.getMazzoOro().getCMazzo().get(0).getIdCarta());
+		idCCom.add(cartaTavolo.getcOroScp().get(0).getIdCarta());
+		idCCom.add(cartaTavolo.getcOroScp().get(1).getIdCarta());
+		idCCom.add(cartaTavolo.getcObbScp().get(1).getIdCarta());
+		
+		this.piazzaCCom(idCCom);
 		
 		tracciato = new Tracciato(username, userColor);
 		numGiocatori = tracciato.getNumGiocatori();
@@ -97,6 +63,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 		
 		
 		for(int i=0; i<numGiocatori; i++) {
+			LogicaGiocoGrafica.GIOCATOREATTUALE = i;
 			cObb = new ArrayList<CObb>();
 			
 			for(int j=0; j<2; j++) {
@@ -113,15 +80,17 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 			this.pescaCPers(i, 2, Game.getImage(cartaOro.getIdCarta()));
 			
 			//L'utente sceglie la carta obbiettivo da tenere
-			GoalDecision decisioneObb = new GoalDecision(URLObb, username.get(i), game, this, i);
+			GoalDecision decisioneObb = new GoalDecision(URLObb, username.get(i), game, this);
 			
 			CIniz cartaIniz = (CIniz) cartaTavolo.pesca(TipoCarta.CIniz);
 			tracciato.getGiocatore(i).pescaC(cartaIniz);
 			
 			//L'utente sceglie da che lato giocare la carta iniziale
-			StartDecision decisioneIniz = new StartDecision(Game.getImage(cartaIniz.getIdCarta()), username.get(i), game, this, i);
+			StartDecision decisioneIniz = new StartDecision(Game.getImage(cartaIniz.getIdCarta()), username.get(i), game, this);
 		}
-		
+		LogicaGiocoGrafica.GIOCATOREATTUALE=0;
+		giocatoreAttuale = tracciato.getGiocatore(LogicaGiocoGrafica.GIOCATOREATTUALE);
+		game.getUserPlayGround(LogicaGiocoGrafica.GIOCATOREATTUALE).mouseListenerEnable(true);
 		//Turni();
 			
 	}
@@ -135,13 +104,13 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 		game.piazzaCartaPers(giocatore, 3, URLObb[carta]);
 	}
 	
-	public void pescaCIniz(int giocatore, Icon url) {
-		game.piazzaCartaIniz(giocatore, url);
+	public void pescaCIniz(Icon url) {
+		game.piazzaCartaIniz(LogicaGiocoGrafica.GIOCATOREATTUALE, url);
 	}
 	
-	public void piazzaCCom(ArrayList<Integer> id) {
-		for(int i=0; i<id.size(); i++) {
-			game.piazzaCartaCom(i, id.get(i));
+	public void piazzaCCom(ArrayList<Integer> idCCom) {
+		for(int i=0; i<idCCom.size(); i++) {
+			game.piazzaCartaCom(i, idCCom.get(i));
 		}
 		
 	}
@@ -175,8 +144,8 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 		
 	}
 	
-	public boolean giocaCIniz(int giocatore, boolean retro) {
-		Giocatore giocatoreAttuale = tracciato.getGiocatore(giocatore);
+	public boolean giocaCIniz(boolean retro) {
+		Giocatore giocatoreAttuale = tracciato.getGiocatore(LogicaGiocoGrafica.GIOCATOREATTUALE);
 		CIniz cInizAttuale=giocatoreAttuale.getCInizPer();
 		
 		//se la carta e' stata giocata sul retro si setta l'attributo fronte=false
@@ -202,19 +171,22 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 			}
 		}
 		
-		game.getUserPanel().getUser(giocatore).aggiornaResource(giocatoreAttuale.getRisPossedute());
+		game.getUserPanel().getUser(LogicaGiocoGrafica.GIOCATOREATTUALE).aggiornaResource(giocatoreAttuale.getRisPossedute());
 		
-		game.getUserPlayGround(giocatore).getPlayingField().addLabel(giocatoreAttuale.getCampoG().getPosReturn());
+		game.getUserPlayGround(LogicaGiocoGrafica.GIOCATOREATTUALE).getPlayingField().addLabel(giocatoreAttuale.getCampoG().getPosReturn());
 		
 		return true;
 		
 	}
 	
-	public boolean giocaC(int giocatore, int idCarta, boolean retro, String posCarta) {
+	public boolean giocaC(int idCarta, boolean retro, String posCarta) {
 		
-		Giocatore giocatoreAttuale = tracciato.getGiocatore(giocatore);
+		Giocatore giocatoreAttuale = tracciato.getGiocatore(LogicaGiocoGrafica.GIOCATOREATTUALE);
+		System.out.println("giocatore: " + LogicaGiocoGrafica.GIOCATOREATTUALE + " idCarta: " + idCarta + " retro: " + retro + " posCarta: " + posCarta);
+		
 		int numCarta=-1;
 		ArrayList<CGiocabiliSpeciali> cManoAttuale=giocatoreAttuale.getCMano();
+		System.out.println(cManoAttuale);
 		for(int i=0; i<cManoAttuale.size(); i++) {
 			if(cManoAttuale.get(i).getIdCarta()==idCarta)
 				numCarta=i;
@@ -241,16 +213,16 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 			if(carta instanceof COro)
 				puntiCarta = ((COro)carta).calcolaMiniObb(posCarta, giocatoreAttuale);
 			giocatoreAttuale.addPunteggio(puntiCarta);
-			game.getScoreTrackPane().movePawn(giocatore, giocatoreAttuale.getPunteggio());
+			game.getScoreTrackPane().movePawn(LogicaGiocoGrafica.GIOCATOREATTUALE, giocatoreAttuale.getPunteggio());
 		}
 		
 		giocatoreAttuale.getCPiazzate().put(carta.getIdCarta(), carta.toStringBreve());
 		giocatoreAttuale.piazzaC(giocatoreAttuale.getCPiazzate(), posCarta, carta);
 		
-		game.getUserPanel().getUser(giocatore).aggiornaResource(giocatoreAttuale.getRisPossedute());
-		game.getUserPanel().getUser(giocatore).aggiornaObjects(giocatoreAttuale.getOggPosseduti());
+		game.getUserPanel().getUser(LogicaGiocoGrafica.GIOCATOREATTUALE).aggiornaResource(giocatoreAttuale.getRisPossedute());
+		game.getUserPanel().getUser(LogicaGiocoGrafica.GIOCATOREATTUALE).aggiornaObjects(giocatoreAttuale.getOggPosseduti());
 		
-		game.getUserPlayGround(giocatore).getPlayingField().addLabel(giocatoreAttuale.getCampoG().getPosReturn());
+		game.getUserPlayGround(LogicaGiocoGrafica.GIOCATOREATTUALE).getPlayingField().addLabel(giocatoreAttuale.getCampoG().getPosReturn());
 		
 		return true;
 	}
