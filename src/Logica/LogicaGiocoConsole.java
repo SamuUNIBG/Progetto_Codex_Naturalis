@@ -23,7 +23,6 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 	private ArrayList<String> username;
 	private ArrayList<String> colori;
 	private String coloreScelto;
-	private String s;
 	private ArrayList<String> coloriDisp=new ArrayList<String>();
 	private CartaTavolo cartaTavolo;
 	private Tracciato tracciato;
@@ -102,467 +101,448 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 	
 	public void creazioneTracciato() {
 		//popolo l'array dei colori
-				coloriDisp.add("Rosso");
-				coloriDisp.add("Azzurro");
-				coloriDisp.add("Giallo");
-				coloriDisp.add("Verde");
-				boolean cRosso=true;
-				boolean cAzzurro=true;
-				boolean cGiallo=true;
-				boolean cVerde=true;
+		coloriDisp.add("Rosso");
+		coloriDisp.add("Azzurro");
+		coloriDisp.add("Giallo");
+		coloriDisp.add("Verde");
+		boolean cRosso=true;
+		boolean cAzzurro=true;
+		boolean cGiallo=true;
+		boolean cVerde=true;
+		
+		System.out.println("\nCreazione giocatori");
+		int giocatori=quantiGiocatori();
+		username=new ArrayList<String>(giocatori);
+		colori=new ArrayList<String>(giocatori);
+		Scanner sc=new Scanner(System.in);
+		System.out.println("\nATTENZIONE! Il primo giocatore creato sara' il primo ad iniziare");
+		System.out.println("ATTENZIONE! Eventuali spazi nei soprannomi verranno rimossi");
+		for(int i=0;i<giocatori;i++) {
+				 
+			System.out.println("\nCreazione giocatore " + (i+1));
+			System.out.print("Inserire il soprannome: ");
+			String soprannome=sc.nextLine();
 				
-				System.out.println("\nCreazione giocatori");
-				int giocatori=quantiGiocatori();
-				username=new ArrayList<String>(giocatori);
-				colori=new ArrayList<String>(giocatori);
-				Scanner sc=new Scanner(System.in);
-				System.out.println("\nATTENZIONE! Il primo giocatore creato sara' il primo ad iniziare");
-				System.out.println("ATTENZIONE! Eventuali spazi nei soprannomi verranno rimossi");
-				for(int i=0;i<giocatori;i++) {
-					 
-					System.out.println("\nCreazione giocatore " + (i+1));
-					System.out.print("Inserire il soprannome: ");
-					String soprannome=sc.nextLine();
-						
-					//tolgo spazi vuoti tra i nomi
-					String s=new String(); //temporanea per salvare i nomi con spazi e cancellare spazi
-					s=soprannome.replace(" ", "");
-					System.out.println("\nPedine disponibili: ");
-					if(i!=0) {
-						for(int j=0;j<coloriDisp.size();j++) {
-							
-							if(cRosso==false && coloriDisp.get(j).equals("Rosso")) {
-								System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
-							}else if(cAzzurro==false && coloriDisp.get(j).equals("Azzurro")) {
-								System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
-							}else if(cGiallo==false && coloriDisp.get(j).equals("Giallo")) {
-								System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
-							}else if(cVerde==false && coloriDisp.get(j).equals("Verde")) {
-								System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
-							}else {
-								System.out.println(j+1+")"+coloriDisp.get(j));
-							}
-							
-					}
-						
+			//tolgo spazi vuoti tra i nomi
+			String s=new String(); //temporanea per salvare i nomi con spazi e cancellare spazi
+			s=soprannome.replace(" ", "");
+			System.out.println("\nPedine disponibili: ");
+			if(i!=0) {
+				for(int j=0;j<coloriDisp.size();j++) {		
+					if(cRosso==false && coloriDisp.get(j).equals("Rosso")) {
+						System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+					}else if(cAzzurro==false && coloriDisp.get(j).equals("Azzurro")) {
+						System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+					}else if(cGiallo==false && coloriDisp.get(j).equals("Giallo")) {
+						System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+					}else if(cVerde==false && coloriDisp.get(j).equals("Verde")) {
+						System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
 					}else {
-						for(int j=0;j<coloriDisp.size();j++) {
-							System.out.println(j+1+")"+coloriDisp.get(j));
-						}
-					}
-					
-					
-					int colore=0;
-					do {
-						try {
-							System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
-							colore = Integer.parseInt(sc.nextLine());
-						
-							if(colore<1 || colore >4) {
-								System.out.println("ERRORE! Numero inserito non valido, riprovare");
-							}
-							
-						}catch(NumberFormatException ex) {
-							
-							System.out.println("Non puoi inserire una stringa");
-						}
-						
-					}while(colore<1 || colore>4);
-					
-					if(colore==1) {
-						coloreScelto="Rosso";
-						cRosso=false;
-					}else if(colore==2) {
-						coloreScelto="Azzurro";
-						cAzzurro=false;
-					}else if(colore==3) {
-						coloreScelto="Giallo";
-						cGiallo=false;
-					}else if(colore==4) {
-						coloreScelto="Verde";
-						cVerde=false;
-					}
-					
-					
-					switch(colore){
-					case 1:
-						System.out.println("Colore Rosso selezionato");
-						if(i!=0) {//al primo giro non faccio il controllo, in quanto non ci sono nomi,colori
-							//controllo nomi uguali
-							for(int j=0;j<username.size();j++) {
-								do {
-									if(username.get(j).trim().equals(s)) {
-										System.out.println("ERRORE! Non puoi inserire nomi utenti uguali, riprovare!\n");
-										System.out.print("Inserire il soprannome: ");
-										String nomeModificato=sc.nextLine();
-										s=nomeModificato.replace(" ", "");
-										
-									}
-								}while(username.get(j).trim().equals(s));
-							}
-							//controllo colori uguali
-							for(int k=0;k<colori.size();k++) {
-								do {
-									if(colori.get(k).equals(coloreScelto)) {
-										System.out.println("Non puoi inserire colori uguali, riprovare!\n");
-										System.out.println("Pedine disponibili:");
-										if(i!=0) {
-											for(int j=0;j<coloriDisp.size();j++) {
-												
-												if(cRosso==false && coloriDisp.get(j).equals("Rosso")) {
-													System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
-												}else if(cAzzurro==false && coloriDisp.get(j).equals("Azzurro")) {
-													System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
-												}else if(cGiallo==false && coloriDisp.get(j).equals("Giallo")) {
-													System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
-												}else if(cVerde==false && coloriDisp.get(j).equals("Verde")) {
-													System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
-												}else {
-													System.out.println(j+1+")"+coloriDisp.get(j));
-												}
-												
-										}
-											
-										}else {
-											for(int j=0;j<coloriDisp.size();j++) {
-												System.out.println(j+1+")"+coloriDisp.get(j));
-											}
-										}
-										
-										
-										
-										
-										
-										do {
-											try {
-												System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
-												colore = Integer.parseInt(sc.nextLine());
-												if(colore<1 || colore >4) {
-													System.out.println("ERRORE! Numero inserito non valido, riprovare");
-												}
-												
-											}catch(NumberFormatException ex) {
-												
-												System.out.println("Non puoi inserire una stringa");
-											}
-											
-										}while(colore<1 || colore>4);
-										
-										if(colore==1) {
-											System.out.println("Hai selezionato il colore Rosso");
-											coloreScelto="Rosso";
-											cRosso=false;
-										}else if(colore==2) {
-											System.out.println("Hai selezionato il colore Azzurro");
-											coloreScelto="Azzurro";
-											cAzzurro=false;
-										}else if(colore==3) {
-											System.out.println("Hai selezionato il colore Giallo");
-											coloreScelto="Giallo";
-											cGiallo=false;
-										}else if(colore==4) {
-											System.out.println("Hai selezionato il colore Verde");
-											coloreScelto="Verde";
-											cVerde=false;
-										}
-									}
-								}while(coloriDisp.get(k).equals(coloreScelto));
-								
-							}
-							
-							username.add(s);
-							colori.add(coloreScelto);
-						
-						}else
-							username.add(s);
-							colori.add("Rosso");
-						break;
-					case 2:
-						System.out.println("Colore Azzurro selezionato");
-						if(i!=0) {//al primo giro non faccio il controllo, in quanto non ci sono nomi,colori
-							//controllo nomi uguali
-							for(int j=0;j<username.size();j++) {
-								do {
-									if(username.get(j).trim().equals(s)) {
-										System.out.println("Non puoi inserire nomi utenti uguali, riprovare!\n");
-
-										System.out.print("Inserire il soprannome: ");
-										String nomeModificato=sc.nextLine();
-										s=nomeModificato.replace(" ", "");
-										
-									}
-								}while(username.get(j).trim().equals(s));
-							}
-							//controllo colori uguali
-							for(int k=0;k<colori.size();k++) {
-								do {
-									if(colori.get(k).equals(coloreScelto)) {
-										System.out.println("Non puoi inserire colori uguali, riprovare!\n");
-										System.out.println("Pedine disponibili:");
-										
-										
-										System.out.println("Pedine disponibili:");
-										if(i!=0) {
-											for(int j=0;j<coloriDisp.size();j++) {
-												
-												if(cRosso==false && coloriDisp.get(j).equals("Rosso")) {
-													System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
-												}else if(cAzzurro==false && coloriDisp.get(j).equals("Azzurro")) {
-													System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
-												}else if(cGiallo==false && coloriDisp.get(j).equals("Giallo")) {
-													System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
-												}else if(cVerde==false && coloriDisp.get(j).equals("Verde")) {
-													System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
-												}else {
-													System.out.println(j+1+")"+coloriDisp.get(j));
-												}
-												
-										}
-											
-										}else {
-											for(int j=0;j<coloriDisp.size();j++) {
-												System.out.println(j+1+")"+coloriDisp.get(j));
-											}
-										}
-										
-										do {
-											try {
-												
-												System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
-												colore = Integer.parseInt(sc.nextLine());
-												if(colore<1 || colore >4) {
-													System.out.println("ERRORE! Numero inserito non valido, riprovare");
-												}
-												
-											}catch(NumberFormatException ex) {
-												
-												System.out.println("Non puoi inserire una stringa");
-											}
-											
-											
-										}while(colore<1 || colore>4);
-										
-										if(colore==1) {
-											System.out.println("Hai selezionato il colore Rosso");
-											coloreScelto="Rosso";
-											cRosso=false;
-										}else if(colore==2) {
-											System.out.println("Hai selezionato il colore Azzurro");
-											coloreScelto="Azzurro";
-											cAzzurro=false;
-										}else if(colore==3) {
-											System.out.println("Hai selezionato il colore Giallo");
-											coloreScelto="Giallo";
-											cGiallo=false;
-										}else if(colore==4) {
-											System.out.println("Hai selezionato il colore Verde");
-											coloreScelto="Verde";
-											cVerde=false;
-										}
-									}
-								}while(colori.get(k).equals(coloreScelto));
-								
-							}
-							username.add(s);
-							colori.add(coloreScelto);
-						}else
-							username.add(s);
-							colori.add("Azzurro");
-						break;
-					case 3:
-						System.out.println("Colore Giallo selezionato");
-						if(i!=0) {//al primo giro non faccio il controllo, in quanto non ci sono nomi,colori
-							//controllo nomi uguali
-							for(int j=0;j<username.size();j++) {
-								do {
-									if(username.get(j).trim().equals(s)) {
-										System.out.println("Non puoi inserire nomi utenti uguali, riprovare!");
-
-										System.out.print("Inserire il soprannome: ");
-										String nomeModificato=sc.nextLine();
-										s=nomeModificato.replace(" ", "");
-										
-									}
-								}while(username.get(j).trim().equals(s));
-							}
-							//controllo colori uguali
-							for(int k=0;k<colori.size();k++) {
-								do {
-									if(colori.get(k).equals(coloreScelto)) {
-										System.out.println("Non puoi inserire colori uguali, riprovare!\n");
-										System.out.println("Pedine disponibili:");
-										
-										
-										System.out.println("Pedine disponibili:");
-										if(i!=0) {
-											for(int j=0;j<coloriDisp.size();j++) {
-												
-												if(cRosso==false && coloriDisp.get(j).equals("Rosso")) {
-													System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
-												}else if(cAzzurro==false && coloriDisp.get(j).equals("Azzurro")) {
-													System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
-												}else if(cGiallo==false && coloriDisp.get(j).equals("Giallo")) {
-													System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
-												}else if(cVerde==false && coloriDisp.get(j).equals("Verde")) {
-													System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
-												}else {
-													System.out.println(j+1+")"+coloriDisp.get(j));
-												}
-												
-										}
-											
-										}else {
-											for(int j=0;j<coloriDisp.size();j++) {
-												System.out.println(j+1+")"+coloriDisp.get(j));
-											}
-										}
-										
-										do {
-											try{
-												System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
-												colore = Integer.parseInt(sc.nextLine());
-												if(colore<1 || colore >4) {
-													System.out.println("ERRORE! Numero inserito non valido, riprovare");
-												}
-												
-											}catch(NumberFormatException ex) {
-												
-												System.out.println("Non puoi inserire una stringa");
-											}
-											
-										}while(colore<1 || colore>4);
-										
-										if(colore==1) {
-											System.out.println("Hai selezionato il colore Rosso");
-											coloreScelto="Rosso";
-											cRosso=false;
-										}else if(colore==2) {
-											System.out.println("Hai selezionato il colore Azzurro");
-											coloreScelto="Azzurro";
-											cAzzurro=false;
-										}else if(colore==3) {
-											System.out.println("Hai selezionato il colore Giallo");
-											coloreScelto="Giallo";
-											cGiallo=false;
-										}else if(colore==4) {
-											System.out.println("Hai selezionato il colore Verde");
-											coloreScelto="Verde";
-											cVerde=false;
-										}
-									}
-								}while(colori.get(k).equals(coloreScelto));
-								
-							}
-							username.add(s);
-							colori.add(coloreScelto);
-						}else
-							username.add(s);
-							colori.add("Giallo");
-						break;
-					case 4:
-						System.out.println("Colore Verde selezionato\n");
-						if(i!=0) {//al primo giro non faccio il controllo, in quanto non ci sono nomi,colori
-							//controllo nomi uguali
-							for(int j=0;j<username.size();j++) {
-								do {
-									if(username.get(j).trim().equals(s)) {
-										System.out.println("Non puoi inserire nomi utenti uguali, riprovare!\n");
-
-										System.out.print("Inserire il soprannome: ");
-										String nomeModificato=sc.nextLine();
-										s=nomeModificato.replace(" ", "");
-										
-									}
-								}while(username.get(j).trim().equals(s));
-							}
-							//controllo colori uguali
-							for(int k=0;k<colori.size();k++) {
-								do {
-									if(colori.get(k).equals(coloreScelto)) {
-										System.out.println("Non puoi inserire colori uguali, riprovare!\n");
-										System.out.println("Pedine disponibili:");
-										
-										
-										System.out.println("Pedine disponibili:");
-										if(i!=0) {
-											for(int j=0;j<coloriDisp.size();j++) {
-												
-												if(cRosso==false && coloriDisp.get(j).equals("Rosso")) {
-													System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
-												}else if(cAzzurro==false && coloriDisp.get(j).equals("Azzurro")) {
-													System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
-												}else if(cGiallo==false && coloriDisp.get(j).equals("Giallo")) {
-													System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
-												}else if(cVerde==false && coloriDisp.get(j).equals("Verde")) {
-													System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
-												}else {
-													System.out.println(j+1+")"+coloriDisp.get(j));
-												}
-												
-										}
-											
-										}else {
-											for(int j=0;j<coloriDisp.size();j++) {
-												System.out.println(j+1+")"+coloriDisp.get(j));
-											}
-										}
-										do {
-											try{
-												System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
-												colore = Integer.parseInt(sc.nextLine());
-												if(colore<1 || colore >4) {
-													System.out.println("ERRORE! Numero inserito non valido, riprovare");
-												}
-												
-											}catch(NumberFormatException ex) {
-												
-												System.out.println("Non puoi inserire una stringa");
-											}
-											
-										}while(colore<1 || colore>4);
-										
-										do {
-											if(colore<1 || colore >4) {
-												System.out.println("Numero inserito non valido. Si possono mettere numeri da 1 a 4!\n");
-											}
-										}while(colore<1 || colore>4);
-										
-										if(colore==1) {
-											System.out.println("Hai selezionato il colore Rosso");
-											coloreScelto="Rosso";
-											cRosso=false;
-										}else if(colore==2) {
-											System.out.println("Hai selezionato il colore Azzurro");
-											coloreScelto="Azzurro";
-											cAzzurro=false;
-										}else if(colore==3) {
-											System.out.println("Hai selezionato il colore Giallo");
-											coloreScelto="Giallo";
-											cGiallo=false;
-										}else if(colore==4) {
-											System.out.println("Hai selezionato il colore Verde");
-											coloreScelto="Verde";
-											cVerde=false;
-										}
-									}
-								}while(colori.get(k).equals(coloreScelto));
-								
-							}
-							username.add(s);
-							colori.add(coloreScelto);
-						}else { 
-						username.add(s);
-						colori.add("Verde");
-						break;
-						}
+						System.out.println(j+1+")"+coloriDisp.get(j));
 					}	
-					
+				}	
+			}else {
+				for(int j=0;j<coloriDisp.size();j++) {
+					System.out.println(j+1+")"+coloriDisp.get(j));
 				}
+			}
 				
-				tracciato = new Tracciato(username,colori);
-		
-		
+			int colore=0;
+			do {
+				try {
+					System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
+					colore = Integer.parseInt(sc.nextLine());
+				
+					if(colore<1 || colore >4) {
+						System.out.println("ERRORE! Numero inserito non valido, riprovare");
+					}
+					
+				}catch(NumberFormatException ex) {
+							
+					System.out.println("Non puoi inserire una stringa");
+				}
+						
+			}while(colore<1 || colore>4);
+			
+			if(colore==1) {
+				coloreScelto="Rosso";
+				cRosso=false;
+			}else if(colore==2) {
+				coloreScelto="Azzurro";
+				cAzzurro=false;
+			}else if(colore==3) {
+				coloreScelto="Giallo";
+				cGiallo=false;
+			}else if(colore==4) {
+				coloreScelto="Verde";
+				cVerde=false;
+			}
+					
+					
+			switch(colore){
+			case 1:
+				System.out.println("Colore Rosso selezionato");
+				if(i!=0) {//al primo giro non faccio il controllo, in quanto non ci sono nomi,colori
+					//controllo nomi uguali
+					for(int j=0;j<username.size();j++) {
+						do {
+							if(username.get(j).trim().equals(s)) {
+								System.out.println("ERRORE! Non puoi inserire nomi utenti uguali, riprovare!\n");
+								System.out.print("Inserire il soprannome: ");
+								String nomeModificato=sc.nextLine();
+								s=nomeModificato.replace(" ", "");
+										
+							}
+						}while(username.get(j).trim().equals(s));
+					}
+					//controllo colori uguali
+					for(int k=0;k<colori.size();k++) {
+						do {
+							if(colori.get(k).equals(coloreScelto)) {
+								System.out.println("Non puoi inserire colori uguali, riprovare!\n");
+								System.out.println("Pedine disponibili:");
+								if(i!=0) {
+									for(int j=0;j<coloriDisp.size();j++) {
+										
+										if(cRosso==false && coloriDisp.get(j).equals("Rosso")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else if(cAzzurro==false && coloriDisp.get(j).equals("Azzurro")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else if(cGiallo==false && coloriDisp.get(j).equals("Giallo")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else if(cVerde==false && coloriDisp.get(j).equals("Verde")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else {
+											System.out.println(j+1+")"+coloriDisp.get(j));
+										}
+											
+								}
+											
+								}else {
+									for(int j=0;j<coloriDisp.size();j++) {
+										System.out.println(j+1+")"+coloriDisp.get(j));
+									}
+								}
+										
+								do {
+									try {
+										System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
+										colore = Integer.parseInt(sc.nextLine());
+										if(colore<1 || colore >4) {
+											System.out.println("ERRORE! Numero inserito non valido, riprovare");
+										}
+										
+									}catch(NumberFormatException ex) {
+										
+										System.out.println("Non puoi inserire una stringa");
+									}
+									
+								}while(colore<1 || colore>4);
+								
+								if(colore==1) {
+									System.out.println("Hai selezionato il colore Rosso");
+									coloreScelto="Rosso";
+									cRosso=false;
+								}else if(colore==2) {
+									System.out.println("Hai selezionato il colore Azzurro");
+									coloreScelto="Azzurro";
+									cAzzurro=false;
+								}else if(colore==3) {
+									System.out.println("Hai selezionato il colore Giallo");
+									coloreScelto="Giallo";
+									cGiallo=false;
+								}else if(colore==4) {
+									System.out.println("Hai selezionato il colore Verde");
+									coloreScelto="Verde";
+									cVerde=false;
+								}
+							}
+						}while(coloriDisp.get(k).equals(coloreScelto));
+							
+					}
+					
+					username.add(s);
+					colori.add(coloreScelto);
+				
+				}else {
+					username.add(s);
+					colori.add("Rosso");
+				}
+				break;
+			case 2:
+				System.out.println("Colore Azzurro selezionato");
+				if(i!=0) {//al primo giro non faccio il controllo, in quanto non ci sono nomi,colori
+					//controllo nomi uguali
+					for(int j=0;j<username.size();j++) {
+						do {
+							if(username.get(j).trim().equals(s)) {
+								System.out.println("Non puoi inserire nomi utenti uguali, riprovare!\n");
+								System.out.print("Inserire il soprannome: ");
+								String nomeModificato=sc.nextLine();
+								s=nomeModificato.replace(" ", "");
+										
+							}
+						}while(username.get(j).trim().equals(s));
+					}
+					//controllo colori uguali
+					for(int k=0;k<colori.size();k++) {
+						do {
+							if(colori.get(k).equals(coloreScelto)) {
+								System.out.println("Non puoi inserire colori uguali, riprovare!\n");								
+								System.out.println("Pedine disponibili:");
+								if(i!=0) {
+									for(int j=0;j<coloriDisp.size();j++) {
+												
+										if(cRosso==false && coloriDisp.get(j).equals("Rosso")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else if(cAzzurro==false && coloriDisp.get(j).equals("Azzurro")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else if(cGiallo==false && coloriDisp.get(j).equals("Giallo")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else if(cVerde==false && coloriDisp.get(j).equals("Verde")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else {
+											System.out.println(j+1+")"+coloriDisp.get(j));
+										}
+										
+								}
+								
+								}else {
+									for(int j=0;j<coloriDisp.size();j++) {
+									System.out.println(j+1+")"+coloriDisp.get(j));
+									}
+								}
+										
+								do {
+									try {
+										
+										System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
+										colore = Integer.parseInt(sc.nextLine());
+										if(colore<1 || colore >4) {
+											System.out.println("ERRORE! Numero inserito non valido, riprovare");
+										}
+										
+									}catch(NumberFormatException ex) {
+												
+										System.out.println("Non puoi inserire una stringa");
+									}
+										
+											
+								}while(colore<1 || colore>4);
+										
+								if(colore==1) {
+									System.out.println("Hai selezionato il colore Rosso");
+									coloreScelto="Rosso";
+									cRosso=false;
+								}else if(colore==2) {
+									System.out.println("Hai selezionato il colore Azzurro");
+									coloreScelto="Azzurro";
+									cAzzurro=false;
+								}else if(colore==3) {
+									System.out.println("Hai selezionato il colore Giallo");
+									coloreScelto="Giallo";
+									cGiallo=false;
+								}else if(colore==4) {
+									System.out.println("Hai selezionato il colore Verde");
+									coloreScelto="Verde";
+									cVerde=false;
+								}
+							}
+						}while(colori.get(k).equals(coloreScelto));
+						
+					}
+					username.add(s);
+					colori.add(coloreScelto);
+				}else {
+					username.add(s);
+					colori.add("Azzurro");
+				}
+				break;
+			case 3:
+				System.out.println("Colore Giallo selezionato");
+				if(i!=0) {//al primo giro non faccio il controllo, in quanto non ci sono nomi,colori
+					//controllo nomi uguali
+					for(int j=0;j<username.size();j++) {
+						do {
+							if(username.get(j).trim().equals(s)) {
+								System.out.println("Non puoi inserire nomi utenti uguali, riprovare!");
+								System.out.print("Inserire il soprannome: ");
+								String nomeModificato=sc.nextLine();
+								s=nomeModificato.replace(" ", "");
+								
+							}
+						}while(username.get(j).trim().equals(s));
+					}
+					//controllo colori uguali
+					for(int k=0;k<colori.size();k++) {
+						do {
+							if(colori.get(k).equals(coloreScelto)) {
+								System.out.println("Non puoi inserire colori uguali, riprovare!\n");
+								if(i!=0) {
+									for(int j=0;j<coloriDisp.size();j++) {
+										
+										if(cRosso==false && coloriDisp.get(j).equals("Rosso")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else if(cAzzurro==false && coloriDisp.get(j).equals("Azzurro")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else if(cGiallo==false && coloriDisp.get(j).equals("Giallo")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else if(cVerde==false && coloriDisp.get(j).equals("Verde")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else {
+											System.out.println(j+1+")"+coloriDisp.get(j));
+										}
+											
+									}
+											
+								}else {
+									for(int j=0;j<coloriDisp.size();j++) {
+										System.out.println(j+1+")"+coloriDisp.get(j));
+									}
+								}
+										
+								do {
+									try{
+										System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
+										colore = Integer.parseInt(sc.nextLine());
+										if(colore<1 || colore >4) {
+											System.out.println("ERRORE! Numero inserito non valido, riprovare");
+										}
+										
+									}catch(NumberFormatException ex) {
+										
+										System.out.println("Non puoi inserire una stringa");
+									}
+									
+								}while(colore<1 || colore>4);
+								
+								if(colore==1) {
+									System.out.println("Hai selezionato il colore Rosso");
+									coloreScelto="Rosso";
+									cRosso=false;
+								}else if(colore==2) {
+									System.out.println("Hai selezionato il colore Azzurro");
+									coloreScelto="Azzurro";
+									cAzzurro=false;
+								}else if(colore==3) {
+									System.out.println("Hai selezionato il colore Giallo");
+									coloreScelto="Giallo";
+									cGiallo=false;
+								}else if(colore==4) {
+									System.out.println("Hai selezionato il colore Verde");
+									coloreScelto="Verde";
+									cVerde=false;
+								}
+							}
+						}while(colori.get(k).equals(coloreScelto));
+								
+					}
+					username.add(s);
+					colori.add(coloreScelto);
+				}else {
+					username.add(s);
+					colori.add("Giallo");
+				}
+				break;
+			case 4:
+				System.out.println("Colore Verde selezionato\n");
+				if(i!=0) {//al primo giro non faccio il controllo, in quanto non ci sono nomi,colori
+					//controllo nomi uguali
+					for(int j=0;j<username.size();j++) {
+						do {
+							if(username.get(j).trim().equals(s)) {
+								System.out.println("Non puoi inserire nomi utenti uguali, riprovare!\n");
+								System.out.print("Inserire il soprannome: ");
+								String nomeModificato=sc.nextLine();
+								s=nomeModificato.replace(" ", "");
+										
+							}
+						}while(username.get(j).trim().equals(s));
+					}
+					//controllo colori uguali
+					for(int k=0;k<colori.size();k++) {
+						do {
+							if(colori.get(k).equals(coloreScelto)) {
+								System.out.println("Non puoi inserire colori uguali, riprovare!\n");
+								System.out.println("Pedine disponibili:");
+								if(i!=0) {
+									for(int j=0;j<coloriDisp.size();j++) {
+										
+										if(cRosso==false && coloriDisp.get(j).equals("Rosso")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else if(cAzzurro==false && coloriDisp.get(j).equals("Azzurro")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else if(cGiallo==false && coloriDisp.get(j).equals("Giallo")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else if(cVerde==false && coloriDisp.get(j).equals("Verde")) {
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+										}else {
+											System.out.println(j+1+")"+coloriDisp.get(j));
+										}
+												
+								}
+										
+								}else {
+									for(int j=0;j<coloriDisp.size();j++) {
+										System.out.println(j+1+")"+coloriDisp.get(j));
+									}
+								}
+								do {
+									try{
+										System.out.print("Inserire il numero corrispondente alla pedina desiderata [da 1 a 4]: ");
+										colore = Integer.parseInt(sc.nextLine());
+										if(colore<1 || colore >4) {
+											System.out.println("ERRORE! Numero inserito non valido, riprovare");
+										}
+											
+									}catch(NumberFormatException ex) {
+											
+										System.out.println("Non puoi inserire una stringa");
+									}
+											
+								}while(colore<1 || colore>4);
+							
+								do {
+									if(colore<1 || colore >4) {
+										System.out.println("Numero inserito non valido. Si possono mettere numeri da 1 a 4!\n");
+									}
+								}while(colore<1 || colore>4);
+								
+								if(colore==1) {
+									System.out.println("Hai selezionato il colore Rosso");
+									coloreScelto="Rosso";
+									cRosso=false;
+								}else if(colore==2) {
+									System.out.println("Hai selezionato il colore Azzurro");
+									coloreScelto="Azzurro";
+									cAzzurro=false;
+								}else if(colore==3) {
+									System.out.println("Hai selezionato il colore Giallo");
+									coloreScelto="Giallo";
+									cGiallo=false;
+								}else if(colore==4) {
+									System.out.println("Hai selezionato il colore Verde");
+									coloreScelto="Verde";
+									cVerde=false;
+								}
+							}
+						}while(colori.get(k).equals(coloreScelto));
+								
+					}
+					username.add(s);
+					colori.add(coloreScelto);
+				}else { 
+					username.add(s);
+					colori.add("Verde");
+				}
+				break;
+			}	
+					
+		}
+				
+		tracciato = new Tracciato(username,colori);
 	}
+	
 	/**
 	 * metodo per la gestione dei turni, regola anche la fine della partita
 	 * nel caso un giocatore sia arrivato a 20 punti, che da avvio

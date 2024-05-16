@@ -76,10 +76,10 @@ public class CarteComuniPanel extends JPanel implements MouseListener {
 	public void piazzaCarta(int pos, Icon url) {
 		if(pos==0) {
 			imgMazzoRis = url;
-			url = Game.getImage(this.calcolaNewId(Integer.parseInt(((ImageIcon)url).getDescription())));
+			//url = Game.getImage(this.calcolaNewId(Integer.parseInt(((ImageIcon)url).getDescription())));
 		}else if(pos==4){
 			imgMazzoOro = url;
-			url = Game.getImage(this.calcolaNewId(Integer.parseInt(((ImageIcon)url).getDescription())));
+			//url = Game.getImage(this.calcolaNewId(Integer.parseInt(((ImageIcon)url).getDescription())));
 		}
 		
 		opacoLabelCComuni[pos].setIcon(url);

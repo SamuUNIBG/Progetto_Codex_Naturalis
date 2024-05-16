@@ -45,16 +45,6 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 		idCCom = new ArrayList<Integer>();
 		cartaTavolo = new CartaTavolo();
 		
-		idCCom.add(cartaTavolo.getMazzoRis().getCMazzo().get(0).getIdCarta());
-		idCCom.add(cartaTavolo.getcRisScp().get(0).getIdCarta());
-		idCCom.add(cartaTavolo.getcRisScp().get(1).getIdCarta());
-		idCCom.add(cartaTavolo.getcObbScp().get(0).getIdCarta());
-		
-		idCCom.add(cartaTavolo.getMazzoOro().getCMazzo().get(0).getIdCarta());
-		idCCom.add(cartaTavolo.getcOroScp().get(0).getIdCarta());
-		idCCom.add(cartaTavolo.getcOroScp().get(1).getIdCarta());
-		idCCom.add(cartaTavolo.getcObbScp().get(1).getIdCarta());
-		
 		this.piazzaCCom(idCCom);
 		
 		tracciato = new Tracciato(username, userColor);
@@ -88,6 +78,18 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 			//L'utente sceglie da che lato giocare la carta iniziale
 			StartDecision decisioneIniz = new StartDecision(Game.getImage(cartaIniz.getIdCarta()), username.get(i), game, this);
 		}
+		
+		idCCom.add(cartaTavolo.getMazzoRis().getCMazzo().get(0).getIdCarta());
+		System.out.println(cartaTavolo.getMazzoRis().getCMazzo().get(0).toString());
+		idCCom.add(cartaTavolo.getcRisScp().get(0).getIdCarta());
+		idCCom.add(cartaTavolo.getcRisScp().get(1).getIdCarta());
+		idCCom.add(cartaTavolo.getcObbScp().get(0).getIdCarta());
+		
+		idCCom.add(cartaTavolo.getMazzoOro().getCMazzo().get(0).getIdCarta());
+		idCCom.add(cartaTavolo.getcOroScp().get(0).getIdCarta());
+		idCCom.add(cartaTavolo.getcOroScp().get(1).getIdCarta());
+		idCCom.add(cartaTavolo.getcObbScp().get(1).getIdCarta());
+		
 		LogicaGiocoGrafica.GIOCATOREATTUALE=0;
 		giocatoreAttuale = tracciato.getGiocatore(LogicaGiocoGrafica.GIOCATOREATTUALE);
 		game.getUserPlayGround(LogicaGiocoGrafica.GIOCATOREATTUALE).mouseListenerEnable(true);

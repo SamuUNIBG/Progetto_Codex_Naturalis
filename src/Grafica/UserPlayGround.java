@@ -109,7 +109,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 	}
 	
 	public void pescaCartaP(Icon url) {
-		opacoLabelCPersonali[this.posSelectedC].setIcon(url);
+		opacoLabelCPersonali[2].setIcon(url);
 		//opacoLabelCPersonali[this.posSelectedC].setDisabledIcon(imgEnteredC);
 	}
 	
