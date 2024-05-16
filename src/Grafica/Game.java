@@ -24,7 +24,7 @@ import java.io.FileNotFoundException;
 public class Game extends JFrame implements ActionListener{
 	
 	private HashMap<Integer, String> cardImageMap;
-	public static ArrayList<Icon> cardImageArr;
+	public static ArrayList<Icon> CARDIMAGEARR;
 	private LogicaGiocoGrafica logica;
 	private JLabel[] opacoLabelCPersonali;
 	private ArrayList<UserPlayGround> userPlayGround;
@@ -57,7 +57,7 @@ public class Game extends JFrame implements ActionListener{
         playingField.get(0).addLabel(str3);*/
 		
 		cardImageMap = new HashMap<Integer, String>();
-		cardImageArr = new ArrayList<Icon>();
+		CARDIMAGEARR = new ArrayList<Icon>();
 		ImageIcon logo = new ImageIcon("images/codex_logo.png");
 		
 		this.setIconImage(logo.getImage());
@@ -153,13 +153,13 @@ public class Game extends JFrame implements ActionListener{
 		for(int i=0; i<cardImageMap.size(); i++) {
 			ImageIcon image = new ImageIcon(cardImageMap.get(i));
 			image.setDescription(i+"");
-			cardImageArr.add(image);
+			CARDIMAGEARR.add(image);
 		}
 		
 	}
 	
 	public static Icon getImage(int id) {
-		return cardImageArr.get(id);
+		return CARDIMAGEARR.get(id);
 	}
 	
 	public String getURLImage(int id) {

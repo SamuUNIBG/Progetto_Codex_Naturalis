@@ -15,20 +15,19 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 public class User extends JPanel{
 	
 	//label nomi utente
-	JLabel nome;
+	private JLabel nome;
 	//pannello risorse
-	JPanel risorsePanel;
+	private JPanel risorsePanel;
 	//pannello oggetti
-	JPanel oggettiPanel;
+	private JPanel oggettiPanel;
 	//label risorse
-	ArrayList<JLabel> risorse;
+	private ArrayList<JLabel> risorse;
 	//label oggetti
-	ArrayList<JLabel> oggetti;
+	private ArrayList<JLabel> oggetti;
 		
 	public User(String username, String userColor) {
 		

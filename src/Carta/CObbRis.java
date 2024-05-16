@@ -12,12 +12,12 @@ import Tavolo.Giocatore;
 public class CObbRis extends CObb{
 	
 	private final Simbolo simbolo;
-	private static int lastId=94;
+	private static int LASTID=94;
 	
 	public CObbRis(int puntiAssegnati, Simbolo simbolo) {
-		super(puntiAssegnati, CObbRis.lastId);
+		super(puntiAssegnati, CObbRis.LASTID);
 		this.simbolo=simbolo;
-		CObbRis.lastId++;
+		CObbRis.LASTID++;
 	}
 	public Simbolo getSimbolo() {
 		return simbolo;

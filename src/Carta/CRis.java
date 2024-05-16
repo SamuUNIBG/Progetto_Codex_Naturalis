@@ -14,7 +14,7 @@ import Enumerazione.*;
 
 public class CRis extends CGiocabiliSpeciali {
 	
-	private static int lastId=0; //id incrementali
+	private static int LASTID=0; //id incrementali
 	/**
 	 * se piazzata sul fronte
 	 * @param puntiAssegnati
@@ -26,8 +26,8 @@ public class CRis extends CGiocabiliSpeciali {
 	 * @param angolo3
 	 */
 	public CRis(int puntiAssegnati, Simbolo simbolo,Colore colore, Simbolo angolo0, Simbolo angolo1, Simbolo angolo2, Simbolo angolo3) {
-		super(puntiAssegnati, simbolo, colore, true, angolo0, angolo1, angolo2, angolo3, CRis.lastId);
-		CRis.lastId++;
+		super(puntiAssegnati, simbolo, colore, true, angolo0, angolo1, angolo2, angolo3, CRis.LASTID);
+		CRis.LASTID++;
 	}
 	/**
 	 * se piazzata sul retro

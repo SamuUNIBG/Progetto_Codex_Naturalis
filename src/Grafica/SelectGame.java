@@ -16,15 +16,15 @@ import Logica.LogicaGiocoConsole;
 
 public class SelectGame extends JFrame implements ActionListener,MouseListener{
 	
-	JButton homeButton, gameButton;
-	ArrayList<JTextField> nameTextArea;
-	ArrayList<String> username;
-	ArrayList<String> userColor;
-	ArrayList<JComboBox<String>> colorComboBox;
-	JTextField insertName;
-	String giocatori;
-	JComboBox<String> colors;
-	HashSet<String> lol = new HashSet<String>();
+	private JButton homeButton, gameButton;
+	private ArrayList<JTextField> nameTextArea;
+	private ArrayList<String> username;
+	private ArrayList<String> userColor;
+	private ArrayList<JComboBox<String>> colorComboBox;
+	private JTextField insertName;
+	private String giocatori;
+	private JComboBox<String> colors;
+	private HashSet<String> lol = new HashSet<String>();
 	
 	private String[] colori = {"Seleziona un colore", "Azzurro", "Giallo", "Rosso", "Verde"};
 	//this window

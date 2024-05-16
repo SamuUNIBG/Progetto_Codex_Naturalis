@@ -2,16 +2,8 @@ package Grafica;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 
-import javax.swing.BorderFactory;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-
-import Carta.CGiocabiliSpeciali;
+import javax.swing.*;
 
 public class UserPlayGround extends JPanel implements MouseListener {
 	

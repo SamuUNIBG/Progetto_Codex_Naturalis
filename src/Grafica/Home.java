@@ -9,7 +9,7 @@ import java.awt.event.*;
 public class Home extends JFrame implements ActionListener{
 	
 	//declaration of buttons to add to the window
-	JButton nuovoGioco, regole, impostazioni,  ringraziamenti;
+	private JButton nuovoGioco, regole, impostazioni,  ringraziamenti;
 	
 	public Home() {
 		

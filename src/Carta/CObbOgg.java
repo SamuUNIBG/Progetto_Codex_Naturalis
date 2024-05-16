@@ -12,10 +12,10 @@ import Tavolo.Giocatore;
  */
 public class CObbOgg extends CObb{
 	private final ArrayList<Simbolo> oggetti;
-	private static int lastId=98;
+	private static int LASTID=98;
 	
 	public CObbOgg(int puntiAssegnati, Simbolo oggetto1, Simbolo oggetto2, Simbolo oggetto3) {
-		super(puntiAssegnati, CObbOgg.lastId);
+		super(puntiAssegnati, CObbOgg.LASTID);
 		oggetti = new ArrayList<Simbolo>();
 		this.oggetti.add(oggetto1);
 		if (oggetto2!=Simbolo.ASSENTE) {
@@ -24,7 +24,7 @@ public class CObbOgg extends CObb{
 		if (oggetto3!=Simbolo.ASSENTE) {
 			this.oggetti.add(oggetto3);
 		}
-		CObbOgg.lastId++;
+		CObbOgg.LASTID++;
 	}
 	/**
 	 * ottenere gli oggetti da avere x realizzare l obiettivo
