@@ -108,6 +108,18 @@ public class CarteComuniPanel extends JPanel implements MouseListener {
 		}
 		return 0;
 	}
+	
+	/*public void piazzaCartaNuova(int pos) {
+		if(pos==0) {
+			imgMazzoRis = url;
+			//url = Game.getImage(this.calcolaNewId(Integer.parseInt(((ImageIcon)url).getDescription())));
+		}else if(pos==4){
+			imgMazzoOro = url;
+			//url = Game.getImage(this.calcolaNewId(Integer.parseInt(((ImageIcon)url).getDescription())));
+		}
+		
+		opacoLabelCComuni[pos].setIcon(url);
+	}*/
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -130,7 +142,7 @@ public class CarteComuniPanel extends JPanel implements MouseListener {
 						opacoLabelCComuni[i].setIcon(imgMazzoOro);
 					if(i==1 || i==5)
 						this.moveLabel();
-					game.pescaCarta(Integer.parseInt(((ImageIcon)imgSelectedC).getDescription()));
+					game.pescaCarta(/*Integer.parseInt(((ImageIcon)imgSelectedC).getDescription())*/posSelectedC);
 					game.assegnaCarta(imgSelectedC);
 					//userPlayGroundMother.enableML();
 				}

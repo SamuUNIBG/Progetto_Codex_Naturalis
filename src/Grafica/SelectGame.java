@@ -249,6 +249,10 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 						"ERRORE", JOptionPane.ERROR_MESSAGE);
 			}else if(utenteNonInserito!=1 && utentiUguali!=1) {
 					frame.dispose();
+					JOptionPane.showMessageDialog(null, "sposta il cursore del mouse sulla carta "
+							+ "x vederne il retro; \ntasto sinistro x giocarla di fronte; \n"
+							+ "tasto destro x giocarla di retro",
+							"INFO UTILI X GIOCARE LE CARTE",JOptionPane.INFORMATION_MESSAGE);
 					new Game(username, userColor);
 			}else if(utenteNonInserito==1) {
 					JOptionPane.showMessageDialog(null, "Bisonga per forza inserire un nome utente!","ATTENZIONE!",JOptionPane.WARNING_MESSAGE);

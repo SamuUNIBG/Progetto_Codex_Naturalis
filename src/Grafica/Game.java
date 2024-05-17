@@ -179,10 +179,14 @@ public class Game extends JFrame implements ActionListener{
 		
 	}
 	
+	/*public void piazzaNuovaCartaCom(int pos) {
+		cComuniPanel.piazzaCartaNuova(pos);
+	}*/
+	
 	public void pescaCarta(int pos) {
-		int id = logica.pescaCarta(pos);
-		if(id!=999)
-			this.piazzaCartaCom(pos, id);
+		/*int id =*/ logica.pescaCarta(pos);
+		//if(id!=999)
+		//	this.piazzaCartaCom(pos, id);
 	}
 	
 	public void assegnaCarta(Icon img) {

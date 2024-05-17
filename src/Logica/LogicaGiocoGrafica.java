@@ -38,6 +38,10 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 	private Giocatore giocatoreAttuale;
 	public static int GIOCATOREATTUALE;
 	
+	private boolean punti20;
+	private boolean ultimoGiro;
+	private int counterUltimoGiro;
+	
 	public LogicaGiocoGrafica(ArrayList<String> username, ArrayList<String> userColor, Game game) {
 		
 		this.game = game;
@@ -45,7 +49,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 		idCCom = new ArrayList<Integer>();
 		cartaTavolo = new CartaTavolo();
 		
-		this.piazzaCCom(idCCom);
+		
 		
 		tracciato = new Tracciato(username, userColor);
 		numGiocatori = tracciato.getNumGiocatori();
@@ -90,10 +94,14 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 		idCCom.add(cartaTavolo.getcOroScp().get(1).getIdCarta());
 		idCCom.add(cartaTavolo.getcObbScp().get(1).getIdCarta());
 		
-		LogicaGiocoGrafica.GIOCATOREATTUALE=0;
-		giocatoreAttuale = tracciato.getGiocatore(LogicaGiocoGrafica.GIOCATOREATTUALE);
-		game.getUserPlayGround(LogicaGiocoGrafica.GIOCATOREATTUALE).mouseListenerEnable(true);
-		//Turni();
+		this.piazzaCCom(idCCom);
+		
+		LogicaGiocoGrafica.GIOCATOREATTUALE=-1;
+		punti20=false;
+		ultimoGiro=false;
+		counterUltimoGiro = numGiocatori;
+		
+		Turni();
 			
 	}
 	
@@ -119,35 +127,31 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 
 	@Override
 	public void Turni() {
-		
-		boolean punti20 = false;
-		boolean ultimoGiro = false;
-		
-		do {
-			
+				System.out.println("-------------------------------" + numGiocatori);
+		if(LogicaGiocoGrafica.GIOCATOREATTUALE==numGiocatori-1){
+			LogicaGiocoGrafica.GIOCATOREATTUALE=0;
 			if(punti20)
-					ultimoGiro = true;
-			
-			for(int i=0; i<numGiocatori; i++) {
-				giocatoreAttuale = tracciato.getGiocatore(i);
-				//giocaC(giocatoreAttuale);
-				if(!ultimoGiro)
+				ultimoGiro = true;
+		}else
+			LogicaGiocoGrafica.GIOCATOREATTUALE++;
+			System.out.println(LogicaGiocoGrafica.GIOCATOREATTUALE);
+		if(ultimoGiro)
+			counterUltimoGiro--;
+		
+		if(counterUltimoGiro>=0) {	
+			giocatoreAttuale = tracciato.getGiocatore(LogicaGiocoGrafica.GIOCATOREATTUALE);
+			game.getUserPlayGround(LogicaGiocoGrafica.GIOCATOREATTUALE).mouseListenerEnable(true);
+		}else	//ovvero counterUltimoGiro == -1
+			AddPuntiObb();		
+		
+		//da gestire nel mouse listener del Playing Field
+				//if(!ultimoGiro)
 					//pescaCarta(giocatoreAttuale);
-				
-				if(giocatoreAttuale.getPunteggio() > 19 || (cartaTavolo.getMazzoOro().getCRimaste()==0 && cartaTavolo.getMazzoRis().getCRimaste()==0)) {
-					punti20 = true;
-				}
-				
-			}
-			
-		}while(!ultimoGiro);
 		
-		AddPuntiObb();
-		
-	}
+	} 
 	
 	public boolean giocaCIniz(boolean retro) {
-		Giocatore giocatoreAttuale = tracciato.getGiocatore(LogicaGiocoGrafica.GIOCATOREATTUALE);
+		giocatoreAttuale = tracciato.getGiocatore(LogicaGiocoGrafica.GIOCATOREATTUALE);
 		CIniz cInizAttuale=giocatoreAttuale.getCInizPer();
 		
 		//se la carta e' stata giocata sul retro si setta l'attributo fronte=false
@@ -183,7 +187,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 	
 	public boolean giocaC(int idCarta, boolean retro, String posCarta) {
 		
-		Giocatore giocatoreAttuale = tracciato.getGiocatore(LogicaGiocoGrafica.GIOCATOREATTUALE);
+		//Giocatore giocatoreAttuale = tracciato.getGiocatore(LogicaGiocoGrafica.GIOCATOREATTUALE);
 		System.out.println("giocatore: " + LogicaGiocoGrafica.GIOCATOREATTUALE + " idCarta: " + idCarta + " retro: " + retro + " posCarta: " + posCarta);
 		
 		int numCarta=-1;
@@ -229,35 +233,56 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 		return true;
 	}
 	
-	public int pescaCarta(int pos) {
+	public void pescaCarta(int pos) {
 		
+		if(giocatoreAttuale.getPunteggio() > 19 || (cartaTavolo.getMazzoOro().getCRimaste()==0 && cartaTavolo.getMazzoRis().getCRimaste()==0)) {
+			punti20 = true;
+		}
+		System.out.println("possssssssssssss"+pos);
 		switch(pos) {
 			case 0:
 				CRis carta = (CRis) cartaTavolo.pesca(TipoCarta.CRis);
 				giocatoreAttuale.pescaC(carta);
-				return carta.getIdCarta();
+				game.piazzaCartaCom(0, cartaTavolo.getMazzoRis().getCMazzo().get(0).getIdCarta());
+				this.Turni();
+//				return carta.getIdCarta();
 			case 1:
 				CRis carta1 = (CRis) cartaTavolo.pesca(TipoCarta.CRis,0);
 				giocatoreAttuale.pescaC(carta1);
-				return carta1.getIdCarta();
+				game.piazzaCartaCom(0, cartaTavolo.getMazzoRis().getCMazzo().get(0).getIdCarta());
+//				game.piazzaNuovaCartaCom(pos);
+				this.Turni();
+//				return carta1.getIdCarta();
 			case 2:
 				CRis carta2 = (CRis) cartaTavolo.pesca(TipoCarta.CRis,1);
 				giocatoreAttuale.pescaC(carta2);
-				return carta2.getIdCarta();
+				game.piazzaCartaCom(0, cartaTavolo.getMazzoRis().getCMazzo().get(0).getIdCarta());
+//				game.piazzaNuovaCartaCom(pos);
+				this.Turni();
+//				return carta2.getIdCarta();
 			case 4:
 				COro carta4 = (COro) cartaTavolo.pesca(TipoCarta.COro);
-				giocatoreAttuale.pescaC(cartaTavolo.pesca(TipoCarta.COro));
-				return carta4.getIdCarta();
+				giocatoreAttuale.pescaC(carta4);
+				game.piazzaCartaCom(4, cartaTavolo.getMazzoOro().getCMazzo().get(0).getIdCarta());
+				this.Turni();
+//				return carta4.getIdCarta();
 			case 5:
 				COro carta5 = (COro) cartaTavolo.pesca(TipoCarta.COro,0);
-				giocatoreAttuale.pescaC(cartaTavolo.pesca(TipoCarta.COro,0));
-				return carta5.getIdCarta();
+				giocatoreAttuale.pescaC(carta5);
+				game.piazzaCartaCom(4, cartaTavolo.getMazzoOro().getCMazzo().get(0).getIdCarta());
+//				game.piazzaNuovaCartaCom(pos);
+				this.Turni();
+//				return carta5.getIdCarta();
 			case 6:
 				COro carta6 = (COro) cartaTavolo.pesca(TipoCarta.COro,1);
 				giocatoreAttuale.pescaC(carta6);
-				return carta6.getIdCarta();
+				game.piazzaCartaCom(4, cartaTavolo.getMazzoOro().getCMazzo().get(0).getIdCarta());
+//				game.piazzaNuovaCartaCom(pos);
+				this.Turni();
+//				return carta6.getIdCarta();
 		}
-		return 999;
+		
+		//return 999;
 		
 	}
 
