@@ -21,40 +21,21 @@ import java.io.FileNotFoundException;
 
 //utilizzare JTabbedPane. Guardare https://www.edatlas.it/scarica/informatica/info_java/Inserto3/5ScrollPaneTabbedPane.pdf
 
-public class Game extends JFrame implements ActionListener{
+public class Game extends JFrame{
 	
 	private HashMap<Integer, String> cardImageMap;
 	public static ArrayList<Icon> CARDIMAGEARR;
 	private LogicaGiocoGrafica logica;
-	private JLabel[] opacoLabelCPersonali;
 	private ArrayList<UserPlayGround> userPlayGround;
 	private CarteComuniPanel cComuniPanel;
 	private UserPanel userPanel;
 	private ScoreTrack scoreTrackPane;
+	private JTabbedPane tabbedPane;
 
 	public Game(ArrayList<String> username, ArrayList<String> userColor) {
 		
 		//test
         //scoreTrackPane.movePawn(1, 15);
-        
-        //test
-		/*ArrayList<String> str = new ArrayList<String>(5);
-        str.add("40,40");
-        str.add("39,39");
-        str.add("39,41");
-        str.add("41,41");
-        str.add("41,39");
-        ArrayList<String> str2 = new ArrayList<String>(2);
-        str2.add("41,41");
-        str2.add("42,42");
-        ArrayList<String> str3 = new ArrayList<String>(2);
-        str3.add("42,42");
-        str3.add("41,43");
-        str3.add("43,41");
-        playingField.get(0).addLabel(str);
-        playingField.get(0).addLabel(str);
-        playingField.get(0).addLabel(str2);
-        playingField.get(0).addLabel(str3);*/
 		
 		cardImageMap = new HashMap<Integer, String>();
 		CARDIMAGEARR = new ArrayList<Icon>();
@@ -79,7 +60,7 @@ public class Game extends JFrame implements ActionListener{
       	
 		
       	//finistre campo gioco giocatori
-        JTabbedPane tabbedPane = new JTabbedPane();
+        tabbedPane = new JTabbedPane();
         tabbedPane.setTabPlacement(JTabbedPane.TOP);
         
         
@@ -175,18 +156,12 @@ public class Game extends JFrame implements ActionListener{
 	}
 	
 	public void piazzaCartaCom(int pos, Integer id) {
-		cComuniPanel.piazzaCarta(pos,Game.getImage(id));
+		cComuniPanel.piazzaCarta(pos, Game.getImage(id));
 		
 	}
 	
-	/*public void piazzaNuovaCartaCom(int pos) {
-		cComuniPanel.piazzaCartaNuova(pos);
-	}*/
-	
 	public void pescaCarta(int pos) {
-		/*int id =*/ logica.pescaCarta(pos);
-		//if(id!=999)
-		//	this.piazzaCartaCom(pos, id);
+		logica.pescaCarta(pos);
 	}
 	
 	public void assegnaCarta(Icon img) {
@@ -201,12 +176,6 @@ public class Game extends JFrame implements ActionListener{
 		return scoreTrackPane;
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public UserPlayGround getUserPlayGround(int giocatore) {
 		return userPlayGround.get(giocatore);
 	}
@@ -215,9 +184,8 @@ public class Game extends JFrame implements ActionListener{
 		logica.giocaC(idCarta, retro, posCarta);
 	}
 	
-	//sistemare
-	public void enableMLSeleziona() {
-		//cComuniPanel.mouseListenerEnable(true);
+	public void setIndexTabbedPane(int index) {
+		tabbedPane.setSelectedIndex(index);
 	}
 
 }

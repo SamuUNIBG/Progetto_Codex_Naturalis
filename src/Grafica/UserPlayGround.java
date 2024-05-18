@@ -2,6 +2,7 @@ package Grafica;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -81,6 +82,31 @@ public class UserPlayGround extends JPanel implements MouseListener {
 		gbc.gridx=0;
 		gbc.gridy=1;
 		this.add(cartePersonaliPanel,gbc);
+		
+		//test
+		/*ArrayList<String> str = new ArrayList<String>(5);
+        str.add("40,40");
+        str.add("39,39");
+        str.add("39,41");
+        str.add("41,41");
+        str.add("41,39");
+        ArrayList<String> str2 = new ArrayList<String>(2);
+        str2.add("41,41");
+        str2.add("42,42");
+        ArrayList<String> str3 = new ArrayList<String>(2);
+        str3.add("42,42");
+        str3.add("41,43");
+        str3.add("43,41");
+        ArrayList<String> str4 = new ArrayList<String>(2);
+        str4.add("39,41");
+        str4.add("38,40");
+        str4.add("38,42");
+        str4.add("40,42");
+        playingField.addLabel(str);
+        playingField.addLabel(str);
+        playingField.addLabel(str2);
+        playingField.addLabel(str3);
+        playingField.addLabel(str4);*/
 			
 	}
 	
@@ -90,6 +116,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 		opacoLabelCPersonali[posSelectedC].setOpaque(true);
 		opacoLabelCPersonali[posSelectedC].setPreferredSize(new Dimension(163, 113));
 		opacoLabelCPersonali[posSelectedC].setVisible(true);
+		opacoLabelCPersonali[posSelectedC].addMouseListener(this);
 		for(int i=posSelectedC; i<2; i++) {
 			JLabel temp = opacoLabelCPersonali[i+1];
 			opacoLabelCPersonali[i+1] = opacoLabelCPersonali[i];
