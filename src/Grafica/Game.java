@@ -180,12 +180,17 @@ public class Game extends JFrame{
 		return userPlayGround.get(giocatore);
 	}
 	
-	public void giocaC(int idCarta, boolean retro, String posCarta) {
-		logica.giocaC(idCarta, retro, posCarta);
+	public void giocaC(int idCarta, boolean fronte, String posCarta) {
+		logica.giocaC(idCarta, fronte, posCarta);
 	}
 	
 	public void setIndexTabbedPane(int index) {
 		tabbedPane.setSelectedIndex(index);
+	}
+
+	public boolean COroGiocabile(int id) {
+		return logica.COroGiocabile(id);
+		
 	}
 
 }

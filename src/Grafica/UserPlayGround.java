@@ -14,7 +14,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 	private Icon imgSelectedC, imgEnteredC;
 	private boolean mouseListenerEnable;
 	private Game game;
-	private boolean retro;
+	private boolean fronte;
 	private JPanel cartePersonaliPanel;
 	private int idSelectedC;
 	
@@ -125,7 +125,6 @@ public class UserPlayGround extends JPanel implements MouseListener {
 		cartePersonaliPanel.removeAll();
 		for(int i=0; i<4; i++) {
 			cartePersonaliPanel.add(opacoLabelCPersonali[i]);
-			
 		}
 	}
 	
@@ -145,7 +144,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 	}
 	
 	public void giocaC(int idCarta, String posCarta) {
-		game.giocaC(idCarta, retro, posCarta);
+		game.giocaC(idCarta, fronte, posCarta);
 	}
 
 	@Override
@@ -157,11 +156,20 @@ public class UserPlayGround extends JPanel implements MouseListener {
 					idSelectedC = Integer.parseInt(((ImageIcon)imgEnteredC).getDescription());
 					playingField.mouseListenerEnable(true);
 					if(e.getButton() == MouseEvent.BUTTON1) {
-						imgSelectedC = imgEnteredC;
-						retro = false;
+						if(Integer.parseInt(((ImageIcon)imgEnteredC).getDescription())>39 && Integer.parseInt(((ImageIcon)imgEnteredC).getDescription())<80) {
+							System.out.println("CONTROLLO ORO");
+							if(game.COroGiocabile(Integer.parseInt(((ImageIcon)imgEnteredC).getDescription()))) {
+								imgSelectedC = imgEnteredC;
+								fronte = true;
+							}else
+								playingField.mouseListenerEnable(false);
+						}else {
+							imgSelectedC = imgEnteredC;
+							fronte = true;
+						}
 					}else if(e.getButton() == MouseEvent.BUTTON3) {
-						imgSelectedC = opacoLabelCPersonali[i].getIcon();
-						retro = true;
+						imgSelectedC = Game.getImage(calcolaNewId(Integer.parseInt(((ImageIcon)imgEnteredC).getDescription())));//opacoLabelCPersonali[i].getIcon();
+						fronte = false;
 					}
 				}
 			}

@@ -47,11 +47,11 @@ public class StartDecision implements MouseListener {
 		if(e.getSource()==cInizScelLabel) {
 			if(e.getButton()==MouseEvent.BUTTON1) {
 				logica.pescaCIniz(urlImage);
-				logica.giocaCIniz(false);
+				logica.giocaCIniz(true);
 				dialog.dispose();
 			}else if(e.getButton()==MouseEvent.BUTTON3) {
 				logica.pescaCIniz(Game.getImage(calcolaNewId(Integer.parseInt(((ImageIcon)urlImage).getDescription()))));
-				logica.giocaCIniz(true);
+				logica.giocaCIniz(false);
 				dialog.dispose();
 			}
 			

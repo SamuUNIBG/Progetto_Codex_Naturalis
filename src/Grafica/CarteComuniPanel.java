@@ -133,6 +133,7 @@ public class CarteComuniPanel extends JPanel implements MouseListener {
 					game.assegnaCarta(imgSelectedC);
 					System.out.println("mouse click carte comuniiiiiiiiiiiiiiiiiiiiiiiii " +posSelectedC);
 					game.pescaCarta(posSelectedC);
+					break;
 				}
 			}
 		}

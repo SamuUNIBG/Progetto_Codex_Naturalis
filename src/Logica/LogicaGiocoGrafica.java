@@ -135,13 +135,11 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 	@Override
 	public void Turni() {
 		if(LogicaGiocoGrafica.GIOCATOREATTUALE==numGiocatori-1){
-			System.out.println("ECCoMIIIIIIIIIIIIIIIII");
 			LogicaGiocoGrafica.GIOCATOREATTUALE=0;
 			if(punti20)
 				ultimoGiro = true;
 		}else
 			LogicaGiocoGrafica.GIOCATOREATTUALE++;
-			System.out.println("Giocatore Attuale: " + LogicaGiocoGrafica.GIOCATOREATTUALE);
 		if(ultimoGiro)
 			counterUltimoGiro--;
 		
@@ -158,19 +156,19 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 		
 	} 
 	
-	public boolean giocaCIniz(boolean retro) {
+	public boolean giocaCIniz(boolean fronte) {
 		giocatoreAttuale = tracciato.getGiocatore(LogicaGiocoGrafica.GIOCATOREATTUALE);
 		CIniz cInizAttuale=giocatoreAttuale.getCInizPer();
 		
 		//se la carta e' stata giocata sul retro si setta l'attributo fronte=false
-		if(retro) {
+		if(!fronte) {
 			cInizAttuale.retro();
 		}
 		
 		giocatoreAttuale.getCPiazzate().put(cInizAttuale.getIdCarta(), cInizAttuale.toStringBreve());
 		giocatoreAttuale.piazzaC(giocatoreAttuale.getCPiazzate(), "40,40", cInizAttuale);
 		
-		if(!retro) {
+		if(fronte) {
 			//aggiunge al vettore delle risorse possedute le risorse centrali della carta
 			for(int i=0; i<cInizAttuale.getRisorseCentrali().size(); i++) {
 				if(cInizAttuale.getRisorseCentrali().get(i)==Simbolo.FOGLIA) {
@@ -193,14 +191,32 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 		
 	}
 	
-	public boolean giocaC(int idCarta, boolean retro, String posCarta) {
+	public boolean COroGiocabile(int idCarta) {
+		int numCarta=-1;
+		ArrayList<CGiocabiliSpeciali> cManoAttuale=giocatoreAttuale.getCMano();
+		for(int i=0; i<cManoAttuale.size(); i++) {
+			if(cManoAttuale.get(i).getIdCarta()==idCarta)
+				numCarta=i;
+		}
+		CGiocabiliSpeciali carta = cManoAttuale.get(numCarta);
 		
-		//Giocatore giocatoreAttuale = tracciato.getGiocatore(LogicaGiocoGrafica.GIOCATOREATTUALE);
-		System.out.println("giocatore: " + LogicaGiocoGrafica.GIOCATOREATTUALE + " idCarta: " + idCarta + " retro: " + retro + " posCarta: " + posCarta);
+		//controllo da fare in carte personali panel
+		//controllo giocabilit e' carta oro
+		//if(carta instanceof COro)
+		if(((COro)carta).VerificaPrerequisito(giocatoreAttuale.getRisPossedute()))
+			return true;
+		else
+			return false;
+		
+	}
+	
+	public boolean giocaC(int idCarta, boolean fronte, String posCarta) {
+		
+		System.out.println("giocatore: " + LogicaGiocoGrafica.GIOCATOREATTUALE + " idCarta: " + idCarta + " fronte: " + fronte + " posCarta: " + posCarta);
 		
 		int numCarta=-1;
 		ArrayList<CGiocabiliSpeciali> cManoAttuale=giocatoreAttuale.getCMano();
-//		System.out.println(cManoAttuale);
+		
 		for(int i=0; i<cManoAttuale.size(); i++) {
 			if(cManoAttuale.get(i).getIdCarta()==idCarta)
 				numCarta=i;
@@ -208,19 +224,14 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 		CGiocabiliSpeciali carta = cManoAttuale.get(numCarta);
 		cManoAttuale.remove(numCarta);
 		
-		//controllo da fare in carte personali panel
-		//controllo giocabilit e' carta oro
-		if(carta instanceof COro && !retro)
-			((COro)carta).VerificaPrerequisito(giocatoreAttuale.getRisPossedute());
-		
 		//se la carta e' stata giocata sul retro si crea una nuova carta
-		if(retro) {
+		if(!fronte) {
 			if(carta instanceof CRis) {
 				CRis cartaRetro= new CRis(((CRis)carta).getSimbolo(), ((CRis)carta).getColore(), ((CRis)carta).getIdCarta());
-				cManoAttuale.set(numCarta, cartaRetro);
+				carta = cartaRetro;
 			}else if(carta instanceof COro) {
-				COro cartaRetro= new COro(((CRis)carta).getSimbolo(), ((CRis)carta).getColore(), ((CRis)carta).getIdCarta());
-				cManoAttuale.set(numCarta, cartaRetro);
+				COro cartaRetro= new COro(((COro)carta).getSimbolo(), ((COro)carta).getColore(), ((COro)carta).getIdCarta());
+				carta = cartaRetro;
 			}
 		}else {
 			int puntiCarta = carta.getPunti();
@@ -231,8 +242,9 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 		}
 		
 		giocatoreAttuale.getCPiazzate().put(carta.getIdCarta(), carta.toStringBreve());
+		System.out.println(carta.toStringBreve());
 		giocatoreAttuale.piazzaC(giocatoreAttuale.getCPiazzate(), posCarta, carta);
-		
+
 		game.getUserPanel().getUser(LogicaGiocoGrafica.GIOCATOREATTUALE).aggiornaResource(giocatoreAttuale.getRisPossedute());
 		game.getUserPanel().getUser(LogicaGiocoGrafica.GIOCATOREATTUALE).aggiornaObjects(giocatoreAttuale.getOggPosseduti());
 		
@@ -246,7 +258,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 		if(giocatoreAttuale.getPunteggio() > 19 || (cartaTavolo.getMazzoOro().getCRimaste()==0 && cartaTavolo.getMazzoRis().getCRimaste()==0)) {
 			punti20 = true;
 		}
-		System.out.println("ssssssssssss"+pos);
+		
 		switch(pos) {
 			case 0:
 				CRis carta = (CRis) cartaTavolo.pesca(TipoCarta.CRis);
@@ -254,49 +266,37 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 				game.piazzaCartaCom(0, cartaTavolo.getMazzoRis().getCMazzo().get(0).getIdCarta());
 				this.Turni();
 				break;
-//				return carta.getIdCarta();
 			case 1:
 				CRis carta1 = (CRis) cartaTavolo.pesca(TipoCarta.CRis,0);
 				giocatoreAttuale.pescaC(carta1);
 				game.piazzaCartaCom(0, cartaTavolo.getMazzoRis().getCMazzo().get(0).getIdCarta());
-//				game.piazzaNuovaCartaCom(pos);
 				this.Turni();
 				break;
-//				return carta1.getIdCarta();
 			case 2:
 				CRis carta2 = (CRis) cartaTavolo.pesca(TipoCarta.CRis,1);
 				giocatoreAttuale.pescaC(carta2);
 				game.piazzaCartaCom(0, cartaTavolo.getMazzoRis().getCMazzo().get(0).getIdCarta());
-//				game.piazzaNuovaCartaCom(pos);
 				this.Turni();
 				break;
-//				return carta2.getIdCarta();
 			case 4:
 				COro carta4 = (COro) cartaTavolo.pesca(TipoCarta.COro);
 				giocatoreAttuale.pescaC(carta4);
 				game.piazzaCartaCom(4, cartaTavolo.getMazzoOro().getCMazzo().get(0).getIdCarta());
 				this.Turni();
 				break;
-//				return carta4.getIdCarta();
 			case 5:
 				COro carta5 = (COro) cartaTavolo.pesca(TipoCarta.COro,0);
 				giocatoreAttuale.pescaC(carta5);
 				game.piazzaCartaCom(4, cartaTavolo.getMazzoOro().getCMazzo().get(0).getIdCarta());
-//				game.piazzaNuovaCartaCom(pos);
 				this.Turni();
 				break;
-//				return carta5.getIdCarta();
 			case 6:
 				COro carta6 = (COro) cartaTavolo.pesca(TipoCarta.COro,1);
 				giocatoreAttuale.pescaC(carta6);
 				game.piazzaCartaCom(4, cartaTavolo.getMazzoOro().getCMazzo().get(0).getIdCarta());
-//				game.piazzaNuovaCartaCom(pos);
 				this.Turni();
 				break;
-//				return carta6.getIdCarta();
 		}
-		
-		//return 999;
 		
 	}
 
