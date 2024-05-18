@@ -76,24 +76,18 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 			splittedString = pos.get(i).split(",");
 			int newY = Integer.parseInt(splittedString[0]);
 			int newX = Integer.parseInt(splittedString[1]);
-			System.out.println(newY+"   ,   "+newX);
-			System.out.println(oldY+"   ,   "+oldX);
 			//set location and size of new JLabel
 			if(newX<oldX && newY<oldY) {
 				newLabel.setBackground(new Color(170, 170, 170, 80));
-				System.out.println("ddddddddd 0");
 				newLabel.setBounds(x-120,y-64,163,113);
 			}else if(newX<oldX && newY>oldY) {
 				newLabel.setBackground(new Color(170, 170, 170, 80));
-				System.out.println("ddddddddd 3");
 				newLabel.setBounds(x-120,y+64,163,113);
 			}else if(newX>oldX && newY<oldY) {
 				newLabel.setBackground(new Color(170, 170, 170, 80));
-				System.out.println("ddddddddd 1");
 				newLabel.setBounds(x+120,y-64,163,113);
 			}else if(newX>oldX && newY>oldY) {
 				newLabel.setBackground(new Color(170, 170, 170, 80));
-				System.out.println("ddddddddd 2");
 				newLabel.setBounds(x+120,y+64,163,113);
 			}
 			
