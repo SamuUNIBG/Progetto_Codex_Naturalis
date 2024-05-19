@@ -6,7 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-
+/**
+ * pagina con i ringraziamenti e gli autori del progetto
+ */
 public class Thanks extends JFrame implements ActionListener{
 	private JButton homeButton;
 	//this window
@@ -63,7 +65,7 @@ public class Thanks extends JFrame implements ActionListener{
 		gapPanel2.setOpaque(false);
 				
 		//description
-		JLabel descriptionLabel1=new JLabel("Progetto svolto in collaborazione con:");
+		JLabel descriptionLabel1=new JLabel("Progetto svolto da:");
 		descriptionLabel1.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 20));
 		descriptionLabel1.setForeground(Color.WHITE);
 		
@@ -73,12 +75,9 @@ public class Thanks extends JFrame implements ActionListener{
 		JLabel authorsLabel2=new JLabel("Samuele Vecchi");
 		authorsLabel2.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 20));
 		authorsLabel2.setForeground(Color.WHITE);
-		JLabel authorsLabel3=new JLabel("Samuel Gagliardi");
+		JLabel authorsLabel3=new JLabel("Oscar Benigni");
 		authorsLabel3.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 20));
 		authorsLabel3.setForeground(Color.WHITE);
-		JLabel authorsLabel4=new JLabel("Oscar Beni");
-		authorsLabel4.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 20));
-		authorsLabel4.setForeground(Color.WHITE);
 		
 		JLabel descriptionLabel2=new JLabel("Bergamo 2024.");
 		descriptionLabel2.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 15));
@@ -107,9 +106,6 @@ public class Thanks extends JFrame implements ActionListener{
 		gbc.gridx=0;
 		gbc.gridy=3;
 		descriptionPanel1.add(authorsLabel3, gbc);
-		gbc.gridx=0;
-		gbc.gridy=4;
-		descriptionPanel1.add(authorsLabel4, gbc);
 		
 		//panel with descriptionLabel3
 		JPanel descriptionPanel2 = new JPanel();

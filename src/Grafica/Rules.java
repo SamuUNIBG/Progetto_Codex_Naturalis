@@ -5,7 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-
+/**
+ * classe che mostra le regole di gioco
+ */
 public class Rules extends JFrame implements ActionListener{
 
 	//declaration of buttons to add to the window
@@ -120,6 +122,10 @@ public class Rules extends JFrame implements ActionListener{
 	}
 
 	@Override
+	/**
+	 * gestione dei bottoni per lo scorrimento delle
+	 * pagine delle regole di gioco
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==precedente) {
 			if(rulePage>0)

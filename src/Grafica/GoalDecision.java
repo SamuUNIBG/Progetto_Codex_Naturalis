@@ -13,7 +13,9 @@ import javax.swing.JLabel;
 
 import Carta.CObb;
 import Logica.LogicaGiocoGrafica;
-
+/**
+ * classe per la scelta della carta obiettivo segreta di ogni giocatore
+ */
 public class GoalDecision implements MouseListener {
 	
 	private JLabel[] cObbScelLabel;

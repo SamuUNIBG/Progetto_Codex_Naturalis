@@ -15,7 +15,10 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+/**
+ * classe con le informazioni del giocatore come il nome,
+ * il colore, le risorse e oggetti posseduti
+ */
 public class User extends JPanel{
 	
 	//label nomi utente
@@ -126,7 +129,12 @@ public class User extends JPanel{
 		this.add(oggettiPanel);
 	    this.setOpaque(false);
 	}
-	
+	/**
+	 * ogni volta che il giocatore piazza una carta ottiene risorse
+	 * o copre quelle che gia aveva, quindi vanno aggiornate ad ogni
+	 * posizionamento della carta
+	 * @param risAggiungere
+	 */
 	public void aggiornaResource(int[] risAggiungere) {
 			risorse.get(0).setText(null);
 			risorse.get(0).setText("" + (risAggiungere[0]));
@@ -138,7 +146,12 @@ public class User extends JPanel{
 			risorse.get(6).setText("" + (risAggiungere[3]));
 			
 	}
-	
+	/**
+	 * ogni volta che il giocatore piazza una carta ottiene oggetti
+	 * o copre quelli che gia aveva, quindi vanno aggiornati ad ogni
+	 * posizionamento della carta
+	 * @param oggAggiungere
+	 */
 	public void aggiornaObjects(int[] oggAggiungere) {
 			oggetti.get(0).setText(null);
 			oggetti.get(0).setText("" + (oggAggiungere[0]));

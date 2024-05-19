@@ -12,7 +12,10 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 
 import Logica.LogicaGiocoGrafica;
-
+/**
+ * classe x la gestione della carta iniziale di ogni giocatore e 
+ * il relativo piazzamento
+ */
 public class StartDecision implements MouseListener {
 	
 	private JLabel cInizScelLabel;
@@ -72,6 +75,10 @@ public class StartDecision implements MouseListener {
 	}
 
 	@Override
+	/**
+	 * gestisce il fatto che quando un giocatore si posiziona
+	 * col cursore del mouse sulla carta, gli viene mostrato il retro
+	 */
 	public void mouseEntered(MouseEvent e) {
 		if(e.getSource()==cInizScelLabel) {
 			imgEnteredC = cInizScelLabel.getIcon();
@@ -100,6 +107,10 @@ public class StartDecision implements MouseListener {
 	}
 
 	@Override
+	/**
+	 * mostra il fronte della carta quando il gicoatore sposta
+	 * il cursore del mouse dalla carta
+	 */
 	public void mouseExited(MouseEvent e) {
 		if(e.getSource()==cInizScelLabel) {
 			cInizScelLabel.setIcon(imgEnteredC);

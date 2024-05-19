@@ -6,7 +6,10 @@ import java.util.HashMap;
 import java.awt.event.*;
 
 import javax.swing.*;
-
+/**
+ * il campo di gioco comune il quale comprende i campi di gioco
+ * di ogni giocatore
+ */
 public class PlayingField extends JLayeredPane implements MouseListener {
 	
 	private int z;
@@ -48,8 +51,10 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 		
 	}
 	
-	//il metodo che si occuper� di aggiungere la carta nella matrice richiamer� questo metodo passandogli un vettore
-	//di stringhe contenente nella prima cella le coordinate ("x,y") dell'ultima carta aggiunta e le coordinate delle altre celle occupabili
+	/*il metodo che si occupera di aggiungere la carta nella matrice richiamera
+	questo metodo passandogli un vettore
+	di stringhe contenente nella prima cella le coordinate ("x,y") dell'ultima
+	carta aggiunta e le coordinate delle altre celle occupabili*/
 	//adds opaque JLabels, where cards can be placed, to the playing field
 	public void addLabel(ArrayList<String> pos) {
 		//needed to set third dimension of JLayeredPane
@@ -104,7 +109,12 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 		
 		
 	}
-	
+	/**
+	 * una volta che la carta e stata posizionata non verra piu
+	 * mostrato il riquadro grigio in quanto non piu posizionabili
+	 * altre carte
+	 * @param pos
+	 */
 	public void removeLabel(ArrayList<String> pos) {
 		
 		for(int i=0; i<pos.size(); i++) {
@@ -115,7 +125,10 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 		}
 		
 	}
-	
+	/**
+	 * per piazzare la carta iniziale
+	 * @param la carta tramite icona
+	 */
 	public void posCIniz(Icon url) {
 		iconPlacedCard.add((ImageIcon) url);
 		placedCardLabel.get(0).setIcon(iconPlacedCard.get(iconPlacedCard.size()-1));
@@ -126,6 +139,10 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 	}
 
 	@Override
+	/**
+	 * gestione del click del mouse 
+	 * per il piazzamento della carta
+	 */
 	public void mouseClicked(MouseEvent e) {
 		if(mouseListenerEnable) {
 			for(int i=1; i<placedCardLabel.size(); i++) {

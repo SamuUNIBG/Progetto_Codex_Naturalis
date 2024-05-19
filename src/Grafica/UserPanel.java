@@ -4,7 +4,9 @@ import java.awt.*;
 import java.util.ArrayList;
 
 import javax.swing.*;
-
+/**
+ * il pannello delle carte in mano al giocatore
+ */
 public class UserPanel extends JPanel{
 
 	private ArrayList<User> utenti;

@@ -12,7 +12,10 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+/**
+ * classe che contiene i mazzi delle carte oro e risorse
+ * e mostra le carte selezionate da un giocatore
+ */
 public class CarteComuniPanel extends JPanel implements MouseListener {
 	
 	private JPanel[] sottoPanel;
@@ -139,7 +142,11 @@ public class CarteComuniPanel extends JPanel implements MouseListener {
 		}
 		
 	}
-
+	/**
+	 * metodo per la gestione delle carte selezionate
+	 * e mette le label grige dove non sono state posizionate le carte
+	 * per mostrare dove e possibile posizionare le prossime carte
+	 */
 	private void moveLabel() {
 		System.out.println("posizione: " +posSelectedC);
 		if(posSelectedC!=0 && posSelectedC!=4) {

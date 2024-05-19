@@ -19,7 +19,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-//utilizzare JTabbedPane. Guardare https://www.edatlas.it/scarica/informatica/info_java/Inserto3/5ScrollPaneTabbedPane.pdf
+/**
+ * classe per giocare la partita da Grafica
+ */
 
 public class Game extends JFrame implements MouseListener{
 	
@@ -32,9 +34,7 @@ public class Game extends JFrame implements MouseListener{
 	private ScoreTrack scoreTrackPane;
 	private JTabbedPane tabbedPane;
 	public Game(ArrayList<String> username, ArrayList<String> userColor) {
-		
-		//test
-        //scoreTrackPane.movePawn(1, 15);
+
 		
 		cardImageMap = new HashMap<Integer, String>();
 		CARDIMAGEARR = new ArrayList<Icon>();
@@ -105,10 +105,11 @@ public class Game extends JFrame implements MouseListener{
         
         logica = new LogicaGiocoGrafica(username, userColor, this);			
 	}
-	
+	/**
+	 * riempie l'HashMap con tutte le carte tramite lettura da file
+	 */
 	private void createHashMap() {
 		
-		//add all card's URL to HashMap
 		try {
 			Scanner sc = new Scanner(new FileInputStream(new File("file/cards_URL.csv")));
 	        
@@ -128,7 +129,9 @@ public class Game extends JFrame implements MouseListener{
 	    }
 				
 	}
-	
+	/**
+	 * riempie l'arrayList con le immagini di tutte carte 
+	 */
 	private void istantiateCardImage() {
 		
 		for(int i=0; i<cardImageMap.size(); i++) {
@@ -138,52 +141,99 @@ public class Game extends JFrame implements MouseListener{
 		}
 		
 	}
-	
+	/**
+	 * 
+	 * @param id
+	 * @return l'immagine della carta in posizione id
+	 */
 	public static Icon getImage(int id) {
 		return CARDIMAGEARR.get(id);
 	}
-	
+	/**
+	 * 
+	 * @param id
+	 * @return il percorso della carta nel file delle carte
+	 */
 	public String getURLImage(int id) {
 		return cardImageMap.get(id);
-	}
-	
+	} 
+	/**
+	 * metodo per il piazzamento della carta obiettivo personale
+	 * @param giocatore
+	 * @param pos
+	 * @param carta
+	 */
 	public void piazzaCartaPers(int giocatore, int pos, Icon carta) {
 		userPlayGround.get(giocatore).pescaCartaP(pos, carta);
 	}
-	
+	/**
+	 * metodo per il piazzamento della carta iniziale
+	 * @param giocatore
+	 * @param carta
+	 */
 	public void piazzaCartaIniz(int giocatore, Icon carta) {
 		userPlayGround.get(giocatore).piazzaCartaIniz(carta);
 	}
-	
+	/**
+	 * metodo per il piazzamento delle carte comuni quindi l obiettivo
+	 * comune visibile a tutti i giocatori
+	 * @param pos
+	 * @param id
+	 */
 	public void piazzaCartaCom(int pos, Integer id) {
 		cComuniPanel.piazzaCarta(pos, Game.getImage(id));
 		
 	}
-	
+	/**
+	 * gestire il pescaggio di una carta
+	 * @param pos
+	 */
 	public void pescaCarta(int pos) {
 		logica.pescaCarta(pos);
 	}
-	
+	/**
+	 * metodo che mette la carta pescata in mano al relativo giocatore
+	 * @param img
+	 */
 	public void assegnaCarta(Icon img) {
 		userPlayGround.get(LogicaGiocoGrafica.GIOCATOREATTUALE).pescaCartaP(img);
 	}
+	/**
+	 * 
+	 * @return la mano del giocatore
+	 */
 	
 	public UserPanel getUserPanel() {
 		return userPanel;
 	}
-	
+	/**
+	 * mostra il tracciato segna punti
+	 * @return il tracciato
+	 */
 	public ScoreTrack getScoreTrackPane() {
 		return scoreTrackPane;
 	}
+	/**
+	 * 
+	 * @param giocatore
+	 * @return il campo di gioco del giocatore
+	 */
 
 	public UserPlayGround getUserPlayGround(int giocatore) {
 		return userPlayGround.get(giocatore);
 	}
-	
+	/**
+	 * gestisce la giocata di una carta
+	 * @param idCarta
+	 * @param fronte
+	 * @param posCarta
+	 */
 	public void giocaC(int idCarta, boolean fronte, String posCarta) {
 		logica.giocaC(idCarta, fronte, posCarta);
 	}
-	
+	/**
+	 * in base al numero di giocatori crea i relativi campi di gioco
+	 */
 	public void setIndexTabbedPane(int index) {
 		tabbedPane.setSelectedIndex(index);
 		userPlayGround.get(index).carteVisibili(true);
@@ -192,7 +242,11 @@ public class Game extends JFrame implements MouseListener{
 				userPlayGround.get(i).carteVisibili(false);
 		}
 	}
-
+	/**
+	 * se la carta oro soddisfa il requisito per poterla giocare
+	 * @param id
+	 * @return true se e giocabile
+	 */
 	public boolean COroGiocabile(int id) {
 		return logica.COroGiocabile(id);
 		

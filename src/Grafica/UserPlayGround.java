@@ -5,7 +5,9 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 import javax.swing.*;
-
+/**
+ * campo di gioco di ogni giocatore
+ */
 public class UserPlayGround extends JPanel implements MouseListener {
 	
 	private JLabel[] opacoLabelCPersonali;
@@ -83,35 +85,12 @@ public class UserPlayGround extends JPanel implements MouseListener {
 		this.add(scrollPlayingField,gbc);
 		gbc.gridx=0;
 		gbc.gridy=1;
-		this.add(cartePersonaliPanel,gbc);
-		
-		//test
-		/*ArrayList<String> str = new ArrayList<String>(5);
-        str.add("40,40");
-        str.add("39,39");
-        str.add("39,41");
-        str.add("41,41");
-        str.add("41,39");
-        ArrayList<String> str2 = new ArrayList<String>(2);
-        str2.add("41,41");
-        str2.add("42,42");
-        ArrayList<String> str3 = new ArrayList<String>(2);
-        str3.add("42,42");
-        str3.add("41,43");
-        str3.add("43,41");
-        ArrayList<String> str4 = new ArrayList<String>(2);
-        str4.add("39,41");
-        str4.add("38,40");
-        str4.add("38,42");
-        str4.add("40,42");
-        playingField.addLabel(str);
-        playingField.addLabel(str);
-        playingField.addLabel(str2);
-        playingField.addLabel(str3);
-        playingField.addLabel(str4);*/
-			
+		this.add(cartePersonaliPanel,gbc);	
 	}
-	
+	/**
+	 * gestione delle Label che conterranno le carte che 
+	 * vengono giocate e quindi piazzate
+	 */
 	public void moveLabel() {
 		opacoLabelCPersonali[posSelectedC] = new JLabel();
 		opacoLabelCPersonali[posSelectedC].setBackground(new Color(170, 170, 170, 80));
@@ -129,22 +108,35 @@ public class UserPlayGround extends JPanel implements MouseListener {
 			cartePersonaliPanel.add(opacoLabelCPersonali[i]);
 		}
 	}
-	
-	//utile per il primo inserimento
+	/**
+	 * gestione del pescaggio della PRIMA carta
+	 * @param pos
+	 * @param icona della carta
+	 */
 	public void pescaCartaP(int pos, Icon url) {
 		opacoLabelCPersonali[pos].setIcon(url);
 		imgFronte[pos] = url;
 	}
-	
+	/**
+	 * gestione del pescaggio delle carte
+	 * @param icona della carta
+	 */
 	public void pescaCartaP(Icon url) {
 		opacoLabelCPersonali[2].setIcon(url);
 		imgFronte[2] = url;
 	}
-	
+	/**
+	 * gestione del piazzamento della carta iniziale
+	 * @param icona della carta
+	 */
 	public void piazzaCartaIniz(Icon url) {
 		playingField.posCIniz(url);
 	}
-	
+	/**
+	 * gestione della giocata della carta 
+	 * @param idCarta
+	 * @param posizione della Carta
+	 */
 	public void giocaC(int idCarta, String posCarta) {
 		game.giocaC(idCarta, fronte, posCarta);
 	}
@@ -152,6 +144,12 @@ public class UserPlayGround extends JPanel implements MouseListener {
 		setCursor(Cursor.getDefaultCursor());
 	}
 	@Override
+	/**
+	 * quando viene cliccato il mouse per il posizionamento della carta, 
+	 * viene controllato che tipo di carta e, ed in caso fosse
+	 * una carta oro, viene richiamato il metodo che verifica se 
+	 * si puo giocare o meno
+	 */
 	public void mouseClicked(MouseEvent e) {
 		if(mouseListenerEnable) {
 			for(int i=0; i<opacoLabelCPersonali.length-1; i++) {

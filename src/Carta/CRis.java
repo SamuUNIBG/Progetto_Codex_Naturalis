@@ -38,30 +38,6 @@ public class CRis extends CGiocabiliSpeciali {
 	public CRis(Simbolo simbolo, Colore colore, int IdCarta) {
 		super(0, simbolo, colore, false, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.VUOTO, IdCarta);
 	}
-	
-	//@Override
-	/*public int getIdCarta() {
-		return super.getIdCarta();
-	}
-
-	public Angolo[] getAngoli() {
-		return super.getAngoli();
-	}
-
-	public Simbolo getSimbolo() {
-		return super.getSimbolo();
-	}
-
-	public Colore getColore() {
-		return super.getColore();
-	}
-	
-	public void retro() {
-		super.retro();
-	}
-	public boolean getFronte() {
-		return super.getFronte();
-	}*/
 
 	@Override
 	/** torna una stringa con tutte le informazioni della carta 
@@ -106,24 +82,4 @@ public class CRis extends CGiocabiliSpeciali {
 		return str;
 		
 	}
-	
-	/*@Override
-	public boolean isContataScala() {
-		return super.isContataScala();
-	}
-	@Override
-	public void setContataScala(boolean contataScala) {
-		super.setContataScala(contataScala);
-	}
-	@Override
-	public boolean isContataL() {
-		return super.isContataL();
-	}
-	@Override
-	public void setContataL(boolean contataL) {
-		super.setContataL(contataL);
-	}*/
-
-	
-	
 }

@@ -14,7 +14,10 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-
+/**
+ * gestione del progresso della pedina del giocatore
+ * ogni qualvolta vi e una modifica di punteggio
+ */
 public class ScoreTrack extends JLayeredPane{
 	
 	private HashMap<Integer, String> pawnPositionMap;
@@ -71,7 +74,10 @@ public class ScoreTrack extends JLayeredPane{
 		}
 		
 	}
-	
+	/**
+	 * fa in modo che le pedine dei giocatori vengono 
+	 * messe sul tracciato
+	 */
 	private void createHashMap() {
 		
 		//add all pawn position to HashMap
@@ -94,7 +100,12 @@ public class ScoreTrack extends JLayeredPane{
 	    }
 				
 	}
-	
+	/**
+	 * sposta la pedina sulla casella del tracciato
+	 * relativa al punteggio in tempo reale del giocatore
+	 * @param pedina
+	 * @param punteggio attuale
+	 */
 	public void movePawn(int pedina, int punteggio) {
 		if(punteggio > 29)
 			punteggio = 29;

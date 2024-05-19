@@ -13,7 +13,10 @@ import java.util.HashSet;
 import javax.swing.*;
 
 import Logica.LogicaGiocoConsole;
-
+/**
+ * classe per la gestione della scelta dei nomi e dei colori
+ * dei giocatori in base a quanti giocatori giocano
+ */
 public class SelectGame extends JFrame implements ActionListener,MouseListener{
 	
 	private JButton homeButton, gameButton;
@@ -187,6 +190,11 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 	boolean arrayVuoto = true;
 	
 	@Override
+	/**
+	 * finita la personalizzazione dei giocatori
+	 * si puo scegliere se tornare alla Home oppure se 
+	 * avviare la partita
+	 */
 	public void actionPerformed(ActionEvent e) {
 		boolean uguale=false;
 		boolean seleziona=false;
@@ -265,6 +273,9 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 
 
 	@Override
+	/**
+	 * mostra avviso sul primo giocatore
+	 */
 	public void mouseClicked(MouseEvent e) {
 		if(MessaggioMostrato) {
 			MessaggioMostrato=false;

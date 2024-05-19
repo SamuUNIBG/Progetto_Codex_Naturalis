@@ -8,7 +8,11 @@ import java.awt.Cursor;
 import java.awt.Toolkit;
 import java.awt.event.*;
 
-
+/**
+ * schermata iniziale della partita nella quale poter scegliere 
+ * tra avviare una partita, vedere regole di gioco, impostazioni e 
+ * ringraziamenti
+ */
 public class Home extends JFrame implements ActionListener{
 	
 	//declaration of buttons to add to the window
@@ -155,6 +159,9 @@ public class Home extends JFrame implements ActionListener{
 	}
 
 	@Override
+	/**
+	 * gestisce i bottoni richiamando le opportune classi
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==nuovoGioco) {
 			this.dispose();

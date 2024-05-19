@@ -71,31 +71,16 @@ public class COro extends CGiocabiliSpeciali implements InterfacciaCarte2 {
 	public Simbolo getObiettivo() {
 		return this.obbiettivo;
 	}
-	/*public Angolo[] getAngoli() {
-		return super.getAngoli();
-	}
-	public Simbolo getSimbolo() {
-		return super.getSimbolo();
-	}
 
-	public Colore getColore() {
-		return super.getColore();
-	}*/
 	
 	public void retro() {
 		super.retro();
 	}
-	/*public boolean getFronte() {
-		return super.getFronte();
-	}*/
+	
 	public int[] getRisNecessarie() {
 		return this.risNecessarie;
 	}
-	/*@Override
-	public int getIdCarta() {
-		return super.getIdCarta();
-	}*/
-
+	
 	@Override
 	/** torna una stringa con tutte le informazioni della carta 
 	 * utile per capire le carte della mano
@@ -146,22 +131,6 @@ public class COro extends CGiocabiliSpeciali implements InterfacciaCarte2 {
 		
 	}
 
-	/*@Override
-	public boolean isContataScala() {
-		return super.isContataScala();
-	}
-	@Override
-	public void setContataScala(boolean contataScala) {
-		super.setContataScala(contataScala);
-	}
-	@Override
-	public boolean isContataL() {
-		return super.isContataL();
-	}
-	@Override
-	public void setContataL(boolean contataL) {
-		super.setContataL(contataL);
-	}*/
 	/**
 	 * le carte oro possono dare dei punti al loro piazzamento se viene
 	 * realizzato l obiettivo richeisto dalla carta in questione
