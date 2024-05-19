@@ -30,7 +30,7 @@ import Tavolo.CartaTavolo;
 import Tavolo.Giocatore;
 import Tavolo.Tracciato;
 
-public class LogicaGiocoGrafica extends JFrame implements InterfacciaLogica,ActionListener {
+public class LogicaGiocoGrafica extends JFrame implements InterfacciaLogica, WindowListener {
 
 	private Game game;
 	
@@ -39,7 +39,6 @@ public class LogicaGiocoGrafica extends JFrame implements InterfacciaLogica,Acti
 	private Tracciato tracciato;
 	public static int NUMGIOCATORI;
 	private JFrame frame = new JFrame();
-	private JButton closeButton;
 	private ArrayList<CObb> cObb;
 	private ImageIcon[] imgObb;
 	private ArrayList<Integer> idCCom;
@@ -265,7 +264,7 @@ public class LogicaGiocoGrafica extends JFrame implements InterfacciaLogica,Acti
 	
 	public void pescaCarta(int pos) {
 		
-		if(giocatoreAttuale.getPunteggio() > 0 || (cartaTavolo.getMazzoOro().getCRimaste()==0 && cartaTavolo.getMazzoRis().getCRimaste()==0)) {
+		if(giocatoreAttuale.getPunteggio() > 19 || (cartaTavolo.getMazzoOro().getCRimaste()==0 && cartaTavolo.getMazzoRis().getCRimaste()==0)) {
 			punti20 = true;
 		}
 		
@@ -334,8 +333,8 @@ public class LogicaGiocoGrafica extends JFrame implements InterfacciaLogica,Acti
 		//sets title, dimension of the JFrame
 		frame.setIconImage(logo.getImage());
 		frame.setTitle("Codex Naturalis - Vincitori");
-		frame.setPreferredSize(new Dimension(500,500));
-		
+		frame.setPreferredSize(new Dimension(400,400));
+		frame.addWindowListener(this);
 		//frame.setMinimumSize(new Dimension(sfondo.getIconWidth()+16, sfondo.getIconHeight()+39));
 		//sets the window not resizable by the users
 		frame.setResizable(false);
@@ -354,10 +353,7 @@ public class LogicaGiocoGrafica extends JFrame implements InterfacciaLogica,Acti
 		titleLabel.setOpaque(false);
 		
 		
-		//buttons to add to the infoPanel
-		closeButton = new JButton("Close");
-		closeButton.setFocusPainted(false);
-		closeButton.addActionListener(this);				
+		
 		//panel with info components
 		JPanel infoPanel = new JPanel();
 		infoPanel.setPreferredSize(new Dimension(300, 300));
@@ -366,7 +362,7 @@ public class LogicaGiocoGrafica extends JFrame implements InterfacciaLogica,Acti
 		
 		//needed to set a gap between ifnoPanel and homeButton
 		JPanel gapPanel = new JPanel();
-		gapPanel.setPreferredSize(new Dimension(100, 100));
+		gapPanel.setPreferredSize(new Dimension(50, 50));
 		gapPanel.setOpaque(false);
 		JPanel gapPanel2 = new JPanel();
 		gapPanel2.setPreferredSize(new Dimension(100, 100));
@@ -380,7 +376,9 @@ public class LogicaGiocoGrafica extends JFrame implements InterfacciaLogica,Acti
 		gbc.gridx=0;
 		gbc.gridy=0;
 		infoPanel.add(titleLabel,gbc);
-		
+		gbc.gridx=0;
+		gbc.gridy=0;
+		infoPanel.add(gapPanel,gbc);
 		
 		int maxPunti=tracciato.getGiocatore(0).getPunteggio();
 		ArrayList<String> giocatore = new ArrayList<String>();
@@ -405,19 +403,17 @@ public class LogicaGiocoGrafica extends JFrame implements InterfacciaLogica,Acti
 		}
 		for(int i=0;i<giocatore.size();i++) {
 			JLabel vincitore=new JLabel(giocatore.get(i));
-			
+			gbc.gridx=0;
+			gbc.gridy=y+1;
+			infoPanel.add(gapPanel2, gbc);
 			gbc.gridx=0;
 			gbc.gridy=y+2;
 			infoPanel.add(vincitore, gbc);
-			gbc.gridx=0;
-			gbc.gridy=y+3;
-			infoPanel.add(gapPanel, gbc);
+			
 			y+=2;
 			System.out.println("Congratulazioni "+giocatore.get(i)+" hai vinto!\n");
 		}
-		gbc.gridx=0;
-		gbc.gridy=y+1;
-		infoPanel.add(closeButton, gbc);
+		
 		JLabel sfondoLabel = new JLabel();
 		sfondoLabel.setIcon(sfondo);
 		
@@ -435,17 +431,53 @@ public class LogicaGiocoGrafica extends JFrame implements InterfacciaLogica,Acti
 		frame.add(selectGamePanel);
 		//set window's dimension based on components
 		frame.pack();
+		frame.setLocationRelativeTo(null);
 		//makes frame visible
 		frame.setVisible(true);		
 		
 	}
 
+	
+
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==closeButton) {
-			frame.dispose();
-			new Home();
-		}
+	public void windowOpened(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowClosing(WindowEvent e) {
+		frame.dispose();
+		this.dispose();
+	}
+
+	@Override
+	public void windowClosed(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowIconified(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowDeiconified(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowActivated(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowDeactivated(WindowEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 
