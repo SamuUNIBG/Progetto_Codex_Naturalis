@@ -22,7 +22,7 @@ import Tavolo.CartaTavolo;
 import Tavolo.Giocatore;
 import Tavolo.Tracciato;
 
-public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
+public class LogicaGiocoGrafica implements InterfacciaLogica {
 
 	private Game game;
 	
@@ -311,6 +311,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 			cObb.get(1).calcolaObb(tracciato.getGiocatore(i));
 			CObb cObbPers = tracciato.getGiocatore(i).getCObbPer();
 			cObbPers.calcolaObb(tracciato.getGiocatore(i));
+			game.getScoreTrackPane().movePawn(LogicaGiocoGrafica.GIOCATOREATTUALE, giocatoreAttuale.getPunteggio());
 		}
 		
 		Vincitore();
@@ -343,36 +344,6 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 		for(int i=0;i<giocatore.size();i++) {
 			System.out.println("Congratulazioni "+giocatore.get(i)+" hai vinto!\n");
 		}
-		
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
