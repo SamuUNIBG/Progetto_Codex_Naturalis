@@ -148,7 +148,9 @@ public class UserPlayGround extends JPanel implements MouseListener {
 	public void giocaC(int idCarta, String posCarta) {
 		game.giocaC(idCarta, fronte, posCarta);
 	}
-
+	public void mouseReset() {
+		setCursor(Cursor.getDefaultCursor());
+	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if(mouseListenerEnable) {
@@ -158,6 +160,14 @@ public class UserPlayGround extends JPanel implements MouseListener {
 					idSelectedC = Integer.parseInt(((ImageIcon)imgEnteredC).getDescription());
 					playingField.mouseListenerEnable(true);
 					if(e.getButton() == MouseEvent.BUTTON1) {
+						Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("spunta.png")).getImage(), new Point(0,0), "Custum cursor");
+						setCursor(cursor);
+						try {
+							Thread.sleep(450);
+							mouseReset();
+						} catch (InterruptedException e1) {
+							e1.printStackTrace();
+						}
 						if(Integer.parseInt(((ImageIcon)imgEnteredC).getDescription())>39 && Integer.parseInt(((ImageIcon)imgEnteredC).getDescription())<80) {
 							System.out.println("CONTROLLO ORO");
 							if(game.COroGiocabile(Integer.parseInt(((ImageIcon)imgEnteredC).getDescription()))) {
@@ -170,6 +180,14 @@ public class UserPlayGround extends JPanel implements MouseListener {
 							fronte = true;
 						}
 					}else if(e.getButton() == MouseEvent.BUTTON3) {
+						Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("spunta.png")).getImage(), new Point(0,0), "Custum cursor");
+						setCursor(cursor);
+						try {
+							Thread.sleep(450);
+							mouseReset();
+						} catch (InterruptedException e1) {
+							e1.printStackTrace();
+						}
 						imgSelectedC = Game.getImage(calcolaNewId(Integer.parseInt(((ImageIcon)imgEnteredC).getDescription())));//opacoLabelCPersonali[i].getIcon();
 						fronte = false;
 					}
@@ -232,7 +250,9 @@ public class UserPlayGround extends JPanel implements MouseListener {
 	@Override
 	public void mouseExited(MouseEvent e) {
 		if(mouseListenerEnable) {
+			
 			for(int i=0; i<opacoLabelCPersonali.length-1; i++) {
+				
 				if(e.getSource()==opacoLabelCPersonali[i]) {
 					opacoLabelCPersonali[i].setIcon(imgEnteredC);
 				}

@@ -2,7 +2,10 @@ package Grafica;
 
 import javax.swing.*;
 
+
 import java.awt.*;
+import java.awt.Cursor;
+import java.awt.Toolkit;
 import java.awt.event.*;
 
 

@@ -21,7 +21,7 @@ import java.io.FileNotFoundException;
 
 //utilizzare JTabbedPane. Guardare https://www.edatlas.it/scarica/informatica/info_java/Inserto3/5ScrollPaneTabbedPane.pdf
 
-public class Game extends JFrame{
+public class Game extends JFrame implements MouseListener{
 	
 	private HashMap<Integer, String> cardImageMap;
 	public static ArrayList<Icon> CARDIMAGEARR;
@@ -31,7 +31,6 @@ public class Game extends JFrame{
 	private UserPanel userPanel;
 	private ScoreTrack scoreTrackPane;
 	private JTabbedPane tabbedPane;
-
 	public Game(ArrayList<String> username, ArrayList<String> userColor) {
 		
 		//test
@@ -84,6 +83,7 @@ public class Game extends JFrame{
         
         //pannello contenente nomi utente
         userPanel = new UserPanel(username, userColor);
+        userPanel.addMouseListener(this);
         
         //sotto pannello contenente le carte
       	cComuniPanel = new CarteComuniPanel(this);
@@ -93,7 +93,7 @@ public class Game extends JFrame{
         
         
         scoreTrackPane = new ScoreTrack(userColor);
-        
+        scoreTrackPane.addMouseListener(this);
 			
       	//add component to window
         this.add(tabbedPane,BorderLayout.CENTER);
@@ -195,6 +195,37 @@ public class Game extends JFrame{
 
 	public boolean COroGiocabile(int id) {
 		return logica.COroGiocabile(id);
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("X.png")).getImage(), new Point(0,0), "Custum cursor");
+		setCursor(cursor);
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		setCursor(Cursor.getDefaultCursor());
 		
 	}
 
