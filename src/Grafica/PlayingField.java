@@ -24,6 +24,7 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 	public PlayingField(UserPlayGround userPlayGroundMother){
 		
 		this.setLayout(null);
+		this.addMouseListener(this);
 		
 		z = 0;
 		mouseListenerEnable = false;
@@ -137,6 +138,10 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 	public void mouseListenerEnable(boolean enable) {
 		mouseListenerEnable = enable;
 	}
+	
+	public boolean isMouseListenerEnable() {
+		return mouseListenerEnable;
+	}
 
 	@Override
 	/**
@@ -175,7 +180,14 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
+		if(!mouseListenerEnable) {
+			if(e.getSource()==this) {
+				Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("X.png")).getImage(), new Point(0,0), "Custum cursor");
+				setCursor(cursor);
+			}
+		}else {
+			setCursor(Cursor.getDefaultCursor()); 
+		}
 		
 	}
 

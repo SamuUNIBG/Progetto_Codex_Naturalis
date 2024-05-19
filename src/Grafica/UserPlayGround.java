@@ -20,6 +20,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 	private JPanel cartePersonaliPanel;
 	private int idSelectedC;
 	private Icon[] imgFronte;
+	private JScrollPane scrollPlayingField;
 	
 	public UserPlayGround(Game game) {
 		
@@ -41,7 +42,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 		playingField = new PlayingField(this);
 		playingField.setVisible(true);
 		
-		JScrollPane	scrollPlayingField = new JScrollPane(playingField);
+		scrollPlayingField = new JScrollPane(playingField);
 		scrollPlayingField.getViewport().setMinimumSize(new Dimension(screenSize.width-330, screenSize.height-545));
 		scrollPlayingField.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);  
 		scrollPlayingField.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -51,17 +52,19 @@ public class UserPlayGround extends JPanel implements MouseListener {
 		scrollPlayingField.getVerticalScrollBar().setMinimum(0);
 		scrollPlayingField.getVerticalScrollBar().setMaximum(5500);
 		scrollPlayingField.getVerticalScrollBar().setValue((5500-113)/2-(screenSize.height-545-113)/2);
+		scrollPlayingField.addMouseListener(this);
 		
 		
 		FlowLayout CPlayout=new FlowLayout();
 		CPlayout.setHgap(190);
 		CPlayout.setVgap(16);
-			    
+		
 		//Pannelli carte personali
 		cartePersonaliPanel = new JPanel();
 		cartePersonaliPanel.setMinimumSize(new Dimension(screenSize.width-313,145));
 		cartePersonaliPanel.setLayout(CPlayout);
 		cartePersonaliPanel.setOpaque(true);
+		cartePersonaliPanel.addMouseListener(this);
 		      	
 		opacoLabelCPersonali = new JLabel[4];
 		for(int i=0; i<opacoLabelCPersonali.length; i++) {
@@ -70,7 +73,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 			opacoLabelCPersonali[i].setOpaque(true);
 			opacoLabelCPersonali[i].setPreferredSize(new Dimension(163, 113));
 			opacoLabelCPersonali[i].setVisible(true);
-			if(i<opacoLabelCPersonali.length-1)
+			//if(i<opacoLabelCPersonali.length-1)
 				opacoLabelCPersonali[i].addMouseListener(this);
 		}
 			    
@@ -78,7 +81,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 			cartePersonaliPanel.add(opacoLabelCPersonali[i]);
 			
 		}
-				
+		
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx=0;
 		gbc.gridy=0;
@@ -99,9 +102,12 @@ public class UserPlayGround extends JPanel implements MouseListener {
 		opacoLabelCPersonali[posSelectedC].setVisible(true);
 		opacoLabelCPersonali[posSelectedC].addMouseListener(this);
 		for(int i=posSelectedC; i<2; i++) {
-			JLabel temp = opacoLabelCPersonali[i+1];
+			Icon tempI = imgFronte[i+1];
+			imgFronte[i+1] = imgFronte[i];
+			imgFronte[i] = tempI;
+			JLabel tempL = opacoLabelCPersonali[i+1];
 			opacoLabelCPersonali[i+1] = opacoLabelCPersonali[i];
-			opacoLabelCPersonali[i] = temp; 
+			opacoLabelCPersonali[i] = tempL; 
 		}
 		cartePersonaliPanel.removeAll();
 		for(int i=0; i<4; i++) {
@@ -158,24 +164,40 @@ public class UserPlayGround extends JPanel implements MouseListener {
 					idSelectedC = Integer.parseInt(((ImageIcon)imgEnteredC).getDescription());
 					playingField.mouseListenerEnable(true);
 					if(e.getButton() == MouseEvent.BUTTON1) {
-						Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("spunta.png")).getImage(), new Point(0,0), "Custum cursor");
-						setCursor(cursor);
-						try {
-							Thread.sleep(450);
-							mouseReset();
-						} catch (InterruptedException e1) {
-							e1.printStackTrace();
-						}
 						if(Integer.parseInt(((ImageIcon)imgEnteredC).getDescription())>39 && Integer.parseInt(((ImageIcon)imgEnteredC).getDescription())<80) {
-							System.out.println("CONTROLLO ORO");
 							if(game.COroGiocabile(Integer.parseInt(((ImageIcon)imgEnteredC).getDescription()))) {
 								imgSelectedC = imgEnteredC;
 								fronte = true;
-							}else
+								Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("spunta.png")).getImage(), new Point(0,0), "Custum cursor");
+								setCursor(cursor);
+								try {
+									Thread.sleep(450);
+									mouseReset();
+								} catch (InterruptedException e1) {
+									e1.printStackTrace();
+								}
+							}else {
 								playingField.mouseListenerEnable(false);
+								Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("x.png")).getImage(), new Point(0,0), "Custum cursor");
+								setCursor(cursor);
+								try {
+									Thread.sleep(450);
+									mouseReset();
+								} catch (InterruptedException e1) {
+									e1.printStackTrace();
+								}
+							}
 						}else {
 							imgSelectedC = imgEnteredC;
 							fronte = true;
+							Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("spunta.png")).getImage(), new Point(0,0), "Custum cursor");
+							setCursor(cursor);
+							try {
+								Thread.sleep(450);
+								mouseReset();
+							} catch (InterruptedException e1) {
+								e1.printStackTrace();
+							}
 						}
 					}else if(e.getButton() == MouseEvent.BUTTON3) {
 						Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("spunta.png")).getImage(), new Point(0,0), "Custum cursor");
@@ -214,6 +236,21 @@ public class UserPlayGround extends JPanel implements MouseListener {
 				if(e.getSource()==opacoLabelCPersonali[i]) {
 					imgEnteredC = opacoLabelCPersonali[i].getIcon();
 					opacoLabelCPersonali[i].setIcon(Game.getImage(calcolaNewId(Integer.parseInt(((ImageIcon)imgEnteredC).getDescription()))));
+				}
+			}
+			if(e.getSource()==opacoLabelCPersonali[3]) {
+				Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("X.png")).getImage(), new Point(0,0), "Custum cursor");
+				setCursor(cursor);
+			}
+		}else {
+			if(e.getSource()==cartePersonaliPanel || (e.getSource()==scrollPlayingField && !(playingField.isMouseListenerEnable()))) {
+				Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("X.png")).getImage(), new Point(0,0), "Custum cursor");
+				setCursor(cursor);
+			}
+			for(int i=0; i<opacoLabelCPersonali.length; i++) {
+				if(e.getSource()==opacoLabelCPersonali[i]) {
+					Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("X.png")).getImage(), new Point(0,0), "Custum cursor");
+					setCursor(cursor);
 				}
 			}
 		}
@@ -255,7 +292,12 @@ public class UserPlayGround extends JPanel implements MouseListener {
 					opacoLabelCPersonali[i].setIcon(imgEnteredC);
 				}
 			}
-		}
+			if(e.getSource()==opacoLabelCPersonali[3]) {
+				setCursor(Cursor.getDefaultCursor());
+			}
+			
+		}else
+			setCursor(Cursor.getDefaultCursor());
 		
 	}
 	

@@ -279,7 +279,7 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		if(MessaggioMostrato) {
 			MessaggioMostrato=false;
-			JOptionPane.showMessageDialog(null, "Il primo giocatore creato,sar√† il primo ad iniziare","ATTENZIONE!",JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Il primo giocatore creato, sara'† il primo ad iniziare","ATTENZIONE!",JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 	@Override

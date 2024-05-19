@@ -12,6 +12,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import java.util.*;
 
@@ -23,7 +25,7 @@ import java.io.FileNotFoundException;
  * classe per giocare la partita da Grafica
  */
 
-public class Game extends JFrame implements MouseListener{
+public class Game extends JFrame implements MouseListener, WindowListener {
 	
 	private HashMap<Integer, String> cardImageMap;
 	public static ArrayList<Icon> CARDIMAGEARR;
@@ -51,8 +53,8 @@ public class Game extends JFrame implements MouseListener{
 		//sets the window position to the center of the screen
 		this.setLocation((screenSize.width/2)-(this.getWidth()/2), (screenSize.height/2)-(this.getHeight()/2));
 		//exit out of application
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		this.addWindowListener(this);
 		
 		this.createHashMap();
 		this.istantiateCardImage();
@@ -280,6 +282,52 @@ public class Game extends JFrame implements MouseListener{
 	@Override
 	public void mouseExited(MouseEvent e) {
 		setCursor(Cursor.getDefaultCursor());
+		
+	}
+
+	@Override
+	public void windowOpened(WindowEvent e) {
+		/*JOptionPane.showMessageDialog(null, "sposta il cursore del mouse sulla carta "
+				+ "x vederne il retro; \ntasto sinistro x giocarla di fronte; \n"
+				+ "tasto destro x giocarla di retro",
+				"INFO UTILI X GIOCARE LE CARTE",JOptionPane.INFORMATION_MESSAGE);*/
+		
+	}
+
+	@Override
+	public void windowClosing(WindowEvent e) {
+		if(JOptionPane.showConfirmDialog(this, "Conferma Uscita", "Uscire dalla partita", JOptionPane.YES_NO_OPTION)==0)
+			this.dispose();
+		
+	}
+
+	@Override
+	public void windowClosed(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowIconified(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowDeiconified(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowActivated(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowDeactivated(WindowEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 
