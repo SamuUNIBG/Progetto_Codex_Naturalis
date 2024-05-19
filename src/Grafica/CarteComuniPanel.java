@@ -1,9 +1,12 @@
 package Grafica;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -29,6 +32,7 @@ public class CarteComuniPanel extends JPanel implements MouseListener {
 		
 		MOUSELISTENERENABLE = false;
 		this.game = game;
+		this.addMouseListener(this);
 		
 		this.setPreferredSize(new Dimension(200, 200));
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -136,6 +140,13 @@ public class CarteComuniPanel extends JPanel implements MouseListener {
 					break;
 				}
 			}
+			try {
+				Thread.sleep(5);
+				Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("X.png")).getImage(), new Point(0,0), "Custum cursor");
+				setCursor(cursor);
+			} catch (InterruptedException e1) {
+				e1.printStackTrace();
+			}
 		}
 		
 	}
@@ -179,13 +190,26 @@ public class CarteComuniPanel extends JPanel implements MouseListener {
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
+		if(CarteComuniPanel.MOUSELISTENERENABLE) {
+			setCursor(Cursor.getDefaultCursor());
+		}else {
+			if(e.getSource()==this) {
+				Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("X.png")).getImage(), new Point(0,0), "Custum cursor");
+				setCursor(cursor);
+			}
+			for(int i=0; i<opacoLabelCComuni.length; i++) {
+				if(e.getSource()==opacoLabelCComuni[i]) {
+					Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("X.png")).getImage(), new Point(0,0), "Custum cursor");
+					setCursor(cursor);
+				}
+			}
+		}
 		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
+		setCursor(Cursor.getDefaultCursor());
 		
 	}
 	
