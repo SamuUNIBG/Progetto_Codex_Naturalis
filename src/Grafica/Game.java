@@ -186,6 +186,11 @@ public class Game extends JFrame{
 	
 	public void setIndexTabbedPane(int index) {
 		tabbedPane.setSelectedIndex(index);
+		userPlayGround.get(index).carteVisibili(true);
+		for(int i=0; i<LogicaGiocoGrafica.numGiocatori; i++) {
+			if(i != index)
+				userPlayGround.get(i).carteVisibili(false);
+		}
 	}
 
 	public boolean COroGiocabile(int id) {

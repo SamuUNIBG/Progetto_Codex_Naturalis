@@ -109,7 +109,6 @@ public class CampoGioco {
 	 */
 	private void controllaNuovePosizioni(String posizione, CGiocabili carta) {
 		posReturn.clear();
-		posNonPiuDisponibili.clear();
 		posizioniDisponibili.remove(posizione);
 		posReturn.add(posizione);
 		
@@ -121,8 +120,7 @@ public class CampoGioco {
 			posReturn.add((posY-1) + "," + (posX-1));
 			posizioniDisponibili.add((posY-1) + "," + (posX-1));
 		}else {
-			posizioniDisponibili.remove((posY-1) + "," + (posX-1));
-			if(campo[posY-1][posX-1]==null && carta.getAngoli()[0].getSimbolo()==Simbolo.ASSENTE)
+			if(campo[posY-1][posX-1]==null || carta.getAngoli()[0].getSimbolo()==Simbolo.ASSENTE)
 				posNonPiuDisponibili.add((posY-1) + "," + (posX-1));
 		}
 			
@@ -131,8 +129,7 @@ public class CampoGioco {
 			posizioniDisponibili.add((posY+1) + "," + (posX-1));
 		}
 		else {
-			posizioniDisponibili.remove((posY+1) + "," + (posX-1));
-			if(campo[posY+1][posX-1]==null && carta.getAngoli()[3].getSimbolo()==Simbolo.ASSENTE)
+			if(campo[posY+1][posX-1]==null || carta.getAngoli()[3].getSimbolo()==Simbolo.ASSENTE)
 				posNonPiuDisponibili.add((posY+1) + "," + (posX-1));
 		}
 			
@@ -140,8 +137,7 @@ public class CampoGioco {
 			posReturn.add((posY-1) + "," + (posX+1));
 			posizioniDisponibili.add((posY-1) + "," + (posX+1));
 		}else {
-			posizioniDisponibili.remove((posY-1) + "," + (posX+1));
-			if(campo[posY-1][posX+1]==null && carta.getAngoli()[1].getSimbolo()==Simbolo.ASSENTE)
+			if(campo[posY-1][posX+1]==null || carta.getAngoli()[1].getSimbolo()==Simbolo.ASSENTE)
 				posNonPiuDisponibili.add((posY-1) + "," + (posX+1));
 		}
 			
@@ -149,9 +145,18 @@ public class CampoGioco {
 			posReturn.add((posY+1) + "," + (posX+1));
 			posizioniDisponibili.add((posY+1) + "," + (posX+1));
 		}else {
-			posizioniDisponibili.remove((posY+1) + "," + (posX+1));
-			if(campo[posY+1][posX+1]==null && carta.getAngoli()[2].getSimbolo()==Simbolo.ASSENTE)
+			if(campo[posY+1][posX+1]==null || carta.getAngoli()[2].getSimbolo()==Simbolo.ASSENTE)
 				posNonPiuDisponibili.add((posY+1) + "," + (posX+1));
+		}
+		
+		for(int i=0; i<posReturn.size(); i++) {
+			if(posNonPiuDisponibili.contains(posReturn.get(i)))
+				posReturn.remove(i);
+		}
+		
+		for(int i=0; i<posizioniDisponibili.size(); i++) {
+			if(posNonPiuDisponibili.contains(posizioniDisponibili.get(i)))
+				posizioniDisponibili.remove(i);
 		}
 		
 	}

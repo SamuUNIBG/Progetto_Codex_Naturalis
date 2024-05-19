@@ -29,7 +29,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 	private CartaTavolo cartaTavolo;
 	
 	private Tracciato tracciato;
-	private int numGiocatori;
+	public static int numGiocatori;
 	
 	private ArrayList<CObb> cObb;
 	private ImageIcon[] imgObb;
@@ -49,10 +49,10 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 		idCCom = new ArrayList<Integer>();
 		cartaTavolo = new CartaTavolo();
 		tracciato = new Tracciato(username, userColor);
-		numGiocatori = tracciato.getNumGiocatori();
+		LogicaGiocoGrafica.numGiocatori = tracciato.getNumGiocatori();
 		imgObb = new ImageIcon[2];
 		
-		for(int i=0; i<numGiocatori; i++) {
+		for(int i=0; i<LogicaGiocoGrafica.numGiocatori; i++) {
 			LogicaGiocoGrafica.GIOCATOREATTUALE = i;
 			cObb = new ArrayList<CObb>();
 			
@@ -106,7 +106,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 		LogicaGiocoGrafica.GIOCATOREATTUALE=-1;
 		punti20=false;
 		ultimoGiro=false;
-		counterUltimoGiro = numGiocatori;
+		counterUltimoGiro = LogicaGiocoGrafica.numGiocatori;
 		
 		Turni();
 			
@@ -134,7 +134,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 
 	@Override
 	public void Turni() {
-		if(LogicaGiocoGrafica.GIOCATOREATTUALE==numGiocatori-1){
+		if(LogicaGiocoGrafica.GIOCATOREATTUALE==LogicaGiocoGrafica.numGiocatori-1){
 			LogicaGiocoGrafica.GIOCATOREATTUALE=0;
 			if(punti20)
 				ultimoGiro = true;
@@ -306,7 +306,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 		
 		ArrayList<CObb> cObb = cartaTavolo.getcObbScp();
 		
-		for(int i=0; i<numGiocatori; i++) {			
+		for(int i=0; i<LogicaGiocoGrafica.numGiocatori; i++) {			
 			cObb.get(0).calcolaObb(tracciato.getGiocatore(i));
 			cObb.get(1).calcolaObb(tracciato.getGiocatore(i));
 			CObb cObbPers = tracciato.getGiocatore(i).getCObbPer();
@@ -324,7 +324,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 		ArrayList<String> giocatore = new ArrayList<String>();
 		giocatore.add(tracciato.getGiocatore(0).getSoprannome());
 		
-		for(int i=1; i<numGiocatori; i++) {
+		for(int i=1; i<LogicaGiocoGrafica.numGiocatori; i++) {
 			int punti = tracciato.getGiocatore(i).getPunteggio();
 			if(punti > maxPunti) {
 				giocatore.clear();

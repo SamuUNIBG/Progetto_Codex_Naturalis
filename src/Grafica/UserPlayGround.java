@@ -17,12 +17,14 @@ public class UserPlayGround extends JPanel implements MouseListener {
 	private boolean fronte;
 	private JPanel cartePersonaliPanel;
 	private int idSelectedC;
+	private Icon[] imgFronte;
 	
 	public UserPlayGround(Game game) {
 		
 		this.game=game;
+		imgFronte = new Icon[4];
 		
-		mouseListenerEnable = false;
+		this.mouseListenerEnable = false;
 		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		
@@ -131,12 +133,12 @@ public class UserPlayGround extends JPanel implements MouseListener {
 	//utile per il primo inserimento
 	public void pescaCartaP(int pos, Icon url) {
 		opacoLabelCPersonali[pos].setIcon(url);
-		//opacoLabelCPersonali[this.posSelectedC].setDisabledIcon(imgEnteredC);
+		imgFronte[pos] = url;
 	}
 	
 	public void pescaCartaP(Icon url) {
 		opacoLabelCPersonali[2].setIcon(url);
-		//opacoLabelCPersonali[this.posSelectedC].setDisabledIcon(imgEnteredC);
+		imgFronte[2] = url;
 	}
 	
 	public void piazzaCartaIniz(Icon url) {
@@ -191,10 +193,12 @@ public class UserPlayGround extends JPanel implements MouseListener {
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		for(int i=0; i<opacoLabelCPersonali.length-1; i++) {
-			if(e.getSource()==opacoLabelCPersonali[i]) {
-				imgEnteredC = opacoLabelCPersonali[i].getIcon();
-				opacoLabelCPersonali[i].setIcon(Game.getImage(calcolaNewId(Integer.parseInt(((ImageIcon)imgEnteredC).getDescription()))));
+		if(mouseListenerEnable) {
+			for(int i=0; i<opacoLabelCPersonali.length-1; i++) {
+				if(e.getSource()==opacoLabelCPersonali[i]) {
+					imgEnteredC = opacoLabelCPersonali[i].getIcon();
+					opacoLabelCPersonali[i].setIcon(Game.getImage(calcolaNewId(Integer.parseInt(((ImageIcon)imgEnteredC).getDescription()))));
+				}
 			}
 		}
 		
@@ -218,6 +222,8 @@ public class UserPlayGround extends JPanel implements MouseListener {
 				return 107;
 			case 70,71,72,73,74,75,76,77,78,79:
 				return 109;
+			case 86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101:
+				return 116;
 		
 		}
 		return 0;
@@ -225,9 +231,11 @@ public class UserPlayGround extends JPanel implements MouseListener {
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		for(int i=0; i<opacoLabelCPersonali.length-1; i++) {
-			if(e.getSource()==opacoLabelCPersonali[i]) {
-				opacoLabelCPersonali[i].setIcon(imgEnteredC);
+		if(mouseListenerEnable) {
+			for(int i=0; i<opacoLabelCPersonali.length-1; i++) {
+				if(e.getSource()==opacoLabelCPersonali[i]) {
+					opacoLabelCPersonali[i].setIcon(imgEnteredC);
+				}
 			}
 		}
 		
@@ -247,6 +255,19 @@ public class UserPlayGround extends JPanel implements MouseListener {
 	
 	public void mouseListenerEnable(boolean enable) {
 		mouseListenerEnable = enable;
+	}
+
+	public void carteVisibili(boolean fronteVisibile) {
+		if(fronteVisibile) {
+			this.mouseListenerEnable = true;
+			for(int i=0; i<4; i++)
+				opacoLabelCPersonali[i].setIcon(imgFronte[i]);
+		}else{
+			this.mouseListenerEnable = false;
+			for(int i=0; i<4; i++)
+				opacoLabelCPersonali[i].setIcon(Game.getImage(calcolaNewId(Integer.parseInt(((ImageIcon)imgFronte[i]).getDescription()))));
+		}
+		
 	}
 	
 }
