@@ -18,11 +18,13 @@ public class CampoGioco {
 	
 	private ArrayList<String> posReturn;
 	private ArrayList<String> posizioniDisponibili;
+	private ArrayList<String> posNonPiuDisponibili;
 	
 	public CampoGioco(){
 		
 		posReturn = new ArrayList<String>();
 		posizioniDisponibili = new ArrayList<String>();
+		posNonPiuDisponibili = new ArrayList<String>();
 		
 		campo = new CGiocabili[DIMENSIONEY][DIMENSIONEX];
 		campoPrint = new int[DIMENSIONEY][DIMENSIONEX];
@@ -107,6 +109,7 @@ public class CampoGioco {
 	 */
 	private void controllaNuovePosizioni(String posizione, CGiocabili carta) {
 		posReturn.clear();
+		posNonPiuDisponibili.clear();
 		posizioniDisponibili.remove(posizione);
 		posReturn.add(posizione);
 		
@@ -117,21 +120,42 @@ public class CampoGioco {
 		if(campo[posY-1][posX-1]==null && carta.getAngoli()[0].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY-1) + "," + (posX-1));
 			posizioniDisponibili.add((posY-1) + "," + (posX-1));
+		}else {
+			posizioniDisponibili.remove((posY-1) + "," + (posX-1));
+			if(campo[posY-1][posX-1]==null && carta.getAngoli()[0].getSimbolo()==Simbolo.ASSENTE)
+				posNonPiuDisponibili.add((posY-1) + "," + (posX-1));
 		}
+			
 		if(campo[posY+1][posX-1]==null && carta.getAngoli()[3].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY+1) + "," + (posX-1));
 			posizioniDisponibili.add((posY+1) + "," + (posX-1));
 		}
+		else {
+			posizioniDisponibili.remove((posY+1) + "," + (posX-1));
+			if(campo[posY+1][posX-1]==null && carta.getAngoli()[3].getSimbolo()==Simbolo.ASSENTE)
+				posNonPiuDisponibili.add((posY+1) + "," + (posX-1));
+		}
+			
 		if(campo[posY-1][posX+1]==null && carta.getAngoli()[1].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY-1) + "," + (posX+1));
 			posizioniDisponibili.add((posY-1) + "," + (posX+1));
+		}else {
+			posizioniDisponibili.remove((posY-1) + "," + (posX+1));
+			if(campo[posY-1][posX+1]==null && carta.getAngoli()[1].getSimbolo()==Simbolo.ASSENTE)
+				posNonPiuDisponibili.add((posY-1) + "," + (posX+1));
 		}
+			
 		if(campo[posY+1][posX+1]==null && carta.getAngoli()[2].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY+1) + "," + (posX+1));
 			posizioniDisponibili.add((posY+1) + "," + (posX+1));
+		}else {
+			posizioniDisponibili.remove((posY+1) + "," + (posX+1));
+			if(campo[posY+1][posX+1]==null && carta.getAngoli()[2].getSimbolo()==Simbolo.ASSENTE)
+				posNonPiuDisponibili.add((posY+1) + "," + (posX+1));
 		}
 		
 	}
+	
 	/**
 	 * 
 	 * @return l ArrayList con le posizioni libere
@@ -229,6 +253,10 @@ public class CampoGioco {
 	
 	public ArrayList<String> getPosReturn(){
 		return posReturn;
+	}
+	
+	public ArrayList<String> getPosNonPiuDisponibili(){
+		return posNonPiuDisponibili;
 	}
 	
 }

@@ -249,6 +249,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, MouseListener {
 		game.getUserPanel().getUser(LogicaGiocoGrafica.GIOCATOREATTUALE).aggiornaObjects(giocatoreAttuale.getOggPosseduti());
 		
 		game.getUserPlayGround(LogicaGiocoGrafica.GIOCATOREATTUALE).getPlayingField().addLabel(giocatoreAttuale.getCampoG().getPosReturn());
+		game.getUserPlayGround(LogicaGiocoGrafica.GIOCATOREATTUALE).getPlayingField().removeLabel(giocatoreAttuale.getCampoG().getPosNonPiuDisponibili());
 		
 		return true;
 	}

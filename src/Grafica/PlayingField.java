@@ -105,6 +105,17 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 		
 	}
 	
+	public void removeLabel(ArrayList<String> pos) {
+		
+		for(int i=0; i<pos.size(); i++) {
+			if(coordinate2.get(pos.get(i))!=null) {
+				placedCardLabel.get(coordinate2.get(pos.get(i))).removeMouseListener(this);
+				placedCardLabel.get(coordinate2.get(pos.get(i))).setOpaque(false);
+			}
+		}
+		
+	}
+	
 	public void posCIniz(Icon url) {
 		iconPlacedCard.add((ImageIcon) url);
 		placedCardLabel.get(0).setIcon(iconPlacedCard.get(iconPlacedCard.size()-1));
