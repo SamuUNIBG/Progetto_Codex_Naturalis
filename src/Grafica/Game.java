@@ -239,7 +239,7 @@ public class Game extends JFrame implements MouseListener, WindowListener {
 	public void setIndexTabbedPane(int index) {
 		tabbedPane.setSelectedIndex(index);
 		userPlayGround.get(index).carteVisibili(true);
-		for(int i=0; i<LogicaGiocoGrafica.numGiocatori; i++) {
+		for(int i=0; i<LogicaGiocoGrafica.NUMGIOCATORI; i++) {
 			if(i != index)
 				userPlayGround.get(i).carteVisibili(false);
 		}

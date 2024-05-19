@@ -3,6 +3,13 @@ package Logica;
 import java.util.ArrayList;
 
 import javax.swing.*;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Toolkit;
 import java.awt.event.*;
 
 import Carta.CGiocabiliSpeciali;
@@ -16,21 +23,23 @@ import Enumerazione.TipoCarta;
 
 import Grafica.Game;
 import Grafica.GoalDecision;
+import Grafica.Home;
 import Grafica.StartDecision;
 
 import Tavolo.CartaTavolo;
 import Tavolo.Giocatore;
 import Tavolo.Tracciato;
 
-public class LogicaGiocoGrafica implements InterfacciaLogica {
+public class LogicaGiocoGrafica extends JFrame implements InterfacciaLogica,ActionListener {
 
 	private Game game;
 	
 	private CartaTavolo cartaTavolo;
 	
 	private Tracciato tracciato;
-	public static int numGiocatori;
-	
+	public static int NUMGIOCATORI;
+	private JFrame frame = new JFrame();
+	private JButton closeButton;
 	private ArrayList<CObb> cObb;
 	private ImageIcon[] imgObb;
 	private ArrayList<Integer> idCCom;
@@ -49,10 +58,10 @@ public class LogicaGiocoGrafica implements InterfacciaLogica {
 		idCCom = new ArrayList<Integer>();
 		cartaTavolo = new CartaTavolo();
 		tracciato = new Tracciato(username, userColor);
-		LogicaGiocoGrafica.numGiocatori = tracciato.getNumGiocatori();
+		LogicaGiocoGrafica.NUMGIOCATORI = tracciato.getNumGiocatori();
 		imgObb = new ImageIcon[2];
 		
-		for(int i=0; i<LogicaGiocoGrafica.numGiocatori; i++) {
+		for(int i=0; i<LogicaGiocoGrafica.NUMGIOCATORI; i++) {
 			LogicaGiocoGrafica.GIOCATOREATTUALE = i;
 			cObb = new ArrayList<CObb>();
 			
@@ -106,7 +115,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica {
 		LogicaGiocoGrafica.GIOCATOREATTUALE=-1;
 		punti20=false;
 		ultimoGiro=false;
-		counterUltimoGiro = LogicaGiocoGrafica.numGiocatori;
+		counterUltimoGiro = LogicaGiocoGrafica.NUMGIOCATORI;
 		
 		Turni();
 			
@@ -134,7 +143,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica {
 
 	@Override
 	public void Turni() {
-		if(LogicaGiocoGrafica.GIOCATOREATTUALE==LogicaGiocoGrafica.numGiocatori-1){
+		if(LogicaGiocoGrafica.GIOCATOREATTUALE==LogicaGiocoGrafica.NUMGIOCATORI-1){
 			LogicaGiocoGrafica.GIOCATOREATTUALE=0;
 			if(punti20)
 				ultimoGiro = true;
@@ -256,7 +265,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica {
 	
 	public void pescaCarta(int pos) {
 		
-		if(giocatoreAttuale.getPunteggio() > 19 || (cartaTavolo.getMazzoOro().getCRimaste()==0 && cartaTavolo.getMazzoRis().getCRimaste()==0)) {
+		if(giocatoreAttuale.getPunteggio() > 0 || (cartaTavolo.getMazzoOro().getCRimaste()==0 && cartaTavolo.getMazzoRis().getCRimaste()==0)) {
 			punti20 = true;
 		}
 		
@@ -306,7 +315,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica {
 		
 		ArrayList<CObb> cObb = cartaTavolo.getcObbScp();
 		
-		for(int i=0; i<LogicaGiocoGrafica.numGiocatori; i++) {			
+		for(int i=0; i<LogicaGiocoGrafica.NUMGIOCATORI; i++) {			
 			cObb.get(0).calcolaObb(tracciato.getGiocatore(i));
 			cObb.get(1).calcolaObb(tracciato.getGiocatore(i));
 			CObb cObbPers = tracciato.getGiocatore(i).getCObbPer();
@@ -320,12 +329,64 @@ public class LogicaGiocoGrafica implements InterfacciaLogica {
 
 	@Override
 	public void Vincitore() {
+		ImageIcon logo = new ImageIcon("images/codex_logo.png");
+		ImageIcon sfondo = new ImageIcon("images/sfondi/sfondoBianco.jpg");
+		//sets title, dimension of the JFrame
+		frame.setIconImage(logo.getImage());
+		frame.setTitle("Codex Naturalis - Vincitori");
+		frame.setPreferredSize(new Dimension(500,500));
+		
+		//frame.setMinimumSize(new Dimension(sfondo.getIconWidth()+16, sfondo.getIconHeight()+39));
+		//sets the window not resizable by the users
+		frame.setResizable(false);
+		//gets the size of the screen
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		//sets the window position to the center of the screen
+		frame.setLocation((screenSize.width/2)-(frame.getWidth()/2), (screenSize.height/2)-(frame.getHeight()/2));
+		//exit out of application
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		 
+		//titolo
+		JLabel titleLabel = new JLabel();
+		titleLabel.setText("VINCITORI");
+		titleLabel.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 30));
+		titleLabel.setForeground(Color.BLACK);
+		titleLabel.setOpaque(false);
+		
+		
+		//buttons to add to the infoPanel
+		closeButton = new JButton("Close");
+		closeButton.setFocusPainted(false);
+		closeButton.addActionListener(this);				
+		//panel with info components
+		JPanel infoPanel = new JPanel();
+		infoPanel.setPreferredSize(new Dimension(300, 300));
+	    infoPanel.setLayout(new GridBagLayout());
+		infoPanel.setOpaque(false);
+		
+		//needed to set a gap between ifnoPanel and homeButton
+		JPanel gapPanel = new JPanel();
+		gapPanel.setPreferredSize(new Dimension(100, 100));
+		gapPanel.setOpaque(false);
+		JPanel gapPanel2 = new JPanel();
+		gapPanel2.setPreferredSize(new Dimension(100, 100));
+		gapPanel2.setOpaque(false);
+		
+		
+		
+		//add components to infoPanel
+		GridBagConstraints gbc = new GridBagConstraints();
+		int y=0;
+		gbc.gridx=0;
+		gbc.gridy=0;
+		infoPanel.add(titleLabel,gbc);
+		
 		
 		int maxPunti=tracciato.getGiocatore(0).getPunteggio();
 		ArrayList<String> giocatore = new ArrayList<String>();
 		giocatore.add(tracciato.getGiocatore(0).getSoprannome());
 		
-		for(int i=1; i<LogicaGiocoGrafica.numGiocatori; i++) {
+		for(int i=1; i<LogicaGiocoGrafica.NUMGIOCATORI; i++) {
 			int punti = tracciato.getGiocatore(i).getPunteggio();
 			if(punti > maxPunti) {
 				giocatore.clear();
@@ -336,13 +397,54 @@ public class LogicaGiocoGrafica implements InterfacciaLogica {
 			}
 		}//aggiungere vari JOptionPane per comunicare il vincitore
 		if(giocatore.size()==1) {
-			JOptionPane vincitore = new JOptionPane();
+			JOptionPane.showMessageDialog(null, "Ha vinto un solo giocatore!","Title",JOptionPane.INFORMATION_MESSAGE);
 			System.out.println("Ha vinto solo un giocatore:\n");
 		}else {
+			JOptionPane.showMessageDialog(null, "Hanno vinto "+giocatore.size()+" giocatori","Title",JOptionPane.INFORMATION_MESSAGE);
 			System.out.println("Hanno vinto "+giocatore.size()+" giocatori:\n");
 		}
 		for(int i=0;i<giocatore.size();i++) {
+			JLabel vincitore=new JLabel(giocatore.get(i));
+			
+			gbc.gridx=0;
+			gbc.gridy=y+2;
+			infoPanel.add(vincitore, gbc);
+			gbc.gridx=0;
+			gbc.gridy=y+3;
+			infoPanel.add(gapPanel, gbc);
+			y+=2;
 			System.out.println("Congratulazioni "+giocatore.get(i)+" hai vinto!\n");
+		}
+		gbc.gridx=0;
+		gbc.gridy=y+1;
+		infoPanel.add(closeButton, gbc);
+		JLabel sfondoLabel = new JLabel();
+		sfondoLabel.setIcon(sfondo);
+		
+		//panel with titleLabel and selectGamePanel
+		JPanel selectGamePanel = new JPanel();
+		selectGamePanel.setLayout(new GridBagLayout());
+		
+		//add components to rowPanel
+		gbc.gridx=0;
+		gbc.gridy=0;
+		selectGamePanel.add(infoPanel, gbc); 
+		selectGamePanel.add(sfondoLabel, gbc);
+		
+		//add homePanel to window
+		frame.add(selectGamePanel);
+		//set window's dimension based on components
+		frame.pack();
+		//makes frame visible
+		frame.setVisible(true);		
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==closeButton) {
+			frame.dispose();
+			new Home();
 		}
 		
 	}
