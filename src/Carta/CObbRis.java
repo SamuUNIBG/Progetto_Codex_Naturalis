@@ -30,20 +30,23 @@ public class CObbRis extends CObb{
 	 * @return i punti della carta moltiplicato per il numero di set delle
 	 * 3 risorse che il giocatore possiede
 	 */
-	public int calcolaObb(Giocatore giocatore) {
-		// TODO Auto-generated method stub
+	public void calcolaObb(Giocatore giocatore) {
 		/*torna un int quindi fa in automatico l approssimazione*/
 		switch (this.simbolo) {
 			case FOGLIA:
-				return (this.getPunti())*(giocatore.getRisPossedute()[0]/3);
+				giocatore.addPunteggio((this.getPunti())*(giocatore.getRisPossedute()[0]/3));
+				break;
 			case LUPO:
-				return (this.getPunti())*(giocatore.getRisPossedute()[1]/3);
+				giocatore.addPunteggio((this.getPunti())*(giocatore.getRisPossedute()[1]/3));
+				break;
 			case FUNGO:
-				return (this.getPunti())*(giocatore.getRisPossedute()[2]/3);	
+				giocatore.addPunteggio((this.getPunti())*(giocatore.getRisPossedute()[2]/3));
+				break;
 			case FARFALLA:
-				return (this.getPunti())*(giocatore.getRisPossedute()[3]/3);	
+				giocatore.addPunteggio((this.getPunti())*(giocatore.getRisPossedute()[3]/3));
+				break;
 			default:
-				return 0;
+				break;
 		}
 	}
 	

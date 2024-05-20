@@ -40,25 +40,30 @@ public class CObbOgg extends CObb{
 	 * richeisti dalla carta
 	 * @return i punti della carta
 	 */
-	public int calcolaObb(Giocatore giocatore) {
+	public void calcolaObb(Giocatore giocatore) {
 		
 		if(this.oggetti.size()==1){ 
 			/*vuol dire che l obiettivo richiede una
 			coppia di oggetti identici*/
 			switch(this.oggetti.get(0)) { //l ogg in pos 0 e lo stesso di pos 1
 				case INCHIOSTRO:
-					return (this.getPunti())*(giocatore.getOggPosseduti()[0]/2);
+					giocatore.addPunteggio((this.getPunti())*(giocatore.getOggPosseduti()[0]/2));
+					break;
 				case PERGAMENA:
-					return (this.getPunti())*(giocatore.getOggPosseduti()[1]/2);
+					giocatore.addPunteggio((this.getPunti())*(giocatore.getOggPosseduti()[1]/2));
+					break;
 				case PIUMA:
-					return (this.getPunti())*(giocatore.getOggPosseduti()[2]/2);
+					giocatore.addPunteggio((this.getPunti())*(giocatore.getOggPosseduti()[2]/2));
+					break;
+				default:
+					break;
 			}
 		}
 		if (this.oggetti.size()==3) {
 			/*vuol dire che l obiettivo richiede un set	di tre oggetti tutti diversi*/
 			if(giocatore.getOggPosseduti()[0]==giocatore.getOggPosseduti()[1]
 				&& giocatore.getOggPosseduti()[0]==giocatore.getOggPosseduti()[2]){
-				return (this.getPunti())*(giocatore.getOggPosseduti()[0]);
+				giocatore.addPunteggio((this.getPunti())*(giocatore.getOggPosseduti()[0]));
 				/* il giocatore possiede lo stesso numero dei 3 oggetti
 				 * quindi otterra i punti della carta per il numero di oggetti*/
 			}
@@ -75,10 +80,9 @@ public class CObbOgg extends CObb{
 				}
 				/*alla fine min conterra l oggetto che il giocatore 
 				 * possiede in minor numero rispetto agli altri oggetti*/
-				return (this.getPunti())*min;
+				giocatore.addPunteggio((this.getPunti())*min);
 			}
 		}
-		return 0;
 	}
 	@Override
 	public int getIdCarta() {

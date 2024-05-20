@@ -56,8 +56,7 @@ public class CObbScala extends CObb{
 	 * @return i punti della carta per il numero di volte in cui
 	 * l'obiettivo e stato realizzato
 	 */
-	public int calcolaObb(Giocatore giocatore) {
-		// TODO Auto-generated method stub
+	public void calcolaObb(Giocatore giocatore) {
 		int volte = 0;  //per contare quante volte il giocatore fa l obiettivo
 		Carta[][] campoAttuale = giocatore.getCampoG().getCampo();
 		if(this.direzione==true) {  //e una scala crescente
@@ -124,7 +123,7 @@ public class CObbScala extends CObb{
 			}
 		}
 		
-		return (this.getPunti())*volte;
+		giocatore.addPunteggio((this.getPunti())*volte);
 		
 	}
 

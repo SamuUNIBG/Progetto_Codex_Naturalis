@@ -15,6 +15,10 @@ import java.awt.event.*;
 import Carta.CGiocabiliSpeciali;
 import Carta.CIniz;
 import Carta.CObb;
+import Carta.CObbL;
+import Carta.CObbOgg;
+import Carta.CObbRis;
+import Carta.CObbScala;
 import Carta.COro;
 import Carta.CRis;
 
@@ -30,7 +34,7 @@ import Tavolo.CartaTavolo;
 import Tavolo.Giocatore;
 import Tavolo.Tracciato;
 
-public class LogicaGiocoGrafica extends JFrame implements InterfacciaLogica, WindowListener {
+public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 
 	private Game game;
 	
@@ -208,9 +212,6 @@ public class LogicaGiocoGrafica extends JFrame implements InterfacciaLogica, Win
 		}
 		CGiocabiliSpeciali carta = cManoAttuale.get(numCarta);
 		
-		//controllo da fare in carte personali panel
-		//controllo giocabilit e' carta oro
-		//if(carta instanceof COro)
 		if(((COro)carta).VerificaPrerequisito(giocatoreAttuale.getRisPossedute()))
 			return true;
 		else
@@ -219,8 +220,6 @@ public class LogicaGiocoGrafica extends JFrame implements InterfacciaLogica, Win
 	}
 	
 	public boolean giocaC(int idCarta, boolean fronte, String posCarta) {
-		
-		System.out.println("giocatore: " + LogicaGiocoGrafica.GIOCATOREATTUALE + " idCarta: " + idCarta + " fronte: " + fronte + " posCarta: " + posCarta);
 		
 		int numCarta=-1;
 		ArrayList<CGiocabiliSpeciali> cManoAttuale=giocatoreAttuale.getCMano();
@@ -250,7 +249,6 @@ public class LogicaGiocoGrafica extends JFrame implements InterfacciaLogica, Win
 		}
 		
 		giocatoreAttuale.getCPiazzate().put(carta.getIdCarta(), carta.toStringBreve());
-		System.out.println(carta.toStringBreve());
 		giocatoreAttuale.piazzaC(giocatoreAttuale.getCPiazzate(), posCarta, carta);
 
 		game.getUserPanel().getUser(LogicaGiocoGrafica.GIOCATOREATTUALE).aggiornaResource(giocatoreAttuale.getRisPossedute());
@@ -264,7 +262,7 @@ public class LogicaGiocoGrafica extends JFrame implements InterfacciaLogica, Win
 	
 	public void pescaCarta(int pos) {
 		
-		if(giocatoreAttuale.getPunteggio() > 19 || (cartaTavolo.getMazzoOro().getCRimaste()==0 && cartaTavolo.getMazzoRis().getCRimaste()==0)) {
+		if(giocatoreAttuale.getPunteggio() > 4 || (cartaTavolo.getMazzoOro().getCRimaste()==0 && cartaTavolo.getMazzoRis().getCRimaste()==0)) {
 			punti20 = true;
 		}
 		
@@ -314,11 +312,17 @@ public class LogicaGiocoGrafica extends JFrame implements InterfacciaLogica, Win
 		
 		ArrayList<CObb> cObb = cartaTavolo.getcObbScp();
 		
-		for(int i=0; i<LogicaGiocoGrafica.NUMGIOCATORI; i++) {			
-			cObb.get(0).calcolaObb(tracciato.getGiocatore(i));
-			cObb.get(1).calcolaObb(tracciato.getGiocatore(i));
-			CObb cObbPers = tracciato.getGiocatore(i).getCObbPer();
-			cObbPers.calcolaObb(tracciato.getGiocatore(i));
+		LogicaGiocoGrafica.GIOCATOREATTUALE=-1;
+		
+		for(int i=0; i<LogicaGiocoGrafica.NUMGIOCATORI; i++) {
+			LogicaGiocoGrafica.GIOCATOREATTUALE++;
+			giocatoreAttuale = tracciato.getGiocatore(LogicaGiocoGrafica.GIOCATOREATTUALE);
+			
+			cObb.get(0).calcolaObb(giocatoreAttuale);
+			cObb.get(1).calcolaObb(giocatoreAttuale);
+			CObb cObbPers = giocatoreAttuale.getCObbPer();
+			cObbPers.calcolaObb(giocatoreAttuale);
+			
 			game.getScoreTrackPane().movePawn(LogicaGiocoGrafica.GIOCATOREATTUALE, giocatoreAttuale.getPunteggio());
 		}
 		
@@ -448,7 +452,8 @@ public class LogicaGiocoGrafica extends JFrame implements InterfacciaLogica, Win
 	@Override
 	public void windowClosing(WindowEvent e) {
 		frame.dispose();
-		this.dispose();
+		game.dispose();
+		new Home();
 	}
 
 	@Override

@@ -17,6 +17,6 @@ public abstract class CObb extends Carta{
 	 * @param giocatore
 	 * @return il numero di punti ottenuti grazie a quell'obiettivo
 	 */
-	public abstract int calcolaObb(Giocatore giocatore);
+	public abstract void calcolaObb(Giocatore giocatore);
 	
 }

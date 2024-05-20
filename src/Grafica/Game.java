@@ -296,9 +296,10 @@ public class Game extends JFrame implements MouseListener, WindowListener {
 
 	@Override
 	public void windowClosing(WindowEvent e) {
-		if(JOptionPane.showConfirmDialog(this, "Conferma Uscita", "Uscire dalla partita", JOptionPane.YES_NO_OPTION)==0)
+		if(JOptionPane.showConfirmDialog(this, "Conferma Uscita", "Uscire dalla partita", JOptionPane.YES_NO_OPTION)==0) {
 			this.dispose();
-		
+			new Home();
+		}		
 	}
 
 	@Override

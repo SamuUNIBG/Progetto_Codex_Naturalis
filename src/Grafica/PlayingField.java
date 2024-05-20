@@ -104,8 +104,6 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 			//add new JLabel with matrix coordinates to HashMap
 			coordinate.put(placedCardLabel.size()-1, pos.get(i));
 			coordinate2.put(pos.get(i), placedCardLabel.size()-1);
-			System.out.println(coordinate);
-			System.out.println(coordinate2);
 		}
 		
 		
