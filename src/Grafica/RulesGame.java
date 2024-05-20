@@ -8,10 +8,11 @@ import javax.swing.*;
 /**
  * classe che mostra le regole di gioco
  */
-public class Rules extends JFrame implements ActionListener{
+public class RulesGame extends JFrame implements ActionListener{
+	
 	
 	//declaration of buttons to add to the window
-	private JButton homeButton, precedente, successivo;
+	private JButton  precedente, successivo;
 	//declaration of label that contains rule-book image
 	private JLabel ruleLabel;
 	//declaration of rule-book image array
@@ -23,10 +24,10 @@ public class Rules extends JFrame implements ActionListener{
 	int rulePage = 0;
 	//this window
 	private JFrame frame = new JFrame();
-	public Rules(boolean vero) {
+	public RulesGame(boolean vero) {
 		
 	}
-	public Rules() {
+	public RulesGame() {
 		
 		//create the frame's icon "logo"
 		ImageIcon logo = new ImageIcon("images/codex_logo.png");
@@ -59,15 +60,12 @@ public class Rules extends JFrame implements ActionListener{
 		precedente = new JButton("<");
 		successivo = new JButton(">");
 		//buttons to add to the rowPane
-		homeButton = new JButton("Home");
 		//focus state shouldn't be painted
 		precedente.setFocusPainted(false);
 		successivo.setFocusPainted(false);
-		homeButton.setFocusPainted(false);
 		//add ActionListener to buttons
 		precedente.addActionListener(this);
 		successivo.addActionListener(this);
-		homeButton.addActionListener(this);
 		//label to add to the window
 		ruleLabel = new JLabel();
 		ruleLabel.setIcon(ruleBook[0]);
@@ -98,9 +96,6 @@ public class Rules extends JFrame implements ActionListener{
 		gbc.gridx=0;
 		gbc.gridy=2;
 		rowPanel.add(rulePanel, gbc);
-		gbc.gridx=0;
-		gbc.gridy=3;
-		rowPanel.add(homeButton, gbc);
 		
 		JLabel sfondoLabel = new JLabel();
 		sfondoLabel.setBackground(Color.GREEN);
@@ -138,9 +133,6 @@ public class Rules extends JFrame implements ActionListener{
 				rulePage++;
 			if(rulePage<=11)
 				ruleLabel.setIcon(ruleBook[rulePage]);
-		}else if(e.getSource()==homeButton) {
-			frame.dispose();
-			new Home();
 		}
 		
 	}

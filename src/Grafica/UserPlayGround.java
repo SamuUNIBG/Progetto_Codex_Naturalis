@@ -1,5 +1,5 @@
 package Grafica;
-
+import Grafica.Rules;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import javax.swing.*;
 /**
  * campo di gioco di ogni giocatore
  */
-public class UserPlayGround extends JPanel implements MouseListener {
+public class UserPlayGround extends JPanel implements MouseListener,ActionListener {
 	
 	private JLabel[] opacoLabelCPersonali;
 	private PlayingField playingField;
@@ -21,6 +21,8 @@ public class UserPlayGround extends JPanel implements MouseListener {
 	private int idSelectedC;
 	private Icon[] imgFronte;
 	private JScrollPane scrollPlayingField;
+	private JButton rules=new JButton("Regole");
+	private JButton comandi=new JButton("Comandi");
 	
 	public UserPlayGround(Game game) {
 		
@@ -56,7 +58,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 		
 		
 		FlowLayout CPlayout=new FlowLayout();
-		CPlayout.setHgap(190);
+		CPlayout.setHgap(120);
 		CPlayout.setVgap(16);
 		
 		//Pannelli carte personali
@@ -78,9 +80,22 @@ public class UserPlayGround extends JPanel implements MouseListener {
 		}
 			    
 		for(int i=0; i<4; i++) {
-			cartePersonaliPanel.add(opacoLabelCPersonali[i]);
-			
+			cartePersonaliPanel.add(opacoLabelCPersonali[i]);			
 		}
+		 //bottone regole
+		
+		rules.setVisible(true);
+		rules.setFocusPainted(false);
+		rules.addActionListener(this);
+		//bottone comandi
+		
+		comandi.setVisible(true);
+		comandi.setFocusPainted(false);
+		comandi.addActionListener(this);
+		cartePersonaliPanel.add(rules);
+		cartePersonaliPanel.add(comandi);
+		
+		
 		
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx=0;
@@ -326,6 +341,19 @@ public class UserPlayGround extends JPanel implements MouseListener {
 			this.mouseListenerEnable = false;
 			for(int i=0; i<4; i++)
 				opacoLabelCPersonali[i].setIcon(Game.getImage(calcolaNewId(Integer.parseInt(((ImageIcon)imgFronte[i]).getDescription()))));
+		}
+		
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==rules) {
+			new RulesGame();
+			
+		}else if(e.getSource()==comandi) {
+			JOptionPane.showMessageDialog(null, "sposta il cursore del mouse sulla carta "
+					+ "x vederne il retro; \ntasto sinistro x giocarla di fronte; \n"
+					+ "tasto destro x giocarla di retro",
+					"INFO UTILI X GIOCARE LE CARTE",JOptionPane.INFORMATION_MESSAGE);
 		}
 		
 	}
