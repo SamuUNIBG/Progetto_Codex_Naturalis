@@ -32,7 +32,7 @@ public class CampoGioco {
 		for(int y=0; y<DIMENSIONEY; y++) {
 			for(int x=0; x<DIMENSIONEX; x++) {
 				campo[y][x]=null;
-				campoPrint[y][x]=000;
+				campoPrint[y][x]=111;
 			}
 		}
 		

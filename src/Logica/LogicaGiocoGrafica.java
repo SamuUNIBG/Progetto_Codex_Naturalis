@@ -262,7 +262,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 	
 	public void pescaCarta(int pos) {
 		
-		if(giocatoreAttuale.getPunteggio() > 4 || (cartaTavolo.getMazzoOro().getCRimaste()==0 && cartaTavolo.getMazzoRis().getCRimaste()==0)) {
+		if(giocatoreAttuale.getPunteggio() > 19 || (cartaTavolo.getMazzoOro().getCRimaste()==0 && cartaTavolo.getMazzoRis().getCRimaste()==0)) {
 			punti20 = true;
 		}
 		

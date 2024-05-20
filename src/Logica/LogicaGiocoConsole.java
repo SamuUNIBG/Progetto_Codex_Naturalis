@@ -130,13 +130,13 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 			if(i!=0) {
 				for(int j=0;j<coloriDisp.size();j++) {		
 					if(cRosso==false && coloriDisp.get(j).equals("Rosso")) {
-						System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+						System.out.println(j+1+")"+coloriDisp.get(j)+"<--Gi" + (char)224 + " scelto");
 					}else if(cAzzurro==false && coloriDisp.get(j).equals("Azzurro")) {
-						System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+						System.out.println(j+1+")"+coloriDisp.get(j)+"<--Gi" + (char)224 + " scelto");
 					}else if(cGiallo==false && coloriDisp.get(j).equals("Giallo")) {
-						System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+						System.out.println(j+1+")"+coloriDisp.get(j)+"<--Gi" + (char)224 + " scelto");
 					}else if(cVerde==false && coloriDisp.get(j).equals("Verde")) {
-						System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+						System.out.println(j+1+")"+coloriDisp.get(j)+"<--Gi" + (char)224 + " scelto");
 					}else {
 						System.out.println(j+1+")"+coloriDisp.get(j));
 					}	
@@ -205,13 +205,13 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 									for(int j=0;j<coloriDisp.size();j++) {
 										
 										if(cRosso==false && coloriDisp.get(j).equals("Rosso")) {
-											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Gi" + (char)224 + " scelto");
 										}else if(cAzzurro==false && coloriDisp.get(j).equals("Azzurro")) {
-											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Gi" + (char)224 + " scelto");
 										}else if(cGiallo==false && coloriDisp.get(j).equals("Giallo")) {
-											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Gi" + (char)224 + " scelto");
 										}else if(cVerde==false && coloriDisp.get(j).equals("Verde")) {
-											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Gi" + (char)224 + " scelto");
 										}else {
 											System.out.println(j+1+")"+coloriDisp.get(j));
 										}
@@ -294,13 +294,13 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 									for(int j=0;j<coloriDisp.size();j++) {
 												
 										if(cRosso==false && coloriDisp.get(j).equals("Rosso")) {
-											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Gi" + (char)224 + " scelto");
 										}else if(cAzzurro==false && coloriDisp.get(j).equals("Azzurro")) {
-											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Gi" + (char)224 + " scelto");
 										}else if(cGiallo==false && coloriDisp.get(j).equals("Giallo")) {
-											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Gi" + (char)224 + " scelto");
 										}else if(cVerde==false && coloriDisp.get(j).equals("Verde")) {
-											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Gi" + (char)224 + " scelto");
 										}else {
 											System.out.println(j+1+")"+coloriDisp.get(j));
 										}
@@ -382,13 +382,13 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 									for(int j=0;j<coloriDisp.size();j++) {
 										
 										if(cRosso==false && coloriDisp.get(j).equals("Rosso")) {
-											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Gi" + (char)224 + " scelto");
 										}else if(cAzzurro==false && coloriDisp.get(j).equals("Azzurro")) {
-											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Gi" + (char)224 + " scelto");
 										}else if(cGiallo==false && coloriDisp.get(j).equals("Giallo")) {
-											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Gi" + (char)224 + " scelto");
 										}else if(cVerde==false && coloriDisp.get(j).equals("Verde")) {
-											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Gi" + (char)224 + " scelto");
 										}else {
 											System.out.println(j+1+")"+coloriDisp.get(j));
 										}
@@ -469,13 +469,13 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 									for(int j=0;j<coloriDisp.size();j++) {
 										
 										if(cRosso==false && coloriDisp.get(j).equals("Rosso")) {
-											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Gi" + (char)224 + " scelto");
 										}else if(cAzzurro==false && coloriDisp.get(j).equals("Azzurro")) {
-											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Gi" + (char)224 + " scelto");
 										}else if(cGiallo==false && coloriDisp.get(j).equals("Giallo")) {
-											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Gi" + (char)224 + " scelto");
 										}else if(cVerde==false && coloriDisp.get(j).equals("Verde")) {
-											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Già scelto");
+											System.out.println(j+1+")"+coloriDisp.get(j)+"<--Gi" + (char)224 + " scelto");
 										}else {
 											System.out.println(j+1+")"+coloriDisp.get(j));
 										}
@@ -878,10 +878,10 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		if(retro==0) {
 			if(carta instanceof CRis) {
 				CRis cartaRetro= new CRis(((CRis)carta).getSimbolo(), ((CRis)carta).getColore(), ((CRis)carta).getIdCarta());
-				cManoAttuale.set(numCarta, cartaRetro);
+				carta = cartaRetro;
 			}else if(carta instanceof COro) {
 				COro cartaRetro= new COro(((CRis)carta).getSimbolo(), ((CRis)carta).getColore(), ((CRis)carta).getIdCarta());
-				cManoAttuale.set(numCarta, cartaRetro);
+				carta = cartaRetro;
 			}
 		}else {
 			int puntiCarta = carta.getPunti();

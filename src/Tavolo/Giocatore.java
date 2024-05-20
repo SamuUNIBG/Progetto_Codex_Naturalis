@@ -35,7 +35,7 @@ public class Giocatore {
 		
 		cMano = new ArrayList<CGiocabiliSpeciali>();
 		cPiazzate =  new HashMap<Integer, String>();
-		cPiazzate.put(0, "000 -> cella vuota");
+		cPiazzate.put(0, "111 -> cella vuota");
 
 		
 		cObbPer = null;
