@@ -23,10 +23,8 @@ public class Rules extends JFrame implements ActionListener{
 	int rulePage = 0;
 	//this window
 	private JFrame frame = new JFrame();
-	public Rules(boolean vero) {
-		
-	}
-	public Rules() {
+	
+	public Rules(boolean tastoHome) {
 		
 		//create the frame's icon "logo"
 		ImageIcon logo = new ImageIcon("images/codex_logo.png");
@@ -67,7 +65,8 @@ public class Rules extends JFrame implements ActionListener{
 		//add ActionListener to buttons
 		precedente.addActionListener(this);
 		successivo.addActionListener(this);
-		homeButton.addActionListener(this);
+		if(tastoHome)
+			homeButton.addActionListener(this);
 		//label to add to the window
 		ruleLabel = new JLabel();
 		ruleLabel.setIcon(ruleBook[0]);

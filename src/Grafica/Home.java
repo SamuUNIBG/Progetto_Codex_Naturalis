@@ -168,7 +168,7 @@ public class Home extends JFrame implements ActionListener{
 			new SelectGame();
 		}else if(e.getSource()==regole) {
 			this.dispose();
-			new Rules();
+			new Rules(true);
 		}else if(e.getSource()==impostazioni) {
 			this.dispose();
 			Settings settingsFrame = new Settings();

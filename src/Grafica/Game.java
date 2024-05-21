@@ -287,10 +287,10 @@ public class Game extends JFrame implements MouseListener, WindowListener {
 
 	@Override
 	public void windowOpened(WindowEvent e) {
-		/*JOptionPane.showMessageDialog(null, "sposta il cursore del mouse sulla carta "
+		JOptionPane.showMessageDialog(null, "sposta il cursore del mouse sulla carta "
 				+ "x vederne il retro; \ntasto sinistro x giocarla di fronte; \n"
 				+ "tasto destro x giocarla di retro",
-				"INFO UTILI X GIOCARE LE CARTE",JOptionPane.INFORMATION_MESSAGE);*/
+				"INFO UTILI X GIOCARE LE CARTE",JOptionPane.INFORMATION_MESSAGE);
 		
 	}
 

@@ -347,8 +347,7 @@ public class UserPlayGround extends JPanel implements MouseListener,ActionListen
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==rules) {
-			new RulesGame();
-			
+			new Rules(false);			
 		}else if(e.getSource()==comandi) {
 			JOptionPane.showMessageDialog(null, "sposta il cursore del mouse sulla carta "
 					+ "x vederne il retro; \ntasto sinistro x giocarla di fronte; \n"

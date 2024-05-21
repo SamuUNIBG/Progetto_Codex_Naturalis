@@ -7,17 +7,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import java.util.HashSet;
 
 import javax.swing.*;
-
-import Logica.LogicaGiocoConsole;
 /**
  * classe per la gestione della scelta dei nomi e dei colori
  * dei giocatori in base a quanti giocatori giocano
  */
-public class SelectGame extends JFrame implements ActionListener,MouseListener{
+public class SelectGame extends JFrame implements ActionListener, WindowListener{
 	
 	private JButton homeButton, gameButton;
 	private ArrayList<JTextField> nameTextArea;
@@ -27,11 +27,8 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 	private JTextField insertName;
 	private String giocatori;
 	private JComboBox<String> colors;
-	private HashSet<String> lol = new HashSet<String>();
 	
 	private String[] colori = {"Seleziona un colore", "Azzurro", "Giallo", "Rosso", "Verde"};
-	//this window
-	private JFrame frame = new JFrame();
 	
 	public SelectGame() {
 		
@@ -39,35 +36,33 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 		ImageIcon logo = new ImageIcon("images/codex_logo.png");
 		ImageIcon sfondo = new ImageIcon("images/sfondi/sfondo_1.jpg");
 		//sets title, dimension of the JFrame
-		frame.setIconImage(logo.getImage());
-		frame.setTitle("Codex Naturalis - Seleziona giocatori");
-		frame.setMinimumSize(new Dimension(sfondo.getIconWidth()+16, sfondo.getIconHeight()+39));
-		//frame.setMinimumSize(new Dimension(sfondo.getIconWidth()+16, sfondo.getIconHeight()+39));
+		this.setIconImage(logo.getImage());
+		this.setTitle("Codex Naturalis - Seleziona giocatori");
+		this.setMinimumSize(new Dimension(sfondo.getIconWidth()+16, sfondo.getIconHeight()+39));
 		//sets the window not resizable by the users
-		frame.setResizable(false);
+		this.setResizable(false);
 		//gets the size of the screen
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		//sets the window position to the center of the screen
-		frame.setLocation((screenSize.width/2)-(frame.getWidth()/2), (screenSize.height/2)-(frame.getHeight()/2));
+		this.setLocation((screenSize.width/2)-(this.getWidth()/2), (screenSize.height/2)-(this.getHeight()/2));
 		//exit out of application
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.addWindowListener(this);
+		
 		int num=0;
 		//asks how many players will play
 		do {
 			
 			try {
 				giocatori=JOptionPane.showInputDialog("In quanti giocatori volete giocare?");
-				if(Integer.parseInt(giocatori)>4 ||Integer.parseInt(giocatori)<2) {
+				if(Integer.parseInt(giocatori)>4 || Integer.parseInt(giocatori)<2) {
 					JOptionPane.showMessageDialog(null,"I giocatori devono essere minimo 2, massimo 4","Attenzione!",JOptionPane.ERROR_MESSAGE);
 				}
 				num=Integer.parseInt(giocatori);
 				
-			}catch(NumberFormatException e){
-				
-				System.out.println("Si prega di inserire un numero intero");
-			}
+			}catch(NumberFormatException e){}
 			
-		}while(num>4 ||num<2);
+		}while(num>4 || num<2);
 		
 		
 		//"select game" title label
@@ -92,7 +87,6 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 		infoPanel.setOpaque(false);
 				
 		//components to add to the infoPanel
-		//infoTextArea = new ArrayList<JLabel>();
 		nameTextArea = new 	ArrayList<JTextField>();
 		colorComboBox = new ArrayList<JComboBox<String>>();
 		//needed to set a gap between ifnoPanel and homeButton
@@ -115,7 +109,6 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 			JLabel user = new JLabel("Username");
 			insertName = new JTextField();
 			insertName.setPreferredSize(new Dimension(150,40));
-			insertName.addMouseListener(this);
 			JLabel colore = new JLabel("Colore");
 			colorComboBox.add(colors);		
 			user.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 15));
@@ -178,15 +171,14 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 		selectGamePanel.add(sfondoLabel, gbc);
 		
 		//add homePanel to window
-		frame.add(selectGamePanel);
+		this.add(selectGamePanel);
 		//set window's dimension based on components
-		frame.pack();
+		this.pack();
 		//makes frame visible
-		frame.setVisible(true);		
+		this.setVisible(true);		
 		
 	}
-	
-	boolean MessaggioMostrato = true;
+
 	boolean arrayVuoto = true;
 	
 	@Override
@@ -200,8 +192,8 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 		boolean seleziona=false;
 		int utenteNonInserito=0;
 		int utentiUguali=0;
-		 if(e.getSource()==homeButton) {
-			frame.dispose();
+		if(e.getSource()==homeButton) {
+			this.dispose();
 			new Home();
 		}
 		if(e.getSource()==gameButton) { 
@@ -211,7 +203,6 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 				String s=new String(); //temporanea per salvare i nomi con spazi e cancellare spazi
 				for(int j=0; j<nameTextArea.size(); j++) {
 					s =nameTextArea.get(i).getText().replace(" ", "");
-					//System.out.println(s);
 				}
 				username.add(s);
 				userColor.add(colori[colorComboBox.get(i).getSelectedIndex()]);
@@ -256,11 +247,7 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 						+ "devono essere e diversi tra loro" ,
 						"ERRORE", JOptionPane.ERROR_MESSAGE);
 			}else if(utenteNonInserito!=1 && utentiUguali!=1) {
-					frame.dispose();
-					JOptionPane.showMessageDialog(null, "sposta il cursore del mouse sulla carta "
-							+ "x vederne il retro; \ntasto sinistro x giocarla di fronte; \n"
-							+ "tasto destro x giocarla di retro",
-							"INFO UTILI X GIOCARE LE CARTE",JOptionPane.INFORMATION_MESSAGE);
+					this.dispose();
 					new Game(username, userColor);
 			}else if(utenteNonInserito==1) {
 					JOptionPane.showMessageDialog(null, "Bisonga per forza inserire un nome utente!","ATTENZIONE!",JOptionPane.WARNING_MESSAGE);
@@ -270,39 +257,54 @@ public class SelectGame extends JFrame implements ActionListener,MouseListener{
 			}
 		}
 	}
-
-
-	@Override
+	
 	/**
 	 * mostra avviso sul primo giocatore
 	 */
-	public void mouseClicked(MouseEvent e) {
-		if(MessaggioMostrato) {
-			MessaggioMostrato=false;
-			JOptionPane.showMessageDialog(null, "Il primo giocatore creato, sara'  il primo ad iniziare","ATTENZIONE!",JOptionPane.INFORMATION_MESSAGE);
-		}
-	}
 	@Override
-	public void mousePressed(MouseEvent e) {
+	public void windowOpened(WindowEvent e) {
+		JOptionPane.showMessageDialog(null, "Il primo giocatore creato, sara'  il primo ad iniziare","ATTENZIONE!",JOptionPane.INFORMATION_MESSAGE);		
+	}
+
+
+	@Override
+	public void windowClosing(WindowEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
+
 	@Override
-	public void mouseReleased(MouseEvent e) {
+	public void windowClosed(WindowEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
+
 	@Override
-	public void mouseEntered(MouseEvent e) {
+	public void windowIconified(WindowEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
+
 	@Override
-	public void mouseExited(MouseEvent e) {
+	public void windowDeiconified(WindowEvent e) {
+		// TODO Auto-generated method stub
 		
+	}
+
+
+	@Override
+	public void windowActivated(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void windowDeactivated(WindowEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 	

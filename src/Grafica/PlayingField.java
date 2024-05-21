@@ -71,7 +71,7 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 		//get graphic coordinates of the last card added
 		int x = (int)placedCardLabel.get(indexLastCard).getLocation().getX();
 		int y = (int)placedCardLabel.get(indexLastCard).getLocation().getY();
-		System.out.println("POS== " + pos);
+		
 		for(int i=1; i<pos.size(); i++) {
 			JLabel newLabel = new JLabel();
 			newLabel.setBackground(new Color(170, 170, 170, 80));
