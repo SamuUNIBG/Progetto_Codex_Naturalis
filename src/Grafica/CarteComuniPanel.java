@@ -113,7 +113,7 @@ public class CarteComuniPanel extends JPanel implements MouseListener {
 				return 109;
 		
 		}
-		return 0;
+		return 999;
 	}
 
 	@Override
@@ -158,7 +158,6 @@ public class CarteComuniPanel extends JPanel implements MouseListener {
 	 * per mostrare dove e possibile posizionare le prossime carte
 	 */
 	private void moveLabel() {
-		System.out.println("posizione: " +posSelectedC);
 		if(posSelectedC!=0 && posSelectedC!=4) {
 			if(posSelectedC==1) {
 					JLabel temp = opacoLabelCComuni[2];

@@ -94,7 +94,7 @@ public class Game extends JFrame implements MouseListener, WindowListener {
         contenitoreUC.add(cComuniPanel,BorderLayout.CENTER);
         
         
-        scoreTrackPane = new ScoreTrack(userColor);
+        scoreTrackPane = new ScoreTrack(userColor, this);
         scoreTrackPane.addMouseListener(this);
 			
       	//add component to window
@@ -253,6 +253,12 @@ public class Game extends JFrame implements MouseListener, WindowListener {
 		return logica.COroGiocabile(id);
 		
 	}
+	
+	public void chiudi() {
+		if(JOptionPane.showConfirmDialog(this, "Conferma Uscita", "Uscire dalla partita", JOptionPane.YES_NO_OPTION)==0) {
+			this.dispose();
+		}
+	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -296,9 +302,7 @@ public class Game extends JFrame implements MouseListener, WindowListener {
 
 	@Override
 	public void windowClosing(WindowEvent e) {
-		if(JOptionPane.showConfirmDialog(this, "Conferma Uscita", "Uscire dalla partita", JOptionPane.YES_NO_OPTION)==0) {
-			this.dispose();
-		}		
+		this.chiudi();		
 	}
 
 	@Override

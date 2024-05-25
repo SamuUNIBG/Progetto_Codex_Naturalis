@@ -2,7 +2,7 @@ package Carta;
 
 import Tavolo.Giocatore;
 
-public interface InterfacciaCarte2 {
+public interface InterfacciaCarteOro {
 	/**
 	 * utile per capire se la carta oro puo esser piazzata o meno
 	 * @param vettoreRisorse

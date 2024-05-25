@@ -20,7 +20,7 @@ import Tavolo.Giocatore;
  * . sul RETRO presentano i 4 angoli vuoti e una risorsa al centro sempre visibile
  * per piazzarla sul retro non occorre soddisfare i requisiti
  */
-public class COro extends CGiocabiliSpeciali implements InterfacciaCarte2 {
+public class COro extends CGiocabiliSpeciali implements InterfacciaCarteOro {
 	
 	private static int LASTID=40;
 	private final Simbolo obbiettivo;

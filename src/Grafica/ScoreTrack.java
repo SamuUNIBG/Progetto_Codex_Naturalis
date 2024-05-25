@@ -1,6 +1,7 @@
 package Grafica;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.File;
@@ -12,22 +13,34 @@ import java.util.Scanner;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+import java.awt.event.*;
+import java.awt.FlowLayout;
+import java.awt.Font;
+
 /**
  * gestione del progresso della pedina del giocatore
  * ogni qualvolta vi e una modifica di punteggio
  */
-public class ScoreTrack extends JLayeredPane{
+public class ScoreTrack extends JLayeredPane implements ActionListener{
 	
 	private HashMap<Integer, String> pawnPositionMap;
 	private ArrayList<JLabel> pedine;
 	private JLabel tracciato;
+	private JButton rules, comandi, home;
+	private Game game;
 	
-	public ScoreTrack(ArrayList<String> userColor) {
+	public ScoreTrack(ArrayList<String> userColor, Game game) {
 		
 		pawnPositionMap = new HashMap<Integer, String>();
 		this.createHashMap();
+		
+		this.game = game;
 		
 		JLabel sfondo = new JLabel();
 		sfondo.setBounds(0,0,313,715);
@@ -59,8 +72,39 @@ public class ScoreTrack extends JLayeredPane{
         	}
         	pedine.get(i).setBounds(0, 0, 45, 45);
         	this.movePawn(i, 0);
-        }		
-		
+        }
+        
+        //panel with button
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setVisible(true);
+        buttonPanel.setOpaque(false);
+        buttonPanel.setLayout(new FlowLayout());
+        buttonPanel.setBounds(0, 608+50, 313,50);
+        
+        //buttons to add to the window
+        rules = new JButton("Rules");
+        comandi = new JButton("Comandi");
+        home = new JButton("Home");
+        //focus state shouldn't be painted
+        rules.setFocusPainted(false);
+        comandi.setFocusPainted(false);
+        home.setFocusPainted(false);
+      	//add ActionListener to buttons
+        rules.addActionListener(this);
+      	comandi.addActionListener(this);
+      	home.addActionListener(this);
+      	//set button font
+      	rules.setFont(new Font("Serif",Font.BOLD | Font.ITALIC,15));
+      	comandi.setFont(new Font("Serif",Font.BOLD | Font.ITALIC,15));
+      	home.setFont(new Font("Serif",Font.BOLD | Font.ITALIC,15));
+      	//modify button cursor
+      	rules.setCursor(new Cursor(Cursor.HAND_CURSOR));
+      	comandi.setCursor(new Cursor(Cursor.HAND_CURSOR));
+      	home.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
+        buttonPanel.add(rules);
+        buttonPanel.add(comandi);
+        buttonPanel.add(home);
 		
 		this.setPreferredSize(new Dimension(313, 608));	//dimensione coerente con la dimensione dell'immagine score_track.jpg
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -72,6 +116,7 @@ public class ScoreTrack extends JLayeredPane{
 		for(int i=0; i<userColor.size(); i++) {
 			this.add(pedine.get(i), Integer.valueOf(2));
 		}
+		this.add(buttonPanel, Integer.valueOf(1));
 		
 	}
 	/**
@@ -114,6 +159,21 @@ public class ScoreTrack extends JLayeredPane{
 		int posY = Integer.parseInt(posizione[1]);
 	 	
 		pedine.get(pedina).setLocation(posX,posY);
+		
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==rules) {
+			new Rules(false);		
+		}else if(e.getSource()==comandi) {
+			JOptionPane.showMessageDialog(null, "sposta il cursore del mouse sulla carta "
+					+ "x vederne il retro; \ntasto sinistro x giocarla di fronte; \n"
+					+ "tasto destro x giocarla di retro",
+					"INFO UTILI X GIOCARE LE CARTE",JOptionPane.INFORMATION_MESSAGE);
+		}else if(e.getSource()==home) {
+			game.chiudi();
+		}
 		
 	}
 

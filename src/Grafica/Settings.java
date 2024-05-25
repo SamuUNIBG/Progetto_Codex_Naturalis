@@ -5,12 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-public class Settings extends JFrame implements ActionListener{
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+public class Settings extends JFrame{
+	
+	
 
 }

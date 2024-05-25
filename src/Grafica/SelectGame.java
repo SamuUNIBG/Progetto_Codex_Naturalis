@@ -74,11 +74,19 @@ public class SelectGame extends JFrame implements ActionListener, WindowListener
 		
 		//buttons to add to the infoPanel
 		homeButton = new JButton("Home");
-		homeButton.setFocusPainted(false);
-		homeButton.addActionListener(this);
 		gameButton = new JButton("Start game");
+		
+		homeButton.setFocusPainted(false);
 		gameButton.setFocusPainted(false);
+		
+		homeButton.addActionListener(this);
 		gameButton.addActionListener(this);
+		
+		homeButton.setFont(new Font("Serif",Font.BOLD| Font.ITALIC,15));
+		gameButton.setFont(new Font("Serif",Font.BOLD| Font.ITALIC,15));
+		
+		homeButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		gameButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		
 		//panel with info components
 		JPanel infoPanel = new JPanel();
