@@ -55,7 +55,7 @@ public abstract class CGiocabiliSpeciali extends CGiocabili {
 	/** setta true se la carta e stata contata per l'obiettivo scala
 	 *
 	 */
-	public void setContataScala(boolean contataScala) {
+	public void setContataScala() {
 		this.contataScala=true;
 	}
 	/** per capire se la carta e stata contata per l'obiettivo L
@@ -68,7 +68,7 @@ public abstract class CGiocabiliSpeciali extends CGiocabili {
 	/** setta true se la carta e stata contata per l'obiettivo L
 	 *
 	 */
-	public void setContataL(boolean contataL) {
+	public void setContataL() {
 		this.contataL=true;
 	}
 	/** per ottenere l'id della carta

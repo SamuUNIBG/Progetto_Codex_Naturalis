@@ -170,7 +170,7 @@ public class Home extends JFrame implements ActionListener{
 			this.dispose();
 			new Rules(true);
 		}else if(e.getSource()==impostazioni) {
-			this.dispose();
+			//this.dispose();
 			//Settings settingsFrame = new Settings();
 			JOptionPane.showMessageDialog(null, "La schermata per modificare i settaggi verr"+(char)224+"\n presto aggiunta con il nuovo aggiornamento.","ATTENZIONE!",JOptionPane.INFORMATION_MESSAGE);		
 		}else if(e.getSource()==ringraziamenti) {

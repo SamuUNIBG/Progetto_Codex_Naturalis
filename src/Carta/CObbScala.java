@@ -81,9 +81,9 @@ public class CObbScala extends CObb{
 							&& !((CGiocabiliSpeciali)campoAttuale[i+1][j-1]).isContataScala()) {
 								volte ++; 
 								//numero di volte per cui si e realizzato l' obiettivo
-								((CGiocabiliSpeciali)campoAttuale[i][j]).setContataScala(true);
-								((CGiocabiliSpeciali)campoAttuale[i-1][j+1]).setContataScala(true);
-								((CGiocabiliSpeciali)campoAttuale[i+1][j-1]).setContataScala(true);
+								((CGiocabiliSpeciali)campoAttuale[i][j]).setContataScala();
+								((CGiocabiliSpeciali)campoAttuale[i-1][j+1]).setContataScala();
+								((CGiocabiliSpeciali)campoAttuale[i+1][j-1]).setContataScala();
 								//setto a true il fatto che queste carte sono state gia contate per quell obiettivo
 							}
 						}
@@ -112,9 +112,9 @@ public class CObbScala extends CObb{
 							&& !((CGiocabiliSpeciali)campoAttuale[i+1][j+1]).isContataScala()) {
 								volte ++; 
 								//numero di volte per cui si e realizzato l' obiettivo
-								((CGiocabiliSpeciali)campoAttuale[i][j]).setContataScala(true);
-								((CGiocabiliSpeciali)campoAttuale[i-1][j-1]).setContataScala(true);
-								((CGiocabiliSpeciali)campoAttuale[i+1][j+1]).setContataScala(true);
+								((CGiocabiliSpeciali)campoAttuale[i][j]).setContataScala();
+								((CGiocabiliSpeciali)campoAttuale[i-1][j-1]).setContataScala();
+								((CGiocabiliSpeciali)campoAttuale[i+1][j+1]).setContataScala();
 								//setto a true il fatto che queste carte sono state gia contate per quell obiettivo
 							}
 						}
