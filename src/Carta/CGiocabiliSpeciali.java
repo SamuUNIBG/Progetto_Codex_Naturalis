@@ -15,6 +15,8 @@ public abstract class CGiocabiliSpeciali extends CGiocabili {
 		super(puntiAssegnati, idCarta, angolo0, angolo1, angolo2, angolo3, fronte);
 		this.simbolo = simbolo;
 		this.colore = colore;
+		this.contataScala=false;
+		this.contataL=false;
 		
 	}
 	/** per ottenere il simbolo della carta
@@ -54,19 +56,20 @@ public abstract class CGiocabiliSpeciali extends CGiocabili {
 	 *
 	 */
 	public void setContataScala(boolean contataScala) {
-		contataL=true;
+		this.contataScala=true;
 	}
 	/** per capire se la carta e stata contata per l'obiettivo L
 	 * @return boolean contaL
 	 */
 	public boolean isContataL() {
 		return contataL;
+		
 	}
 	/** setta true se la carta e stata contata per l'obiettivo L
 	 *
 	 */
 	public void setContataL(boolean contataL) {
-		contataScala=true;
+		this.contataL=true;
 	}
 	/** per ottenere l'id della carta
 	 * @return int IdCarta

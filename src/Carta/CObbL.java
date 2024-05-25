@@ -48,14 +48,14 @@ public class CObbL extends CObb{
 							&& ((CGiocabiliSpeciali)campoAttuale[i][j]).getColore()==this.colori[1]
 							/* verfico che il colore delle 3 carte prese in considerazione sia
 							  uguale al colore richiesto dalla carta obiettivo*/
-							&& !((CGiocabiliSpeciali)campoAttuale[i][j]).isContataL()){
+							&& (((CGiocabiliSpeciali)campoAttuale[i][j]).isContataL())==false){
 						/* verifico che le 3 carte non siano gia state contate per l'obietttivo L */
 						if(campoAttuale[i+1][j+1]!=null && !(campoAttuale[i+1][j+1] instanceof CIniz)
 								&& ((CGiocabiliSpeciali)campoAttuale[i+1][j+1]).getColore()==this.colori[0]
-								&& !((CGiocabiliSpeciali)campoAttuale[i+1][j+1]).isContataL()) {
+								&& (((CGiocabiliSpeciali)campoAttuale[i+1][j+1]).isContataL())==false) {
 							if(campoAttuale[i+3][j+1]!=null && !(campoAttuale[i+3][j+1] instanceof CIniz)
 							&& ((CGiocabiliSpeciali)campoAttuale[i+3][j+1]).getColore()==this.colori[0]
-							&& !((CGiocabiliSpeciali)campoAttuale[i+3][j+1]).isContataL()) {
+							&& (((CGiocabiliSpeciali)campoAttuale[i+3][j+1]).isContataL())==false) {
 								volte ++; 
 								//numero di volte per cui si e realizzato l obiettivo
 								((CGiocabiliSpeciali)campoAttuale[i][j]).setContataL(true);
@@ -78,19 +78,20 @@ public class CObbL extends CObb{
 							&& ((CGiocabiliSpeciali)campoAttuale[i][j]).getColore()==this.colori[1]
 							/* verfico che il colore delle 3 carte prese in considerazione sia
 							  uguale al colore richiesto dalla carta obiettivo*/
-							&& !((CGiocabiliSpeciali)campoAttuale[i][j]).isContataL()){
+							&& (((CGiocabiliSpeciali)campoAttuale[i][j]).isContataL())==false){
 						/* verifico che le 3 carte non siano gia state contate per l'obietttivo L */
 						if(campoAttuale[i+1][j-1]!=null && !(campoAttuale[i+1][j-1] instanceof CIniz)
 								&& ((CGiocabiliSpeciali)campoAttuale[i+1][j-1]).getColore()==this.colori[0]
-								&& !((CGiocabiliSpeciali)campoAttuale[i+1][j-1]).isContataL()) {
+								&& (((CGiocabiliSpeciali)campoAttuale[i+1][j-1]).isContataL())==false) {
 							if(campoAttuale[i+3][j-1]!=null && !(campoAttuale[i+3][j-1] instanceof CIniz)
 							&& ((CGiocabiliSpeciali)campoAttuale[i+3][j-1]).getColore()==this.colori[0]
-							&& !((CGiocabiliSpeciali)campoAttuale[i+3][j-1]).isContataL()) {
+							&& (((CGiocabiliSpeciali)campoAttuale[i+3][j-1]).isContataL())==false) {
 								volte ++; 
 								//numero di volte per cui si e realizzato l obiettivo
 								((CGiocabiliSpeciali)campoAttuale[i][j]).setContataL(true);
 								((CGiocabiliSpeciali)campoAttuale[i+1][j-1]).setContataL(true);
 								((CGiocabiliSpeciali)campoAttuale[i+3][j-1]).setContataL(true);
+								
 								//setto a true il fatto che queste carte sono state gia contate per quell obiettivo
 							}
 						}
@@ -108,14 +109,14 @@ public class CObbL extends CObb{
 							&& ((CGiocabiliSpeciali)campoAttuale[i][j]).getColore()==this.colori[1]
 							/* verfico che il colore delle 3 carte prese in considerazione sia
 							  uguale al colore richiesto dalla carta obiettivo*/
-							&& !((CGiocabiliSpeciali)campoAttuale[i][j]).isContataL()){
+							&& (((CGiocabiliSpeciali)campoAttuale[i][j]).isContataL())==false){
 						/* verifico che le 3 carte non siano gia state contate per l'obietttivo L */
 						if(campoAttuale[i-1][j-1]!=null && !(campoAttuale[i-1][j-1] instanceof CIniz)
 								&& ((CGiocabiliSpeciali)campoAttuale[i-1][j-1]).getColore()==this.colori[0]
-								&& !((CGiocabiliSpeciali)campoAttuale[i-1][j-1]).isContataL()) {
+								&& (((CGiocabiliSpeciali)campoAttuale[i-1][j-1]).isContataL())==false) {
 							if(campoAttuale[i-3][j-1]!=null && !(campoAttuale[i-3][j-1] instanceof CIniz)
 							&& ((CGiocabiliSpeciali)campoAttuale[i-3][j-1]).getColore()==this.colori[0]
-							&& !((CGiocabiliSpeciali)campoAttuale[i-3][j-1]).isContataL()) {
+							&& (((CGiocabiliSpeciali)campoAttuale[i-3][j-1]).isContataL())==false) {
 								volte ++; 
 								//numero di volte per cui si e realizzato l obiettivo
 								((CGiocabiliSpeciali)campoAttuale[i][j]).setContataL(true);
@@ -138,19 +139,19 @@ public class CObbL extends CObb{
 							&& ((CGiocabiliSpeciali)campoAttuale[i][j]).getColore()==this.colori[1]
 							/* verfico che il colore delle 3 carte prese in considerazione sia
 							  uguale al colore richiesto dalla carta obiettivo*/
-							&& !((CGiocabiliSpeciali)campoAttuale[i][j]).isContataL()){
+							&& (((CGiocabiliSpeciali)campoAttuale[i][j]).isContataL())==false){
 						/* verifico che le 3 carte non siano gia state contate per l'obietttivo L */
 						if(campoAttuale[i-1][j+1]!=null && !(campoAttuale[i-1][j+1] instanceof CIniz)
 								&& ((CGiocabiliSpeciali)campoAttuale[i-1][j+1]).getColore()==this.colori[0]
-								&& !((CGiocabiliSpeciali)campoAttuale[i-1][j+1]).isContataL()) {
-							if(campoAttuale[i-3][j+2]!=null && !(campoAttuale[i-3][j+2] instanceof CIniz)
-							&& ((CGiocabiliSpeciali)campoAttuale[i-3][j+2]).getColore()==this.colori[0]
-							&& !((CGiocabiliSpeciali)campoAttuale[i-3][j+2]).isContataL()) {
+								&& (((CGiocabiliSpeciali)campoAttuale[i-1][j+1]).isContataL())==false) {
+							if(campoAttuale[i-3][j+1]!=null && !(campoAttuale[i-3][j+1] instanceof CIniz)
+							&& ((CGiocabiliSpeciali)campoAttuale[i-3][j+1]).getColore()==this.colori[0]
+							&& (((CGiocabiliSpeciali)campoAttuale[i-3][j+1]).isContataL())==false) {
 								volte ++; 
 								//numero di volte per cui si e realizzato l obiettivo
 								((CGiocabiliSpeciali)campoAttuale[i][j]).setContataL(true);
 								((CGiocabiliSpeciali)campoAttuale[i-1][j+1]).setContataL(true);
-								((CGiocabiliSpeciali)campoAttuale[i-3][j+2]).setContataL(true);
+								((CGiocabiliSpeciali)campoAttuale[i-3][j+1]).setContataL(true);
 								//setto a true il fatto che queste carte sono state gia contate per quell obiettivo
 							}
 						}

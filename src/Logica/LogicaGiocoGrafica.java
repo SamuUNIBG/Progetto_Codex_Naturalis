@@ -322,8 +322,8 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 			cObb.get(1).calcolaObb(giocatoreAttuale);
 			CObb cObbPers = giocatoreAttuale.getCObbPer();
 			cObbPers.calcolaObb(giocatoreAttuale);
-			
 			game.getScoreTrackPane().movePawn(LogicaGiocoGrafica.GIOCATOREATTUALE, giocatoreAttuale.getPunteggio());
+			
 		}
 		
 		Vincitore();
