@@ -262,7 +262,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 	
 	public void pescaCarta(int pos) {
 		
-		if(giocatoreAttuale.getPunteggio() > 19 || (cartaTavolo.getMazzoOro().getCRimaste()==0 && cartaTavolo.getMazzoRis().getCRimaste()==0)) {
+		if(giocatoreAttuale.getPunteggio() > 0 || (cartaTavolo.getMazzoOro().getCRimaste()==0 && cartaTavolo.getMazzoRis().getCRimaste()==0)) {
 			punti20 = true;
 		}
 		
@@ -347,7 +347,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 		//sets the window position to the center of the screen
 		frame.setLocation((screenSize.width/2)-(frame.getWidth()/2), (screenSize.height/2)-(frame.getHeight()/2));
 		//exit out of application
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		 
 		//titolo
 		JLabel titleLabel = new JLabel();

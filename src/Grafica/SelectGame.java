@@ -271,7 +271,7 @@ public class SelectGame extends JFrame implements ActionListener, WindowListener
 	 */
 	@Override
 	public void windowOpened(WindowEvent e) {
-		JOptionPane.showMessageDialog(null, "Il primo giocatore creato, sara'  il primo ad iniziare","ATTENZIONE!",JOptionPane.INFORMATION_MESSAGE);		
+		JOptionPane.showMessageDialog(null, "Il primo giocatore creato, sar"+(char)224+"  il primo ad iniziare","ATTENZIONE!",JOptionPane.INFORMATION_MESSAGE);		
 	}
 
 
