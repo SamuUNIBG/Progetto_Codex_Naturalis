@@ -2,6 +2,8 @@ package Tavolo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 import Carta.Carta;
 import Enumerazione.Simbolo;
@@ -118,35 +120,68 @@ public class CampoGioco {
 		
 		if(campo[posY-1][posX-1]==null && carta.getAngoli()[0].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY-1) + "," + (posX-1));
-			posizioniDisponibili.add((posY-1) + "," + (posX-1));
+			if(!posizioniDisponibili.contains((posY-1) + "," + (posX-1))) {
+				posizioniDisponibili.add((posY-1) + "," + (posX-1));
+			}
+			
 		}else {
-			if(campo[posY-1][posX-1]==null || carta.getAngoli()[0].getSimbolo()==Simbolo.ASSENTE)
-				posNonPiuDisponibili.add((posY-1) + "," + (posX-1));
+			if(campo[posY-1][posX-1]==null || carta.getAngoli()[0].getSimbolo()==Simbolo.ASSENTE) {
+				if(!posNonPiuDisponibili.contains((posY-1) + "," + (posX-1))) {
+					posNonPiuDisponibili.add((posY-1) + "," + (posX-1));
+				}
+			}
+				
 		}
 			
 		if(campo[posY+1][posX-1]==null && carta.getAngoli()[3].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY+1) + "," + (posX-1));
-			posizioniDisponibili.add((posY+1) + "," + (posX-1));
+			if(!posizioniDisponibili.contains((posY+1) + "," + (posX-1))) {
+				posizioniDisponibili.add((posY+1) + "," + (posX-1));
+			}
+			
 		}
 		else {
 			if(campo[posY+1][posX-1]==null || carta.getAngoli()[3].getSimbolo()==Simbolo.ASSENTE)
-				posNonPiuDisponibili.add((posY+1) + "," + (posX-1));
+			{
+				if(!posNonPiuDisponibili.contains((posY+1) + "," + (posX-1))) {
+					posNonPiuDisponibili.add((posY+1) + "," + (posX-1));
+				}
+			}
+				
+				
 		}
 			
 		if(campo[posY-1][posX+1]==null && carta.getAngoli()[1].getSimbolo()!=Simbolo.ASSENTE) {
+			
 			posReturn.add((posY-1) + "," + (posX+1));
-			posizioniDisponibili.add((posY-1) + "," + (posX+1));
+			if(!posizioniDisponibili.contains((posY-1) + "," + (posX+1))) {
+				posizioniDisponibili.add((posY-1) + "," + (posX+1));
+			}
+			
 		}else {
-			if(campo[posY-1][posX+1]==null || carta.getAngoli()[1].getSimbolo()==Simbolo.ASSENTE)
-				posNonPiuDisponibili.add((posY-1) + "," + (posX+1));
+			if(campo[posY-1][posX+1]==null || carta.getAngoli()[1].getSimbolo()==Simbolo.ASSENTE) {
+				if(!posNonPiuDisponibili.contains((posY-1) + "," + (posX+1))) {
+					posNonPiuDisponibili.add((posY-1) + "," + (posX+1));
+				}
+				
+			}
+				
+				
 		}
 			
 		if(campo[posY+1][posX+1]==null && carta.getAngoli()[2].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY+1) + "," + (posX+1));
-			posizioniDisponibili.add((posY+1) + "," + (posX+1));
+			if(!posizioniDisponibili.contains((posY+1) + "," + (posX+1))) {
+				posizioniDisponibili.add((posY+1) + "," + (posX+1));
+			}
+			
 		}else {
-			if(campo[posY+1][posX+1]==null || carta.getAngoli()[2].getSimbolo()==Simbolo.ASSENTE)
-				posNonPiuDisponibili.add((posY+1) + "," + (posX+1));
+			if(campo[posY+1][posX+1]==null || carta.getAngoli()[2].getSimbolo()==Simbolo.ASSENTE) {
+				if(!posNonPiuDisponibili.contains((posY+1) + "," + (posX+1))) {
+					posNonPiuDisponibili.add((posY+1) + "," + (posX+1));
+				}
+			}
+				
 		}
 		
 		for(int i=0; i<posReturn.size(); i++) {
