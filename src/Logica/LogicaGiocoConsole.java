@@ -880,7 +880,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 				CRis cartaRetro= new CRis(((CRis)carta).getSimbolo(), ((CRis)carta).getColore(), ((CRis)carta).getIdCarta());
 				carta = cartaRetro;
 			}else if(carta instanceof COro) {
-				COro cartaRetro= new COro(((CRis)carta).getSimbolo(), ((CRis)carta).getColore(), ((CRis)carta).getIdCarta());
+				COro cartaRetro= new COro(((COro)carta).getSimbolo(), ((COro)carta).getColore(), ((COro)carta).getIdCarta());
 				carta = cartaRetro;
 			}
 		}else {
