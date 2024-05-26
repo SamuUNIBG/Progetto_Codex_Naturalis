@@ -35,6 +35,7 @@ public class Game extends JFrame implements MouseListener, WindowListener {
 	private UserPanel userPanel;
 	private ScoreTrack scoreTrackPane;
 	private JTabbedPane tabbedPane;
+	
 	public Game(ArrayList<String> username, ArrayList<String> userColor) {
 
 		
@@ -184,7 +185,10 @@ public class Game extends JFrame implements MouseListener, WindowListener {
 	 */
 	public void piazzaCartaCom(int pos, Integer id) {
 		cComuniPanel.piazzaCarta(pos, Game.getImage(id));
-		
+	}
+	
+	public void piazzaCartaCom(int pos) {
+		cComuniPanel.piazzaCarta(pos);
 	}
 	/**
 	 * gestire il pescaggio di una carta
@@ -252,6 +256,10 @@ public class Game extends JFrame implements MouseListener, WindowListener {
 	public boolean COroGiocabile(int id) {
 		return logica.COroGiocabile(id);
 		
+	}
+	
+	public boolean carteDisponibili() {
+		return logica.carteDisponibili();
 	}
 	
 	public void chiudi() {

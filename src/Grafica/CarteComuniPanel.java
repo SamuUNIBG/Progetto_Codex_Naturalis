@@ -93,6 +93,41 @@ public class CarteComuniPanel extends JPanel implements MouseListener {
 		
 	}
 	
+	public void piazzaCarta(int pos) {
+		if(pos==0) {
+			imgMazzoRis = null;
+			
+			opacoLabelCComuni[pos] = new JLabel();
+			opacoLabelCComuni[pos].setBackground(new Color(170, 170, 170, 80));
+			opacoLabelCComuni[pos].setOpaque(true);
+			opacoLabelCComuni[pos].setPreferredSize(new Dimension(163, 113));
+			opacoLabelCComuni[pos].setVisible(true);
+			
+			sottoPanel[0].removeAll();
+			for(int i=0; i<4; i++) {
+				sottoPanel[0].add(opacoLabelCComuni[i]);
+				
+			}			
+			
+		}else if(pos==4){
+			imgMazzoOro = null;
+			
+			opacoLabelCComuni[pos] = new JLabel();
+			opacoLabelCComuni[pos].setBackground(new Color(170, 170, 170, 80));
+			opacoLabelCComuni[pos].setOpaque(true);
+			opacoLabelCComuni[pos].setPreferredSize(new Dimension(163, 113));
+			opacoLabelCComuni[pos].setVisible(true);
+			
+			sottoPanel[1].removeAll();
+			for(int i=4; i<8; i++) {
+				sottoPanel[1].add(opacoLabelCComuni[i]);
+				
+			}
+			
+		}
+		
+	}
+	
 	private int calcolaNewId(int id) {
 		switch(id){
 			case 0,1,2,3,4,5,6,7,8,9:
@@ -135,19 +170,18 @@ public class CarteComuniPanel extends JPanel implements MouseListener {
 						opacoLabelCComuni[i].setIcon(imgMazzoRis);
 					if(i==5 || i==6)
 						opacoLabelCComuni[i].setIcon(imgMazzoOro);
+					if(opacoLabelCComuni[i].getIcon()==null)
+						opacoLabelCComuni[i].removeMouseListener(this);
 					if(i==1 || i==5)
 						this.moveLabel();
 					game.assegnaCarta(imgSelectedC);
 					game.pescaCarta(posSelectedC);
+					
+					Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("x.png")).getImage(), new Point(0,0), "Custum cursor");
+					setCursor(cursor);
+					
 					break;
 				}
-			}
-			try {
-				Thread.sleep(5);
-				Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("X.png")).getImage(), new Point(0,0), "Custum cursor");
-				setCursor(cursor);
-			} catch (InterruptedException e1) {
-				e1.printStackTrace();
 			}
 		}
 		
@@ -160,9 +194,9 @@ public class CarteComuniPanel extends JPanel implements MouseListener {
 	private void moveLabel() {
 		if(posSelectedC!=0 && posSelectedC!=4) {
 			if(posSelectedC==1) {
-					JLabel temp = opacoLabelCComuni[2];
-					opacoLabelCComuni[2] = opacoLabelCComuni[1];
-					opacoLabelCComuni[1] = temp;
+				JLabel temp = opacoLabelCComuni[2];
+				opacoLabelCComuni[2] = opacoLabelCComuni[1];
+				opacoLabelCComuni[1] = temp;
 			}else if(posSelectedC==5) {
 					JLabel temp = opacoLabelCComuni[6];
 					opacoLabelCComuni[6] = opacoLabelCComuni[5];

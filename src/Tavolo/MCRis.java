@@ -78,9 +78,12 @@ public class MCRis extends Mazzo {
 	
 	@Override
 	public CRis pesca() {
+		if(this.getCRimaste()!=0) {
 		CRis carta = cMazzo.get(0);
 		cMazzo.remove(0);
 		return carta;
+		}else
+			return null;
 	} 
 
 	@Override

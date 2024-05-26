@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.awt.event.*;
 
 import javax.swing.*;
+
+import Logica.LogicaGiocoGrafica;
 /**
  * il campo di gioco comune il quale comprende i campi di gioco
  * di ogni giocatore
@@ -157,7 +159,10 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 					userPlayGroundMother.mouseListenerEnable(false);
 					userPlayGroundMother.moveLabel();
 					userPlayGroundMother.giocaC(userPlayGroundMother.getIdSelectedC(), coordinate.get(i));
-					CarteComuniPanel.MOUSELISTENERENABLE = true;
+					if(userPlayGroundMother.carteDisponibili())
+						CarteComuniPanel.MOUSELISTENERENABLE = true;
+					else
+						userPlayGroundMother.pescaCarta(999);
 				}
 				
 			}

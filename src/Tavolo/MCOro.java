@@ -70,15 +70,18 @@ public class MCOro extends Mazzo {
 		cMazzo.add(cOro37 = new COro(3, Simbolo.ASSENTE, Simbolo.FUNGO, Colore.ROSSO, Simbolo.PIUMA, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.ASSENTE, 0, 0, 3, 0));	//3 FUNGO
 		cMazzo.add(cOro38 = new COro(3, Simbolo.ASSENTE, Simbolo.FUNGO, Colore.ROSSO, Simbolo.ASSENTE, Simbolo.PERGAMENA, Simbolo.VUOTO, Simbolo.ASSENTE, 0, 0, 3, 0));	//3 FUNGO
 		cMazzo.add(cOro39 = new COro(5, Simbolo.ASSENTE, Simbolo.FUNGO, Colore.ROSSO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.ASSENTE, Simbolo.VUOTO, 0, 0, 5, 0));	//5 FUNGO
-					
+		
 		Collections.shuffle(cMazzo);
 	}
 	
 	@Override
 	public COro pesca() {
-		COro carta = cMazzo.get(0);
-		cMazzo.remove(0);
-		return carta;
+		if(this.getCRimaste()!=0) {
+			COro carta = cMazzo.get(0);
+			cMazzo.remove(0);
+			return carta;
+		}else
+			return null;
 	} 
 
 	@Override

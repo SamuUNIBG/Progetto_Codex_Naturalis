@@ -1,5 +1,9 @@
 package Tavolo;
 
+import java.util.ArrayList;
+
+import Carta.CGiocabiliSpeciali;
+import Carta.COro;
 import Carta.CRis;
 import Carta.Carta;
 

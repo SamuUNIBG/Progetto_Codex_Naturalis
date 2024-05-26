@@ -143,9 +143,16 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 		}
 		
 	}
+	
+	public boolean carteDisponibili() {
+		if(cartaTavolo.getMazzoOro().getCRimaste()!=0 || cartaTavolo.getMazzoRis().getCRimaste()!=0 || cartaTavolo.getcOroScp().size()!=0 || cartaTavolo.getcRisScp().size()!=0)
+			return true;
+		return false;
+	}
 
 	@Override
-	public void Turni() {
+	public void Turni() {		
+		
 		if(LogicaGiocoGrafica.GIOCATOREATTUALE==LogicaGiocoGrafica.NUMGIOCATORI-1){
 			LogicaGiocoGrafica.GIOCATOREATTUALE=0;
 			if(punti20)
@@ -262,7 +269,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 	
 	public void pescaCarta(int pos) {
 		
-		if(giocatoreAttuale.getPunteggio() > 0 || (cartaTavolo.getMazzoOro().getCRimaste()==0 && cartaTavolo.getMazzoRis().getCRimaste()==0)) {
+		if(giocatoreAttuale.getPunteggio() > 19 || (cartaTavolo.getMazzoOro().getCRimaste()==0 && cartaTavolo.getMazzoRis().getCRimaste()==0)) {
 			punti20 = true;
 		}
 		
@@ -270,37 +277,58 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 			case 0:
 				CRis carta = (CRis) cartaTavolo.pesca(TipoCarta.CRis);
 				giocatoreAttuale.pescaC(carta);
-				game.piazzaCartaCom(0, cartaTavolo.getMazzoRis().getCMazzo().get(0).getIdCarta());
+				if(cartaTavolo.getMazzoRis().getCRimaste()!=0)
+					game.piazzaCartaCom(0, cartaTavolo.getMazzoRis().getCMazzo().get(0).getIdCarta());
+				else
+					game.piazzaCartaCom(0);
 				this.Turni();
 				break;
 			case 1:
 				CRis carta1 = (CRis) cartaTavolo.pesca(TipoCarta.CRis,0);
 				giocatoreAttuale.pescaC(carta1);
-				game.piazzaCartaCom(0, cartaTavolo.getMazzoRis().getCMazzo().get(0).getIdCarta());
+				if(cartaTavolo.getMazzoRis().getCRimaste()!=0)
+					game.piazzaCartaCom(0, cartaTavolo.getMazzoRis().getCMazzo().get(0).getIdCarta());
+				else
+					game.piazzaCartaCom(0);
 				this.Turni();
 				break;
 			case 2:
 				CRis carta2 = (CRis) cartaTavolo.pesca(TipoCarta.CRis,1);
 				giocatoreAttuale.pescaC(carta2);
-				game.piazzaCartaCom(0, cartaTavolo.getMazzoRis().getCMazzo().get(0).getIdCarta());
+				if(cartaTavolo.getMazzoRis().getCRimaste()!=0)
+					game.piazzaCartaCom(0, cartaTavolo.getMazzoRis().getCMazzo().get(0).getIdCarta());
+				else
+					game.piazzaCartaCom(0);
 				this.Turni();
 				break;
 			case 4:
 				COro carta4 = (COro) cartaTavolo.pesca(TipoCarta.COro);
 				giocatoreAttuale.pescaC(carta4);
-				game.piazzaCartaCom(4, cartaTavolo.getMazzoOro().getCMazzo().get(0).getIdCarta());
+				if(cartaTavolo.getMazzoOro().getCRimaste()!=0)
+					game.piazzaCartaCom(4, cartaTavolo.getMazzoOro().getCMazzo().get(0).getIdCarta());
+				else
+					game.piazzaCartaCom(4);
 				this.Turni();
 				break;
 			case 5:
 				COro carta5 = (COro) cartaTavolo.pesca(TipoCarta.COro,0);
 				giocatoreAttuale.pescaC(carta5);
-				game.piazzaCartaCom(4, cartaTavolo.getMazzoOro().getCMazzo().get(0).getIdCarta());
+				if(cartaTavolo.getMazzoOro().getCRimaste()!=0)
+					game.piazzaCartaCom(4, cartaTavolo.getMazzoOro().getCMazzo().get(0).getIdCarta());
+				else
+					game.piazzaCartaCom(4);
 				this.Turni();
 				break;
 			case 6:
 				COro carta6 = (COro) cartaTavolo.pesca(TipoCarta.COro,1);
 				giocatoreAttuale.pescaC(carta6);
-				game.piazzaCartaCom(4, cartaTavolo.getMazzoOro().getCMazzo().get(0).getIdCarta());
+				if(cartaTavolo.getMazzoOro().getCRimaste()!=0)
+					game.piazzaCartaCom(4, cartaTavolo.getMazzoOro().getCMazzo().get(0).getIdCarta());
+				else
+					game.piazzaCartaCom(4);
+				this.Turni();
+				break;
+			case 999:
 				this.Turni();
 				break;
 		}

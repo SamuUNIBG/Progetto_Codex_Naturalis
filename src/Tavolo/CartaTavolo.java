@@ -124,15 +124,17 @@ public class CartaTavolo {
 	 * @param pos the position, within the ArrayList, of the card to be drawn
 	 */
 	public Carta pesca(TipoCarta tipo, int pos) {
-		if(tipo==TipoCarta.COro) {
+		if(tipo==TipoCarta.COro && cOroScp.size()>pos) {
 			COro carta = cOroScp.get(pos);
 			cOroScp.remove(pos);
-			cOroScp.add(mOro.pesca());
+			if(mOro.getCRimaste()!=0)
+				cOroScp.add(mOro.pesca());
 			return carta;
-		}else if(tipo==TipoCarta.CRis){
+		}else if(tipo==TipoCarta.CRis && cRisScp.size()>pos){
 			CRis carta = cRisScp.get(pos);
 			cRisScp.remove(pos);
-			cRisScp.add(mRis.pesca());
+			if(mRis.getCRimaste()!=0)
+				cRisScp.add(mRis.pesca());
 			return carta;
 		}
 		
@@ -144,10 +146,10 @@ public class CartaTavolo {
 	 * @param tipo the type of card
 	 */
 	public Carta pesca(TipoCarta tipo) {
-		if(tipo==TipoCarta.COro) {
+		if(tipo==TipoCarta.COro && mOro.getCRimaste()!=0) {
 			COro carta = mOro.pesca();
 			return carta;
-		}else if(tipo==TipoCarta.CRis){
+		}else if(tipo==TipoCarta.CRis && mRis.getCRimaste()!=0){
 			CRis carta = mRis.pesca();
 			return carta;
 		}else if(tipo==TipoCarta.CObb){

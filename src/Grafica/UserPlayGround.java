@@ -144,6 +144,15 @@ public class UserPlayGround extends JPanel implements MouseListener {
 	public void giocaC(int idCarta, String posCarta) {
 		game.giocaC(idCarta, fronte, posCarta);
 	}
+	
+	public boolean carteDisponibili() {
+		return game.carteDisponibili();
+	}
+	
+	public void pescaCarta(int posSelectedC) {
+		game.pescaCarta(posSelectedC);
+	}
+	
 	public void mouseReset() {
 		setCursor(Cursor.getDefaultCursor());
 	}
@@ -319,11 +328,13 @@ public class UserPlayGround extends JPanel implements MouseListener {
 		if(fronteVisibile) {
 			this.mouseListenerEnable = true;
 			for(int i=0; i<4; i++)
-				opacoLabelCPersonali[i].setIcon(imgFronte[i]);
+				if(this.imgFronte[i]!=null)
+					opacoLabelCPersonali[i].setIcon(imgFronte[i]);
 		}else{
 			this.mouseListenerEnable = false;
 			for(int i=0; i<4; i++)
-				opacoLabelCPersonali[i].setIcon(Game.getImage(calcolaNewId(Integer.parseInt(((ImageIcon)imgFronte[i]).getDescription()))));
+				if(this.imgFronte[i]!=null)
+					opacoLabelCPersonali[i].setIcon(Game.getImage(calcolaNewId(Integer.parseInt(((ImageIcon)imgFronte[i]).getDescription()))));
 		}
 		
 	}
