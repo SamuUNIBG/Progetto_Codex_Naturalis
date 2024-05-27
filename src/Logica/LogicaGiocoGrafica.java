@@ -15,10 +15,6 @@ import java.awt.event.*;
 import Carta.CGiocabiliSpeciali;
 import Carta.CIniz;
 import Carta.CObb;
-import Carta.CObbL;
-import Carta.CObbOgg;
-import Carta.CObbRis;
-import Carta.CObbScala;
 import Carta.COro;
 import Carta.CRis;
 
@@ -42,7 +38,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 	
 	private Tracciato tracciato;
 	public static int NUMGIOCATORI;
-	private JFrame frame = new JFrame();
+	private JFrame frame;
 	private ArrayList<CObb> cObb;
 	private ImageIcon[] imgObb;
 	private ArrayList<Integer> idCCom;
@@ -71,17 +67,14 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 			for(int j=0; j<2; j++) {
 				CRis carta = (CRis) cartaTavolo.pesca(TipoCarta.CRis);
 				tracciato.getGiocatore(i).pescaC(carta);
-//				System.out.println(carta.toString());
 				this.pescaCPers(LogicaGiocoGrafica.GIOCATOREATTUALE, j, Game.getImage(carta.getIdCarta()));
 				
 				cObb.add((CObb)cartaTavolo.pesca(TipoCarta.CObb));
-//				System.out.println(cObb.get(j).toString());
 				imgObb[j]=(ImageIcon) Game.getImage(cObb.get(j).getIdCarta());
 			}
 			
 			COro cartaOro = (COro) cartaTavolo.pesca(TipoCarta.COro);
 			tracciato.getGiocatore(LogicaGiocoGrafica.GIOCATOREATTUALE).pescaC(cartaOro);
-//			System.out.println(cartaOro.toString());
 			this.pescaCPers(LogicaGiocoGrafica.GIOCATOREATTUALE, 2, Game.getImage(cartaOro.getIdCarta()));
 			
 			//L'utente sceglie la carta obbiettivo da tenere
@@ -89,29 +82,20 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 			
 			CIniz cartaIniz = (CIniz) cartaTavolo.pesca(TipoCarta.CIniz);
 			tracciato.getGiocatore(LogicaGiocoGrafica.GIOCATOREATTUALE).pescaC(cartaIniz);
-//			System.out.println(cartaIniz.toString());
 			
 			//L'utente sceglie da che lato giocare la carta iniziale
 			StartDecision decisioneIniz = new StartDecision(Game.getImage(cartaIniz.getIdCarta()), username.get(LogicaGiocoGrafica.GIOCATOREATTUALE), game, this);
 		}
 		
 		idCCom.add(cartaTavolo.getMazzoRis().getCMazzo().get(0).getIdCarta());
-//		System.out.println(cartaTavolo.getMazzoRis().getCMazzo().get(0).toString());
 		idCCom.add(cartaTavolo.getcRisScp().get(0).getIdCarta());
-//		System.out.println(cartaTavolo.getcRisScp().get(0).toString());
 		idCCom.add(cartaTavolo.getcRisScp().get(1).getIdCarta());
-//		System.out.println(cartaTavolo.getcRisScp().get(1).toString());
 		idCCom.add(cartaTavolo.getcObbScp().get(0).getIdCarta());
-//		System.out.println(cartaTavolo.getcObbScp().get(0).toString());
 		
 		idCCom.add(cartaTavolo.getMazzoOro().getCMazzo().get(0).getIdCarta());
-//		System.out.println(cartaTavolo.getMazzoOro().getCMazzo().get(0).toString());
 		idCCom.add(cartaTavolo.getcOroScp().get(0).getIdCarta());
-//		System.out.println(cartaTavolo.getcOroScp().get(0).toString());
 		idCCom.add(cartaTavolo.getcOroScp().get(1).getIdCarta());
-//		System.out.println(cartaTavolo.getcOroScp().get(1).toString());
 		idCCom.add(cartaTavolo.getcObbScp().get(1).getIdCarta());
-//		System.out.println(cartaTavolo.getcObbScp().get(1).toString());
 		
 		this.piazzaCCom(idCCom);
 		
@@ -167,11 +151,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 			game.setIndexTabbedPane(LogicaGiocoGrafica.GIOCATOREATTUALE);
 			game.getUserPlayGround(LogicaGiocoGrafica.GIOCATOREATTUALE).mouseListenerEnable(true);
 		}else	//ovvero counterUltimoGiro == -1
-			AddPuntiObb();		
-		
-		//da gestire nel mouse listener del Playing Field
-				//if(!ultimoGiro)
-					//pescaCarta(giocatoreAttuale);
+			AddPuntiObb();
 		
 	} 
 	
@@ -232,7 +212,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 		ArrayList<CGiocabiliSpeciali> cManoAttuale=giocatoreAttuale.getCMano();
 		
 		for(int i=0; i<cManoAttuale.size(); i++) {
-			if(cManoAttuale.get(i).getIdCarta()==idCarta)
+			if(cManoAttuale.get(i).getIdCarta()==idCarta);
 				numCarta=i;
 		}
 		CGiocabiliSpeciali carta = cManoAttuale.get(numCarta);
@@ -362,12 +342,12 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 	public void Vincitore() {
 		ImageIcon logo = new ImageIcon("images/codex_logo.png");
 		ImageIcon sfondo = new ImageIcon("images/sfondi/sfondoBianco.jpg");
+		frame = new JFrame();
 		//sets title, dimension of the JFrame
 		frame.setIconImage(logo.getImage());
 		frame.setTitle("Codex Naturalis - Vincitori");
 		frame.setPreferredSize(new Dimension(400,400));
 		frame.addWindowListener(this);
-		//frame.setMinimumSize(new Dimension(sfondo.getIconWidth()+16, sfondo.getIconHeight()+39));
 		//sets the window not resizable by the users
 		frame.setResizable(false);
 		//gets the size of the screen
@@ -385,7 +365,6 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 		titleLabel.setOpaque(false);
 		
 		
-		
 		//panel with info components
 		JPanel infoPanel = new JPanel();
 		infoPanel.setPreferredSize(new Dimension(300, 300));
@@ -399,7 +378,6 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 		JPanel gapPanel2 = new JPanel();
 		gapPanel2.setPreferredSize(new Dimension(100, 100));
 		gapPanel2.setOpaque(false);
-		
 		
 		
 		//add components to infoPanel

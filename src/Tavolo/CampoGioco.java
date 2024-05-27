@@ -2,13 +2,10 @@ package Tavolo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 
 import Carta.Carta;
 import Enumerazione.Simbolo;
 import Carta.CGiocabili;
-import Carta.CGiocabiliSpeciali;
 
 public class CampoGioco {
 
@@ -34,11 +31,12 @@ public class CampoGioco {
 		for(int y=0; y<DIMENSIONEY; y++) {
 			for(int x=0; x<DIMENSIONEX; x++) {
 				campo[y][x]=null;
-				campoPrint[y][x]=111;
+				campoPrint[y][x]=777;
 			}
 		}
 		
 	}
+	
 	/**
 	 * metodo che posiziona la carta scelta sul campo di gioco
 	 * in base alle coordinate scelte e verificando che sia effettivamente

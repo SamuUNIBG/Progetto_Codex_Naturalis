@@ -54,6 +54,8 @@ public class CRis extends CGiocabiliSpeciali {
 				"\n\t\t\tBasso dx -> " + this.getAngoli()[2].getSimbolo() +
 				"\n\t\t\tBasso sx -> " + this.getAngoli()[3].getSimbolo() + "]";			
 	}
+	
+	@Override
 	/** torna una stringa le informazioni della carta una volta
 	 * che è stata piazzata sul campo, se e stata piazzata sul fronte 
 	 * da le informazioni relative solo al fronte e analogalmente se

@@ -34,10 +34,7 @@ public class CIniz extends CGiocabili {
 		this.angoliR[2]=new Angolo(angolo6);
 		this.angoliR[3]=new Angolo(angolo7);
 	}
-
-	/*public void retro() {
-		super.retro();
-	}*/
+	@Override
 	/** se la carta iniziale e giocata sul fronte torna gli angoli sul fronte
 	 *  viceversa quelli sul retro 
 	 * @return Angolo[]
@@ -48,21 +45,13 @@ public class CIniz extends CGiocabili {
 		else
 			return this.angoliR;
 	}
-
-	/*public boolean getFronte() {
-		return super.getFronte();
-	}*/
 	/** ottenere le risorse centrali della carta iniziale
 	 * @return ArrayList<Simbolo>
 	 */
 	public ArrayList<Simbolo> getRisorseCentrali() {
 		return this.risorseCentrali;
 	}
-	
-	/*@Override
-	public int getIdCarta() {
-		return super.getIdCarta();
-	}*/
+	@Override
 	/** torna una stringa con tutte le informazioni della carta 
 	 * utile per capire le carte della mano
 	 * @return String
@@ -96,6 +85,7 @@ public class CIniz extends CGiocabili {
 		return str;
 		
 	}
+	@Override
 	/** torna una stringa le informazioni della carta una volta
 	 * che è stata piazzata sul campo, se e stata piazzata sul fronte 
 	 * da le informazioni relative solo al fronte e analogalmente se

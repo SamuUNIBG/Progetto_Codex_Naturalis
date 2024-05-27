@@ -10,6 +10,8 @@ import javax.swing.*;
  * pagina con i ringraziamenti e gli autori del progetto
  */
 public class Thanks extends JFrame implements ActionListener{
+	
+	private static final long serialVersionUID = 4067836740757558949L;
 	private JButton homeButton;
 	//this window
 	private JFrame frame = new JFrame();
@@ -33,8 +35,7 @@ public class Thanks extends JFrame implements ActionListener{
 		frame.setLocation((screenSize.width/2)-(frame.getWidth()/2), (screenSize.height/2)-(frame.getHeight()/2));
 		//exit out of application
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				
-				
+		
 				
 		//game title label
 		JLabel titleLabel = new JLabel();
@@ -83,8 +84,6 @@ public class Thanks extends JFrame implements ActionListener{
 		descriptionLabel2.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 15));
 		descriptionLabel2.setForeground(Color.RED);
 		descriptionLabel2.setMinimumSize(new Dimension(sfondo.getIconWidth()-50, 20));
-		
-		JTextArea j = new JTextArea();
 		
 		//panel with descriptionLabel1 and descriptionLabel2
 		JPanel descriptionPanel1 = new JPanel();
@@ -161,7 +160,7 @@ public class Thanks extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		 if(e.getSource()==homeButton) {
 			frame.dispose();
-			Home home = new Home();
+			new Home();
 		}
 	}
 	

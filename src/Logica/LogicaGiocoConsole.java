@@ -8,7 +8,6 @@ import Carta.CObb;
 import Carta.COro;
 import Carta.CRis;
 import Carta.CGiocabiliSpeciali;
-import Enumerazione.Colore;
 import Enumerazione.Simbolo;
 import Enumerazione.TipoCarta;
 
@@ -31,8 +30,6 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 	public LogicaGiocoConsole() {
 		
 		Scanner sc = new Scanner(System.in);
-		
-		//(char)233 e' (char)224 a'
 		
 		System.out.println("\nNuova partita di Codex Naturalis avviata!");
 		
@@ -543,6 +540,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		tracciato = new Tracciato(username,colori);
 	}
 	
+	@Override
 	/**
 	 * metodo per la gestione dei turni, regola anche la fine della partita
 	 * nel caso un giocatore sia arrivato a 20 punti, che da avvio
@@ -667,8 +665,8 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 				try {
 					System.out.println("Azioni disponibili: ");
 					System.out.println("1)Visualizzare le carte comuni");//tutte compres i mazzi e gli obb
-					System.out.println("2)Visualizzare il campo degli avversari");//possibilit� di scegliere l'avversario
-					System.out.println("3)Visualizzare il tracciato segnapunti");//verr� mostrato elenco giocatori con info su punteggio ris e ogg posseduti
+					System.out.println("2)Visualizzare il campo degli avversari");//possibilita' di scegliere l'avversario
+					System.out.println("3)Visualizzare il tracciato segnapunti");//verra' mostrato elenco giocatori con info su punteggio ris e ogg posseduti
 					System.out.println("4)Giocare una carta");
 					System.out.println("Inserire il numero corrispondente all'azione da compiere: ");
 					opz = Integer.parseInt(sc.nextLine());
@@ -1050,6 +1048,8 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 				break;
 		}
 	}
+	
+	@Override
 	/**
 	 * metodo che verrà richiamato alla fine della partita per contare
 	 * i punti realizzati dai giocatori attraverso gli obiettivi ed 
@@ -1069,6 +1069,8 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		Vincitore();
 		
 	}
+	
+	@Override
 	/**
 	 * metodo che controlla chi e il vincitore in base a chi ha 
 	 * ottenuto il punteggio piu alto e lo comunica

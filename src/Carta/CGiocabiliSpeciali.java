@@ -31,21 +31,6 @@ public abstract class CGiocabiliSpeciali extends CGiocabili {
 	public Colore getColore() {
 		return colore;
 	}
-	public void retro() {
-		super.retro();
-	}
-	/** per capire se la carta e fronte o retro
-	 * @return boolean fronte
-	 */
-	public boolean getFronte() {
-		return super.getFronte();
-	}
-	/** per ottenere i 4 angoli della carta
-	 * @return Angolo[] angoli
-	 */
-	public Angolo[] getAngoli() {
-		return super.getAngoli();
-	}
 	/** per capire se la carta e stata contata per l'obiettivo scala
 	 * @return boolean contaScala
 	 */
@@ -70,12 +55,6 @@ public abstract class CGiocabiliSpeciali extends CGiocabili {
 	 */
 	public void setContataL() {
 		this.contataL=true;
-	}
-	/** per ottenere l'id della carta
-	 * @return int IdCarta
-	 */
-	public int getIdCarta() {
-		return super.getIdCarta();
 	}
 	
 }

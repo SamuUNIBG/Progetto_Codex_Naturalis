@@ -27,7 +27,7 @@ public class COro extends CGiocabiliSpeciali implements InterfacciaCarteOro {
 	private final int[] risNecessarie = new int[4]; /*sono i requisiti (quindi 
 	le risorse da avere sul proprio campo) per poter piazzare la carta oro
 	sul fronte*/
-
+	
 	public COro(int puntiAssegnati, Simbolo obbiettivo, Simbolo simbolo, Colore colore, Simbolo angolo0, Simbolo angolo1,
 			Simbolo angolo2, Simbolo angolo3, int risnecessaria1, int risnecessaria2, int risnecessaria3, int risnecessaria4) {
 		super(puntiAssegnati, simbolo, colore, true, angolo0, angolo1, angolo2, angolo3, COro.LASTID);
@@ -48,12 +48,12 @@ public class COro extends CGiocabiliSpeciali implements InterfacciaCarteOro {
 		this.risNecessarie[3]=0;
 	}
 	
+	@Override
 	/**
 	 * verfica che sia soddisfatto il requisito di piazzamento della carta
 	 * quindi se sul rispettivo campo di gioco ci sono le risorse richieste
 	 * @return true se e soddisfatto altrimenti torna false
 	 */
-
 	public boolean VerificaPrerequisito(int[] vettoreRisorse) { 
 		
 		for(int i=0; i<this.getRisNecessarie().length; i++) {
@@ -68,13 +68,9 @@ public class COro extends CGiocabiliSpeciali implements InterfacciaCarteOro {
 		}
 		return true;
 	}
+	
 	public Simbolo getObiettivo() {
 		return this.obbiettivo;
-	}
-
-	
-	public void retro() {
-		super.retro();
 	}
 	
 	public int[] getRisNecessarie() {
@@ -102,6 +98,8 @@ public class COro extends CGiocabiliSpeciali implements InterfacciaCarteOro {
 				"\n\t\t\tFungo -> " + risNecessarie[2] +
 				"\n\t\t\tFarfalla -> " + risNecessarie[3] + "]";
 	}
+	
+	@Override
 	/** torna una stringa le informazioni della carta una volta
 	 * che è stata piazzata sul campo, se e stata piazzata sul fronte 
 	 * da le informazioni relative solo al fronte e analogalmente se
@@ -130,7 +128,8 @@ public class COro extends CGiocabiliSpeciali implements InterfacciaCarteOro {
 		return str;
 		
 	}
-
+	
+	@Override
 	/**
 	 * le carte oro possono dare dei punti al loro piazzamento se viene
 	 * realizzato l obiettivo richeisto dalla carta in questione

@@ -1,9 +1,5 @@
 package Enumerazione;
 
-/**
- * @author Samuele Vecchi
- *
- */
 public enum Simbolo {
 
 	FOGLIA, LUPO, FUNGO, FARFALLA,	//resources

@@ -184,9 +184,6 @@ public class CObbL extends CObb{
 		return direzione;
 	}
 	@Override
-	public int getIdCarta() {
-		return super.getIdCarta();
-	}
 	/** torna una stringa con tutte le informazioni della carta 
 	 * obiettivo in questione
 	 * @return String

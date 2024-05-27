@@ -10,10 +10,6 @@ import Carta.Carta;
 
 import Enumerazione.TipoCarta;
 
-/**
- * @author Samuele Vecchi
- *
- */
 public class CartaTavolo {
 
 	private ArrayList<CRis> cRisScp;

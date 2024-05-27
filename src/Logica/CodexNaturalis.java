@@ -1,6 +1,5 @@
 package Logica;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Grafica.Home;
@@ -30,6 +29,7 @@ public class CodexNaturalis {
 				System.out.println("Non puoi inserire una stringa");
 				
 			}
+			
 		}while(scelta<0 || scelta>1);
 		
 		if(scelta == 0) {

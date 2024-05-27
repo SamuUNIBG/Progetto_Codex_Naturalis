@@ -10,15 +10,16 @@ import javax.swing.*;
  */
 public class Rules extends JFrame implements ActionListener{
 	
+	private static final long serialVersionUID = 2569664091672557361L;
 	//declaration of buttons to add to the window
 	private JButton homeButton, precedente, successivo;
 	//declaration of label that contains rule-book image
 	private JLabel ruleLabel;
 	//declaration of rule-book image array
 	private ImageIcon[] ruleBook = {new ImageIcon("images/rule_book/Rulebook_1.jpg"),new ImageIcon("images/rule_book/Rulebook_2.jpg"),new ImageIcon("images/rule_book/Rulebook_3.jpg"),
-								new ImageIcon("images/rule_book/Rulebook_4.jpg"),new ImageIcon("images/rule_book/Rulebook_5.jpg"),new ImageIcon("images/rule_book/Rulebook_6.jpg"),
-								new ImageIcon("images/rule_book/Rulebook_7.jpg"),new ImageIcon("images/rule_book/Rulebook_8.jpg"),new ImageIcon("images/rule_book/Rulebook_9.jpg"),
-								new ImageIcon("images/rule_book/Rulebook_10.jpg"),new ImageIcon("images/rule_book/Rulebook_11.jpg"),new ImageIcon("images/rule_book/Rulebook_12.jpg")};
+									new ImageIcon("images/rule_book/Rulebook_4.jpg"),new ImageIcon("images/rule_book/Rulebook_5.jpg"),new ImageIcon("images/rule_book/Rulebook_6.jpg"),
+									new ImageIcon("images/rule_book/Rulebook_7.jpg"),new ImageIcon("images/rule_book/Rulebook_8.jpg"),new ImageIcon("images/rule_book/Rulebook_9.jpg"),
+									new ImageIcon("images/rule_book/Rulebook_10.jpg"),new ImageIcon("images/rule_book/Rulebook_11.jpg"),new ImageIcon("images/rule_book/Rulebook_12.jpg")};
 	//indicates image to print
 	int rulePage = 0;
 	//this window
@@ -39,7 +40,6 @@ public class Rules extends JFrame implements ActionListener{
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		//sets the window position to the center of the screen
 		frame.setLocation((screenSize.width/2)-(frame.getWidth()/2), (screenSize.height/2)-(frame.getHeight()/2));
-		
 		
 		
 		//game title label

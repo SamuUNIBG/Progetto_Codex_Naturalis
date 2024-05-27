@@ -126,11 +126,8 @@ public class CObbScala extends CObb{
 		giocatore.addPunteggio((this.getPunti())*volte);
 		
 	}
-
-	public int getIdCarta() {
-		return super.getIdCarta();
-	}	
 	
+	@Override
 	public String toString() {
 		String str = "Carata obbiettivo scala " + super.toString() +
 				"\n\t\t Obbiettivo -> Disporre tre carte diagonalmente" +

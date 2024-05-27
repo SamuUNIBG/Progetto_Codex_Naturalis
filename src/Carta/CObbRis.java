@@ -19,9 +19,11 @@ public class CObbRis extends CObb{
 		this.simbolo=simbolo;
 		CObbRis.LASTID++;
 	}
+	
 	public Simbolo getSimbolo() {
 		return simbolo;
 	}
+	
 	@Override
 	/**
 	 * tutte le carte richiedono un set di 3 risorse identiche per dare 
@@ -50,13 +52,7 @@ public class CObbRis extends CObb{
 		}
 	}
 	
-	public int getIdCarta() {
-		return super.getIdCarta();
-	}
-
-
-	
-	
+	@Override
 	public String toString() {
 		return "Carata obbiettivo risorsa " + super.toString() +
 				"\n\t\t Obbiettivo -> Formare tris di -> " + simbolo +  "]";

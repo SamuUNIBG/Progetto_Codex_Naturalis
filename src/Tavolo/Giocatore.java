@@ -35,9 +35,8 @@ public class Giocatore {
 		
 		cMano = new ArrayList<CGiocabiliSpeciali>();
 		cPiazzate =  new HashMap<Integer, String>();
-		cPiazzate.put(0, "111 -> cella vuota");
+		cPiazzate.put(0, "777 -> cella vuota");
 
-		
 		cObbPer = null;
 		cInizPer = null;
 		
@@ -53,6 +52,7 @@ public class Giocatore {
 		}
 		
 	}
+	
 	/**
 	 * 
 	 * @return il colore della pedina del giocatore
@@ -60,6 +60,7 @@ public class Giocatore {
 	public Colore getColore() {
 		return colore;
 	}
+	
 	/**
 	 * 
 	 * @return punteggio del giocatore
@@ -67,6 +68,7 @@ public class Giocatore {
 	public int getPunteggio() {
 		return punteggio;
 	}
+	
 	/**
 	 * per aggiungere di volta in volta i punti ottenuti dal giocatore
 	 * @param punti ottenuti
@@ -74,6 +76,7 @@ public class Giocatore {
 	public void addPunteggio(int punti) {
 		punteggio+=punti;
 	}
+	
 	/**
 	 * inserire il soprannome del giocatore
 	 * @return il soprannome
@@ -156,6 +159,7 @@ public class Giocatore {
 		}
 		
 	}
+	
 	/**
 	 * 
 	 * @return l obbiettivo personale che solo il giocatore conosce
@@ -163,6 +167,7 @@ public class Giocatore {
 	public CObb getCObbPer() {
 		return cObbPer;
 	}
+	
 	/**
 	 * 
 	 * @return l array con le risorse possedute dal giocatore
@@ -170,6 +175,7 @@ public class Giocatore {
 	public int[] getRisPossedute() {
 		return this.risPossedute;
 	}
+	
 	/**
 	 * 
 	 * @return l array con gli oggetti posseduti dal giocatore
@@ -177,6 +183,7 @@ public class Giocatore {
 	public int[] getOggPosseduti() {
 		return this.oggPosseduti;
 	}
+	
 	/**
 	 * 
 	 * @return il campo del giocatore
@@ -184,6 +191,7 @@ public class Giocatore {
 	public CampoGioco getCampoG() {
 		return this.campo;
 	}
+	
 	/**
 	 * 
 	 * @return la carta iniziale del giocatore
@@ -191,6 +199,7 @@ public class Giocatore {
 	public CIniz getCInizPer() {
 		return cInizPer;
 	}
+	
 	/**
 	 * gestisce la pescata della carta aggiungendola a quelle in mano
 	 * quindi possedute dal giocatore
@@ -207,6 +216,7 @@ public class Giocatore {
 		}
 		
 	}
+	
 	/**
 	 * mostra le carte del giocatore
 	 * @return l ArrayList con le carte della mano del giocatore
@@ -214,6 +224,7 @@ public class Giocatore {
 	public ArrayList<CGiocabiliSpeciali> getCMano() {
 		return cMano;
 	}
+	
 	/**
 	 * mostra le informazioni del giocatore, nome, colore, risorse possedute,
 	 * oggetti posseduti

@@ -9,6 +9,7 @@ import javax.swing.*;
  */
 public class UserPanel extends JPanel{
 
+	private static final long serialVersionUID = -4069660505516372388L;
 	private ArrayList<User> utenti;
 	
 	public UserPanel(ArrayList<String> username, ArrayList<String> userColor) {

@@ -1,4 +1,5 @@
 package Carta;
+
 import java.util.*;
 
 import Enumerazione.Simbolo;
@@ -43,8 +44,7 @@ public class CObbOgg extends CObb{
 	public void calcolaObb(Giocatore giocatore) {
 		
 		if(this.oggetti.size()==1){ 
-			/*vuol dire che l obiettivo richiede una
-			coppia di oggetti identici*/
+			/*vuol dire che l obiettivo richiede una coppia di oggetti identici*/
 			switch(this.oggetti.get(0)) { //l ogg in pos 0 e lo stesso di pos 1
 				case INCHIOSTRO:
 					giocatore.addPunteggio((this.getPunti())*(giocatore.getOggPosseduti()[0]/2));
@@ -84,13 +84,8 @@ public class CObbOgg extends CObb{
 			}
 		}
 	}
+	
 	@Override
-	public int getIdCarta() {
-		return super.getIdCarta();
-	}
-
-	
-	
 	public String toString() {
 		String str = "Carata obbiettivo oggetti " + super.toString();
 		

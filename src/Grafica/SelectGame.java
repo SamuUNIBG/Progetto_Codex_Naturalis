@@ -19,6 +19,7 @@ import javax.swing.*;
  */
 public class SelectGame extends JFrame implements ActionListener, WindowListener{
 	
+	private static final long serialVersionUID = 1090362247309758426L;
 	private JButton homeButton, gameButton;
 	private ArrayList<JTextField> nameTextArea;
 	private ArrayList<String> username;
