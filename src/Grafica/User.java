@@ -5,9 +5,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -76,15 +74,15 @@ public class User extends JPanel{
 		risorsePanel.setBackground(new Color(0xFEFCEF));
 		risorsePanel.setOpaque(true);
 		try {
-			Scanner sc = new Scanner(new FileInputStream(new File("file/resources_URL.csv")));
-	        
+			Scanner sc = new Scanner(getClass().getClassLoader().getResourceAsStream("resources_URL.csv"));
+		
 	            for(int j=0; j<8; j++) {
 	    			risorse.add(new JLabel());
 	    			
 	    			if(j%2!=0) {
 	    				if(sc.hasNextLine()) {
-	    		            String frase = sc.nextLine();
-	    		            risorse.get(j).setIcon(new ImageIcon(frase));
+	    		            String url = sc.nextLine();
+	    		            risorse.get(j).setIcon(new ImageIcon(getClass().getClassLoader().getResource(url)));
 	    				}
 	    			}else
 	    				risorse.get(j).setText("0");
@@ -94,7 +92,7 @@ public class User extends JPanel{
 	            
 	        sc.close();
 	    } 
-	    catch (FileNotFoundException e) {
+	    catch (NullPointerException e) {
 	        e.printStackTrace();
 	    }	
 		
@@ -103,15 +101,14 @@ public class User extends JPanel{
 		oggettiPanel.setBackground(new Color(0xFEFCEF));
 		oggettiPanel.setOpaque(true);
 		try {
-			Scanner sc = new Scanner(new FileInputStream(new File("file/objects_URL.csv")));
-	        
+			 Scanner sc = new Scanner(getClass().getClassLoader().getResourceAsStream("objects_URL.csv"));
 	            for(int j=0; j<6; j++) {
 	            	oggetti.add(new JLabel());
-	    			
+	            	
 	    			if(j%2!=0) {
 	    				if(sc.hasNextLine()) {
-	    		            String frase = sc.nextLine();
-	    		            oggetti.get(j).setIcon(new ImageIcon(frase));
+	    		            String url = sc.nextLine();
+	    		            oggetti.get(j).setIcon(new ImageIcon(getClass().getClassLoader().getResource(url)));
 	    				}
 	    			}else
 	    				oggetti.get(j).setText("0");
@@ -121,8 +118,8 @@ public class User extends JPanel{
 	            
 	        sc.close();
 	    } 
-	    catch (FileNotFoundException e) {
-	        e.printStackTrace();
+	    catch (NullPointerException e) {
+	    	e.printStackTrace();
 	    }
 			
 		this.add(nome);

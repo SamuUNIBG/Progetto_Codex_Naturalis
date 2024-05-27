@@ -185,7 +185,7 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 	public void mouseEntered(MouseEvent e) {
 		if(!mouseListenerEnable) {
 			if(e.getSource()==this) {
-				Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("X.png")).getImage(), new Point(0,0), "Custum cursor");
+				Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getClassLoader().getResource("x.png")).getImage(), new Point(0,0), "Custum cursor");
 				setCursor(cursor);
 			}
 		}else {

@@ -20,8 +20,8 @@ public class Thanks extends JFrame implements ActionListener{
 	
 	public Thanks(){
 		//create the image background "sfondo" and the frame's icon "logo"
-		ImageIcon sfondo = new ImageIcon("images/sfondi/sfondo_2.jpg");
-		ImageIcon logo = new ImageIcon("images/codex_logo.png");
+		ImageIcon sfondo = new ImageIcon(getClass().getClassLoader().getResource("sfondi/sfondo_2.jpg"));
+		ImageIcon logo = new ImageIcon(getClass().getClassLoader().getResource("codex_logo.png"));
 		
 		//sets title, dimension of the JFrame
 		frame.setIconImage(logo.getImage());

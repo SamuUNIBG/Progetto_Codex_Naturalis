@@ -13,10 +13,6 @@ import java.awt.event.WindowListener;
 
 import java.util.*;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
 /**
  * classe per giocare la partita da Grafica
  */
@@ -38,7 +34,7 @@ public class Game extends JFrame implements MouseListener, WindowListener {
 		
 		cardImageMap = new HashMap<Integer, String>();
 		CARDIMAGEARR = new ArrayList<Icon>();
-		ImageIcon logo = new ImageIcon("images/codex_logo.png");
+		ImageIcon logo = new ImageIcon(getClass().getClassLoader().getResource("codex_logo.png"));
 		
 		this.setIconImage(logo.getImage());
 		this.setTitle("Codex Naturalis - Partita");
@@ -110,7 +106,7 @@ public class Game extends JFrame implements MouseListener, WindowListener {
 	private void createHashMap() {
 		
 		try {
-			Scanner sc = new Scanner(new FileInputStream(new File("file/cards_URL.csv")));
+		Scanner sc = new Scanner(getClass().getClassLoader().getResourceAsStream("cards_URL.csv"));
 	        
 	        while (sc.hasNextLine()) {
 	            String frase = sc.nextLine();
@@ -123,7 +119,7 @@ public class Game extends JFrame implements MouseListener, WindowListener {
 	        }
 	        sc.close();
 	    } 
-	    catch (FileNotFoundException e) {
+	    catch (NullPointerException e) {
 	        e.printStackTrace();
 	    }
 				
@@ -134,7 +130,7 @@ public class Game extends JFrame implements MouseListener, WindowListener {
 	private void istantiateCardImage() {
 		
 		for(int i=0; i<cardImageMap.size(); i++) {
-			ImageIcon image = new ImageIcon(cardImageMap.get(i));
+			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource(cardImageMap.get(i)));
 			image.setDescription(i+"");
 			CARDIMAGEARR.add(image);
 		}
@@ -285,7 +281,7 @@ public class Game extends JFrame implements MouseListener, WindowListener {
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("X.png")).getImage(), new Point(0,0), "Custum cursor");
+		Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getClassLoader().getResource("x.png")).getImage(), new Point(0,0), "Custum cursor");
 		setCursor(cursor);
 		
 	}

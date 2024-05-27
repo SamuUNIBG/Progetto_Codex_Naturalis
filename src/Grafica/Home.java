@@ -22,8 +22,8 @@ public class Home extends JFrame implements ActionListener{
 	public Home() {
 		
 		//create the image background "sfondo" and the frame's icon "logo"
-		ImageIcon sfondo = new ImageIcon("images/rule_book/Rulebook_1.jpg");
-		ImageIcon logo = new ImageIcon("images/codex_logo.png");
+		ImageIcon sfondo = new ImageIcon(getClass().getClassLoader().getResource("rule_book/Rulebook_1.jpg"));
+		ImageIcon logo = new ImageIcon(getClass().getClassLoader().getResource("codex_logo.png"));
 		
 		//sets title, dimension of the JFrame
 		this.setIconImage(logo.getImage());

@@ -5,12 +5,9 @@ import java.awt.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 import javax.swing.*;
 /**
@@ -34,8 +31,8 @@ public class SelectGame extends JFrame implements ActionListener, WindowListener
 	public SelectGame() {
 		
 		//create the frame's icon "logo"
-		ImageIcon logo = new ImageIcon("images/codex_logo.png");
-		ImageIcon sfondo = new ImageIcon("images/sfondi/sfondo_1.jpg");
+		ImageIcon sfondo = new ImageIcon(getClass().getClassLoader().getResource("sfondi/sfondo_1.jpg"));
+		ImageIcon logo = new ImageIcon(getClass().getClassLoader().getResource("codex_logo.png"));
 		//sets title, dimension of the JFrame
 		this.setIconImage(logo.getImage());
 		this.setTitle("Codex Naturalis - Seleziona giocatori");

@@ -178,7 +178,7 @@ public class CarteComuniPanel extends JPanel implements MouseListener {
 					game.assegnaCarta(imgSelectedC);
 					game.pescaCarta(posSelectedC);
 					
-					Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("x.png")).getImage(), new Point(0,0), "Custum cursor");
+					Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getClassLoader().getResource("x.png")).getImage(), new Point(0,0), "Custum cursor");
 					setCursor(cursor);
 					
 					break;
@@ -234,12 +234,12 @@ public class CarteComuniPanel extends JPanel implements MouseListener {
 			setCursor(Cursor.getDefaultCursor());
 		}else {
 			if(e.getSource()==this) {
-				Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("X.png")).getImage(), new Point(0,0), "Custum cursor");
+				Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getClassLoader().getResource("x.png")).getImage(), new Point(0,0), "Custum cursor");
 				setCursor(cursor);
 			}
 			for(int i=0; i<opacoLabelCComuni.length; i++) {
 				if(e.getSource()==opacoLabelCComuni[i]) {
-					Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("X.png")).getImage(), new Point(0,0), "Custum cursor");
+					Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getClassLoader().getResource("x.png")).getImage(), new Point(0,0), "Custum cursor");
 					setCursor(cursor);
 				}
 			}

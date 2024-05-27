@@ -182,7 +182,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 							if(game.COroGiocabile(Integer.parseInt(((ImageIcon)imgEnteredC).getDescription()))) {
 								imgSelectedC = imgEnteredC;
 								fronte = true;
-								Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("spunta.png")).getImage(), new Point(0,0), "Custum cursor");
+								Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getClassLoader().getResource("spunta.png")).getImage(), new Point(0,0), "Custum cursor");
 								setCursor(cursor);
 								try {
 									Thread.sleep(450);
@@ -192,7 +192,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 								}
 							}else {
 								playingField.mouseListenerEnable(false);
-								Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("x.png")).getImage(), new Point(0,0), "Custum cursor");
+								Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getClassLoader().getResource("x.png")).getImage(), new Point(0,0), "Custum cursor");
 								setCursor(cursor);
 								try {
 									Thread.sleep(450);
@@ -204,7 +204,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 						}else {
 							imgSelectedC = imgEnteredC;
 							fronte = true;
-							Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("spunta.png")).getImage(), new Point(0,0), "Custum cursor");
+							Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getClassLoader().getResource("spunta.png")).getImage(), new Point(0,0), "Custum cursor");
 							setCursor(cursor);
 							try {
 								Thread.sleep(450);
@@ -214,7 +214,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 							}
 						}
 					}else if(e.getButton() == MouseEvent.BUTTON3) {
-						Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("spunta.png")).getImage(), new Point(0,0), "Custum cursor");
+						Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getClassLoader().getResource("spunta.png")).getImage(), new Point(0,0), "Custum cursor");
 						setCursor(cursor);
 						try {
 							Thread.sleep(450);
@@ -222,7 +222,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 						} catch (InterruptedException e1) {
 							e1.printStackTrace();
 						}
-						imgSelectedC = Game.getImage(calcolaNewId(Integer.parseInt(((ImageIcon)imgEnteredC).getDescription())));//opacoLabelCPersonali[i].getIcon();
+						imgSelectedC = Game.getImage(calcolaNewId(Integer.parseInt(((ImageIcon)imgEnteredC).getDescription())));
 						fronte = false;
 					}
 				}
@@ -253,17 +253,17 @@ public class UserPlayGround extends JPanel implements MouseListener {
 				}
 			}
 			if(e.getSource()==opacoLabelCPersonali[3]) {
-				Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("X.png")).getImage(), new Point(0,0), "Custum cursor");
+				Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getClassLoader().getResource("x.png")).getImage(), new Point(0,0), "Custum cursor");
 				setCursor(cursor);
 			}
 		}else {
 			if(e.getSource()==cartePersonaliPanel || (e.getSource()==scrollPlayingField && !(playingField.isMouseListenerEnable()))) {
-				Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("X.png")).getImage(), new Point(0,0), "Custum cursor");
+				Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getClassLoader().getResource("x.png")).getImage(), new Point(0,0), "Custum cursor");
 				setCursor(cursor);
 			}
 			for(int i=0; i<opacoLabelCPersonali.length; i++) {
 				if(e.getSource()==opacoLabelCPersonali[i]) {
-					Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource("X.png")).getImage(), new Point(0,0), "Custum cursor");
+					Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getClassLoader().getResource("x.png")).getImage(), new Point(0,0), "Custum cursor");
 					setCursor(cursor);
 				}
 			}

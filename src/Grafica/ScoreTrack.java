@@ -7,10 +7,6 @@ import java.awt.event.*;
 import java.awt.FlowLayout;
 import java.awt.Font;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -49,7 +45,8 @@ public class ScoreTrack extends JLayeredPane implements ActionListener{
 		sfondo.setOpaque(true);
 		
 		tracciato=new JLabel();
-		tracciato.setIcon(new ImageIcon("images/score/score_track.jpg"));
+		
+		tracciato.setIcon(new ImageIcon(getClass().getClassLoader().getResource("score/score_track.jpg")));
 		tracciato.setBounds(0,50,313,608);
 		
 		
@@ -59,16 +56,16 @@ public class ScoreTrack extends JLayeredPane implements ActionListener{
         	pedine.add(new JLabel());
         	switch(userColor.get(i)) {
 	        	case "Azzurro":
-	        		pedine.get(i).setIcon(new ImageIcon("images/score/blue_pawn.png"));
+	        		pedine.get(i).setIcon(new ImageIcon(getClass().getClassLoader().getResource("score/blue_pawn.png")));
 	        		break;
 	        	case "Giallo":
-	        		pedine.get(i).setIcon(new ImageIcon("images/score/yellow_pawn.png"));
+	        		pedine.get(i).setIcon(new ImageIcon(getClass().getClassLoader().getResource("score/yellow_pawn.png")));
 	        		break;
 	        	case "Rosso":
-	        		pedine.get(i).setIcon(new ImageIcon("images/score/red_pawn.png"));
+	        		pedine.get(i).setIcon(new ImageIcon(getClass().getClassLoader().getResource("score/red_pawn.png")));
 	        		break;
 	        	case "Verde":
-	        		pedine.get(i).setIcon(new ImageIcon("images/score/green_pawn.png"));
+	        		pedine.get(i).setIcon(new ImageIcon(getClass().getClassLoader().getResource("score/green_pawn.png")));
 	        		break;
         	}
         	pedine.get(i).setBounds(0, 0, 45, 45);
@@ -128,7 +125,7 @@ public class ScoreTrack extends JLayeredPane implements ActionListener{
 		
 		//add all pawn position to HashMap
 		try {
-			Scanner sc = new Scanner(new FileInputStream(new File("file/pawn_position.csv")));
+			Scanner sc = new Scanner(getClass().getClassLoader().getResourceAsStream("pawn_position.csv"));
 	        
 	        while (sc.hasNextLine()) {
 	            String frase = sc.nextLine();
@@ -141,7 +138,7 @@ public class ScoreTrack extends JLayeredPane implements ActionListener{
 	        }
 	        sc.close();
 	    } 
-	    catch (FileNotFoundException e) {
+	    catch (NullPointerException e) {
 	        e.printStackTrace();
 	    }
 				
