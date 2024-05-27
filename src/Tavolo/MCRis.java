@@ -43,9 +43,9 @@ public class MCRis extends Mazzo {
 		cMazzo.add(new CRis(0, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.FARFALLA, Simbolo.FARFALLA));
 		cMazzo.add(new CRis(0, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.FARFALLA, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.FARFALLA));
 		cMazzo.add(new CRis(0, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.VUOTO, Simbolo.FARFALLA, Simbolo.FARFALLA, Simbolo.ASSENTE));
-		cMazzo.add(new CRis(0, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.ASSENTE, Simbolo.PIUMA, Simbolo.FARFALLA, Simbolo.LUPO));
+	cMazzo.add(new CRis(0, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.ASSENTE, Simbolo.PIUMA, Simbolo.FARFALLA, Simbolo.LUPO));
 		cMazzo.add(new CRis(0, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.PERGAMENA, Simbolo.FARFALLA, Simbolo.FUNGO, Simbolo.ASSENTE));
-		cMazzo.add(new CRis(0, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.FARFALLA, Simbolo.FOGLIA, Simbolo.ASSENTE, Simbolo.INCHIOSTRO));
+	cMazzo.add(new CRis(0, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.FARFALLA, Simbolo.FOGLIA, Simbolo.ASSENTE, Simbolo.INCHIOSTRO));
 		cMazzo.add(new CRis(1, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.FARFALLA, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO));
 		cMazzo.add(new CRis(1, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.FARFALLA, Simbolo.ASSENTE));
 		cMazzo.add(new CRis(1, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.ASSENTE, Simbolo.FARFALLA, Simbolo.VUOTO, Simbolo.VUOTO));

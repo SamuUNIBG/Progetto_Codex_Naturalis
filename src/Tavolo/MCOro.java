@@ -24,11 +24,10 @@ public class MCOro extends Mazzo {
 		cMazzo.add(new COro(2, Simbolo.ANGOLO, Simbolo.LUPO, Colore.AZZURRO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO, 0, 3, 1, 0));	//3 LUPO, 1 FUNGO
 		cMazzo.add(new COro(2, Simbolo.ANGOLO, Simbolo.LUPO, Colore.AZZURRO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.VUOTO, 1, 3, 0, 0));	//3 LUPO, 1 FOGLIA
 		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.LUPO, Colore.AZZURRO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.ASSENTE, Simbolo.PERGAMENA, 0, 3, 0, 0));	//3 LUPO
-		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.LUPO, Colore.AZZURRO, Simbolo.VUOTO, Simbolo.INCHIOSTRO, Simbolo.ASSENTE, Simbolo.ASSENTE, 0, 3, 0, 0));	//3 LUPO
-		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.LUPO, Colore.AZZURRO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.PIUMA, Simbolo.ASSENTE, 0, 3, 0, 0));	//3 LUPO
+		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.LUPO, Colore.AZZURRO, Simbolo.VUOTO, Simbolo.INCHIOSTRO, Simbolo.ASSENTE, Simbolo.ASSENTE, 0, 3, 0, 0));	//3 LUPO		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.LUPO, Colore.AZZURRO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.PIUMA, Simbolo.ASSENTE, 0, 3, 0, 0));	//3 LUPO
 		cMazzo.add(new COro(5, Simbolo.ASSENTE, Simbolo.LUPO, Colore.AZZURRO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.ASSENTE, 0, 5, 0, 0));	//5 LUPO
 		//green
-		cMazzo.add(new COro(1, Simbolo.PIUMA, Simbolo.FOGLIA, Colore.VERDE, Simbolo.PIUMA, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.VUOTO, 2, 0, 0, 1));	//2 FOGLIA, 1 FARFALLA
+	cMazzo.add(new COro(1, Simbolo.PIUMA, Simbolo.FOGLIA, Colore.VERDE, Simbolo.PIUMA, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.VUOTO, 2, 0, 0, 1));	//2 FOGLIA, 1 FARFALLA
 		cMazzo.add(new COro(1, Simbolo.PERGAMENA, Simbolo.FOGLIA, Colore.VERDE, Simbolo.VUOTO, Simbolo.PERGAMENA, Simbolo.VUOTO, Simbolo.ASSENTE, 2, 0, 1, 0));	//2 FOLGIA, 1 FUNGO
 		cMazzo.add(new COro(1, Simbolo.INCHIOSTRO, Simbolo.FOGLIA, Colore.VERDE, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.INCHIOSTRO, 2, 1, 0, 0));	//2 FOGLIA, 1 LUPO
 		cMazzo.add(new COro(2, Simbolo.ANGOLO, Simbolo.FOGLIA, Colore.VERDE, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.VUOTO, 3, 0, 0, 1));	//3 FOGLIA, 1 FARFALLA
@@ -45,8 +44,7 @@ public class MCOro extends Mazzo {
 		cMazzo.add(new COro(2, Simbolo.ANGOLO, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.ASSENTE, 0, 1, 0, 3));	//3 FARFALLA, 1 LUPO
 		cMazzo.add(new COro(2, Simbolo.ANGOLO, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.VUOTO, 1, 0, 0, 3));	//3 FARFALLA, 1 FOGLIA
 		cMazzo.add(new COro(2, Simbolo.ANGOLO, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO, 0, 0, 1, 3));	//3 FARFALLA, 1 FUNGO
-		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.INCHIOSTRO, Simbolo.ASSENTE, Simbolo.ASSENTE, Simbolo.VUOTO, 0, 0, 0, 3));	//3 FARFALLA
-		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.VUOTO, Simbolo.PERGAMENA, Simbolo.ASSENTE, Simbolo.ASSENTE, 0, 0, 0, 3));	//3 FARFALLA
+		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.INCHIOSTRO, Simbolo.ASSENTE, Simbolo.ASSENTE, Simbolo.VUOTO, 0, 0, 0, 3));	//3 FARFALLA/		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.VUOTO, Simbolo.PERGAMENA, Simbolo.ASSENTE, Simbolo.ASSENTE, 0, 0, 0, 3));	//3 FARFALLA
 		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.ASSENTE, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.PIUMA, 0, 0, 0, 3));	//3 FARFALLA
 		cMazzo.add(new COro(5, Simbolo.ASSENTE, Simbolo.FARFALLA, Colore.VIOLA, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.ASSENTE, 0, 0, 0, 5));	//5 FARFALLA
 		//red
