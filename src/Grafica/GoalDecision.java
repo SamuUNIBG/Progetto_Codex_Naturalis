@@ -3,16 +3,14 @@ package Grafica;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Toolkit;
-import java.util.ArrayList;
 import java.awt.event.*;
 
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import Carta.CObb;
 import Logica.LogicaGiocoGrafica;
+
 /**
  * classe per la scelta della carta obiettivo segreta di ogni giocatore
  */
@@ -20,11 +18,9 @@ public class GoalDecision implements MouseListener {
 	
 	private JLabel[] cObbScelLabel;
 	private JDialog dialog;
-	private Game game;
 	private LogicaGiocoGrafica logica;
 	
 	public GoalDecision(ImageIcon[] urlImage, String nome, Game game, LogicaGiocoGrafica logica){
-		this.game = game;
 		this.logica = logica;
 		cObbScelLabel = new JLabel[2];
 		dialog = new JDialog(game, "", true);

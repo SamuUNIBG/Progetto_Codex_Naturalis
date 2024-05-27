@@ -15,12 +15,14 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 /**
  * classe che contiene i mazzi delle carte oro e risorse
  * e mostra le carte selezionate da un giocatore
  */
 public class CarteComuniPanel extends JPanel implements MouseListener {
 	
+	private static final long serialVersionUID = -4362744526790874463L;
 	private JPanel[] sottoPanel;
 	private JLabel[] opacoLabelCComuni;
 	protected static boolean MOUSELISTENERENABLE;
@@ -28,7 +30,6 @@ public class CarteComuniPanel extends JPanel implements MouseListener {
 	private Icon imgSelectedC;
 	private Icon imgMazzoRis;
 	private Icon imgMazzoOro;
-	
 	private Game game;
 	
 	public CarteComuniPanel(Game game) {

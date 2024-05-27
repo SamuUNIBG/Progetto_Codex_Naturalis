@@ -2,14 +2,10 @@ package Grafica;
 
 import javax.swing.*;
 
-import Carta.CObb;
 import Logica.LogicaGiocoGrafica;
-import Tavolo.Giocatore;
 
 import java.awt.*;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
@@ -27,6 +23,7 @@ import java.io.FileNotFoundException;
 
 public class Game extends JFrame implements MouseListener, WindowListener {
 	
+	private static final long serialVersionUID = 1413119501062599452L;
 	private HashMap<Integer, String> cardImageMap;
 	public static ArrayList<Icon> CARDIMAGEARR;
 	private LogicaGiocoGrafica logica;
@@ -101,7 +98,6 @@ public class Game extends JFrame implements MouseListener, WindowListener {
       	//add component to window
         this.add(tabbedPane,BorderLayout.CENTER);
         this.add(contenitoreUC,BorderLayout.NORTH);
-      	//frame.add(userPanel,BorderLayout.WEST);
         this.add(scoreTrackPane,BorderLayout.WEST);
       	//makes frame visible
         this.setVisible(true);
@@ -265,6 +261,7 @@ public class Game extends JFrame implements MouseListener, WindowListener {
 	public void chiudi() {
 		if(JOptionPane.showConfirmDialog(this, "Conferma Uscita", "Uscire dalla partita", JOptionPane.YES_NO_OPTION)==0) {
 			this.dispose();
+			new Home();
 		}
 	}
 

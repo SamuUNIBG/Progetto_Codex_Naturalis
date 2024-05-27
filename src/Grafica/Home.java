@@ -15,6 +15,7 @@ import java.awt.event.*;
  */
 public class Home extends JFrame implements ActionListener{
 	
+	private static final long serialVersionUID = -9073772697488234903L;
 	//declaration of buttons to add to the window
 	private JButton nuovoGioco, regole, impostazioni,  ringraziamenti;
 	

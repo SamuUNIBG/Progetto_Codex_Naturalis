@@ -21,6 +21,7 @@ import javax.swing.JPanel;
  */
 public class User extends JPanel{
 	
+	private static final long serialVersionUID = -2483484261653812733L;
 	//label nomi utente
 	private JLabel nome;
 	//pannello risorse
@@ -129,6 +130,7 @@ public class User extends JPanel{
 		this.add(oggettiPanel);
 	    this.setOpaque(false);
 	}
+	
 	/**
 	 * ogni volta che il giocatore piazza una carta ottiene risorse
 	 * o copre quelle che gia aveva, quindi vanno aggiornate ad ogni
@@ -146,6 +148,7 @@ public class User extends JPanel{
 			risorse.get(6).setText("" + (risAggiungere[3]));
 			
 	}
+	
 	/**
 	 * ogni volta che il giocatore piazza una carta ottiene oggetti
 	 * o copre quelli che gia aveva, quindi vanno aggiornati ad ogni

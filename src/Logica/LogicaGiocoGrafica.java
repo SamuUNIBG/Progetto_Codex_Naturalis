@@ -212,7 +212,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 		ArrayList<CGiocabiliSpeciali> cManoAttuale=giocatoreAttuale.getCMano();
 		
 		for(int i=0; i<cManoAttuale.size(); i++) {
-			if(cManoAttuale.get(i).getIdCarta()==idCarta);
+			if(cManoAttuale.get(i).getIdCarta()==idCarta)
 				numCarta=i;
 		}
 		CGiocabiliSpeciali carta = cManoAttuale.get(numCarta);
@@ -406,10 +406,8 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 		}//aggiungere vari JOptionPane per comunicare il vincitore
 		if(giocatore.size()==1) {
 			JOptionPane.showMessageDialog(null, "Ha vinto un solo giocatore!","Title",JOptionPane.INFORMATION_MESSAGE);
-			System.out.println("Ha vinto solo un giocatore:\n");
 		}else {
 			JOptionPane.showMessageDialog(null, "Hanno vinto "+giocatore.size()+" giocatori","Title",JOptionPane.INFORMATION_MESSAGE);
-			System.out.println("Hanno vinto "+giocatore.size()+" giocatori:\n");
 		}
 		for(int i=0;i<giocatore.size();i++) {
 			JLabel vincitore=new JLabel(giocatore.get(i));

@@ -3,10 +3,14 @@ package Grafica;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.awt.event.*;
+import java.awt.FlowLayout;
+import java.awt.Font;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -19,16 +23,13 @@ import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import java.awt.event.*;
-import java.awt.FlowLayout;
-import java.awt.Font;
-
 /**
  * gestione del progresso della pedina del giocatore
  * ogni qualvolta vi e una modifica di punteggio
  */
 public class ScoreTrack extends JLayeredPane implements ActionListener{
 	
+	private static final long serialVersionUID = -6000799073604943579L;
 	private HashMap<Integer, String> pawnPositionMap;
 	private ArrayList<JLabel> pedine;
 	private JLabel tracciato;

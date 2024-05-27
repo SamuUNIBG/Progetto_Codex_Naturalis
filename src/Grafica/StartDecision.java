@@ -20,13 +20,11 @@ public class StartDecision implements MouseListener {
 	
 	private JLabel cInizScelLabel;
 	private JDialog dialog;
-	private Game game;
 	private LogicaGiocoGrafica logica;
 	private Icon urlImage;
-	private Icon imgSelectedC, imgEnteredC;
+	private Icon imgEnteredC;
 	
 	public StartDecision(Icon urlImage, String nome, Game game, LogicaGiocoGrafica logica) {
-		this.game = game;
 		this.logica = logica;
 		this.urlImage = urlImage;
 		
@@ -103,7 +101,7 @@ public class StartDecision implements MouseListener {
 				return 115;
 		
 		}
-		return 0;
+		return 999;
 	}
 
 	@Override

@@ -7,13 +7,13 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-import Logica.LogicaGiocoGrafica;
 /**
  * il campo di gioco comune il quale comprende i campi di gioco
  * di ogni giocatore
  */
 public class PlayingField extends JLayeredPane implements MouseListener {
 	
+	private static final long serialVersionUID = -2261390480846150683L;
 	private int z;
 	private boolean mouseListenerEnable;
 	

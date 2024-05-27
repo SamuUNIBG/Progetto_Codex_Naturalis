@@ -9,6 +9,7 @@ import javax.swing.*;
  */
 public class UserPlayGround extends JPanel implements MouseListener {
 	
+	private static final long serialVersionUID = -1497922931213082742L;
 	private JLabel[] opacoLabelCPersonali;
 	private PlayingField playingField;
 	private int posSelectedC;
@@ -72,7 +73,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 			opacoLabelCPersonali[i].setOpaque(true);
 			opacoLabelCPersonali[i].setPreferredSize(new Dimension(163, 113));
 			opacoLabelCPersonali[i].setVisible(true);
-			//if(i<opacoLabelCPersonali.length-1)
+			if(i<opacoLabelCPersonali.length-1)
 				opacoLabelCPersonali[i].addMouseListener(this);
 		}
 			    
@@ -88,6 +89,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 		gbc.gridy=1;
 		this.add(cartePersonaliPanel,gbc);	
 	}
+	
 	/**
 	 * gestione delle Label che conterranno le carte che 
 	 * vengono giocate e quindi piazzate
@@ -112,6 +114,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 			cartePersonaliPanel.add(opacoLabelCPersonali[i]);
 		}
 	}
+	
 	/**
 	 * gestione del pescaggio della PRIMA carta
 	 * @param pos
@@ -121,6 +124,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 		opacoLabelCPersonali[pos].setIcon(url);
 		imgFronte[pos] = url;
 	}
+	
 	/**
 	 * gestione del pescaggio delle carte
 	 * @param icona della carta
@@ -129,6 +133,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 		opacoLabelCPersonali[2].setIcon(url);
 		imgFronte[2] = url;
 	}
+	
 	/**
 	 * gestione del piazzamento della carta iniziale
 	 * @param icona della carta
@@ -136,6 +141,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 	public void piazzaCartaIniz(Icon url) {
 		playingField.posCIniz(url);
 	}
+	
 	/**
 	 * gestione della giocata della carta 
 	 * @param idCarta
@@ -156,6 +162,7 @@ public class UserPlayGround extends JPanel implements MouseListener {
 	public void mouseReset() {
 		setCursor(Cursor.getDefaultCursor());
 	}
+	
 	@Override
 	/**
 	 * quando viene cliccato il mouse per il posizionamento della carta, 
