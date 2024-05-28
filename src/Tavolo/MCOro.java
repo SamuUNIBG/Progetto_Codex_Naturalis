@@ -26,7 +26,7 @@ public class MCOro extends Mazzo {
 		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.LUPO, Colore.AZZURRO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.ASSENTE, Simbolo.PERGAMENA, 0, 3, 0, 0));	//3 LUPO
 		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.LUPO, Colore.AZZURRO, Simbolo.VUOTO, Simbolo.INCHIOSTRO, Simbolo.ASSENTE, Simbolo.ASSENTE, 0, 3, 0, 0));	//3 LUPO
 		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.LUPO, Colore.AZZURRO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.PIUMA, Simbolo.ASSENTE, 0, 3, 0, 0));	//3 LUPO
-		cMazzo.add(new COro(5, Simbolo.ASSENTE, Simbolo.LUPO, Colore.AZZURRO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.ASSENTE, 0, 5, 0, 0));	//5 LUPO
+		/*cMazzo.add(new COro(5, Simbolo.ASSENTE, Simbolo.LUPO, Colore.AZZURRO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.ASSENTE, 0, 5, 0, 0));	//5 LUPO
 		//green
 		cMazzo.add(new COro(1, Simbolo.PIUMA, Simbolo.FOGLIA, Colore.VERDE, Simbolo.PIUMA, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.VUOTO, 2, 0, 0, 1));	//2 FOGLIA, 1 FARFALLA
 		cMazzo.add(new COro(1, Simbolo.PERGAMENA, Simbolo.FOGLIA, Colore.VERDE, Simbolo.VUOTO, Simbolo.PERGAMENA, Simbolo.VUOTO, Simbolo.ASSENTE, 2, 0, 1, 0));	//2 FOLGIA, 1 FUNGO
@@ -59,7 +59,7 @@ public class MCOro extends Mazzo {
 		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.FUNGO, Colore.ROSSO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.ASSENTE, Simbolo.INCHIOSTRO, 0, 0, 3, 0));	//3 FUNGO
 		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.FUNGO, Colore.ROSSO, Simbolo.PIUMA, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.ASSENTE, 0, 0, 3, 0));	//3 FUNGO
 		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.FUNGO, Colore.ROSSO, Simbolo.ASSENTE, Simbolo.PERGAMENA, Simbolo.VUOTO, Simbolo.ASSENTE, 0, 0, 3, 0));	//3 FUNGO
-		cMazzo.add(new COro(5, Simbolo.ASSENTE, Simbolo.FUNGO, Colore.ROSSO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.ASSENTE, Simbolo.VUOTO, 0, 0, 5, 0));	//5 FUNGO
+		cMazzo.add(new COro(5, Simbolo.ASSENTE, Simbolo.FUNGO, Colore.ROSSO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.ASSENTE, Simbolo.VUOTO, 0, 0, 5, 0));	//5 FUNGO*/
 		
 		Collections.shuffle(cMazzo);
 	}

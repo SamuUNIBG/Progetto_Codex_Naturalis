@@ -155,25 +155,21 @@ public class CarteComuniPanel extends JPanel implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if(CarteComuniPanel.MOUSELISTENERENABLE) {
-			for(int i=0; i<opacoLabelCComuni.length-1; i++) {
+			for(int i=0; i<3; i++) {
 				if(e.getSource()==opacoLabelCComuni[i]) {
 					CarteComuniPanel.MOUSELISTENERENABLE = false;
 					posSelectedC = i;
 					if(posSelectedC == 0) {
 						imgSelectedC = imgMazzoRis;
-					}else if(posSelectedC == 4) {
-						imgSelectedC = imgMazzoOro;
 					}else {
 						imgSelectedC = opacoLabelCComuni[i].getIcon();
 					}
 					
 					if(i==1 || i==2)
 						opacoLabelCComuni[i].setIcon(imgMazzoRis);
-					if(i==5 || i==6)
-						opacoLabelCComuni[i].setIcon(imgMazzoOro);
 					if(opacoLabelCComuni[i].getIcon()==null)
 						opacoLabelCComuni[i].removeMouseListener(this);
-					if(i==1 || i==5)
+					if(i==1)
 						this.moveLabel();
 					game.assegnaCarta(imgSelectedC);
 					game.pescaCarta(posSelectedC);
@@ -184,6 +180,33 @@ public class CarteComuniPanel extends JPanel implements MouseListener {
 					break;
 				}
 			}
+			
+			for(int i=4; i<opacoLabelCComuni.length-1; i++) {
+				if(e.getSource()==opacoLabelCComuni[i]) {
+					CarteComuniPanel.MOUSELISTENERENABLE = false;
+					posSelectedC = i;
+					if(posSelectedC == 4) {
+						imgSelectedC = imgMazzoOro;
+					}else {
+						imgSelectedC = opacoLabelCComuni[i].getIcon();
+					}
+					
+					if(i==5 || i==6)
+						opacoLabelCComuni[i].setIcon(imgMazzoOro);
+					if(opacoLabelCComuni[i].getIcon()==null)
+						opacoLabelCComuni[i].removeMouseListener(this);
+					if(i==5)
+						this.moveLabel();
+					game.assegnaCarta(imgSelectedC);
+					game.pescaCarta(posSelectedC);
+					
+					Cursor cursor=Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getClassLoader().getResource("x.png")).getImage(), new Point(0,0), "Custum cursor");
+					setCursor(cursor);
+					
+					break;
+				}
+			}
+			
 		}
 		
 	}

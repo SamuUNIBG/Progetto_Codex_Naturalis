@@ -31,7 +31,7 @@ public class MCRis extends Mazzo {
 		cMazzo.add(new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.FOGLIA, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.FOGLIA));
 		cMazzo.add(new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.FOGLIA, Simbolo.FOGLIA, Simbolo.VUOTO, Simbolo.ASSENTE));
 		cMazzo.add(new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.FOGLIA, Simbolo.FOGLIA));
-		cMazzo.add(new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.ASSENTE, Simbolo.FOGLIA, Simbolo.FOGLIA, Simbolo.VUOTO));
+		/*cMazzo.add(new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.ASSENTE, Simbolo.FOGLIA, Simbolo.FOGLIA, Simbolo.VUOTO));
 		cMazzo.add(new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.ASSENTE, Simbolo.FARFALLA, Simbolo.FOGLIA, Simbolo.PIUMA));
 		cMazzo.add(new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.FUNGO, Simbolo.FOGLIA, Simbolo.INCHIOSTRO, Simbolo.ASSENTE));
 		cMazzo.add(new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.PERGAMENA, Simbolo.ASSENTE, Simbolo.LUPO, Simbolo.FOGLIA));
@@ -59,7 +59,7 @@ public class MCRis extends Mazzo {
 		cMazzo.add(new CRis(0, Simbolo.FUNGO, Colore.ROSSO, Simbolo.FUNGO, Simbolo.FARFALLA, Simbolo.VUOTO, Simbolo.PERGAMENA));
 		cMazzo.add(new CRis(1, Simbolo.FUNGO, Colore.ROSSO, Simbolo.VUOTO, Simbolo.FUNGO, Simbolo.ASSENTE, Simbolo.VUOTO));
 		cMazzo.add(new CRis(1, Simbolo.FUNGO, Colore.ROSSO, Simbolo.FUNGO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO));
-		cMazzo.add(new CRis(1, Simbolo.FUNGO, Colore.ROSSO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.FUNGO));
+		cMazzo.add(new CRis(1, Simbolo.FUNGO, Colore.ROSSO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.FUNGO));*/
 		
 		Collections.shuffle(cMazzo);
 	}
