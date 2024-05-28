@@ -87,7 +87,7 @@ public class CObbOgg extends CObb{
 	
 	@Override
 	public String toString() {
-		String str = "Carata obbiettivo oggetti " + super.toString();
+		String str = "Carta obbiettivo oggetti " + super.toString();
 		
 		switch(oggetti.size()) {
 			case 1:

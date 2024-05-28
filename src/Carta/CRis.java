@@ -45,7 +45,7 @@ public class CRis extends CGiocabiliSpeciali {
 	 * @return String
 	 */
 	public String toString() {
-		return "Carata risorsa " + super.toString() +
+		return "Carta risorsa " + super.toString() +
 				"\n\t\t Simbolo -> " + this.getSimbolo() +
 				"\n\t\t Colore -> " + this.getColore() +
 				"\n\t\t Angoli:" +
@@ -64,7 +64,7 @@ public class CRis extends CGiocabiliSpeciali {
 	 */
 	public String toStringBreve() {
 		
-		String str = "Carata risorsa " + this.getIdCarta() +
+		String str = "Carta risorsa " + this.getIdCarta() +
 					 ":\n\t\t[Simbolo -> " + this.getSimbolo() +
 					 "\n\t\t Colore -> " + this.getColore();
 		if(this.getFronte()) {

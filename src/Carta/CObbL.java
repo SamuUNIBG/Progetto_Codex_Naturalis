@@ -189,7 +189,7 @@ public class CObbL extends CObb{
 	 * @return String
 	 */
 	public String toString() {
-		String str = "Carata obbiettivo L " + super.toString() +
+		String str = "Carta obbiettivo L " + super.toString() +
 				"\n\t\t Obbiettivo -> Disporre tre carte a forma di L" +
 				"\n\t\t Colore carte adiacenti -> " + colori[0] +
 				"\n\t\t Colore carta diagonale -> " + colori[1] +

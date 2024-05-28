@@ -54,7 +54,7 @@ public class CObbRis extends CObb{
 	
 	@Override
 	public String toString() {
-		return "Carata obbiettivo risorsa " + super.toString() +
+		return "Carta obbiettivo risorsa " + super.toString() +
 				"\n\t\t Obbiettivo -> Formare tris di -> " + simbolo +  "]";
 		
 	}

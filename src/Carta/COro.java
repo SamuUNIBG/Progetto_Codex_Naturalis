@@ -83,7 +83,7 @@ public class COro extends CGiocabiliSpeciali implements InterfacciaCarteOro {
 	 * @return String
 	 */
 	public String toString() {
-		return "Carata oro " + super.toString() +
+		return "Carta oro " + super.toString() +
 				"\n\t\t Obbiettivo -> " + obbiettivo +
 				"\n\t\t Simbolo -> " + this.getSimbolo() +
 				"\n\t\t Colore -> " + this.getColore() +
@@ -108,7 +108,7 @@ public class COro extends CGiocabiliSpeciali implements InterfacciaCarteOro {
 	 */
 	public String toStringBreve() {
 		
-		String str = "Carata oro " + this.getIdCarta() +
+		String str = "Carta oro " + this.getIdCarta() +
 					 ":\n\t\t[Simbolo -> " + this.getSimbolo() +
 					 "\n\t\t Colore -> " + this.getColore();
 		if(this.getFronte()) {

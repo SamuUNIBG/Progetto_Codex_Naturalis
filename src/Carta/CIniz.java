@@ -58,7 +58,7 @@ public class CIniz extends CGiocabili {
 	 */
 	public String toString() {
 		
-		String str = "Carata iniziale " + super.toString() +
+		String str = "Carta iniziale " + super.toString() +
 				"\n\t\t Angoli fronte:" +
 				"\n\t\t\tAlto sx -> " + this.getAngoli()[0].getSimbolo() +
 				"\n\t\t\tAlto dx -> " + this.getAngoli()[1].getSimbolo() +
@@ -94,7 +94,7 @@ public class CIniz extends CGiocabili {
 	 */
 	public String toStringBreve() {
 		
-		String str = "Carata iniziale " + this.getIdCarta();
+		String str = "Carta iniziale " + this.getIdCarta();
 		
 		if(this.getFronte()) {
 			str += ":\n\t\t[Angoli fronte:" +
