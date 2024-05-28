@@ -61,7 +61,7 @@ public class MCOro extends Mazzo {
 //		cMazzo.add(new COro(5, Simbolo.ASSENTE, Simbolo.FUNGO, Colore.ROSSO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.ASSENTE, Simbolo.VUOTO, 0, 0, 5, 0));	//5 FUNGO
 //		
 
-		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.LUPO, Colore.AZZURRO, Simbolo.VUOTO, Simbolo.INCHIOSTRO, Simbolo.ASSENTE, Simbolo.ASSENTE, 0, 3, 0, 0));	//3 LUPO
+	/*	cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.LUPO, Colore.AZZURRO, Simbolo.VUOTO, Simbolo.INCHIOSTRO, Simbolo.ASSENTE, Simbolo.ASSENTE, 0, 3, 0, 0));	//3 LUPO
 		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.LUPO, Colore.AZZURRO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.PIUMA, Simbolo.ASSENTE, 0, 3, 0, 0));	//3 LUPO
 		cMazzo.add(new COro(5, Simbolo.ASSENTE, Simbolo.LUPO, Colore.AZZURRO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.ASSENTE, 0, 5, 0, 0));	//5 LUPO
 		//green

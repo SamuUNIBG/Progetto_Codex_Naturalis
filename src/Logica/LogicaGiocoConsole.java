@@ -26,7 +26,6 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 	private CartaTavolo cartaTavolo;
 	private Tracciato tracciato;
 	private int numGiocatori;
-	
 
 	public LogicaGiocoConsole() {
 		
@@ -580,8 +579,11 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 				System.out.println(Character.toUpperCase((char)233) + " il turno di: " + giocatoreAttuale.getSoprannome() + ", colore -> " + giocatoreAttuale.getColore() + ", punti -> " + giocatoreAttuale.getPunteggio());
 				opzioniTurno();
 				giocaC(giocatoreAttuale);
-				if(!ultimoGiro)
-					pescaCarta(giocatoreAttuale);
+				
+				if(cartaTavolo.getMazzoRis().getCMazzo().size()!=0 || cartaTavolo.getMazzoOro().getCMazzo().size()!=0 || cartaTavolo.getcRisScp().size()!=0 || cartaTavolo.getcOroScp().size()!=0) {
+					if(!ultimoGiro)
+						pescaCarta(giocatoreAttuale);
+				}
 				
 				if(giocatoreAttuale.getPunteggio() > 19 || (cartaTavolo.getMazzoOro().getCRimaste()==0 && cartaTavolo.getMazzoRis().getCRimaste()==0)) {
 					punti20 = true;
@@ -777,7 +779,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		
 		System.out.println("\nLe carte in tuo possesso:");
 		System.out.println("0)" + giocatoreAttuale.getCObbPer().toString());
-		for(int i=0; i<3; i++) {
+		for(int i=0; i<cManoAttuale.size(); i++) {
 			System.out.println((i+1) + ") " + cManoAttuale.get(i).toString());
 		}
 		
@@ -797,7 +799,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 					
 				}
 				
-			}while(numCarta<1 || numCarta>3);
+			}while(numCarta<1 || numCarta>cManoAttuale.size());
 			
 			do {
 				try {
@@ -949,9 +951,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		
 		int scelta=-1;
 		if(finiteOro==true && finiteRis==true && finiteScpOro==true && finiteScpRis==true) {
-			System.out.println("Non è più possibile eseguire nessuna azione di pesca");
-			AddPuntiObb();
-			
+			System.out.println("Non " + (char)233 + " piu' possibile eseguire nessuna azione di pesca");
 			
 		}else if(finiteOro==false && finiteRis==false && finiteScpOro==false && finiteScpRis==false) {
 			do {
@@ -1092,57 +1092,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 				
 			}while(scelta!=3);
 		}
-		
-		
-//		if(scelta ==1) {
-//			if(cartaTavolo.getMazzoRis().getCRimaste()==0) {
-//				System.out.println("ERRORE! Le carte risorsa sono finite, inserire un altro metodo di pesca");
-//				do {
-//					try {
-//						System.out.println("Che cosa scegli?\n "+"2= pesca mazzo carte oro\n"+
-//								"3= pesca una carta risorsa scoperta\n"+"4=pesca una carta oro scoperta\n");
-//						scelta=Integer.parseInt(sc.nextLine());
-//						if(scelta<2) {
-//							System.out.println("Non puoi inserire un valore minore di 2,riprovare!");
-//						}else if(scelta>4) {
-//							System.out.println("Non puoi inserire un valore maggiore di 4,riprovare!");
-//						}
-//						
-//					}catch(NumberFormatException ex) {
-//						
-//						System.out.println("Non puoi inserire una stringa");
-//						
-//					}
-//					
-//				}while(scelta<2 || scelta>4);
-//				
-//			}
-//		}
-//		if(scelta==2) {
-//			if(cartaTavolo.getMazzoOro().getCRimaste()==0) {
-//				System.out.println("ERRORE! Le carte Oro sono finite, inserire un altro metodo di pescan");
-//				do {
-//					try {
-//						System.out.println("Che cosa scegli?\n "+"1= pesca mazzo carte risorsa\n"+
-//								"3= pesca una carta risorsa scoperta\n"+"4=pesca una carta oro scoperta\n");
-//						scelta=Integer.parseInt(sc.nextLine());
-//						if(scelta<1) {
-//							System.out.println("Non puoi inserire un valore minore di 1,riprovare!");
-//						}else if(scelta>4) {
-//							System.out.println("Non puoi inserire un valore maggiore di 4,riprovare!");
-//						}else if(scelta==2) {
-//							System.out.println("Non puoi inserire un valore uguale a 2,riprovare!");
-//						}
-//						
-//					}catch(NumberFormatException ex) {
-//						
-//						System.out.println("Non puoi inserire una stringa");
-//						
-//					}
-//					
-//				}while(scelta<1|| scelta>4|| scelta==2);
-//			}
-//		}
+
 		if(finiteRis==false) {
 			if(scelta==1) {
 				System.out.println("Hai pescato la prima carta del mazzo carte risorse correttamente!");
@@ -1160,16 +1110,6 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		
 			
 		switch(scelta) {
-		
-//			case 1:
-//				System.out.println("Hai pescato la prima carta del mazzo carte risorse correttamente!");
-//				giocatoreAttuale.pescaC(cartaTavolo.pesca(TipoCarta.CRis));
-//				break;
-//			case 2:
-//				System.out.println("Hai pescato la prima carta del mazzo carte oro correttamente!");
-//				giocatoreAttuale.pescaC(cartaTavolo.pesca(TipoCarta.COro));
-//				break;
-//				
 			case 3:
 				if(cartaTavolo.getcRisScp().size()==1) {
 					System.out.println("Puoi pescare solo la prima carta.\n"+
