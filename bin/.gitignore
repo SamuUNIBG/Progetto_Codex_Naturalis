@@ -1,3 +1,24 @@
+<<<<<<< HEAD
 /Tavolo/
 /Logica/
 /Grafica/
+=======
+/Carta/
+/Enumerazione/
+/Grafica/
+/Logica/
+/Tavolo/
+/cards_URL.csv
+/cards_back/
+/cards_front/
+/codex_logo.png
+/objects_URL.csv
+/pawn_position.csv
+/resources_URL.csv
+/resources_objects/
+/rule_book/
+/score/
+/sfondi/
+/spunta.png
+/x.png
+>>>>>>> c9a2979dc48afdfdd85f76de2814819e3acf82e2

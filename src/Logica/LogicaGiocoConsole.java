@@ -903,102 +903,295 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 	public void pescaCarta(Giocatore giocatoreAttuale) {
 		
 		Scanner sc = new Scanner(System.in);
-		
+		boolean finiteRis=false;
+		boolean finiteOro=false;
+		boolean finiteScpOro=false;
+		boolean finiteScpRis=false;
 		System.out.println("Le carte a disposizione per la pesca:");
 		System.out.println("Le prime carte dei mazzi:");
-		System.out.println("\t1)Il colore della prima carta del mazzo delle carte risorsa " + (char)233 + ": " + cartaTavolo.getMazzoRis().getCMazzo().get(0).getColore() + "[Carte rimanenti: " + cartaTavolo.getMazzoRis().getCMazzo().size() + "]");
-		System.out.println("\t2)Il colore della prima carta del mazzo delle carte oro " + (char)233 + ": " + cartaTavolo.getMazzoOro().getCMazzo().get(0).getColore() + "[Carte rimanenti: " + cartaTavolo.getMazzoOro().getCMazzo().size() + "]");
+		if(cartaTavolo.getMazzoRis().getCMazzo().size()!=0) {
+			System.out.println("\t1)Il colore della prima carta del mazzo delle carte risorsa " + (char)233 + ": " + cartaTavolo.getMazzoRis().getCMazzo().get(0).getColore() + "[Carte rimanenti: " + cartaTavolo.getMazzoRis().getCMazzo().size() + "]");
+		}else {
+			finiteRis=true;
+			System.out.println("\tcarte mazzo risorse finite");
+		}
+		if(cartaTavolo.getMazzoOro().getCMazzo().size()!=0) {
+			System.out.println("\t2)Il colore della prima carta del mazzo delle carte oro " + (char)233 + ": " + cartaTavolo.getMazzoOro().getCMazzo().get(0).getColore() + "[Carte rimanenti: " + cartaTavolo.getMazzoOro().getCMazzo().size() + "]");
+		}else {
+			finiteOro =true;
+			System.out.println("\tcarte mazzo oro finite");
+		}
+		
+		
 		System.out.println("3)Le carte risorsa scoperte:");
-		for(int i=0;i<cartaTavolo.getcRisScp().size();i++) {
-			System.out.println("\t" + cartaTavolo.getcRisScp().get(i).toString());
-			
+		if(cartaTavolo.getcRisScp().size()!=0) {
+			for(int i=0;i<cartaTavolo.getcRisScp().size();i++) {
+				System.out.println("\t" + cartaTavolo.getcRisScp().get(i).toString());
+				
+			}
+		}else {
+			finiteScpRis=true;
+			System.out.println("\t carte risorsa scoperte finite.");
 		}
 		System.out.println("4)Le carte oro scoperte:");
-		for(int i=0;i<cartaTavolo.getcOroScp().size();i++) {
-			System.out.println("\t" + cartaTavolo.getcOroScp().get(i).toString());
+		if(cartaTavolo.getcOroScp().size()!=0) {
+			
+			for(int i=0;i<cartaTavolo.getcOroScp().size();i++) {
+				System.out.println("\t" + cartaTavolo.getcOroScp().get(i).toString());
+			}
+		}else {
+			finiteScpOro=true;
+			System.out.println("\t carte oro scoperte finite.");
 		}
+		
 		
 		int scelta=-1;
-		do {
-			try {
-				System.out.print("Inserire il numero relativo alla carta da pescare: ");
-				scelta=Integer.parseInt(sc.nextLine());
-				if(scelta<1 || scelta >4) {
-					System.out.println("ERRORE! Numero inserito non valido, riprovare");
+		if(finiteOro==false && finiteRis==false && finiteScpOro==false && finiteScpRis==false) {
+			do {
+				try {
+					System.out.print("Inserire il numero relativo alla carta da pescare: ");
+					scelta=Integer.parseInt(sc.nextLine());
+					if(scelta<1 || scelta >4) {
+						System.out.println("ERRORE! Numero inserito non valido, riprovare");
+					}
+					
+				}catch(NumberFormatException ex) {
+					
+					System.out.println("Non puoi inserire una stringa");
+					
 				}
 				
-			}catch(NumberFormatException ex) {
 				
-				System.out.println("Non puoi inserire una stringa");
+			}while(scelta<1 ||scelta>4);
+		}else if(finiteScpRis==true && finiteRis==true && finiteOro==false) {
+			do {
+				try {
+					System.out.print("Inserire il numero relativo alla carta da pescare: ");
+					scelta=Integer.parseInt(sc.nextLine());
+					if(scelta<2 || scelta >4 || scelta==3) {
+						System.out.println("ERRORE! Numero inserito non valido, riprovare");
+					}
+					
+				}catch(NumberFormatException ex) {
+					
+					System.out.println("Non puoi inserire una stringa");
+					
+				}
 				
-			}
-			
-			
-		}while(scelta<1 ||scelta>4);
+				
+			}while(scelta<2 ||scelta>4 || scelta==3);
+		}else if(finiteScpRis==true && finiteRis==true && finiteOro==true) {
+			do {
+				try {
+					System.out.print("Inserire il numero relativo alla carta da pescare: ");
+					scelta=Integer.parseInt(sc.nextLine());
+					if(scelta!=4) {
+						System.out.println("ERRORE! Numero inserito non valido, riprovare");
+					}
+					
+				}catch(NumberFormatException ex) {
+					
+					System.out.println("Non puoi inserire una stringa");
+					
+				}
+				
+				
+			}while(scelta!=4);
+		}else if(finiteOro==true && finiteRis==false) {
+			do {
+				try {
+					System.out.print("Inserire il numero relativo alla carta da pescare: ");
+					scelta=Integer.parseInt(sc.nextLine());
+					if(scelta<1 ||scelta>4|| scelta==2) {
+						System.out.println("ERRORE! Numero inserito non valido, riprovare");
+					}
+					
+				}catch(NumberFormatException ex) {
+					
+					System.out.println("Non puoi inserire una stringa");
+					
+				}
+				
+				
+			}while(scelta<1 ||scelta>4|| scelta==2);
+		}else if(finiteRis==true && finiteOro==false) {
+			do {
+				try {
+					System.out.print("Inserire il numero relativo alla carta da pescare: ");
+					scelta=Integer.parseInt(sc.nextLine());
+					if(scelta<1 ||scelta>4|| scelta==1) {
+						System.out.println("ERRORE! Numero inserito non valido, riprovare");
+					}
+					
+				}catch(NumberFormatException ex) {
+					
+					System.out.println("Non puoi inserire una stringa");
+					
+				}
+				
+				
+			}while(scelta<1 ||scelta>4|| scelta==1);
+		}else if(finiteRis==true && finiteOro==true) {
+			do {
+				try {
+					System.out.print("Inserire il numero relativo alla carta da pescare: ");
+					scelta=Integer.parseInt(sc.nextLine());
+					if(scelta<1 ||scelta>4|| scelta==1 || scelta==2) {
+						System.out.println("ERRORE! Numero inserito non valido, riprovare");
+					}
+					
+				}catch(NumberFormatException ex) {
+					
+					System.out.println("Non puoi inserire una stringa");
+					
+				}
+				
+				
+			}while(scelta<1 ||scelta>4|| scelta==1 || scelta==2);
+		}
+		if(finiteScpOro==true && finiteOro==true && finiteRis==false) {
+			do {
+				try {
+					System.out.print("Inserire il numero relativo alla carta da pescare: ");
+					scelta=Integer.parseInt(sc.nextLine());
+					if(scelta<1||scelta==2 || scelta >3) {
+						System.out.println("ERRORE! Numero inserito non valido, riprovare");
+					}
+					
+				}catch(NumberFormatException ex) {
+					
+					System.out.println("Non puoi inserire una stringa");
+					
+				}
+				
+				
+			}while(scelta<1||scelta==2 || scelta >3);
+		}
+		if(finiteScpOro==true && finiteRis==true && finiteOro==true) {
+			do {
+				try {
+					System.out.print("Inserire il numero relativo alla carta da pescare: ");
+					scelta=Integer.parseInt(sc.nextLine());
+					if(scelta!=3) {
+						System.out.println("ERRORE! Numero inserito non valido, riprovare");
+					}
+					
+				}catch(NumberFormatException ex) {
+					
+					System.out.println("Non puoi inserire una stringa");
+					
+				}
+				
+				
+			}while(scelta!=3);
+		}
 		
-		if(scelta ==1) {
-			if(cartaTavolo.getMazzoRis().getCRimaste()==0) {
-				System.out.println("ERRORE! Le carte risorsa sono finite, inserire un altro metodo di pesca");
-				do {
-					try {
-						System.out.println("Che cosa scegli?\n "+"2= pesca mazzo carte oro\n"+
-								"3= pesca una carta risorsa scoperta\n"+"4=pesca una carta oro scoperta\n");
-						scelta=Integer.parseInt(sc.nextLine());
-						if(scelta<2) {
-							System.out.println("Non puoi inserire un valore minore di 2,riprovare!");
-						}else if(scelta>4) {
-							System.out.println("Non puoi inserire un valore maggiore di 4,riprovare!");
-						}
-						
-					}catch(NumberFormatException ex) {
-						
-						System.out.println("Non puoi inserire una stringa");
-						
-					}
-					
-				}while(scelta<2 || scelta>4);
-				
-			}
-		}
-		if(scelta==2) {
-			if(cartaTavolo.getMazzoOro().getCRimaste()==0) {
-				System.out.println("ERRORE! Le carte Oro sono finite, inserire un altro metodo di pescan");
-				do {
-					try {
-						System.out.println("Che cosa scegli?\n "+"1= pesca mazzo carte risorsa\n"+
-								"3= pesca una carta risorsa scoperta\n"+"4=pesca una carta oro scoperta\n");
-						scelta=Integer.parseInt(sc.nextLine());
-						if(scelta<1) {
-							System.out.println("Non puoi inserire un valore minore di 1,riprovare!");
-						}else if(scelta>4) {
-							System.out.println("Non puoi inserire un valore maggiore di 4,riprovare!");
-						}else if(scelta==2) {
-							System.out.println("Non puoi inserire un valore uguale a 2,riprovare!");
-						}
-						
-					}catch(NumberFormatException ex) {
-						
-						System.out.println("Non puoi inserire una stringa");
-						
-					}
-					
-				}while(scelta<1|| scelta>4|| scelta==2);
-			}
-		}
-			
-		switch(scelta) {
-			case 1:
+		
+//		if(scelta ==1) {
+//			if(cartaTavolo.getMazzoRis().getCRimaste()==0) {
+//				System.out.println("ERRORE! Le carte risorsa sono finite, inserire un altro metodo di pesca");
+//				do {
+//					try {
+//						System.out.println("Che cosa scegli?\n "+"2= pesca mazzo carte oro\n"+
+//								"3= pesca una carta risorsa scoperta\n"+"4=pesca una carta oro scoperta\n");
+//						scelta=Integer.parseInt(sc.nextLine());
+//						if(scelta<2) {
+//							System.out.println("Non puoi inserire un valore minore di 2,riprovare!");
+//						}else if(scelta>4) {
+//							System.out.println("Non puoi inserire un valore maggiore di 4,riprovare!");
+//						}
+//						
+//					}catch(NumberFormatException ex) {
+//						
+//						System.out.println("Non puoi inserire una stringa");
+//						
+//					}
+//					
+//				}while(scelta<2 || scelta>4);
+//				
+//			}
+//		}
+//		if(scelta==2) {
+//			if(cartaTavolo.getMazzoOro().getCRimaste()==0) {
+//				System.out.println("ERRORE! Le carte Oro sono finite, inserire un altro metodo di pescan");
+//				do {
+//					try {
+//						System.out.println("Che cosa scegli?\n "+"1= pesca mazzo carte risorsa\n"+
+//								"3= pesca una carta risorsa scoperta\n"+"4=pesca una carta oro scoperta\n");
+//						scelta=Integer.parseInt(sc.nextLine());
+//						if(scelta<1) {
+//							System.out.println("Non puoi inserire un valore minore di 1,riprovare!");
+//						}else if(scelta>4) {
+//							System.out.println("Non puoi inserire un valore maggiore di 4,riprovare!");
+//						}else if(scelta==2) {
+//							System.out.println("Non puoi inserire un valore uguale a 2,riprovare!");
+//						}
+//						
+//					}catch(NumberFormatException ex) {
+//						
+//						System.out.println("Non puoi inserire una stringa");
+//						
+//					}
+//					
+//				}while(scelta<1|| scelta>4|| scelta==2);
+//			}
+//		}
+		if(finiteRis==false) {
+			if(scelta==1) {
 				System.out.println("Hai pescato la prima carta del mazzo carte risorse correttamente!");
 				giocatoreAttuale.pescaC(cartaTavolo.pesca(TipoCarta.CRis));
-				break;
-			case 2:
+				
+			}
+		}
+		
+		if(finiteOro==false) {
+			if(scelta==2) {
 				System.out.println("Hai pescato la prima carta del mazzo carte oro correttamente!");
 				giocatoreAttuale.pescaC(cartaTavolo.pesca(TipoCarta.COro));
-				break;
-				
+			}
+		}
+		
+			
+		switch(scelta) {
+		
+//			case 1:
+//				System.out.println("Hai pescato la prima carta del mazzo carte risorse correttamente!");
+//				giocatoreAttuale.pescaC(cartaTavolo.pesca(TipoCarta.CRis));
+//				break;
+//			case 2:
+//				System.out.println("Hai pescato la prima carta del mazzo carte oro correttamente!");
+//				giocatoreAttuale.pescaC(cartaTavolo.pesca(TipoCarta.COro));
+//				break;
+//				
 			case 3:
-				System.out.println("Quale carta risorsa scoperta vuoi pescare?\n"+
-						"1= prima\n"+"2=seconda\n");
+				if(cartaTavolo.getcRisScp().size()==1) {
+					System.out.println("Puoi pescare solo la prima carta.\n"+
+							"1= conferma\n");
+					int sceltaCartaRisSc=-1;
+					do {
+						try {
+							sceltaCartaRisSc=Integer.parseInt(sc.nextLine());
+							if(sceltaCartaRisSc!=1) {
+								System.out.println("ERRORE! Numero inserito non valido, riprovare");
+							}
+							
+						}catch(NumberFormatException ex) {
+							
+							System.out.println("Non puoi inserire una stringa");
+							
+						}
+						
+						
+					}while(sceltaCartaRisSc!=1);
+					if(sceltaCartaRisSc==1) {
+						giocatoreAttuale.pescaC(cartaTavolo.pesca(TipoCarta.CRis,sceltaCartaRisSc-1));
+					}
+					break;
+				}else{
+					System.out.println("Quale carta risorsa scoperta vuoi pescare?\n"+
+							"1= prima\n"+"2=seconda\n");
+				}
+				
 				int sceltaCartaRisSc=-1;
 				do {
 					try {
@@ -1022,8 +1215,34 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 				}
 				break;
 			case 4:
-				System.out.println("Quale carta oro scoperta vuoi pescare?\n"+
-						"1= prima\n"+"2=seconda\n");
+				if(cartaTavolo.getcOroScp().size()==1) {
+					System.out.println("Puoi pescare solo la prima carta.\n"+
+							"1= conferma\n");
+					int sceltaCartaoroSc=-1;
+					do {
+						try {
+							sceltaCartaoroSc=Integer.parseInt(sc.nextLine());
+							if(sceltaCartaoroSc!=1) {
+								System.out.println("ERRORE! Numero inserito non valido, riprovare");
+							}
+							
+						}catch(NumberFormatException ex) {
+							
+							System.out.println("Non puoi inserire una stringa");
+							
+						}
+						
+						
+					}while(sceltaCartaoroSc!=1);
+					if(sceltaCartaoroSc==1) {
+						giocatoreAttuale.pescaC(cartaTavolo.pesca(TipoCarta.COro,sceltaCartaoroSc-1));
+					}
+					break;
+				}else {
+					System.out.println("Quale carta oro scoperta vuoi pescare?\n"+
+							"1= prima\n"+"2=seconda\n");
+				}
+				
 				int sceltaCartaoroSc=-1;
 				do {
 					try {
