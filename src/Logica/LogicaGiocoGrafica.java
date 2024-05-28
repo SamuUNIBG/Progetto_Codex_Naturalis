@@ -135,7 +135,11 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 	}
 
 	@Override
-	public void Turni() {		
+	public void Turni() {
+		
+		if(giocatoreAttuale.getPunteggio() > 19 || (cartaTavolo.getMazzoOro().getCRimaste()==0 && cartaTavolo.getMazzoRis().getCRimaste()==0)) {
+			punti20 = true;
+		}
 		
 		if(LogicaGiocoGrafica.GIOCATOREATTUALE==LogicaGiocoGrafica.NUMGIOCATORI-1){
 			LogicaGiocoGrafica.GIOCATOREATTUALE=0;
@@ -248,10 +252,6 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 	}
 	
 	public void pescaCarta(int pos) {
-		
-		if(giocatoreAttuale.getPunteggio() > 19 || (cartaTavolo.getMazzoOro().getCRimaste()==0 && cartaTavolo.getMazzoRis().getCRimaste()==0)) {
-			punti20 = true;
-		}
 		
 		switch(pos) {
 			case 0:
