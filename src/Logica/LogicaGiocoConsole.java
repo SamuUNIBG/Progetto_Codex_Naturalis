@@ -26,6 +26,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 	private CartaTavolo cartaTavolo;
 	private Tracciato tracciato;
 	private int numGiocatori;
+	
 
 	public LogicaGiocoConsole() {
 		
@@ -901,17 +902,19 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 	 */
 
 	public void pescaCarta(Giocatore giocatoreAttuale) {
-		
-		Scanner sc = new Scanner(System.in);
 		boolean finiteRis=false;
 		boolean finiteOro=false;
 		boolean finiteScpOro=false;
 		boolean finiteScpRis=false;
+		boolean ultimo=true;
+		Scanner sc = new Scanner(System.in);
+		
 		System.out.println("Le carte a disposizione per la pesca:");
 		System.out.println("Le prime carte dei mazzi:");
 		if(cartaTavolo.getMazzoRis().getCMazzo().size()!=0) {
 			System.out.println("\t1)Il colore della prima carta del mazzo delle carte risorsa " + (char)233 + ": " + cartaTavolo.getMazzoRis().getCMazzo().get(0).getColore() + "[Carte rimanenti: " + cartaTavolo.getMazzoRis().getCMazzo().size() + "]");
 		}else {
+			
 			finiteRis=true;
 			System.out.println("\tcarte mazzo risorse finite");
 		}
@@ -946,7 +949,12 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		
 		
 		int scelta=-1;
-		if(finiteOro==false && finiteRis==false && finiteScpOro==false && finiteScpRis==false) {
+		if(finiteOro==true && finiteRis==true && finiteScpOro==true && finiteScpRis==true && ultimo==true) {
+			System.out.println("Non è più possibile eseguire nessuna azione di pesca");
+			AddPuntiObb();
+			
+			
+		}else if(finiteOro==false && finiteRis==false && finiteScpOro==false && finiteScpRis==false) {
 			do {
 				try {
 					System.out.print("Inserire il numero relativo alla carta da pescare: ");
@@ -1048,7 +1056,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 				
 				
 			}while(scelta<1 ||scelta>4|| scelta==1 || scelta==2);
-		}
+		}  
 		if(finiteScpOro==true && finiteOro==true && finiteRis==false) {
 			do {
 				try {
