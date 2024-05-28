@@ -906,7 +906,6 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		boolean finiteOro=false;
 		boolean finiteScpOro=false;
 		boolean finiteScpRis=false;
-		boolean ultimo=true;
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Le carte a disposizione per la pesca:");
@@ -949,7 +948,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		
 		
 		int scelta=-1;
-		if(finiteOro==true && finiteRis==true && finiteScpOro==true && finiteScpRis==true && ultimo==true) {
+		if(finiteOro==true && finiteRis==true && finiteScpOro==true && finiteScpRis==true) {
 			System.out.println("Non è più possibile eseguire nessuna azione di pesca");
 			AddPuntiObb();
 			

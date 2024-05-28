@@ -29,7 +29,7 @@ public class MCRis extends Mazzo {
 		cMazzo.add(new CRis(1, Simbolo.LUPO, Colore.AZZURRO, Simbolo.VUOTO, Simbolo.LUPO, Simbolo.ASSENTE, Simbolo.VUOTO));
 		//green
 		cMazzo.add(new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.FOGLIA, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.FOGLIA));
-<<<<<<< HEAD
+
 //		cMazzo.add(new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.FOGLIA, Simbolo.FOGLIA, Simbolo.VUOTO, Simbolo.ASSENTE));
 //		cMazzo.add(new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.FOGLIA, Simbolo.FOGLIA));
 //		cMazzo.add(new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.ASSENTE, Simbolo.FOGLIA, Simbolo.FOGLIA, Simbolo.VUOTO));
@@ -61,7 +61,7 @@ public class MCRis extends Mazzo {
 //		cMazzo.add(new CRis(1, Simbolo.FUNGO, Colore.ROSSO, Simbolo.VUOTO, Simbolo.FUNGO, Simbolo.ASSENTE, Simbolo.VUOTO));
 //		cMazzo.add(new CRis(1, Simbolo.FUNGO, Colore.ROSSO, Simbolo.FUNGO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO));
 //		cMazzo.add(new CRis(1, Simbolo.FUNGO, Colore.ROSSO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.FUNGO));
-=======
+
 		cMazzo.add(new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.FOGLIA, Simbolo.FOGLIA, Simbolo.VUOTO, Simbolo.ASSENTE));
 		cMazzo.add(new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.FOGLIA, Simbolo.FOGLIA));
 		cMazzo.add(new CRis(0, Simbolo.FOGLIA, Colore.VERDE, Simbolo.ASSENTE, Simbolo.FOGLIA, Simbolo.FOGLIA, Simbolo.VUOTO));
@@ -93,7 +93,7 @@ public class MCRis extends Mazzo {
 		cMazzo.add(new CRis(1, Simbolo.FUNGO, Colore.ROSSO, Simbolo.VUOTO, Simbolo.FUNGO, Simbolo.ASSENTE, Simbolo.VUOTO));
 		cMazzo.add(new CRis(1, Simbolo.FUNGO, Colore.ROSSO, Simbolo.FUNGO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO));
 		cMazzo.add(new CRis(1, Simbolo.FUNGO, Colore.ROSSO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.FUNGO));
->>>>>>> 27bbe9ebdb64bc9773a55941f45d75f0aa716fea
+
 		
 		Collections.shuffle(cMazzo);
 	}

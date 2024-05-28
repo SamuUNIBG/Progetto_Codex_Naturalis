@@ -24,7 +24,7 @@ public class MCOro extends Mazzo {
 		cMazzo.add(new COro(2, Simbolo.ANGOLO, Simbolo.LUPO, Colore.AZZURRO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO, 0, 3, 1, 0));	//3 LUPO, 1 FUNGO
 		cMazzo.add(new COro(2, Simbolo.ANGOLO, Simbolo.LUPO, Colore.AZZURRO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.VUOTO, 1, 3, 0, 0));	//3 LUPO, 1 FOGLIA
 		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.LUPO, Colore.AZZURRO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.ASSENTE, Simbolo.PERGAMENA, 0, 3, 0, 0));	//3 LUPO
-<<<<<<< HEAD
+
 		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.LUPO, Colore.AZZURRO, Simbolo.VUOTO, Simbolo.INCHIOSTRO, Simbolo.ASSENTE, Simbolo.ASSENTE, 0, 3, 0, 0));	//3 LUPO		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.LUPO, Colore.AZZURRO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.PIUMA, Simbolo.ASSENTE, 0, 3, 0, 0));	//3 LUPO
 //		cMazzo.add(new COro(5, Simbolo.ASSENTE, Simbolo.LUPO, Colore.AZZURRO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.ASSENTE, 0, 5, 0, 0));	//5 LUPO
 		//green
@@ -60,7 +60,7 @@ public class MCOro extends Mazzo {
 //		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.FUNGO, Colore.ROSSO, Simbolo.ASSENTE, Simbolo.PERGAMENA, Simbolo.VUOTO, Simbolo.ASSENTE, 0, 0, 3, 0));	//3 FUNGO
 //		cMazzo.add(new COro(5, Simbolo.ASSENTE, Simbolo.FUNGO, Colore.ROSSO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.ASSENTE, Simbolo.VUOTO, 0, 0, 5, 0));	//5 FUNGO
 //		
-=======
+
 		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.LUPO, Colore.AZZURRO, Simbolo.VUOTO, Simbolo.INCHIOSTRO, Simbolo.ASSENTE, Simbolo.ASSENTE, 0, 3, 0, 0));	//3 LUPO
 		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.LUPO, Colore.AZZURRO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.PIUMA, Simbolo.ASSENTE, 0, 3, 0, 0));	//3 LUPO
 		cMazzo.add(new COro(5, Simbolo.ASSENTE, Simbolo.LUPO, Colore.AZZURRO, Simbolo.ASSENTE, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.ASSENTE, 0, 5, 0, 0));	//5 LUPO
@@ -98,7 +98,7 @@ public class MCOro extends Mazzo {
 		cMazzo.add(new COro(3, Simbolo.ASSENTE, Simbolo.FUNGO, Colore.ROSSO, Simbolo.ASSENTE, Simbolo.PERGAMENA, Simbolo.VUOTO, Simbolo.ASSENTE, 0, 0, 3, 0));	//3 FUNGO
 		cMazzo.add(new COro(5, Simbolo.ASSENTE, Simbolo.FUNGO, Colore.ROSSO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.ASSENTE, Simbolo.VUOTO, 0, 0, 5, 0));	//5 FUNGO*/
 		
->>>>>>> 27bbe9ebdb64bc9773a55941f45d75f0aa716fea
+
 		Collections.shuffle(cMazzo);
 	}
 	
