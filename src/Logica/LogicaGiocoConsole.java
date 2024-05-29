@@ -181,16 +181,16 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 				System.out.println("Colore Rosso selezionato");
 				if(i!=0) {//al primo giro non faccio il controllo, in quanto non ci sono nomi,colori
 					//controllo nomi uguali
-					for(int j=0;j<username.size();j++) {
+					for(String user: username) {
 						do {
-							if(username.get(j).trim().equals(s)) {
+							if(user.trim().equals(s)) {
 								System.out.println("ERRORE! Non puoi inserire nomi utenti uguali, riprovare!\n");
 								System.out.print("Inserire il soprannome: ");
 								String nomeModificato=sc.nextLine();
 								s=nomeModificato.replace(" ", "");
 										
 							}
-						}while(username.get(j).trim().equals(s));
+						}while(user.trim().equals(s));
 					}
 					//controllo colori uguali
 					for(int k=0;k<colori.size();k++) {
@@ -270,16 +270,16 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 				System.out.println("Colore Azzurro selezionato");
 				if(i!=0) {//al primo giro non faccio il controllo, in quanto non ci sono nomi,colori
 					//controllo nomi uguali
-					for(int j=0;j<username.size();j++) {
+					for(String user: username) {
 						do {
-							if(username.get(j).trim().equals(s)) {
-								System.out.println("Non puoi inserire nomi utenti uguali, riprovare!\n");
+							if(user.trim().equals(s)) {
+								System.out.println("ERRORE! Non puoi inserire nomi utenti uguali, riprovare!\n");
 								System.out.print("Inserire il soprannome: ");
 								String nomeModificato=sc.nextLine();
 								s=nomeModificato.replace(" ", "");
 										
 							}
-						}while(username.get(j).trim().equals(s));
+						}while(user.trim().equals(s));
 					}
 					//controllo colori uguali
 					for(int k=0;k<colori.size();k++) {
@@ -359,16 +359,16 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 				System.out.println("Colore Giallo selezionato");
 				if(i!=0) {//al primo giro non faccio il controllo, in quanto non ci sono nomi,colori
 					//controllo nomi uguali
-					for(int j=0;j<username.size();j++) {
+					for(String user: username) {
 						do {
-							if(username.get(j).trim().equals(s)) {
-								System.out.println("Non puoi inserire nomi utenti uguali, riprovare!");
+							if(user.trim().equals(s)) {
+								System.out.println("ERRORE! Non puoi inserire nomi utenti uguali, riprovare!\n");
 								System.out.print("Inserire il soprannome: ");
 								String nomeModificato=sc.nextLine();
 								s=nomeModificato.replace(" ", "");
-								
+										
 							}
-						}while(username.get(j).trim().equals(s));
+						}while(user.trim().equals(s));
 					}
 					//controllo colori uguali
 					for(int k=0;k<colori.size();k++) {
@@ -445,16 +445,16 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 				System.out.println("Colore Verde selezionato\n");
 				if(i!=0) {//al primo giro non faccio il controllo, in quanto non ci sono nomi,colori
 					//controllo nomi uguali
-					for(int j=0;j<username.size();j++) {
+					for(String user: username) {
 						do {
-							if(username.get(j).trim().equals(s)) {
-								System.out.println("Non puoi inserire nomi utenti uguali, riprovare!\n");
+							if(user.trim().equals(s)) {
+								System.out.println("ERRORE! Non puoi inserire nomi utenti uguali, riprovare!\n");
 								System.out.print("Inserire il soprannome: ");
 								String nomeModificato=sc.nextLine();
 								s=nomeModificato.replace(" ", "");
 										
 							}
-						}while(username.get(j).trim().equals(s));
+						}while(user.trim().equals(s));
 					}
 					//controllo colori uguali
 					for(int k=0;k<colori.size();k++) {
@@ -634,14 +634,14 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		
 		if(retro==1) {
 			//aggiunge al vettore delle risorse possedute le risorse centrali della carta
-			for(int i=0; i<cInizAttuale.getRisorseCentrali().size(); i++) {
-				if(cInizAttuale.getRisorseCentrali().get(i)==Simbolo.FOGLIA) {
+			for(Simbolo s: cInizAttuale.getRisorseCentrali()) {
+				if(s==Simbolo.FOGLIA) {
 					giocatoreAttuale.getRisPossedute()[0]+=1;
-				}else if(cInizAttuale.getRisorseCentrali().get(i)==Simbolo.LUPO) {
+				}else if(s==Simbolo.LUPO) {
 					giocatoreAttuale.getRisPossedute()[1]+=1;
-				}else if(cInizAttuale.getRisorseCentrali().get(i)==Simbolo.FUNGO) {
+				}else if(s==Simbolo.FUNGO) {
 					giocatoreAttuale.getRisPossedute()[2]+=1;
-				}else if(cInizAttuale.getRisorseCentrali().get(i)==Simbolo.FARFALLA) {
+				}else if(s==Simbolo.FARFALLA) {
 					giocatoreAttuale.getRisPossedute()[3]+=1;
 				}
 			}
@@ -690,17 +690,16 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 					System.out.println("\tIl colore della prima carta del mazzo delle carte risorsa " + (char)233 + ": " + cartaTavolo.getMazzoRis().getCMazzo().get(0).getColore() + "[Carte rimanenti: " + cartaTavolo.getMazzoRis().getCMazzo().size() + "]");
 					System.out.println("\tIl colore della prima carta del mazzo delle carte oro " + (char)233 + ": " + cartaTavolo.getMazzoOro().getCMazzo().get(0).getColore() + "[Carte rimanenti: " + cartaTavolo.getMazzoOro().getCMazzo().size() + "]");
 					System.out.println("3)Le carte risorsa scoperte:");
-					for(int i=0;i<cartaTavolo.getcRisScp().size();i++) {
-						System.out.println("\t" + cartaTavolo.getcRisScp().get(i).toString());
-						
+					for(CRis c: cartaTavolo.getcRisScp()) {
+						System.out.println("\t" + c.toString());
 					}
 					System.out.println("4)Le carte oro scoperte:");
-					for(int i=0;i<cartaTavolo.getcOroScp().size();i++) {
-						System.out.println("\t" + cartaTavolo.getcOroScp().get(i).toString());
+					for(COro c: cartaTavolo.getcOroScp()) {
+						System.out.println("\t" + c.toString());
 					}
 					System.out.println("5)Le carte obbiettivo:");
-					for(int i=0;i<cartaTavolo.getcObbScp().size();i++) {
-						System.out.println("\t" + cartaTavolo.getcObbScp().get(i).toString());
+					for(CObb c: cartaTavolo.getcObbScp()) {
+						System.out.println("\t" + c.toString());
 					}
 					break;
 				case 2:
@@ -867,8 +866,9 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 				
 			}while(posX<0 || posX>CampoGioco.DIMENSIONEX);
 			posCarta = posY + "," + posX;
-			for(int i=0; i<campoAttuale.getPosizioniDisponibili().size(); i++) {
-				if(posCarta.equals(campoAttuale.getPosizioniDisponibili().get(i)))
+			
+			for(String p: campoAttuale.getPosizioniDisponibili()) {
+				if(posCarta.equals(p))
 					posCartaOk = true;
 			}
 			if(!posCartaOk)
@@ -929,9 +929,8 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		
 		System.out.println("3)Le carte risorsa scoperte:");
 		if(cartaTavolo.getcRisScp().size()!=0) {
-			for(int i=0;i<cartaTavolo.getcRisScp().size();i++) {
-				System.out.println("\t" + cartaTavolo.getcRisScp().get(i).toString());
-				
+			for(CRis c: cartaTavolo.getcRisScp()) {
+				System.out.println("\t" + c.toString());
 			}
 		}else {
 			finiteScpRis=true;
@@ -939,9 +938,8 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		}
 		System.out.println("4)Le carte oro scoperte:");
 		if(cartaTavolo.getcOroScp().size()!=0) {
-			
-			for(int i=0;i<cartaTavolo.getcOroScp().size();i++) {
-				System.out.println("\t" + cartaTavolo.getcOroScp().get(i).toString());
+			for(COro c: cartaTavolo.getcOroScp()) {
+				System.out.println("\t" + c.toString());
 			}
 		}else {
 			finiteScpOro=true;
@@ -1262,9 +1260,9 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		}else {
 			System.out.println("Hanno vinto "+giocatore.size()+" giocatori:\n");
 		}
-		for(int i=0;i<giocatore.size();i++) {
-				System.out.println("Congratulazioni "+giocatore.get(i)+" hai vinto!\n");
-			}
+		for(String g: giocatore) {
+			System.out.println("Congratulazioni "+g+" hai vinto!\n");
+		}
 		
 		
 	}

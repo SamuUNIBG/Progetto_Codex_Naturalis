@@ -3,6 +3,7 @@ package Grafica;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 import java.awt.event.*;
 
 import javax.swing.*;
@@ -116,12 +117,12 @@ public class PlayingField extends JLayeredPane implements MouseListener {
 	 * altre carte
 	 * @param pos
 	 */
-	public void removeLabel(ArrayList<String> pos) {
+	public void removeLabel(Set<String> pos) {
 		
-		for(int i=0; i<pos.size(); i++) {
-			if(coordinate2.get(pos.get(i))!=null) {
-				placedCardLabel.get(coordinate2.get(pos.get(i))).removeMouseListener(this);
-				placedCardLabel.get(coordinate2.get(pos.get(i))).setOpaque(false);
+		for(String p:pos) {
+			if(coordinate2.get(p)!=null) {
+				placedCardLabel.get(coordinate2.get(p)).removeMouseListener(this);
+				placedCardLabel.get(coordinate2.get(p)).setOpaque(false);
 			}
 		}
 		

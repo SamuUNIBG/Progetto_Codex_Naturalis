@@ -73,9 +73,9 @@ public class CObbOgg extends CObb{
 				 * minore quindi quelli che possiede meno che se sono 0 allora
 				 * come e giusto non ottera alcun punto*/
 				int min=giocatore.getOggPosseduti()[0];
-				for(int i=1; i<3; i++) {
-					if(giocatore.getOggPosseduti()[i]<min) {
-						min=giocatore.getOggPosseduti()[i];
+				for(int oggPosseduti: giocatore.getOggPosseduti()) {
+					if(oggPosseduti<min) {
+						min=oggPosseduti;
 					}
 				}
 				/*alla fine min conterra l oggetto che il giocatore 

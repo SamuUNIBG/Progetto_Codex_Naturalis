@@ -2,6 +2,8 @@ package Tavolo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 import Carta.Carta;
 import Enumerazione.Simbolo;
@@ -16,14 +18,14 @@ public class CampoGioco {
 	private int[][] campoPrint;	
 	
 	private ArrayList<String> posReturn;
-	private ArrayList<String> posizioniDisponibili;
-	private ArrayList<String> posNonPiuDisponibili;
+	private Set<String> posizioniDisponibili;
+	private Set<String> posNonPiuDisponibili;
 	
 	public CampoGioco(){
 		
 		posReturn = new ArrayList<String>();
-		posizioniDisponibili = new ArrayList<String>();
-		posNonPiuDisponibili = new ArrayList<String>();
+		posizioniDisponibili = new HashSet<String>();
+		posNonPiuDisponibili = new HashSet<String>();
 		
 		campo = new CGiocabili[DIMENSIONEY][DIMENSIONEX];
 		campoPrint = new int[DIMENSIONEY][DIMENSIONEX];
@@ -118,78 +120,49 @@ public class CampoGioco {
 		
 		if(campo[posY-1][posX-1]==null && carta.getAngoli()[0].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY-1) + "," + (posX-1));
-			if(!posizioniDisponibili.contains((posY-1) + "," + (posX-1))) {
-				posizioniDisponibili.add((posY-1) + "," + (posX-1));
-			}
-			
+			posizioniDisponibili.add((posY-1) + "," + (posX-1));
 		}else {
-			if(campo[posY-1][posX-1]==null || carta.getAngoli()[0].getSimbolo()==Simbolo.ASSENTE) {
-				if(!posNonPiuDisponibili.contains((posY-1) + "," + (posX-1))) {
-					posNonPiuDisponibili.add((posY-1) + "," + (posX-1));
-				}
+			if(campo[posY-1][posX-1]==null && carta.getAngoli()[0].getSimbolo()==Simbolo.ASSENTE) {
+				posNonPiuDisponibili.add((posY-1) + "," + (posX-1));
 			}
-				
 		}
 			
 		if(campo[posY+1][posX-1]==null && carta.getAngoli()[3].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY+1) + "," + (posX-1));
-			if(!posizioniDisponibili.contains((posY+1) + "," + (posX-1))) {
-				posizioniDisponibili.add((posY+1) + "," + (posX-1));
-			}
-			
+			posizioniDisponibili.add((posY+1) + "," + (posX-1));
 		}
 		else {
-			if(campo[posY+1][posX-1]==null || carta.getAngoli()[3].getSimbolo()==Simbolo.ASSENTE)
-			{
-				if(!posNonPiuDisponibili.contains((posY+1) + "," + (posX-1))) {
-					posNonPiuDisponibili.add((posY+1) + "," + (posX-1));
-				}
+			if(campo[posY+1][posX-1]==null && carta.getAngoli()[3].getSimbolo()==Simbolo.ASSENTE) {
+				posNonPiuDisponibili.add((posY+1) + "," + (posX-1));
 			}
-				
-				
 		}
 			
 		if(campo[posY-1][posX+1]==null && carta.getAngoli()[1].getSimbolo()!=Simbolo.ASSENTE) {
-			
 			posReturn.add((posY-1) + "," + (posX+1));
-			if(!posizioniDisponibili.contains((posY-1) + "," + (posX+1))) {
-				posizioniDisponibili.add((posY-1) + "," + (posX+1));
-			}
-			
+			posizioniDisponibili.add((posY-1) + "," + (posX+1));
 		}else {
-			if(campo[posY-1][posX+1]==null || carta.getAngoli()[1].getSimbolo()==Simbolo.ASSENTE) {
-				if(!posNonPiuDisponibili.contains((posY-1) + "," + (posX+1))) {
-					posNonPiuDisponibili.add((posY-1) + "," + (posX+1));
-				}
-				
+			if(campo[posY-1][posX+1]==null && carta.getAngoli()[1].getSimbolo()==Simbolo.ASSENTE) {
+				posNonPiuDisponibili.add((posY-1) + "," + (posX+1));
 			}
-				
-				
 		}
 			
 		if(campo[posY+1][posX+1]==null && carta.getAngoli()[2].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY+1) + "," + (posX+1));
-			if(!posizioniDisponibili.contains((posY+1) + "," + (posX+1))) {
-				posizioniDisponibili.add((posY+1) + "," + (posX+1));
-			}
-			
+			posizioniDisponibili.add((posY+1) + "," + (posX+1));
 		}else {
-			if(campo[posY+1][posX+1]==null || carta.getAngoli()[2].getSimbolo()==Simbolo.ASSENTE) {
-				if(!posNonPiuDisponibili.contains((posY+1) + "," + (posX+1))) {
-					posNonPiuDisponibili.add((posY+1) + "," + (posX+1));
-				}
+			if(campo[posY+1][posX+1]==null && carta.getAngoli()[2].getSimbolo()==Simbolo.ASSENTE) {
+				posNonPiuDisponibili.add((posY+1) + "," + (posX+1));
 			}
-				
 		}
 		
-		for(int i=0; i<posReturn.size(); i++) {
-			if(posNonPiuDisponibili.contains(posReturn.get(i)))
-				posReturn.remove(i);
+		for(String s: posReturn) {
+			if(posNonPiuDisponibili.contains(s))
+				posReturn.remove(s);
 		}
 		
-		for(int i=0; i<posizioniDisponibili.size(); i++) {
-			if(posNonPiuDisponibili.contains(posizioniDisponibili.get(i)))
-				posizioniDisponibili.remove(i);
+		for(String s: posizioniDisponibili) {
+			if(posNonPiuDisponibili.contains(s))
+				posizioniDisponibili.remove(s);
 		}
 		
 	}
@@ -198,7 +171,7 @@ public class CampoGioco {
 	 * 
 	 * @return l ArrayList con le posizioni libere
 	 */
-	public ArrayList<String> getPosizioniDisponibili() {
+	public Set<String> getPosizioniDisponibili() {
 		return posizioniDisponibili;
 	}
 
@@ -293,7 +266,7 @@ public class CampoGioco {
 		return posReturn;
 	}
 	
-	public ArrayList<String> getPosNonPiuDisponibili(){
+	public Set<String> getPosNonPiuDisponibili(){
 		return posNonPiuDisponibili;
 	}
 	

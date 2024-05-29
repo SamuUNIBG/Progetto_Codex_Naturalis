@@ -105,21 +105,22 @@ public class Giocatore {
 		
 		//Incrementa array risorse/oggetti posseduti
 		Angolo[] angoli = carta.getAngoli();
-		for(int i=0; i<angoli.length; i++) {
-			if(angoli[i].getSimbolo()==Simbolo.FOGLIA) {
+		
+		for(Angolo a: angoli) {
+			if(a.getSimbolo()==Simbolo.FOGLIA) {
 				risPossedute[0]+=1;
-			}else if(angoli[i].getSimbolo()==Simbolo.LUPO) {
+			}else if(a.getSimbolo()==Simbolo.LUPO) {
 				risPossedute[1]+=1;
-			}else if(angoli[i].getSimbolo()==Simbolo.FUNGO) {
+			}else if(a.getSimbolo()==Simbolo.FUNGO) {
 				risPossedute[2]+=1;
-			}else if(angoli[i].getSimbolo()==Simbolo.FARFALLA) {
+			}else if(a.getSimbolo()==Simbolo.FARFALLA) {
 				risPossedute[3]+=1;
 			}
-			if(angoli[i].getSimbolo()==Simbolo.INCHIOSTRO) {
+			if(a.getSimbolo()==Simbolo.INCHIOSTRO) {
 				oggPosseduti[0]+=1;
-			}else if(angoli[i].getSimbolo()==Simbolo.PERGAMENA) {
+			}else if(a.getSimbolo()==Simbolo.PERGAMENA) {
 				oggPosseduti[1]+=1;
-			}else if(angoli[i].getSimbolo()==Simbolo.PIUMA) {
+			}else if(a.getSimbolo()==Simbolo.PIUMA) {
 				oggPosseduti[2]+=1;
 			}
 		}
@@ -139,21 +140,21 @@ public class Giocatore {
 		
 		Simbolo[] simboli = campo.copriAngoli(cPiazzate, posCarta);
 		//Decrementa array risorse/oggetti posseduti
-		for(int i=0; i<simboli.length; i++) {
-			if(simboli[i]==Simbolo.FOGLIA) {
+		for(Simbolo s: simboli) {
+			if(s==Simbolo.FOGLIA) {
 				risPossedute[0]-=1;
-			}else if(simboli[i]==Simbolo.LUPO) {
+			}else if(s==Simbolo.LUPO) {
 				risPossedute[1]-=1;
-			}else if(simboli[i]==Simbolo.FUNGO) {
+			}else if(s==Simbolo.FUNGO) {
 				risPossedute[2]-=1;
-			}else if(simboli[i]==Simbolo.FARFALLA) {
+			}else if(s==Simbolo.FARFALLA) {
 				risPossedute[3]-=1;
 			}
-			if(simboli[i]==Simbolo.INCHIOSTRO) {
+			if(s==Simbolo.INCHIOSTRO) {
 				oggPosseduti[0]-=1;
-			}else if(simboli[i]==Simbolo.PERGAMENA) {
+			}else if(s==Simbolo.PERGAMENA) {
 				oggPosseduti[1]-=1;
-			}else if(simboli[i]==Simbolo.PIUMA) {
+			}else if(s==Simbolo.PIUMA) {
 				oggPosseduti[2]-=1;
 			}
 		}

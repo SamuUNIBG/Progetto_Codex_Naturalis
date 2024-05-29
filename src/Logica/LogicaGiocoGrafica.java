@@ -173,14 +173,14 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 		
 		if(fronte) {
 			//aggiunge al vettore delle risorse possedute le risorse centrali della carta
-			for(int i=0; i<cInizAttuale.getRisorseCentrali().size(); i++) {
-				if(cInizAttuale.getRisorseCentrali().get(i)==Simbolo.FOGLIA) {
+			for(Simbolo s: cInizAttuale.getRisorseCentrali()) {
+				if(s==Simbolo.FOGLIA) {
 					giocatoreAttuale.getRisPossedute()[0]+=1;
-				}else if(cInizAttuale.getRisorseCentrali().get(i)==Simbolo.LUPO) {
+				}else if(s==Simbolo.LUPO) {
 					giocatoreAttuale.getRisPossedute()[1]+=1;
-				}else if(cInizAttuale.getRisorseCentrali().get(i)==Simbolo.FUNGO) {
+				}else if(s==Simbolo.FUNGO) {
 					giocatoreAttuale.getRisPossedute()[2]+=1;
-				}else if(cInizAttuale.getRisorseCentrali().get(i)==Simbolo.FARFALLA) {
+				}else if(s==Simbolo.FARFALLA) {
 					giocatoreAttuale.getRisPossedute()[3]+=1;
 				}
 			}
