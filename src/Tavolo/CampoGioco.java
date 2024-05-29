@@ -17,13 +17,13 @@ public class CampoGioco {
 	private CGiocabili[][] campo;
 	private int[][] campoPrint;	
 	
-	private ArrayList<String> posReturn;
+	private ArrayList<String> posizioniReturn;
 	private Set<String> posizioniDisponibili;
 	private Set<String> posNonPiuDisponibili;
 	
 	public CampoGioco(){
 		
-		posReturn = new ArrayList<String>();
+		posizioniReturn = new ArrayList<String>();
 		posizioniDisponibili = new HashSet<String>();
 		posNonPiuDisponibili = new HashSet<String>();
 		
@@ -110,9 +110,12 @@ public class CampoGioco {
 	 * @param carta gia posizionata
 	 */
 	private void controllaNuovePosizioni(String posizione, CGiocabili carta) {
-		posReturn.clear();
+		posizioniReturn.clear();
 		posizioniDisponibili.remove(posizione);
-		posReturn.add(posizione);
+		posizioniReturn.add(posizione);
+		
+		Set<String> posDis = new HashSet<String>();
+		Set<String> posReturn = new HashSet<String>();
 		
 		String[] splittedString = posizione.split(",");
 		int posY = Integer.parseInt(splittedString[0]);
@@ -120,7 +123,7 @@ public class CampoGioco {
 		
 		if(campo[posY-1][posX-1]==null && carta.getAngoli()[0].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY-1) + "," + (posX-1));
-			posizioniDisponibili.add((posY-1) + "," + (posX-1));
+			posDis.add((posY-1) + "," + (posX-1));
 		}else {
 			if(campo[posY-1][posX-1]==null && carta.getAngoli()[0].getSimbolo()==Simbolo.ASSENTE) {
 				posNonPiuDisponibili.add((posY-1) + "," + (posX-1));
@@ -129,7 +132,7 @@ public class CampoGioco {
 			
 		if(campo[posY+1][posX-1]==null && carta.getAngoli()[3].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY+1) + "," + (posX-1));
-			posizioniDisponibili.add((posY+1) + "," + (posX-1));
+			posDis.add((posY+1) + "," + (posX-1));
 		}
 		else {
 			if(campo[posY+1][posX-1]==null && carta.getAngoli()[3].getSimbolo()==Simbolo.ASSENTE) {
@@ -139,7 +142,7 @@ public class CampoGioco {
 			
 		if(campo[posY-1][posX+1]==null && carta.getAngoli()[1].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY-1) + "," + (posX+1));
-			posizioniDisponibili.add((posY-1) + "," + (posX+1));
+			posDis.add((posY-1) + "," + (posX+1));
 		}else {
 			if(campo[posY-1][posX+1]==null && carta.getAngoli()[1].getSimbolo()==Simbolo.ASSENTE) {
 				posNonPiuDisponibili.add((posY-1) + "," + (posX+1));
@@ -148,7 +151,7 @@ public class CampoGioco {
 			
 		if(campo[posY+1][posX+1]==null && carta.getAngoli()[2].getSimbolo()!=Simbolo.ASSENTE) {
 			posReturn.add((posY+1) + "," + (posX+1));
-			posizioniDisponibili.add((posY+1) + "," + (posX+1));
+			posDis.add((posY+1) + "," + (posX+1));
 		}else {
 			if(campo[posY+1][posX+1]==null && carta.getAngoli()[2].getSimbolo()==Simbolo.ASSENTE) {
 				posNonPiuDisponibili.add((posY+1) + "," + (posX+1));
@@ -156,13 +159,13 @@ public class CampoGioco {
 		}
 		
 		for(String s: posReturn) {
-			if(posNonPiuDisponibili.contains(s))
-				posReturn.remove(s);
+			if(!posNonPiuDisponibili.contains(s))
+				posizioniReturn.add(s);
 		}
 		
-		for(String s: posizioniDisponibili) {
-			if(posNonPiuDisponibili.contains(s))
-				posizioniDisponibili.remove(s);
+		for(String s: posDis) {
+			if(!posNonPiuDisponibili.contains(s))
+				posizioniDisponibili.add(s);
 		}
 		
 	}
@@ -263,7 +266,7 @@ public class CampoGioco {
 	}
 	
 	public ArrayList<String> getPosReturn(){
-		return posReturn;
+		return posizioniReturn;
 	}
 	
 	public Set<String> getPosNonPiuDisponibili(){

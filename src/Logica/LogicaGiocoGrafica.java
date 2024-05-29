@@ -244,6 +244,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 
 		game.getUserPanel().getUser(LogicaGiocoGrafica.GIOCATOREATTUALE).aggiornaResource(giocatoreAttuale.getRisPossedute());
 		game.getUserPanel().getUser(LogicaGiocoGrafica.GIOCATOREATTUALE).aggiornaObjects(giocatoreAttuale.getOggPosseduti());
+		game.getUserPanel().getUser(LogicaGiocoGrafica.GIOCATOREATTUALE).aggiornaPunteggio(giocatoreAttuale.getPunteggio());
 		
 		game.getUserPlayGround(LogicaGiocoGrafica.GIOCATOREATTUALE).getPlayingField().addLabel(giocatoreAttuale.getCampoG().getPosReturn());
 		game.getUserPlayGround(LogicaGiocoGrafica.GIOCATOREATTUALE).getPlayingField().removeLabel(giocatoreAttuale.getCampoG().getPosNonPiuDisponibili());
@@ -457,7 +458,6 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 	public void windowClosing(WindowEvent e) {
 		frame.dispose();
 		game.dispose();
-		new Home();
 	}
 
 	@Override
