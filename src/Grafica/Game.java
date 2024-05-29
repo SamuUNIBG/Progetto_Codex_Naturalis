@@ -257,7 +257,6 @@ public class Game extends JFrame implements MouseListener, WindowListener {
 	public void chiudi() {
 		if(JOptionPane.showConfirmDialog(this, "Conferma Uscita", "Uscire dalla partita", JOptionPane.YES_NO_OPTION)==0) {
 			this.dispose();
-			new Home();
 		}
 	}
 
