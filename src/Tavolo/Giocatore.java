@@ -26,6 +26,12 @@ public class Giocatore {
 	private int[] oggPosseduti;
 	private HashMap<Integer, String> cPiazzate;
 	
+	
+	/**
+	 * @param soprannome
+	 * @param colore
+	 * @param primo
+	 */
 	public Giocatore(String soprannome,Colore colore,boolean primo) {
 		this.soprannome=soprannome;
 		this.colore=colore;

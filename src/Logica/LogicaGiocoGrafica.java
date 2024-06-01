@@ -19,6 +19,7 @@ import Carta.COro;
 import Carta.CRis;
 import Eccezioni.IdCartaException;
 import Eccezioni.PuntiAssegnatiException;
+import Enumerazione.Colore;
 import Enumerazione.Simbolo;
 import Enumerazione.TipoCarta;
 
@@ -341,13 +342,13 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 
 	@Override
 	public void Vincitore() {
-		ImageIcon logo = new ImageIcon("images/codex_logo.png");
-		ImageIcon sfondo = new ImageIcon("images/sfondi/sfondoBianco.jpg");
+		ImageIcon logo = new ImageIcon(getClass().getClassLoader().getResource("codex_logo.png"));
+		ImageIcon sfondo = new ImageIcon(getClass().getClassLoader().getResource("sfondi/fuochi.gif"));
 		frame = new JFrame();
 		//sets title, dimension of the JFrame
 		frame.setIconImage(logo.getImage());
 		frame.setTitle("Codex Naturalis - Vincitori");
-		frame.setPreferredSize(new Dimension(400,400));
+		frame.setPreferredSize(new Dimension(sfondo.getIconWidth(),sfondo.getIconHeight()));
 		frame.addWindowListener(this);
 		//sets the window not resizable by the users
 		frame.setResizable(false);
@@ -362,7 +363,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 		JLabel titleLabel = new JLabel();
 		titleLabel.setText("VINCITORI");
 		titleLabel.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 30));
-		titleLabel.setForeground(Color.BLACK);
+		titleLabel.setForeground(Color.WHITE);
 		titleLabel.setOpaque(false);
 		
 		
@@ -394,15 +395,20 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 		int maxPunti=tracciato.getGiocatore(0).getPunteggio();
 		ArrayList<String> giocatore = new ArrayList<String>();
 		giocatore.add(tracciato.getGiocatore(0).getSoprannome());
+		ArrayList<Colore> colore = new ArrayList<Colore>();
+		colore.add(tracciato.getGiocatore(0).getColore());
 		
 		for(int i=1; i<LogicaGiocoGrafica.NUMGIOCATORI; i++) {
 			int punti = tracciato.getGiocatore(i).getPunteggio();
 			if(punti > maxPunti) {
 				giocatore.clear();
+				colore.clear();
 				giocatore.add(tracciato.getGiocatore(i).getSoprannome());
+				colore.add(tracciato.getGiocatore(i).getColore());
 				maxPunti = punti;
 			}else if(punti == maxPunti) {
 				giocatore.add(tracciato.getGiocatore(i).getSoprannome());
+				colore.add(tracciato.getGiocatore(i).getColore());
 			}
 		}//aggiungere vari JOptionPane per comunicare il vincitore
 		if(giocatore.size()==1) {
@@ -411,7 +417,25 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 			JOptionPane.showMessageDialog(null, "Hanno vinto "+giocatore.size()+" giocatori","Title",JOptionPane.INFORMATION_MESSAGE);
 		}
 		for(int i=0;i<giocatore.size();i++) {
-			JLabel vincitore=new JLabel(giocatore.get(i));
+			JLabel vincitore = new JLabel(giocatore.get(i));
+			
+			switch(colore.get(i)) {
+		       	case AZZURRO:
+		       		vincitore.setForeground(Color.BLUE);
+		       		break;
+		       	case GIALLO:
+		       		vincitore.setForeground(Color.YELLOW);
+		       		break;
+		       	case ROSSO:
+		       		vincitore.setForeground(Color.RED);
+		       		break;
+		       	case VERDE:
+		       		vincitore.setForeground(Color.GREEN);
+		       		break;
+				default:
+					break;
+		   	}
+			
 			gbc.gridx=0;
 			gbc.gridy=y+1;
 			infoPanel.add(gapPanel2, gbc);
@@ -420,7 +444,6 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 			infoPanel.add(vincitore, gbc);
 			
 			y+=2;
-			System.out.println("Congratulazioni "+giocatore.get(i)+" hai vinto!\n");
 		}
 		
 		JLabel sfondoLabel = new JLabel();
