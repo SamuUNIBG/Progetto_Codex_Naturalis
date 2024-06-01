@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import Carta.CIniz;
-
+import Eccezioni.IdCartaException;
+import Eccezioni.PuntiAssegnatiException;
 import Enumerazione.Simbolo;
 
 public class MCIniz extends Mazzo {
@@ -13,8 +14,10 @@ public class MCIniz extends Mazzo {
 	
 	/**
 	 * Instantiate all the starter cards and shuffles them
+	 * @throws IdCartaException 
+	 * @throws PuntiAssegnatiException 
 	 */
-	public MCIniz() {	//4 front corners, 3 resource, 4 back corners,
+	public MCIniz() throws PuntiAssegnatiException, IdCartaException {	//4 front corners, 3 resource, 4 back corners,
 		cMazzo = new ArrayList<CIniz>(6);
 		
 		cMazzo.add(new CIniz(Simbolo.VUOTO, Simbolo.FOGLIA, Simbolo.VUOTO, Simbolo.FARFALLA, Simbolo.FARFALLA, Simbolo.ASSENTE, Simbolo.ASSENTE, Simbolo.FUNGO, Simbolo.FOGLIA, Simbolo.LUPO, Simbolo.FARFALLA));

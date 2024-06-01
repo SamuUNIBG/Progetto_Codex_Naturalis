@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import Carta.COro;
+import Eccezioni.IdCartaException;
+import Eccezioni.PuntiAssegnatiException;
 import Enumerazione.Colore;
 import Enumerazione.Simbolo;
 
@@ -13,8 +15,10 @@ public class MCOro extends Mazzo {
 	
 	/**
 	 * Instantiate all the gold cards and shuffles them
+	 * @throws IdCartaException 
+	 * @throws PuntiAssegnatiException 
 	 */
-	public MCOro() {
+	public MCOro() throws PuntiAssegnatiException, IdCartaException {
 		cMazzo=new ArrayList<COro>(40);
 		//sky blue
 		cMazzo.add(new COro(1, Simbolo.INCHIOSTRO, Simbolo.LUPO, Colore.AZZURRO, Simbolo.INCHIOSTRO, Simbolo.VUOTO, Simbolo.ASSENTE, Simbolo.VUOTO, 0, 2, 0, 1));	//2 LUPO, 1 FARFALLA

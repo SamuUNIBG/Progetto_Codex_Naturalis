@@ -1,5 +1,7 @@
 package Carta;
 
+import Eccezioni.IdCartaException;
+import Eccezioni.PuntiAssegnatiException;
 import Tavolo.Giocatore;
 
 /**
@@ -8,7 +10,13 @@ import Tavolo.Giocatore;
  */
 public abstract class CObb extends Carta{
 	
-	public CObb(int puntiAssegnati, int idCarta) {
+	/**
+	 * @param puntiAssegnati
+	 * @param idCarta
+	 * @throws IdCartaException quando id < 0
+	 * @throws PuntiAssegnatiException qaundo !(0 <= PuntiAssegnati <= 3) 
+	 */
+	public CObb(int puntiAssegnati, int idCarta) throws PuntiAssegnatiException, IdCartaException {
 		super(puntiAssegnati, idCarta);
 	}
 	/**

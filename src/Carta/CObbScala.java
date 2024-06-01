@@ -1,5 +1,7 @@
 package Carta;
 
+import Eccezioni.IdCartaException;
+import Eccezioni.PuntiAssegnatiException;
 import Enumerazione.Colore;
 
 import Tavolo.Giocatore;
@@ -25,7 +27,14 @@ public class CObbScala extends CObb{
 	private final boolean direzione;
 	private static int LASTID=86;
 	
-	public CObbScala(int puntiAssegnati, Colore colore, boolean direzione) {
+	/**
+	 * @param puntiAssegnati
+	 * @param colore
+	 * @param direzione
+	 * @throws IdCartaException quando id < 0
+	 * @throws PuntiAssegnatiException qaundo !(0 <= PuntiAssegnati <= 3) 
+	 */
+	public CObbScala(int puntiAssegnati, Colore colore, boolean direzione) throws PuntiAssegnatiException, IdCartaException {
 		super(puntiAssegnati, CObbScala.LASTID);
 		this.colore=colore;
 		this.direzione=direzione;

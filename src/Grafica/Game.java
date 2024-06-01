@@ -2,6 +2,8 @@ package Grafica;
 
 import javax.swing.*;
 
+import Eccezioni.IdCartaException;
+import Eccezioni.PuntiAssegnatiException;
 import Logica.LogicaGiocoGrafica;
 
 import java.awt.*;
@@ -98,7 +100,12 @@ public class Game extends JFrame implements MouseListener, WindowListener {
       	//makes frame visible
         this.setVisible(true);
         
-        logica = new LogicaGiocoGrafica(username, userColor, this);			
+        try {
+			logica = new LogicaGiocoGrafica(username, userColor, this);
+		} catch (PuntiAssegnatiException | IdCartaException e) {
+			this.dispose();
+			e.printStackTrace();
+		}			
 	}
 	/**
 	 * riempie l'HashMap con tutte le carte tramite lettura da file
@@ -227,7 +234,12 @@ public class Game extends JFrame implements MouseListener, WindowListener {
 	 * @param posCarta
 	 */
 	public void giocaC(int idCarta, boolean fronte, String posCarta) {
-		logica.giocaC(idCarta, fronte, posCarta);
+		try {
+			logica.giocaC(idCarta, fronte, posCarta);
+		} catch (PuntiAssegnatiException | IdCartaException e) {
+			this.dispose();
+			e.printStackTrace();
+		}
 	}
 	/**
 	 * in base al numero di giocatori crea i relativi campi di gioco

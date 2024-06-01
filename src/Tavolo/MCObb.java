@@ -8,7 +8,8 @@ import Carta.CObbL;
 import Carta.CObbOgg;
 import Carta.CObbRis;
 import Carta.CObbScala;
-
+import Eccezioni.IdCartaException;
+import Eccezioni.PuntiAssegnatiException;
 import Enumerazione.Colore;
 import Enumerazione.Simbolo;
 
@@ -18,8 +19,10 @@ public class MCObb extends Mazzo {
 	
 	/**
 	 * Instantiate all the objective cards and shuffles them
+	 * @throws IdCartaException 
+	 * @throws PuntiAssegnatiException 
 	 */
-	public MCObb() {
+	public MCObb() throws PuntiAssegnatiException, IdCartaException {
 		cMazzo=new ArrayList<CObb>(16);
 		//scale
 		cMazzo.add(new CObbScala(2, Colore.ROSSO, true));

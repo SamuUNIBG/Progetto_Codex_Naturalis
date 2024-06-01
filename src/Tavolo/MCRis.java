@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import Carta.CRis;
+import Eccezioni.IdCartaException;
+import Eccezioni.PuntiAssegnatiException;
 import Enumerazione.Colore;
 import Enumerazione.Simbolo;
 
@@ -13,8 +15,10 @@ public class MCRis extends Mazzo {
 	
 	/**
 	 * Instantiate all the resource cards and shuffles them
+	 * @throws IdCartaException 
+	 * @throws PuntiAssegnatiException 
 	 */
-	public MCRis() {
+	public MCRis() throws PuntiAssegnatiException, IdCartaException {
 		cMazzo=new ArrayList<CRis>(40);
 		//sky blue
 		cMazzo.add(new CRis(0, Simbolo.LUPO, Colore.AZZURRO, Simbolo.LUPO, Simbolo.LUPO, Simbolo.ASSENTE, Simbolo.VUOTO));

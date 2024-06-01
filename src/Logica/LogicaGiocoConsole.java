@@ -7,6 +7,8 @@ import Carta.CIniz;
 import Carta.CObb;
 import Carta.COro;
 import Carta.CRis;
+import Eccezioni.IdCartaException;
+import Eccezioni.PuntiAssegnatiException;
 import Carta.CGiocabiliSpeciali;
 import Enumerazione.Simbolo;
 import Enumerazione.TipoCarta;
@@ -27,7 +29,7 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 	private Tracciato tracciato;
 	private int numGiocatori;
 
-	public LogicaGiocoConsole() {
+	public LogicaGiocoConsole() throws PuntiAssegnatiException, IdCartaException {
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -878,11 +880,21 @@ public class LogicaGiocoConsole implements InterfacciaLogica {
 		//se la carta e' stata giocata sul retro si crea una nuova carta
 		if(retro==0) {
 			if(carta instanceof CRis) {
-				CRis cartaRetro= new CRis(((CRis)carta).getSimbolo(), ((CRis)carta).getColore(), ((CRis)carta).getIdCarta());
-				carta = cartaRetro;
+				CRis cartaRetro;
+				try {
+					cartaRetro = new CRis(((CRis)carta).getSimbolo(), ((CRis)carta).getColore(), ((CRis)carta).getIdCarta());
+					carta = cartaRetro;
+				} catch (PuntiAssegnatiException | IdCartaException e) {
+					e.printStackTrace();
+				}
 			}else if(carta instanceof COro) {
-				COro cartaRetro= new COro(((COro)carta).getSimbolo(), ((COro)carta).getColore(), ((COro)carta).getIdCarta());
-				carta = cartaRetro;
+				COro cartaRetro;
+				try {
+					cartaRetro = new COro(((COro)carta).getSimbolo(), ((COro)carta).getColore(), ((COro)carta).getIdCarta());
+					carta = cartaRetro;
+				} catch (PuntiAssegnatiException | IdCartaException e) {
+					e.printStackTrace();
+				}
 			}
 		}else {
 			int puntiCarta = carta.getPunti();

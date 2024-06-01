@@ -1,5 +1,7 @@
 package Carta;
 
+import Eccezioni.IdCartaException;
+import Eccezioni.PuntiAssegnatiException;
 import Enumerazione.Colore;
 
 import Tavolo.CampoGioco;
@@ -21,7 +23,15 @@ public class CObbL extends CObb{
 	4 direzioni possibili in cui la L puo essere orientata*/
 	private static int LASTID=90;
 	
-	public CObbL(int puntiAssegnati, Colore colore0, Colore colore1, int direzione) {
+	/**
+	 * @param puntiAssegnati
+	 * @param colore0
+	 * @param colore1
+	 * @param direzione
+	 * @throws IdCartaException quando id < 0
+	 * @throws PuntiAssegnatiException qaundo !(0 <= PuntiAssegnati <= 3) 
+	 */
+	public CObbL(int puntiAssegnati, Colore colore0, Colore colore1, int direzione) throws PuntiAssegnatiException, IdCartaException {
 		super(puntiAssegnati, CObbL.LASTID);
 		this.colori[0]=colore0;
 		this.colori[1]=colore1;

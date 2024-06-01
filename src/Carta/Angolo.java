@@ -7,6 +7,9 @@ public class Angolo {
 	private final Simbolo simbolo; //cosa c e nell'angolo (null se angolo vuoto)
 	private boolean coperto; //lo stato dell'angolo
 	
+	/**
+	 * @param simbolo
+	 */
 	public Angolo(Simbolo simbolo) { //simbolo può anche essere assente
 		this.simbolo = simbolo;
 		this.coperto=false;

@@ -1,5 +1,7 @@
 package Carta;
 
+import Eccezioni.IdCartaException;
+import Eccezioni.PuntiAssegnatiException;
 import Enumerazione.Simbolo;
 
 import Tavolo.Giocatore;
@@ -14,7 +16,13 @@ public class CObbRis extends CObb{
 	private final Simbolo simbolo;
 	private static int LASTID=94;
 	
-	public CObbRis(int puntiAssegnati, Simbolo simbolo) {
+	/**
+	 * @param puntiAssegnati
+	 * @param simbolo
+	 * @throws IdCartaException quando id < 0
+	 * @throws PuntiAssegnatiException qaundo !(0 <= PuntiAssegnati <= 3)
+	 */
+	public CObbRis(int puntiAssegnati, Simbolo simbolo) throws PuntiAssegnatiException, IdCartaException {
 		super(puntiAssegnati, CObbRis.LASTID);
 		this.simbolo=simbolo;
 		CObbRis.LASTID++;

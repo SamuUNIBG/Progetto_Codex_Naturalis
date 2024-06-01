@@ -2,6 +2,8 @@ package Carta;
 
 import java.util.*;
 
+import Eccezioni.IdCartaException;
+import Eccezioni.PuntiAssegnatiException;
 import Enumerazione.Simbolo;
 import Tavolo.Giocatore;
 /**
@@ -15,7 +17,15 @@ public class CObbOgg extends CObb{
 	private final ArrayList<Simbolo> oggetti;
 	private static int LASTID=98;
 	
-	public CObbOgg(int puntiAssegnati, Simbolo oggetto1, Simbolo oggetto2, Simbolo oggetto3) {
+	/**
+	 * @param puntiAssegnati
+	 * @param oggetto1
+	 * @param oggetto2
+	 * @param oggetto3
+	 * @throws IdCartaException quando id < 0
+	 * @throws PuntiAssegnatiException qaundo !(0 <= PuntiAssegnati <= 3) 
+	 */
+	public CObbOgg(int puntiAssegnati, Simbolo oggetto1, Simbolo oggetto2, Simbolo oggetto3) throws PuntiAssegnatiException, IdCartaException {
 		super(puntiAssegnati, CObbOgg.LASTID);
 		oggetti = new ArrayList<Simbolo>();
 		this.oggetti.add(oggetto1);

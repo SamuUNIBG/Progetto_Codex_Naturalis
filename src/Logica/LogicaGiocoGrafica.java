@@ -17,13 +17,13 @@ import Carta.CIniz;
 import Carta.CObb;
 import Carta.COro;
 import Carta.CRis;
-
+import Eccezioni.IdCartaException;
+import Eccezioni.PuntiAssegnatiException;
 import Enumerazione.Simbolo;
 import Enumerazione.TipoCarta;
 
 import Grafica.Game;
 import Grafica.GoalDecision;
-import Grafica.Home;
 import Grafica.StartDecision;
 
 import Tavolo.CartaTavolo;
@@ -50,7 +50,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 	private boolean ultimoGiro;
 	private int counterUltimoGiro;
 	
-	public LogicaGiocoGrafica(ArrayList<String> username, ArrayList<String> userColor, Game game) {
+	public LogicaGiocoGrafica(ArrayList<String> username, ArrayList<String> userColor, Game game) throws PuntiAssegnatiException, IdCartaException {
 		
 		this.game = game;
 		
@@ -210,7 +210,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 		
 	}
 	
-	public boolean giocaC(int idCarta, boolean fronte, String posCarta) {
+	public boolean giocaC(int idCarta, boolean fronte, String posCarta) throws PuntiAssegnatiException, IdCartaException {
 		
 		int numCarta=-1;
 		ArrayList<CGiocabiliSpeciali> cManoAttuale=giocatoreAttuale.getCMano();

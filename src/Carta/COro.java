@@ -1,5 +1,7 @@
 package Carta;
 
+import Eccezioni.IdCartaException;
+import Eccezioni.PuntiAssegnatiException;
 import Enumerazione.*;
 import Tavolo.Giocatore;
 /**
@@ -28,8 +30,21 @@ public class COro extends CGiocabiliSpeciali implements InterfacciaCarteOro {
 	le risorse da avere sul proprio campo) per poter piazzare la carta oro
 	sul fronte*/
 	
+	/**
+	 * se piazzata sul fronte
+	 * @param puntiAssegnati
+	 * @param obbiettivo
+	 * @param simbolo
+	 * @param colore
+	 * @param angolo0 alto sx
+	 * @param angolo1 alto dx
+	 * @param angolo2 basso dx
+	 * @param angolo3 basso sx
+	 * @throws IdCartaException quando id < 0
+	 * @throws PuntiAssegnatiException qaundo !(0 <= PuntiAssegnati <= 3) 
+	 */
 	public COro(int puntiAssegnati, Simbolo obbiettivo, Simbolo simbolo, Colore colore, Simbolo angolo0, Simbolo angolo1,
-			Simbolo angolo2, Simbolo angolo3, int risnecessaria1, int risnecessaria2, int risnecessaria3, int risnecessaria4) {
+			Simbolo angolo2, Simbolo angolo3, int risnecessaria1, int risnecessaria2, int risnecessaria3, int risnecessaria4) throws PuntiAssegnatiException, IdCartaException {
 		super(puntiAssegnati, simbolo, colore, true, angolo0, angolo1, angolo2, angolo3, COro.LASTID);
 		this.obbiettivo=obbiettivo;
 		COro.LASTID++;
@@ -38,8 +53,15 @@ public class COro extends CGiocabiliSpeciali implements InterfacciaCarteOro {
 		this.risNecessarie[2]=risnecessaria3;
 		this.risNecessarie[3]=risnecessaria4;
 	}
-	
-	public COro(Simbolo simbolo, Colore colore, int IdCarta) {
+	/**
+	 * se piazzata sul retro
+	 * @param simbolo
+	 * @param colore
+	 * @param IdCarta
+	 * @throws IdCartaException quando id < 0
+	 * @throws PuntiAssegnatiException qaundo !(0 <= PuntiAssegnati <= 3) 
+	 */
+	public COro(Simbolo simbolo, Colore colore, int IdCarta) throws PuntiAssegnatiException, IdCartaException {
 		super(0, simbolo, colore, false, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.VUOTO, IdCarta);
 		this.obbiettivo=Simbolo.ASSENTE;
 		this.risNecessarie[0]=0;

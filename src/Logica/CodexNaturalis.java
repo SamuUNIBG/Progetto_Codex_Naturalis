@@ -2,6 +2,8 @@ package Logica;
 
 import java.util.Scanner;
 
+import Eccezioni.IdCartaException;
+import Eccezioni.PuntiAssegnatiException;
 import Grafica.Home;
 /**
  * la prima classe ad essere eseguita, consente di scegliere
@@ -10,7 +12,7 @@ import Grafica.Home;
  */
 public class CodexNaturalis {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws PuntiAssegnatiException, IdCartaException {
 		
 		int scelta=-1;
 		

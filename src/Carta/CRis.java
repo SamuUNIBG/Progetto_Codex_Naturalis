@@ -1,5 +1,7 @@
 package Carta;
 
+import Eccezioni.IdCartaException;
+import Eccezioni.PuntiAssegnatiException;
 import Enumerazione.*;
 /**
  * le carte risorsa sono 40 totali di cui, una volta mescolato il mazzo,
@@ -20,12 +22,14 @@ public class CRis extends CGiocabiliSpeciali {
 	 * @param puntiAssegnati
 	 * @param simbolo
 	 * @param colore
-	 * @param angolo0
-	 * @param angolo1
-	 * @param angolo2
-	 * @param angolo3
+	 * @param angolo0 alto sx
+	 * @param angolo1 alto dx
+	 * @param angolo2 basso dx
+	 * @param angolo3 basso sx
+	 * @throws IdCartaException quando id < 0
+	 * @throws PuntiAssegnatiException qaundo !(0 <= PuntiAssegnati <= 3) 
 	 */
-	public CRis(int puntiAssegnati, Simbolo simbolo,Colore colore, Simbolo angolo0, Simbolo angolo1, Simbolo angolo2, Simbolo angolo3) {
+	public CRis(int puntiAssegnati, Simbolo simbolo,Colore colore, Simbolo angolo0, Simbolo angolo1, Simbolo angolo2, Simbolo angolo3) throws PuntiAssegnatiException, IdCartaException {
 		super(puntiAssegnati, simbolo, colore, true, angolo0, angolo1, angolo2, angolo3, CRis.LASTID);
 		CRis.LASTID++;
 	}
@@ -34,8 +38,10 @@ public class CRis extends CGiocabiliSpeciali {
 	 * @param simbolo
 	 * @param colore
 	 * @param IdCarta
+	 * @throws IdCartaException quando id < 0
+	 * @throws PuntiAssegnatiException qaundo !(0 <= PuntiAssegnati <= 3) 
 	 */
-	public CRis(Simbolo simbolo, Colore colore, int IdCarta) {
+	public CRis(Simbolo simbolo, Colore colore, int IdCarta) throws PuntiAssegnatiException, IdCartaException {
 		super(0, simbolo, colore, false, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.VUOTO, Simbolo.VUOTO, IdCarta);
 	}
 

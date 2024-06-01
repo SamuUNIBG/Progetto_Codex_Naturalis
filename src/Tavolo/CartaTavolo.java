@@ -7,7 +7,8 @@ import Carta.CObb;
 import Carta.COro;
 import Carta.CRis;
 import Carta.Carta;
-
+import Eccezioni.IdCartaException;
+import Eccezioni.PuntiAssegnatiException;
 import Enumerazione.TipoCarta;
 
 public class CartaTavolo {
@@ -29,8 +30,10 @@ public class CartaTavolo {
 	 * <br>-2 resource cards
 	 * <br>-2 gold cards
 	 * <br>-2 objective cards
+	 * @throws IdCartaException 
+	 * @throws PuntiAssegnatiException 
 	 */
-	public CartaTavolo() {
+	public CartaTavolo() throws PuntiAssegnatiException, IdCartaException {
 		mIniz = new MCIniz();
 		mOro = new MCOro();
 		mRis = new MCRis();

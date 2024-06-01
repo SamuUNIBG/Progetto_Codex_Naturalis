@@ -1,6 +1,9 @@
 package Carta;
 
 import java.util.*;
+
+import Eccezioni.IdCartaException;
+import Eccezioni.PuntiAssegnatiException;
 import Enumerazione.*;
 
 /**
@@ -15,10 +18,25 @@ public class CIniz extends CGiocabili {
 	
 	private final Angolo[] angoliR = new Angolo[4];  // gli angoli del retro delle singole carte
 	private static int LASTID=80;
-	private final ArrayList<Simbolo> risorseCentrali; /*le carte iniziali hanno
-												fino a 4 risorse centrali*/
+	private final ArrayList<Simbolo> risorseCentrali; /*le carte iniziali hanno fino a 4 risorse centrali*/
+	
+	/**
+	 * @param angolo0 fronte alto sx
+	 * @param angolo1 fronte alto dx
+	 * @param angolo2 fronte basso dx
+	 * @param angolo3 fronte basso sx
+	 * @param riscentrale1
+	 * @param riscentrale2
+	 * @param riscentrale3
+	 * @param angolo4 retro alto sx
+	 * @param angolo5 retro alto dx
+	 * @param angolo6 retro basso dx
+	 * @param angolo7 retro basso sx
+	 * @throws IdCartaException quando id < 0
+	 * @throws PuntiAssegnatiException qaundo !(0 <= PuntiAssegnati <= 3) 
+	 */
 	public CIniz( Simbolo angolo0,Simbolo angolo1, Simbolo angolo2, Simbolo angolo3,Simbolo riscentrale1, Simbolo riscentrale2,
-			Simbolo riscentrale3, Simbolo angolo4,Simbolo angolo5, Simbolo angolo6, Simbolo angolo7 ) {
+			Simbolo riscentrale3, Simbolo angolo4,Simbolo angolo5, Simbolo angolo6, Simbolo angolo7 ) throws PuntiAssegnatiException, IdCartaException {
 		super(0, CIniz.LASTID, angolo0, angolo1, angolo2, angolo3, true); //le carte iniziali non danno punti
 		risorseCentrali = new ArrayList<Simbolo>();
 		this.risorseCentrali.add(riscentrale1);

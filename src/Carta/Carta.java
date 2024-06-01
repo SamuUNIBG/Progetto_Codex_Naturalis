@@ -1,5 +1,8 @@
 package Carta;
 
+import Eccezioni.PuntiAssegnatiException;
+import Eccezioni.IdCartaException;
+
 public abstract class Carta{
 	
 	private final int puntiAssegnati; //le carte hanno punti
@@ -12,9 +15,24 @@ public abstract class Carta{
 	// va da 94 a 97 tot 4 carte obbietttivo risorsa
 	// va da 98 a 101 tot 4 carte obbietttivo oggetto
 	
-	public Carta(int puntiAssegnati, int idCarta) {
-		this.puntiAssegnati = puntiAssegnati;
-		this.idCarta = idCarta;
+	/**
+	 * @param puntiAssegnati
+	 * @param idCarta
+	 * @throws IdCartaException quando id < 0
+	 * @throws PuntiAssegnatiException qaundo !(0 <= PuntiAssegnati <= 3)
+	 */
+	public Carta(int puntiAssegnati, int idCarta) throws PuntiAssegnatiException, IdCartaException {
+		if(puntiAssegnati<0)
+			throw new PuntiAssegnatiException("< 0");
+		else if(puntiAssegnati>5)
+			throw new PuntiAssegnatiException("> 5");
+		else
+			this.puntiAssegnati = puntiAssegnati;
+		if(idCarta<0)
+			throw new IdCartaException();
+		else
+			this.idCarta = idCarta;
+		
 	}
 	
 	/**
