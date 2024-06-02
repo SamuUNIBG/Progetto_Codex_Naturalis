@@ -1,0 +1,258 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>740</x><y>50</y><w>210</w><h>190</h></coordinates><panel_attributes>Package::Tavolo
+Tracciato
+--
+-tabellone: ArrayList&lt;Giocatori&gt;
+--
++Tracciato()
+-quantiGiocatori(): int
++rivelaPunteggio(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1070</x><y>300</y><w>210</w><h>190</h></coordinates><panel_attributes>Package::Tavolo
+/Mazzo/
+--
+--
+/+pesca(): Carta/
+/+getCRimaste(): int/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>930</x><y>990</y><w>360</w><h>320</h></coordinates><panel_attributes>Package::Carta
+COro
+--
+-IDCARTA: int
+_lastId: int (40-79)_
+-ANGOLI[]: Angolo
+-SIMBOLO: Simbolo
+-COLORE: Colore
+-OBBIETTIVO: Simbolo
+-risNecessarie[]: int
+--
++COro(puntiAssegnati: int, obbiettivo: Simbolo,
+simbolo: Simbolo, colore: Colore, angolo0: Simbolo,
+angolo1: Simbolo, angolo2: Simbolo, angolo3: Simbolo,
+risnecessaria1 int, risnecessaria2: int, risnecessaria3: int,
+risnecessaria4: int)
++VerificaPrerequisito(): boolean
++getIDCARTA(): int
++getAngoli(): Angolo[]
++getSimbolo(): Simbolo
++getColore(): Colore
++getRisNecessarie(): int[]</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1400</x><y>40</y><w>210</w><h>190</h></coordinates><panel_attributes>Package::Tavolo
+CampoGioco
+--
+-(Array per salvare carte giocate)
+--
++CampoGioco()
++mostra(): void
++aggiungiC(): bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>560</x><y>1080</y><w>360</w><h>230</h></coordinates><panel_attributes>Package::Carta
+CRis
+--
+-IDCARTA: int
+_lastId: int (0-39)_
+-ANGOLI[]: Angolo
+-SIMBOLO: Simbolo
+-COLORE: Colore
+--
++CRis(puntiAssegnati: int, simbolo: Simbolo, colore:Colore,
+angolo0: Simbolo, angolo1: Simbolo, angolo2: Simbolo,
+angolo3: Simbolo)
++getIDCARTA(): int
++getAngoli(): Angolo[]
++getSimbolo(): Simbolo
++getColore(): Colore</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>720</y><w>210</w><h>190</h></coordinates><panel_attributes>Package::Carta
+/Carta/
+--
+-PUNTIASSEGNATI: int
+--
++Carta(puntiAssegnati: int)
++getPunti(): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1070</x><y>20</y><w>210</w><h>270</h></coordinates><panel_attributes>Package::Tavolo
+Giocatore
+--
+-soprannome: String
+-COLORE: Colore
+-punteggio: int
+-PRIMO: bool
+-cMano: ArrayList&lt;Carta&gt;
+-cObbPer: CObb
+-campo: CampoGioco
+-risPossedute[]: int
+-oggPosseduti[]: int
+--
++Giocatore(COLORE: Colore)
++getColore(): Colore
++getPunteggio(): int
++getSoprannome(): String
++giocaC(): bool
++pescaC(carta: Carta): void //il metodo farà cMano.add(carta)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>190</x><y>1080</y><w>360</w><h>230</h></coordinates><panel_attributes>Package::Carta
+CIniz
+--
+-ANGOLI[]: Angolo
+-ANGOLIR[]: Angolo
+-risorseCentrali: ArrayList&lt;Simbolo&gt;
+-fronte: boolean
+--
++CIniz(angolo0: Simbolo, angolo1: Simbolo,	angolo2: Simbolo,
+angolo3: Simbolo, riscentrale1: Simbolo, riscentrale2: Simbolo,
+riscentrale3: Simbolo, angolo4: Simbolo, angolo5: Simbolo,
+angolo6: Simbolo, angolo7: Simbolo)
++setFronte(fronte: boolean): void
++getAngoli(): Angolo[]
++getFronte(): boolean
++getRisorseCentrali(): ArrayList&lt;Simbolo&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1060</x><y>1440</y><w>210</w><h>190</h></coordinates><panel_attributes>Package::Carta
+CObbOgg
+--
+-OGGETTI: ArrayList&lt;Simbolo&gt;
+--
++CObbOgg(puntiAssegnati: int,
+oggetto1: Simbolo,
+oggetto2: Simbolo,
+oggetto3: Simbolo) {
++getOggetti(): ArrayList&lt;Simbolo&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>840</x><y>1440</y><w>210</w><h>190</h></coordinates><panel_attributes>Package::Carta
+CObbRis
+--
+-SIMBOLO: Simbolo
+--
++CObbRis(puntiAssegnati: int, simbolo: Simbolo)
++getSimbolo(): Simbolo</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1280</x><y>1440</y><w>210</w><h>190</h></coordinates><panel_attributes>Package::Carta
+CObbScala
+--
+-COLORE: Colore
+-DIREZIONE: bool (true /, false \)
+--
++CObbScala(puntiAssegnati: int,
+colore: Colore, direzione: boolean)
++getColore(): Colore[]
++getDirezione(): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>300</x><y>720</y><w>210</w><h>190</h></coordinates><panel_attributes>Package::Carta
+Angolo
+--
+-SIMBOLO: Simbolo
+-coperto: boolean
+
+--
++Angolo()
++getSimbolo(): Simbolo
++getCoperto(): boolean
++setCoperto(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1500</x><y>1440</y><w>210</w><h>190</h></coordinates><panel_attributes>Package::Carta
+CObbL
+--
+-COLORI[]: Colore
+-DIREZIONE: int
+--
++CObbL(puntiAssegnati: int,
+colore0: Colore, colore1: Colore,
+direzione: int)
++getColori(): Colore[]
++getDirezione(): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLHierarchy</id><coordinates><x>20</x><y>50</y><w>170</w><h>140</h></coordinates><panel_attributes>type=Package
+CodexNaturalis
+	Carte
+	Tavolo
+	Enumerazione</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>200</x><y>50</y><w>290</w><h>60</h></coordinates><panel_attributes>Package::Enumerazione
+Colore
+--
+VERDE, AZZURRO, VIOLA, ROSSO, NERO, GIALLO</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>200</x><y>120</y><w>290</w><h>80</h></coordinates><panel_attributes>Package::Enumerazione
+Simbolo
+--
+FOGLIA, LUPO, FUNGO, FARFALLA, PERGAMENA,
+INCHIOSTRO, PIUMA, VUOTO, ASSENTE, ANGOLO</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1640</x><y>20</y><w>70</w><h>120</h></coordinates><panel_attributes>logica
+--
+-private
++public
+#protected
+/abstract/
+FINAL
+_static_</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>930</x><y>1300</y><w>490</w><h>160</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>470;10;470;100;10;100;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>1390</x><y>1380</y><w>230</w><h>80</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;210;20;210;60</additional_attributes></element><element><id>Relation</id><coordinates><x>1370</x><y>1390</y><w>30</w><h>70</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>1150</x><y>1390</y><w>30</w><h>70</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>610</x><y>930</y><w>810</w><h>210</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;790;20;790;190</additional_attributes></element><element><id>Relation</id><coordinates><x>1020</x><y>940</y><w>30</w><h>70</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>650</x><y>940</y><w>30</w><h>160</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>900</y><w>360</w><h>200</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>340;10;340;50;10;50;10;180</additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>960</y><w>110</w><h>140</h></coordinates><panel_attributes>lt=-
+m2=1</panel_attributes><additional_attributes>90;10;10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>960</y><w>560</w><h>50</h></coordinates><panel_attributes>m2=1</panel_attributes><additional_attributes>10;10;530;10;530;30</additional_attributes></element><element><id>Relation</id><coordinates><x>390</x><y>900</y><w>330</w><h>200</h></coordinates><panel_attributes>lt=&lt;-
+m1=2..4
+m2=1
+disporre</panel_attributes><additional_attributes>10;10;10;70;300;70;300;180</additional_attributes></element><element><id>Relation</id><coordinates><x>1360</x><y>740</y><w>220</w><h>400</h></coordinates><panel_attributes>lt=-&gt;
+m2=16
+contenere</panel_attributes><additional_attributes>140;10;140;350;10;350;10;380</additional_attributes></element><element><id>Relation</id><coordinates><x>250</x><y>740</y><w>620</w><h>360</h></coordinates><panel_attributes>lt=-&gt;
+m1=1
+m2=6
+contenere</panel_attributes><additional_attributes>590;10;590;290;10;290;10;340</additional_attributes></element><element><id>Relation</id><coordinates><x>620</x><y>740</y><w>450</w><h>360</h></coordinates><panel_attributes>lt=-&gt;
+m2=40
+contenere</panel_attributes><additional_attributes>430;10;430;140;250;140;250;310;10;310;10;340</additional_attributes></element><element><id>Relation</id><coordinates><x>1270</x><y>130</y><w>150</w><h>50</h></coordinates><panel_attributes>lt=-&gt;
+m1=1
+m2=1
+gestire</panel_attributes><additional_attributes>10;20;130;20</additional_attributes></element><element><id>Relation</id><coordinates><x>610</x><y>360</y><w>230</w><h>220</h></coordinates><panel_attributes>lt=&lt;-
+m1=1
+m2=1
+essere fornito</panel_attributes><additional_attributes>200;200;200;150;10;150;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>150</x><y>330</y><w>510</w><h>1050</h></coordinates><panel_attributes>lt=&lt;-
+m1=2
+m2=0..1
+essere provvisto</panel_attributes><additional_attributes>480;980;480;1030;10;1030;20;10;350;10</additional_attributes></element><element><id>Relation</id><coordinates><x>470</x><y>1300</y><w>930</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
+m1=2</panel_attributes><additional_attributes>900;10;900;60;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>990</x><y>1300</y><w>40</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
+m1=2</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>1270</x><y>240</y><w>430</w><h>1120</h></coordinates><panel_attributes>lt=&lt;-
+m1=1
+m2=0..1
+tenere</panel_attributes><additional_attributes>160;1070;160;1100;370;1100;370;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1050</x><y>1300</y><w>400</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
+m1=1</panel_attributes><additional_attributes>10;10;10;40;380;40</additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>1300</y><w>400</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
+m1=2</panel_attributes><additional_attributes>10;10;10;40;380;40</additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>1300</y><w>400</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
+m1=1</panel_attributes><additional_attributes>10;10;10;40;380;40</additional_attributes></element><element><id>Relation</id><coordinates><x>940</x><y>130</y><w>150</w><h>50</h></coordinates><panel_attributes>lt=-&gt;
+m1=1
+m2=2..4
+avere</panel_attributes><additional_attributes>10;20;130;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>500</x><y>50</y><w>230</w><h>320</h></coordinates><panel_attributes>Package::Tavolo
+CartaTavolo
+--
+-cRisScp: ArrayList&lt;CRis&gt;
+-cObbScp: ArrayList&lt;CObb&gt;
+-cOroScp: ArrayList&lt;COro&gt;
+-mIniz: MCIniz
+-mOro: MCOro
+-mRis: MCRis
+-mObb: MCObb
+--
++CartaTavolo()
++getcRisScp(): ArrayList&lt;CRis&gt;
++addcRisScp(CRis carta): void
++getcObbScp(): ArrayList&lt;CObb&gt;
++getcOroScp(): ArrayList&lt;COro&gt;
++addcOroScp(COro carta): void
++getMazzoIniz(): MCIniz
++getMazzoOro(): MCOro
++getMazzoRis(): MCRis
++getMazzoObb(): MCObb
++pesca(tipo: TipoCarta, pos: int): Carta</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>210</x><y>190</y><w>1520</w><h>1210</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..1
+m2=0..1
+possedere</panel_attributes><additional_attributes>10;1120;10;1190;1500;1190;1500;10;1400;10</additional_attributes></element><element><id>Relation</id><coordinates><x>580</x><y>1300</y><w>50</w><h>100</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..n</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>950</x><y>1300</y><w>50</w><h>100</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..n</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>200</x><y>210</y><w>290</w><h>60</h></coordinates><panel_attributes>Package::Enumerazione
+TipoCarta
+--
+COro, CRis</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>960</x><y>560</y><w>210</w><h>190</h></coordinates><panel_attributes>Package::Tavolo
+MCRis
+--
+-cMazzo: ArrayList&lt;CRis&gt;
+(istanze carte risorsa)
+--
++MCRis()
++pesca(): CRis
++getCRimaste(): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1180</x><y>560</y><w>210</w><h>190</h></coordinates><panel_attributes>Package::Tavolo
+MCOro
+--
+-cMazzo: ArrayList&lt;COro&gt;
+(istanze carte oro)
+--
++MCOro()
++pesca(): COro
++getCRimaste(): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>740</x><y>560</y><w>210</w><h>190</h></coordinates><panel_attributes>Package::Tavolo
+MCIniz
+--
+-cMazzo: ArrayList&lt;CIniz&gt;
+(istanze carte iniziali)
+--
++MCIniz()
++pesca(): CIniz
++getCRimaste(): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1400</x><y>560</y><w>210</w><h>190</h></coordinates><panel_attributes>Package::Tavolo
+MCObb
+--
+-cMazzo: ArrayList&lt;CObb&gt;
+(istanze carte obbiettivo)
+--
++MCObb()
++pesca(): CObb
++getCRimaste(): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1300</x><y>1120</y><w>210</w><h>190</h></coordinates><panel_attributes>Package::Carta
+/CObb/
+--
+--
++CObb(puntiAssegnati: int)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>830</x><y>480</y><w>360</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>340;10;340;50;10;50;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>1160</x><y>510</y><w>360</w><h>70</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;340;20;340;50</additional_attributes></element><element><id>Relation</id><coordinates><x>1050</x><y>520</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1270</x><y>520</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>990</x><y>740</y><w>310</w><h>270</h></coordinates><panel_attributes>lt=-&gt;
+m2=40
+contenere</panel_attributes><additional_attributes>290;10;290;170;10;170;10;250</additional_attributes></element><element><id>Relation</id><coordinates><x>800</x><y>500</y><w>260</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
+m1=1</panel_attributes><additional_attributes>230;60;230;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1020</x><y>500</y><w>260</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
+m1=1</panel_attributes><additional_attributes>230;60;230;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1240</x><y>500</y><w>260</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
+m1=1</panel_attributes><additional_attributes>230;60;230;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>0</x><y>0</y><w>1750</w><h>1660</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;1640;10;10;1720;10;1730;1640;10;1640</additional_attributes></element></diagram>
