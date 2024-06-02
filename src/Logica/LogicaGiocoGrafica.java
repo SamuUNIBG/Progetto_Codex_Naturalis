@@ -138,7 +138,7 @@ public class LogicaGiocoGrafica implements InterfacciaLogica, WindowListener {
 	@Override
 	public void Turni() {
 		
-		if(giocatoreAttuale.getPunteggio() > -1 || (cartaTavolo.getMazzoOro().getCRimaste()==0 && cartaTavolo.getMazzoRis().getCRimaste()==0)) {
+		if(giocatoreAttuale.getPunteggio() > 19 || (cartaTavolo.getMazzoOro().getCRimaste()==0 && cartaTavolo.getMazzoRis().getCRimaste()==0)) {
 			punti20 = true;
 		}
 		
